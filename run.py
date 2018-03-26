@@ -110,8 +110,10 @@ if __name__ == '__main__':
 
 
     # A configured Assistant
-    from core import Assistant
-    a = Assistant(path=args.mind_dir)
+    import importlib
+    A = importlib.import_module(args.mind_dir, "core")
+    logger.debug("Spawning {}".format(A))
+    a = A.spawn()
 
     logger.info("Begin Secondary Configuration")
     conf = a.config
