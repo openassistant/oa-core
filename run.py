@@ -109,15 +109,6 @@ if __name__ == '__main__':
     logger.debug("Arguments: {args}".format(args=args))
 
 
-    # Database Prototyping
-    # from core.util.db import DB
-    # db = DB(os.path.join(conf.cache_dir, "db"))
-    # db.create_schema()
-    # for prompt, command in conf.commands.items():
-    #     print("Adding {} -> {}".format(prompt, command))
-    #     db.add_action(prompt, command)
-
-
 
     #
     # Pre-Configuration
