@@ -14,10 +14,10 @@ class Assistant:
         self.path = path
 
         logger.debug("Configuring Assistant: {}".format(str(config)))
-        self.config = config if config is not None else {}
+        config = config if config is not None else {}
 
         from core import Config
-        self.config = Config(path=self.path)
+        self.config = Config(path=self.path, **(config))
 
         logger.debug("Assistant Configured: {}".format(self.config))
         self.history = []
