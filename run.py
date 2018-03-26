@@ -109,6 +109,9 @@ if __name__ == '__main__':
     logger.debug("Arguments: {args}".format(args=args))
 
 
+    # A configured Assistant
+    from core import Assistant
+    a = Assistant(path=args.mind_dir)
 
     #
     # Pre-Configuration
@@ -151,11 +154,6 @@ if __name__ == '__main__':
     #
     # End Pre-Configuration
     #
-
-
-    # A configured Assistant
-    from core import Assistant
-    a = Assistant(path=args.mind_dir)
 
 
     #
