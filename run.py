@@ -134,14 +134,14 @@ if __name__ == '__main__':
 
 
     # Generate Language Files
-    if args.update:
-        from modules.language import LanguageUpdater
-
-        # create_strings_file(conf.strings_file, db.get_prompts()) # conf.commands)
-        # create_sphinx_files(conf.strings_file, conf.lm_file, conf.dic_file)
-
-        l = LanguageUpdater(conf)
-        l.update_language()
+    # if args.update:
+    #     from modules.language import LanguageUpdater
+    #
+    #     # create_strings_file(conf.strings_file, db.get_prompts()) # conf.commands)
+    #     # create_sphinx_files(conf.strings_file, conf.lm_file, conf.dic_file)
+    #
+    #     l = LanguageUpdater(conf)
+    #     l.update_language()
 
 
 
