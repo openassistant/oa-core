@@ -6,16 +6,25 @@ Prerequisite: homebrew (https://brew.sh)
 
 `brew install python`
 
-## Install Gstreamer
-
-`brew install gst-python --with-python --without-python@2`
-`brew install gst-plugins-good gst-plugins-bad gst-plugins-ugly`
-
 # Python Modules
 
 `pip3 install requests`
 
-# Sphinx (Speech Recognition)
+# Open Assistant Modules
+
+## Speech Recognition
+
+### gstreamer
+
+note the options: python3 support, no python2
+
+`brew install gst-python --with-python --without-python@2`
+
+support for autoaudiosrc
+
+`brew install gst-plugins-good`
+
+### sphinx
 
 Build tools
 
