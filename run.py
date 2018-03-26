@@ -59,11 +59,11 @@ def recognizer_finished(a, recognizer, text):
 
 
 def log_history(a, text):
-    if a.config.options['history']:
+    if a.history is not None:
         a.history.append(text)
-        if len(a.history) > a.config.options['history']:
+        # if len(a.history) > a.config.options['history']:
             # Pop Off First Item
-            a.history.pop(0)
+            # a.history.pop(0)
 
         # Open And Truncate History File
         with open(a.config.history_file, 'w') as hfile:
