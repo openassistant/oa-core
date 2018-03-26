@@ -113,6 +113,9 @@ if __name__ == '__main__':
     from core import Assistant
     a = Assistant(path=args.mind_dir)
 
+    logger.info("Begin Secondary Configuration")
+    conf = a.config
+
     #
     # Pre-Configuration
     #
@@ -165,6 +168,9 @@ if __name__ == '__main__':
     #
     # End Post-Configuration
     #
+
+    logger.info("End Secondary Configuration")
+    logger.debug("Agent Configuration: {}".format(a.config))
 
 
 
