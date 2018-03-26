@@ -34,6 +34,16 @@ class Config:
         logger.info("Command Count: {}".format(len(self.commands)))
 
 
+    def __str__(self):
+        return repr(self)
+
+    def __repr__(self):
+        return repr({
+            'cache_dir': self.cache_dir,
+            'conf_dir': self.conf_dir,
+            'options': self.options,
+        })
+
     def _make_dir(self, directory):
         if not os.path.exists(directory):
             os.makedirs(directory)
