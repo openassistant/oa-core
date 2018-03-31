@@ -1,4 +1,4 @@
-{
+kws={
   "absolutely": "./mind/stella/words/yes.sh",
   "absolutely not": "./mind/stella/words/no.sh",
   "absurd": "echo totally ridiculous... | $VOICE",
@@ -202,8 +202,8 @@
   "it is": "echo indeed... | $VOICE",
   "it is a cat": "aplay ./mind/stella/sounds/nyancat.wav && echo what is a cat doing in here? | $VOICE",
   "it's a cat": "aplay ./mind/stella/sounds/nyancat.wav && echo what is a cat doing in here? | $VOICE",
-  "it's alright...": "echo alright... | $VOICE",
-  "it's ok...": "echo ok great... | $VOICE",
+  "it's alright": "echo alright... | $VOICE",
+  "it's ok": "echo ok great... | $VOICE",
   "joke": "shuf -n 1 ./docs/jokes.txt | tee /dev/tty | $VOICE",
   "later": "echo ok... later... | $VOICE",
   "learning to speak": "echo learning to talk can be hard work... | $VOICE",

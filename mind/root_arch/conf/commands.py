@@ -1,4 +1,4 @@
-{
+kws={
   "back flip": "xdotool key alt+Tab",
   "be quiet": "espeak 'going silent' &> /dev/null && amixer set Master playback mute",
   "be silent": "espeak 'going silent' &> /dev/null && amixer set Master playback mute",

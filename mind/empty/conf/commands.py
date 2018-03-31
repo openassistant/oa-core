@@ -1,4 +1,4 @@
-{
+kws={
     "hello": "echo hello | $VOICE",
     "hello world": "echo hello world | $VOICE"
 }
