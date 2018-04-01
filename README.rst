@@ -1,6 +1,63 @@
+Description:
+This is fork of original OpenAssistant (see below).
+Main goal to simplify and restructure modules to provide easy customization 
+and OS independent version of OpenAssistant.
+To implement more sofisticated logic like ML (TensorFlow).
+OA.Agents network, and customization on fly (adding commands via UI).
+Extend UI (now it's only VUI) :
+CLI, GUI, AR/VR-UI, BCI, network agents interaction.
+
+This version contains "check for silence delay" similar to SpeechRecognition-3.8.1
+Json was replaced with commands.py modules - so it's free to use any logic that you need for Command.
+
+\mind\boot\conf\commands.py
+audio.py - all audio logic TTS, STT updates langs from web, etc.
+oa.py - main Assistant module
+oa_utils.py - Any utilities to simplify Command process. 
+there is no auto installer yet. (case it's not Ready2Go version for now).
+
+Removed : gstream, gobject.
+------------------------------------------------------------------
+Help:
+If you want to help in development, you may donate me a cup of coffee. 
+(my "core" works better with this stuff =) )
+
+BTC
+1HWciwsZ1jCgH9VYRRb4A21WoRByn2tnpc
+
+ETH
+0x90A534862fA94FE1fFC1Fe5c660E3683c219c87a
+
+NEO
+Ad3FZrL9Gr1WyNcR6GTbPRqgv1c58E2G1q
+
+QTUM
+Qd7bqFAGCC5ViHaZqkuYHHo9Jg8h1a1Ugc
+
+DOGE
+DMeiGCpCK96xp9g9A1achnB7gYvH6KNc6u
+
+(also accept all tokens, based on corresponded platforms ^^ =) )
+
+------------------------------------------------------------------
+NEED to fix:
+Need to replace all comands of "minds" via Py Stub calls. 
+(to make it work transparently in Win,Mac,Linux and other OS families)
+for now it's not complete version (all commands is related to Arch linux)
+------------------------------------------------------------------
+Installation:
+------------------------------------------------------------------
+Dependencies:
+Python  : 
+we suppose it may be any version 2.* or 3.* branch)
+
+pip install requests, pyttsx3, pocketsphinx
+------------------------------------------------------------------
+Original:
+This fork will be merged with original branch, decision (what part to merge) will be made by OA community.
+
 Open Assistant
 =============
-
 Open Assistant is an evolving open source artificial intelligence agent able 
 to interact in basic conversation and automate an increasing number of tasks.
 
@@ -10,50 +67,3 @@ is an extension of `Blather <https://gitlab.com/jezra/blather>`__
 by `Jezra <http://www.jezra.net/>`__, `Kaylee <https://github.com/Ratfink/kaylee>`__ 
 by `Clayton G. Hobbs <https://bzratfink.wordpress.com/>`__, and includes work 
 done by `Jonathan Kulp <http://jonathankulp.org/>`__.
-
-
-Dependencies
-------------
-
-* `Arch Linux <https://www.archlinux.org/>`_ or `Ubuntu Linux <http://openassistant.org/forum/support/ubuntu-16-04-installation/>`_ (Testing Soon on `macOS <https://www.apple.com/macos>`_)
-* `Python 3.5 <https://www.python.org/downloads>`__
-* `PocketSphinx 5PreAlpha <https://github.com/cmusphinx/pocketsphinx>`__
-* `GStreamer-1.0 <https://github.com/GStreamer/gstreamer>`__
-* `GStreamer-1.0 Base Plugins <https://github.com/GStreamer/gst-plugins-base>`__
-* `Python-GObject <https://wiki.gnome.org/action/show/Projects/PyGObject>`__
-* `Python-Requests <https://pypi.python.org/pypi/requests>`__
-
-
-Useful Tools
-------------
-
-* aplay - console audio player
-* plaympeg - console mp3 player
-* projectm - visualizations responsive to sound
-* wmctrl - window manager control. opening, closing, resize, switch windows. 
-* xdotool - command line x automation tool
-* xvkbd - virtual keyboard for x
-
-Running Open Assistant
----------------------
-
-* Download and unpack the latest ``openassistant-master.zip`` package.
-
-* Edit ``run.sh`` to configure desired variables, then save.
-
-* Make ``run.sh`` executable with: ``$chmod +x ./run.sh``
-
-* Run ``./run.sh -c -H20 -m0 -M mind/boot``. Global variables will be set and ``run.py`` will launch.
-
-* If ``$MINDDIR/conf/commands.json`` has changed and your machine is online, a new dictionary and language model will be created via the `Sphinx Knowledge Base Tool <http://www.speech.cs.cmu.edu/tools/lmtool.html>`__.
-
-* Say `Launch Open Assistant` to enable operating system control commands such as `Maximize Window` and `Fullscreen`. Say `Launch Stella` to initiate a dialogue with her mind. To have Stella quit say `Goodbye Stella`. Say `Close Open Assistant` to quit operating system command recognition.
-
-* To change assistant commands and language, edit ``conf/commands.json``. Exit and relaunch ``run.sh``.
-
-
-Open Assistant Fork
-==================
-
-Open Assistant fork for Crux System:
-https://github.com/s1lvino/c9-ports/tree/master/openassistant
