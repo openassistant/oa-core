@@ -101,7 +101,7 @@ class AudioUtils():
 
         # SUBMIT THE CORPUS TO THE LMTOOL
         response_text = ""
-        with open(_.strings_file, 'rb') as corpus:
+        with open(_.strings_file, 'r') as corpus:
             files = {'corpus': corpus}
             values = {'formtype': 'simple'}
 

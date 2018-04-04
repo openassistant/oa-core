@@ -75,12 +75,12 @@ def fwrite(fname, data, append=False):
         with open(fname, 'w+') as f:
             f.write(data)
     else:
-        with open(fname, 'wb') as f:
+        with open(fname, 'w') as f:
             f.write(data)
 
 def fread(fname):
     try:
-        with open(fname, 'rb') as f:
+        with open(fname, 'r') as f:
             return f.read()
     except FileNotFoundError:
         logger.warn("Error loading file: {path}".format(path=fname))
