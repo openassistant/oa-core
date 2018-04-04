@@ -41,7 +41,7 @@ DMeiGCpCK96xp9g9A1achnB7gYvH6KNc6u
 
 ------------------------------------------------------------------
 NEED to fix:
-Need to replace all comands of "minds" via Py Stub calls. 
+Need to replace all commands of "minds" via Py Stub calls. 
 (to make it work transparently in Win,Mac,Linux and other OS families)
 for now it's not complete version (all commands is related to Arch linux)
 ------------------------------------------------------------------
