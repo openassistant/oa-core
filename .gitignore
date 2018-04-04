@@ -19,5 +19,3 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
-
-mind/**/cache

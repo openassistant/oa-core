@@ -1,0 +1,33 @@
+Language model created by QuickLM on Wed Apr  4 11:21:12 EDT 2018
+Copyright (c) 1996-2010 Carnegie Mellon University and Alexander I. Rudnicky
+
+The model is in standard ARPA format, designed by Doug Paul while he was at MITRE.
+
+The code that was used to produce this language model is available in Open Source.
+Please visit http://www.speech.cs.cmu.edu/tools/ for more information
+
+The (fixed) discount mass is 0.5. The backoffs are computed using the ratio method.
+This model based on a corpus of 2 sentences and 4 words
+
+\data\
+ngram 1=4
+ngram 2=4
+ngram 3=2
+
+\1-grams:
+-0.7782 </s> -0.3010
+-0.7782 <s> -0.2218
+-1.0792 HELLO -0.2218
+-1.0792 HELLOWORLD -0.2218
+
+\2-grams:
+-0.6021 <s> HELLO 0.0000
+-0.6021 <s> HELLOWORLD 0.0000
+-0.3010 HELLO </s> -0.3010
+-0.3010 HELLOWORLD </s> -0.3010
+
+\3-grams:
+-0.3010 <s> HELLO </s>
+-0.3010 <s> HELLOWORLD </s>
+
+\end\
