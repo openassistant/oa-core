@@ -51,7 +51,15 @@ Dependencies:
 Python  : 
 we suppose it may be any version 2.* or 3.* branch)
 
-pip install requests, pyttsx3, pocketsphinx
+Windows
+pip install pyaudio playsound requests pyttsx3 pocketsphinx 
+
+Arch Linux
+sudo pacman -S portaudio python-pyaudio swig espeak && sudo pip install requests pyttsx3 playsound pocketsphinx 
+-- still some problems with 
+-- ALSA lib pcm.c:2501:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.rear
+
+
 ------------------------------------------------------------------
 Original:
 This fork will be merged with original branch, decision (what part to merge) will be made by OA community.

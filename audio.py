@@ -46,8 +46,7 @@ class AudioUtils():
         _.phrase_buffer_count = int(math.ceil(_.phrase_threshold / _.seconds_per_buffer))  # minimum number of buffers of speaking audio before we consider the speaking audio a phrase
         _.non_speaking_buffer_count = int(math.ceil(_.non_speaking_duration / _.seconds_per_buffer))  # maximum number of buffers of non-speaking audio to retain before and after a phrase
         #----------------------------------------------------------------------------------------------
-        _.pa = pyaudio.PyAudio()
-        _.stream = _.pa.open(format=_.pa_format, channels=_.channels, rate=_.sample_rate, input=True, frames_per_buffer=_.chunk)
+        _.stream = pyaudio.PyAudio().open(format=_.pa_format, channels=_.channels, rate=_.sample_rate, input=True, frames_per_buffer=_.chunk)
 
     def cache_path(_,fname):#, check_exists=0
         """
@@ -139,7 +138,7 @@ class AudioUtils():
 #    stream.start_stream()
         # read audio input for phrases until there is a phrase that is long enough
         elapsed_time = 0  # number of seconds of audio read
-        buffer = b""  # an empty buffer means that the stream has ended and there is no data left to read
+        buf = b""  # an empty buffer means that the stream has ended and there is no data left to read
         _.energy_threshold = 300  # minimum audio energy to consider for recording
         while True:
             frames = collections.deque()
@@ -151,14 +150,14 @@ class AudioUtils():
                 if _.timeout and elapsed_time > _.timeout:
                     raise Exception("listening timed out while waiting for phrase to start")
 
-                buffer = _.stream.read(_.chunk)
-                if len(buffer) == 0: break  # reached end of the stream
-                frames.append(buffer)
+                buf = _.stream.read(_.chunk)
+#                if len(buffer) == 0: break  # reached end of the stream
+                frames.append(buf)
                 if len(frames) > _.non_speaking_buffer_count:  # ensure we only keep the needed amount of non-speaking buffers
                     frames.popleft()
 
                 # detect whether speaking has started on audio input
-                energy = audioop.rms(buffer, _.sample_width)  # energy of the audio signal
+                energy = audioop.rms(buf, _.sample_width)  # energy of the audio signal
                 if energy > _.energy_threshold: break
 
                 # dynamically adjust the energy threshold using asymmetric weighted average
@@ -176,13 +175,13 @@ class AudioUtils():
                 if _.phrase_time_limit and elapsed_time - phrase_start_time > _.phrase_time_limit:
                     break
 
-                buffer = _.stream.read(_.chunk)
-                if len(buffer) == 0: break  # reached end of the stream
-                frames.append(buffer)
+                buf = _.stream.read(_.chunk)
+#                if len(buffer) == 0: break  # reached end of the stream
+                frames.append(buf)
                 phrase_count += 1
 
                 # check if speaking has stopped for longer than the pause threshold on the audio input
-                energy = audioop.rms(buffer, _.sample_width)  # unit energy of the audio signal within the buffer
+                energy = audioop.rms(buf, _.sample_width)  # unit energy of the audio signal within the buffer
                 if energy > _.energy_threshold:
                     pause_count = 0
                 else:
@@ -192,7 +191,7 @@ class AudioUtils():
 
             # check how long the detected phrase is, and retry listening if the phrase is too short
             phrase_count -= pause_count  # exclude the buffers for the pause before the phrase
-            if phrase_count >= _.phrase_buffer_count or len(buffer) == 0: break  # phrase is long enough or we've reached the end of the stream, so stop listening
+            if phrase_count >= _.phrase_buffer_count or len(buf) == 0: break  # phrase is long enough or we've reached the end of the stream, so stop listening
 
         # obtain frame data
         for i in range(pause_count - _.non_speaking_buffer_count): frames.pop()  # remove extra non-speaking frames at the end

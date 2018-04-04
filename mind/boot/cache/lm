@@ -1,4 +1,4 @@
-Language model created by QuickLM on Sat Mar 31 17:35:37 EDT 2018
+Language model created by QuickLM on Wed Apr  4 13:39:07 EDT 2018
 Copyright (c) 1996-2010 Carnegie Mellon University and Alexander I. Rudnicky
 
 The model is in standard ARPA format, designed by Doug Paul while he was at MITRE.
@@ -7,27 +7,35 @@ The code that was used to produce this language model is available in Open Sourc
 Please visit http://www.speech.cs.cmu.edu/tools/ for more information
 
 The (fixed) discount mass is 0.5. The backoffs are computed using the ratio method.
-This model based on a corpus of 2 sentences and 4 words
+This model based on a corpus of 4 sentences and 6 words
 
 \data\
-ngram 1=4
-ngram 2=4
-ngram 3=2
+ngram 1=6
+ngram 2=8
+ngram 3=4
 
 \1-grams:
 -0.7782 </s> -0.3010
 -0.7782 <s> -0.2218
--1.0792 HELLOBOOT -0.2218
--1.0792 OPENASSISTANT -0.2218
+-1.3802 EMPTY -0.2218
+-1.3802 HELLOBOOT -0.2218
+-1.3802 OPENASSISTANT -0.2218
+-1.3802 STELLA -0.2218
 
 \2-grams:
--0.6021 <s> HELLOBOOT 0.0000
--0.6021 <s> OPENASSISTANT 0.0000
+-0.9031 <s> EMPTY 0.0000
+-0.9031 <s> HELLOBOOT 0.0000
+-0.9031 <s> OPENASSISTANT 0.0000
+-0.9031 <s> STELLA 0.0000
+-0.3010 EMPTY </s> -0.3010
 -0.3010 HELLOBOOT </s> -0.3010
 -0.3010 OPENASSISTANT </s> -0.3010
+-0.3010 STELLA </s> -0.3010
 
 \3-grams:
+-0.3010 <s> EMPTY </s>
 -0.3010 <s> HELLOBOOT </s>
 -0.3010 <s> OPENASSISTANT </s>
+-0.3010 <s> STELLA </s>
 
 \end\

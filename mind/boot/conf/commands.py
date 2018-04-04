@@ -1,4 +1,6 @@
 kws={
-  "hello boot": "aplay ./mind/boot/sounds/beep_hello.wav",
-  "open assistant": "aplay ./mind/boot/sounds/beep_open.wav && python run.py -M mind/root_arch"
+  "empty": say('go to empty') & mind('empty'),
+  "stella": say("Lets visit Stella") & mind('stella'),
+  "hello boot": play('beep_hello.wav'),
+  "open assistant": play('beep_open.wav') & mind('root_arch')
 }
