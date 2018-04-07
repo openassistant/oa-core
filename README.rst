@@ -1,26 +1,64 @@
-Description:
-This is fork of original OpenAssistant (see below).
-Main goal to simplify and restructure modules to provide easy customization 
-and OS independent version of OpenAssistant.
-To implement more sofisticated logic like ML (TensorFlow).
-OA.Agents network, and customization on fly (adding commands via UI).
-Extend UI (now it's only VUI) :
-CLI, GUI, AR/VR-UI, BCI, network agents interaction.
+Open Assistant Fork Description:
+=============
 
-This version contains "check for silence delay" similar to SpeechRecognition-3.8.1
-Json was replaced with commands.py modules - so it's free to use any logic that you need for Command.
+This is fork of the original `Open Assistant <http://www.openassistant.org/>`__ (see below).
 
-\mind\boot\conf\commands.py
-audio.py - all audio logic TTS, STT updates langs from web, etc.
-oa.py - main Assistant module
-oa_utils.py - Any utilities to simplify Command process. 
-there is no auto installer yet. (case it's not Ready2Go version for now).
+Our goals are to simplify and restructure modules to provide easy customization, operating system independence, as well as to implement more sophisticated logic such as machine learning (TensorFlow).
 
-Removed : gstream, gobject.
-------------------------------------------------------------------
+We would like to establish an OA.Agents blockchain network, add the ability for customization on fly (adding or changing commands via voice), provide a graphical interface, and build auto installer scripts.
+
+This version contains a "check for silence delay" similar to  `SpeechRecognition-3.8.1 <https://pypi.python.org/pypi/SpeechRecognition/3.8.1>`__.
+
+JSON was replaced with ``commands.py`` modules, so this frees up any logic needed for commands.
+
+``\mind\boot\conf\commands.py`` - Main commands file (boot mind).
+
+``audio.py`` - Audio logic TTS, STT, and updates language files from web.
+
+``oa.py`` - Main Assistant module.
+
+``oa_utils.py`` - Utilities to simplify command processes.
+
+Removed : 
+=============
+``gstream``
+
+``gobject``
+
+Need To Fix:
+=============
+Replace all commands in "minds" via Python Stub calls. 
+
+Make OA work transparently in Windows, Mac, Linux and all other OS families (all commands are currently related to Arch linux).
+
+Installation:
+=============
+Dependencies:
+
+Python: (May be any version 2.* or 3.* branch.)
+
+Windows:
+
+``pip install keyboard pyaudio playsound requests pyttsx3 pocketsphinx psutil feedparser``
+to start: ``python oa.py``
+
+Arch Linux:
+
+``sudo pacman -S portaudio python-pyaudio swig espeak && sudo pip install keyboard requests pyttsx3 playsound pocketsphinx psutil feedparser``
+
+Still some problems with:
+
+-- ALSA lib pcm.c:2501:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.rear
+
+Ubuntu:
+
+``sudo apt-get install -y python python-dev python-pip build-essential swig git libpulse-dev espeak && sudo apt-get install python-pyaudio && sudo pip install keyboard pyttsx3 playsound psutil feedparser``
+
+To start: ``sudo python oa.py``
+
 Help:
-If you want to help in development, you may donate me a cup of coffee. 
-(my "core" works better with this stuff =) )
+=============
+If you want to help support this development, you may donate a cup of coffee. (My "core" works better with this stuff =) )
 
 BTC
 1HWciwsZ1jCgH9VYRRb4A21WoRByn2tnpc
@@ -37,41 +75,15 @@ Qd7bqFAGCC5ViHaZqkuYHHo9Jg8h1a1Ugc
 DOGE
 DMeiGCpCK96xp9g9A1achnB7gYvH6KNc6u
 
-(also accept all tokens, based on corresponded platforms ^^ =) )
+(All tokens are accepted, based on corresponded platforms ^^ =) )
 
-------------------------------------------------------------------
-NEED to fix:
-Need to replace all comands of "minds" via Py Stub calls. 
-(to make it work transparently in Win,Mac,Linux and other OS families)
-for now it's not complete version (all commands is related to Arch linux)
-------------------------------------------------------------------
-Installation:
-------------------------------------------------------------------
-Dependencies:
-Python  : 
-we suppose it may be any version 2.* or 3.* branch)
-
-Windows
-pip install keyboard pyaudio playsound requests pyttsx3 pocketsphinx psutil feedparser
-to start: python oa.py
-
-Arch Linux
-sudo pacman -S portaudio python-pyaudio swig espeak && sudo pip install keyboard requests pyttsx3 playsound pocketsphinx psutil feedparser
--- still some problems with 
--- ALSA lib pcm.c:2501:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.rear
-
-Ubuntu
-sudo apt-get install -y python python-dev python-pip build-essential swig git libpulse-dev espeak && sudo apt-get install python-pyaudio && sudo pip install keyboard pyttsx3 playsound psutil feedparser
-to start: sudo python oa.py
-
-------------------------------------------------------------------
 Original:
+=============
 This fork will be merged with original branch, decision (what part to merge) will be made by OA community.
 
 Open Assistant
 =============
-Open Assistant is an evolving open source artificial intelligence agent able 
-to interact in basic conversation and automate an increasing number of tasks.
+Open Assistant is an evolving open source artificial intelligence agent able  to interact in basic conversation and automate an increasing number of tasks.
 
 Maintained by the `Open Assistant <http://www.openassistant.org/>`__ 
 working group lead by `Andrew Vavrek <https://youtu.be/cXqEv2OVwHE>`__, this software 
