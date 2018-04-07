@@ -1,5 +1,6 @@
 import os, sys, glob, random
 import subprocess, requests
+import operator,inspect
 import playsound
 import keyboard
 import platform
@@ -41,6 +42,19 @@ class AnyProp(object):
         #simply update from kwargs
         _.__dict__.update(kwargs)
 
+    def __getattribute__(_, name):
+        """
+          if attribute is a function and no arguments -
+          we will return call of this function
+        """
+        att=object.__getattribute__(_, name)
+        if operator.isCallable(att):
+            insp=inspect.getargspec(att)
+            if (len(insp.args)==0) and (att.func_name=='<lambda>'):
+                #return func Call result
+                return att()
+        return att
+
 sys_info=AnyProp()
 #common sys_info funcs
 #      OS name : 'win','mac','linux'
@@ -50,17 +64,17 @@ sys_info.host=socket.gethostname()
 sys_info.ip=socket.gethostbyname(sys_info.host)
 #date funcs
 #property(fget=None, fset=None, fdel=None, doc=None)
-sys_info.now=property(fget=lambda : datetime.datetime.now())
-sys_info.second=property(fget=lambda : sys_info.now.second)
-sys_info.hour=property(fget=lambda : sys_info.now.hour)
-sys_info.day=property(fget=lambda : sys_info.now.day)
-sys_info.month=property(fget=lambda : sys_info.now.month)
-sys_info.month_name=property(fget=lambda : sys_info.now.strftime("%B"))
-sys_info.year=property(fget=lambda : sys_info.now.year)
-sys_info.date_text=property(fget=lambda : '%d %s %d'%(sys_info.day,sys_info.month_name,sys_info.year))
-sys_info.time_text=property(fget=lambda : '%d:%d'%(sys_info.hour,sys_info.second))
-sys_info.date_time_text=property(fget=lambda : sys_info.date_text+' '+sys_info.time_text)
-sys_info.free_memory=property(fget=lambda : psutil.virtual_memory()[-1])
+sys_info.now=lambda : datetime.datetime.now()
+sys_info.second=lambda : sys_info.now.second
+sys_info.hour=lambda : sys_info.now.hour
+sys_info.day=lambda : sys_info.now.day
+sys_info.month=lambda : sys_info.now.month
+sys_info.month_name=lambda : sys_info.now.strftime("%B")
+sys_info.year=lambda : sys_info.now.year
+sys_info.date_text=lambda : '%d %s %d'%(sys_info.day,sys_info.month_name,sys_info.year)
+sys_info.time_text=lambda : '%d:%d'%(sys_info.hour,sys_info.second)
+sys_info.date_time_text=lambda : sys_info.date_text+' '+sys_info.time_text
+sys_info.free_memory=lambda : psutil.virtual_memory()[-1]
 #sys_info.public_ip=
 
 if sys_info.os=='win':
@@ -475,7 +489,7 @@ def user_answer(mind):
       1 command - answer (voice, file path, etc - any) from user
     """
     sys_info.last_answer=None
-    oa.switch(mind)
+    oa.set_mind(mind)
     #we will start loop in loop, until user say something
     oa.loop(condition=lambda : sys_info.last_answer is None)
     oa.switch_back()
@@ -519,3 +533,4 @@ def lines_to_dict(sLines,func=lambda s : s, params={}):
     ret=dict([[k,func(v)] for k,v in [[x.strip() for x in ph.split(':')] for ph in sLines.split('\n') if ph.strip()!='']])
     return ret
 ##sys_info.lines_to_dict=lines_to_dict
+#print(bytes2gb(sys_info.free_memory))
