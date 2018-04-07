@@ -5,6 +5,7 @@ import audioop
 import playsound
 import collections
 import pocketsphinx
+import difflib
 #from pocketsphinx.pocketsphinx import *
 #from sphinxbase.sphinxbase import *
 import oa_utils
@@ -68,6 +69,8 @@ class AudioUtils():
         _.fsg_file = None #os.path.join(_.cache_dir, 'fsg')
         _.dic_file = _.cache_path('dic')
         _.kws_file = _.cache_path("kws")
+        #let's save keywords (to further checks)
+        _.keywords = keywords
 
         # check if commands file was modified
         if kws_last_modification_time_in_sec:
@@ -209,7 +212,7 @@ class AudioUtils():
         config = pocketsphinx.Decoder.default_config()
     #    config.set_string("-hmm", acoustic_parameters_directory)  # set the path of the hidden Markov model (HMM) parameter files
         config.set_string('-hmm', os.path.join(os.path.dirname(pocketsphinx.pocketsphinx.__file__), 'model','en-us'))
-#        config.set_string("-lm", _.lang_file)
+        config.set_string("-lm", _.lang_file)
         config.set_string("-dict", _.dic_file)
         config.set_string("-logfn", os.devnull)  # disable logging (logging causes unwanted output in terminal)
 
@@ -223,16 +226,34 @@ class AudioUtils():
 
         # obtain recognition results
         # perform the speech recognition with the keywords file (this is inside the context manager so the file isn;t deleted until we're done)
-        decoder.set_kws("keywords", _.kws_file)
+#        decoder.set_kws('keyphrase',  _.kws_file)
+#        decoder.set_search('keyphrase')
+#        config.set_float('-kws_threshold', 1e-5)
+##        kws_threshold=1e+20
 #        decoder.set_search("ngram/lm")
 #        decoder.set_search("keywords")
-#        decoder.start_utt()  # begin utterance processing
+        decoder.start_utt()  # begin utterance processing
         decoder.process_raw(raw_data, False, False)  # process audio data with recognition enabled (no_search = False), as a full utterance (full_utt = True)
-#        decoder.end_utt()  # stop utterance processing
+        decoder.end_utt()  # stop utterance processing
 
     ##    if show_all: return decoder
         # return results
-        hypothesis = decoder.hyp()
-        if hypothesis is not None: return hypothesis.hypstr
-        raise UnknownValueError()  # no transcriptions available
+#        print ('Best 10 hypothesis: ')
+        for best, i in zip(decoder.nbest(), range(100)):
+            if not best.hypstr:
+                continue
+#            print (best.hypstr, best.score)
+            lSearch=best.hypstr.lower()
+            lDiff=difflib.get_close_matches(lSearch,_.keywords,2,0.9)
+            if lDiff:
+                print('lDiff')
+                print(lDiff)
+                return lDiff[0]
+#            if  in _.keywords:
+#                return best.hypstr.lower()
+#                break
+        info('no transcriptions available')
+        #hypothesis = decoder.hyp()
+        #if hypothesis is not None: return hypothesis.hypstr
+        #raise Exception('no transcriptions available')
 

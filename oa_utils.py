@@ -499,7 +499,7 @@ def close():
 def say_last_user_phrase(s=''):
     say(s+' '+oa.last_phrase)
 
-def lines_to_dict(sLines,params={}):
+def lines_to_dict(sLines,func=lambda s : s, params={}):
     """
       tranlate dict string
       where
@@ -516,5 +516,6 @@ def lines_to_dict(sLines,params={}):
     """
     params.update(sys_info.__dict__)
     sLines=sLines%params
-    return dict([[x.strip() for x in ph.split(':')] for ph in sLines.split('\n') if ph.strip()!=''])
+    ret=dict([[k,func(v)] for k,v in [[x.strip() for x in ph.split(':')] for ph in sLines.split('\n') if ph.strip()!='']])
+    return ret
 ##sys_info.lines_to_dict=lines_to_dict
