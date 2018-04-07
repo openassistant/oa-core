@@ -1,0 +1,96 @@
+Language model created by QuickLM on Fri Apr  6 20:51:06 EDT 2018
+Copyright (c) 1996-2010 Carnegie Mellon University and Alexander I. Rudnicky
+
+The model is in standard ARPA format, designed by Doug Paul while he was at MITRE.
+
+The code that was used to produce this language model is available in Open Source.
+Please visit http://www.speech.cs.cmu.edu/tools/ for more information
+
+The (fixed) discount mass is 0.5. The backoffs are computed using the ratio method.
+This model based on a corpus of 14 sentences and 19 words
+
+\data\
+ngram 1=19
+ngram 2=31
+ngram 3=23
+
+\1-grams:
+-0.8625 </s> -0.3010
+-0.8625 <s> -0.2319
+-1.7076 ABSOLUTELY -0.2319
+-2.0086 AFFIRMATIVE -0.2369
+-2.0086 ALRIGHT -0.2369
+-2.0086 FORGET -0.2968
+-2.0086 HELL -0.2747
+-2.0086 IT -0.2369
+-2.0086 NEVER -0.2369
+-1.2304 NO -0.2167
+-2.0086 NOT -0.2369
+-2.0086 OK -0.2369
+-2.0086 SURE -0.2369
+-2.0086 THANK -0.2968
+-2.0086 THANKS -0.2369
+-2.0086 THAT'S -0.2968
+-2.0086 WAY -0.2369
+-2.0086 YES -0.2369
+-2.0086 YOU -0.2369
+
+\2-grams:
+-1.1461 <s> ABSOLUTELY 0.0000
+-1.4472 <s> AFFIRMATIVE 0.0000
+-1.4472 <s> FORGET 0.0000
+-1.4472 <s> HELL 0.0000
+-1.4472 <s> NEVER 0.0000
+-0.7482 <s> NO 0.0000
+-1.4472 <s> OK 0.0000
+-1.4472 <s> SURE 0.0000
+-1.4472 <s> YES 0.0000
+-0.6021 ABSOLUTELY </s> -0.3010
+-0.6021 ABSOLUTELY NOT 0.0000
+-0.3010 AFFIRMATIVE </s> -0.3010
+-0.3010 ALRIGHT </s> -0.3010
+-0.3010 FORGET IT 0.0000
+-0.3010 HELL NO -0.2218
+-0.3010 IT </s> -0.3010
+-0.3010 NEVER </s> -0.3010
+-0.7782 NO </s> -0.3010
+-1.0792 NO THANK 0.0000
+-1.0792 NO THANKS 0.0000
+-1.0792 NO THAT'S 0.0000
+-1.0792 NO WAY 0.0000
+-0.3010 NOT </s> -0.3010
+-0.3010 OK </s> -0.3010
+-0.3010 SURE </s> -0.3010
+-0.3010 THANK YOU 0.0000
+-0.3010 THANKS </s> -0.3010
+-0.3010 THAT'S ALRIGHT 0.0000
+-0.3010 WAY </s> -0.3010
+-0.3010 YES </s> -0.3010
+-0.3010 YOU </s> -0.3010
+
+\3-grams:
+-0.6021 <s> ABSOLUTELY </s>
+-0.6021 <s> ABSOLUTELY NOT
+-0.3010 <s> AFFIRMATIVE </s>
+-0.3010 <s> FORGET IT
+-0.3010 <s> HELL NO
+-0.3010 <s> NEVER </s>
+-1.0000 <s> NO </s>
+-1.0000 <s> NO THANK
+-1.0000 <s> NO THANKS
+-1.0000 <s> NO THAT'S
+-1.0000 <s> NO WAY
+-0.3010 <s> OK </s>
+-0.3010 <s> SURE </s>
+-0.3010 <s> YES </s>
+-0.3010 ABSOLUTELY NOT </s>
+-0.3010 FORGET IT </s>
+-0.3010 HELL NO </s>
+-0.3010 NO THANK YOU
+-0.3010 NO THANKS </s>
+-0.3010 NO THAT'S ALRIGHT
+-0.3010 NO WAY </s>
+-0.3010 THANK YOU </s>
+-0.3010 THAT'S ALRIGHT </s>
+
+\end\

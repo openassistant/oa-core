@@ -52,13 +52,17 @@ Python  :
 we suppose it may be any version 2.* or 3.* branch)
 
 Windows
-pip install pyaudio playsound requests pyttsx3 pocketsphinx 
+pip install keyboard pyaudio playsound requests pyttsx3 pocketsphinx psutil feedparser
+to start: python oa.py
 
 Arch Linux
-sudo pacman -S portaudio python-pyaudio swig espeak && sudo pip install requests pyttsx3 playsound pocketsphinx 
+sudo pacman -S portaudio python-pyaudio swig espeak && sudo pip install keyboard requests pyttsx3 playsound pocketsphinx psutil feedparser
 -- still some problems with 
 -- ALSA lib pcm.c:2501:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.rear
 
+Ubuntu
+sudo apt-get install -y python python-dev python-pip build-essential swig git libpulse-dev espeak && sudo apt-get install python-pyaudio && sudo pip install keyboard pyttsx3 playsound psutil feedparser
+to start: sudo python oa.py
 
 ------------------------------------------------------------------
 Original:

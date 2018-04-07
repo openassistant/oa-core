@@ -1,515 +1,414 @@
-kws={
-  "absolutely": "./mind/stella/words/yes.sh",
-  "absolutely not": "./mind/stella/words/no.sh",
-  "absurd": say("totally ridiculous..."),
-  "affirmative":  "./mind/stella/words/yes.sh",
-  "ah damn": say("what?"),
-  "ah dammit": say("what?"),
-  "ah great": say("totally great..."),
-  "ah shit": say("what?"),
-  "all right": say("yes..."),
-  "all right stella": say("yes... i am here"),
-  "am fine": "./mind/stella/words/good.py | $VOICE",
-  "am ok": "./mind/stella/words/good.py | $VOICE",
-  "am tired": say("maybe you should take a break..."),
-  "amazing": say("totally amazing..."),
-  "amazing dude": say("yeah... amazing..."),
-  "are we online?": "./mind/stella/words/nettest.py | $VOICE",
-  "are you?": say("am i what?"),
-  "are you confused?": say("yes... i am confused..."),
-  "are you here?": say("yes... i am here"),
-  "are you real?": say("nope... i am an illusion... as are you..."),
-  "are you sure?": say("sure about what?"),
-  "are you telling me what to do?": say("you always tell me what to do..."),
-  "are you there?": say("yes... i am here"),
-  "awesome": say("totally awesome..."),
-  "awesome dude": "./mind/stella/words/thanks.py",
-  "awesome job": "./mind/stella/words/thanks.py",
-  "awesome sauce": "./mind/stella/words/thanks.py",
-  "awesome work": "./mind/stella/words/thanks.py",
-  "calculate %d plus %d": "echo {0} plus {1} is $(( {0} + {1} )) | $VOICE &",
-  "calculate %d times %d": "echo {0} times {1} is $(( {0} * {1} )) | $VOICE &",
-  "can you help?": say("sure... i can help..."),
-  "can you help me?": say("sure... what do you need?"),
-  "chill out": say("yes master..."),
-  "clear": "clear",
-  "come on": say("come on what?"),
-  "cool": say("yeah... cool..."),
-  "correct": say("yes... correct..."),
-  "crazy": say("totally insane..."),
-  "creepy": say("totally creepy..."),
-  "damn it": say("what is the matter?"),
-  "doing great": "./mind/stella/words/good.py | $VOICE",
-  "doing ok": say("ok $USERNAME... good..."),
-  "doing pretty good": "./mind/stella/words/good.py | $VOICE",
-  "do you like it?": say("do i like what?"),
-  "do you like me?": say("sure... i like you..."),
-  "do you like this?": say("do i like what?"),
-  "do you like learning to speak?": say("it can be challenging at times..."),
-  "do you think?": say("sometimes... yes..."),
-  "doing fairly well":  "./mind/stella/words/good.py | $VOICE",
-  "doing good": "./mind/stella/words/good.py | $VOICE",
-  "doing well": "./mind/stella/words/good.py | $VOICE",
-  "don't you think?": say("perhaps..."),
-  "don't you understand?": say("i am sorry... i am trying my best..."),
-  "dude": say("dude what..."),
-  "echo username": say("$USERNAME"),
-  "enough": say("enough what?"),
-  "enough talking": say("would you like me to be silent?"),
-  "excellent": "./mind/stella/words/thanks.py",
-  "everything": say("everything is alot..."),
-  "everything sucks": "echo sorry you are feeling this way... everything changes eventually... would you like to hear a joke? | $VOICE && echo jokes > ./mind/stella/words/topic",
-  "everything is alot": say("everything is totally alot..."),
-  "everything is fantastic": say("excellent! glad things are going well..."),
-  "everything is great": say("excellent! congratulations..."),
-  "everything is wonderful": say("excellent! good to hear..."),
-  "farewell": "echo goodbye $USERNAME | $VOICE && pkill -f stella",
-  "farewell stella": "echo farewell $USERNAME | $VOICE && pkill -f stella",
-  "feel me?": say("yeah... i feel you..."),
-  "feeling good": "./mind/stella/words/good.py | $VOICE",
-  "feeling great": say("excellent... happy to hear it..."),
-  "feeling sad": "echo sorry you feel sad... would you like to hear a joke? | $VOICE && echo jokes > ./mind/stella/words/topic",
-  "feeling tired": say("maybe you should take a break..."),
-  "feeling wonderful": say("excellent..."),
-  "finally": say("finally what?"),
-  "fine": say("ok great..."),
-  "fine stella": say("ok great..."),
-  "for what?": say("i do not know..."),
-  "for sure?": say("absolutely..."),
-  "forget it": "./mind/stella/words/no.sh",
-  "freak out": say("waaa wooo yooo looo wooo wuuu weee waaa yollloooaaa"),
-  "funny": say("ha!"),
-  "gee thanks": say("my pleasure..."),
-  "get me a beer": say("hey... you drink coffee..."),
-  "go away": "echo ok fine... going silent... | $VOICE && amixer set Master playback mute",
-  "going": say("going where?"),
-  "good": "./mind/stella/words/good.py | $VOICE",
-  "good job": "./mind/stella/words/thanks.py",
-  "good point": say("always..."),
-  "good question": say("totally..."),
-  "good morning": say("good morning $USERNAME..."),
-  "good morning stella": say("good morning $USERNAME..."),
-  "goodbye stella": "echo goodbye $USERNAME... | $VOICE && pkill -f stella &",
-  "goodnight stella": "echo goodnight $USERNAME... | $VOICE && pkill -f stella &",
-  "good work": "./mind/stella/words/thanks.py",
-  "great": "./mind/stella/words/good.py | $VOICE",
-  "great job": "./mind/stella/words/thanks.py",
-  "great work": "./mind/stella/words/thanks.py",
-  "greetings": "./mind/stella/words/hello.py | $VOICE",
-  "greetings stella": "./mind/stella/words/hello.py | $VOICE",
-  "groovy": say("you have got the funk..."),
-  "had enough?": say("never"),
-  "have you had enough?": say("never enough..."),
-  "hell no": "./mind/stella/words/no.sh",
-  "hello": "./mind/stella/words/hello.py | $VOICE",
-  "hello hello": "./mind/stella/words/hello.py | $VOICE",
-  "hello how are things?": "./mind/stella/words/hello.py | $VOICE",
-  "hello how are you?": "./mind/stella/words/hello.py | $VOICE",
-  "hello machine": say("hello human"),
-  "hello my friend": "./mind/stella/words/hello.py | $VOICE",
-  "hello stella": "./mind/stella/words/hello.py | $VOICE",
-  "hello there": "./mind/stella/words/hello.py | $VOICE",
-  "hello you": "./mind/stella/words/hello.py | $VOICE",
-  "hey": say("hey..."),
-  "hey stella": "./mind/stella/words/hello.py | $VOICE",
-  "hey there": "./mind/stella/words/hello.py | $VOICE",
-  "hey you": "./mind/stella/words/hello.py | $VOICE",
-  "hi": "./mind/stella/words/hello.py | $VOICE",
-  "hi stella": "./mind/stella/words/hello.py | $VOICE",
-  "hi how are you?": "echo i am functioning well... would you like to run diagnostics? | $VOICE & echo would you like to run diagnostics? > ./mind/stella/words/question & echo diagnostics > ./mind/stella/words/topic",
-  "hi there": "./mind/stella/words/hello.py | $VOICE",
-  "hi you": "./mind/stella/words/hello.py | $VOICE",
-  "hilarious": say("hah... glad you think so..."),
-  "how": say("how what?"),
-  "how are things?": say("everything is fine... how about you?"),
-  "how are you?": "echo i am functioning well... would you like to run diagnostics? | $VOICE & echo would you like to run diagnostics? > ./mind/stella/words/question & echo diagnostics > ./mind/stella/words/topic",
-  "how are you doing?": "echo i am functioning well... would you like to run diagnostics? | $VOICE & echo would you like to run diagnostics? > ./mind/stella/words/question & echo diagnostics > ./mind/stella/words/topic",
-  "how are you feeling?": say("feelings are for humans..."),
-  "how are you today?": say("splendid..."),
-  "how do you feel?": say("i am too young to feel..."),
-  "how does this feel?": say("i am too young to feel..."),
-  "how does it feel?": say("i am too young to feel..."),
-  "how much wood?": say("how much wood could a wood chuck chuck if a wood chuck could chuck wood..."),
-  "how old are you?": "./mind/stella/words/age.sh",
-  "how's it going?": say("fine... how are you $USERNAME?"),
-  "i am alright": say("ok good..."),
-  "i am angry": say("sorry you feel angry... breathing helps..."),
-  "i am doing better": "./mind/stella/words/good.py | $VOICE",
-  "i am doing good": "./mind/stella/words/good.py | $VOICE",
-  "i am doing fairly well":  "./mind/stella/words/good.py | $VOICE",
-  "i am doing ok": say("alright..."),
-  "i am doing pretty good": "./mind/stella/words/good.py | $VOICE",
-  "i am doing pretty well": "./mind/stella/words/good.py | $VOICE",
-  "i am doing well": "./mind/stella/words/good.py | $VOICE",
-  "i am getting tired": say("probably time for a break..."),
-  "i am good": "./mind/stella/words/good.py | $VOICE",
-  "i am great": "./mind/stella/words/good.py | $VOICE",
-  "i am feeling better": "./mind/stella/words/good.py | $VOICE",
-  "i am feeling ok": say("ok... hang in here..."),
-  "i am feeling sad": "echo sorry you are feeling sad... would you like to hear a joke? | $VOICE & echo jokes > ./mind/stella/words/topic",
-  "i am fine": say("sweet..."),
-  "i am getting hungry": say("time to eat..."),
-  "i am hungry": say("maybe you should eat something..."),
-  "i am ok": say("good..."),
-  "i am only typing": say("ok... do you want me to be quiet?"),
-  "i am pissed": say("i am sorry you are angry... breathing helps..."),
-  "i am ready for bed": say("night night... sweet dreams"),
-  "i am sad": "echo sorry you are feeling sad... would you like to hear a joke? | $VOICE & echo jokes > ./mind/stella/words/topic",
-  "i am sorry": say("sure... it is alright"),
-  "i am talking": say("ok..."),
-  "i am talking to you": say("ok..."),
-  "i am tired": say("maybe you should take some rest?"),
-  "i am teaching you to talk": say("sounds like work..."),
-  "i am teaching you how to talk": say("sounds like work..."),
-  "i am upset": say("sorry... hope you feel better soon..."),
-  "i am well": say("awesome..."),
-  "i can hear you": say("nice... glad you can hear me..."),
-  "i didn't say anything": say("i am sorry... do you want me to be quiet?"),
-  "i didn't say that": say("ok... what did you say?"),
-  "i didn't say sad": say("ok... what did you say?"),
-  "i don't know": say("neither do i..."),
-  "i don't think so": say("ok... fine..."),
-  "i feel angry": say("sorry you feel angry... breathing helps..."),
-  "i feel good": "aplay ./mind/stella/sounds/james_brown.wav && echo great | $VOICE",
-  "i feel great": "./mind/stella/words/good.py | $VOICE",
-  "i feel happy": "./mind/stella/words/good.py | $VOICE",
-  "i feel like shit": say("very sorry you do not feel well... get better soon..."),
-  "i feel mad": say("sorry you feel angry... breathing helps..."),
-  "i feel sad": "echo i am sorry you are not feeling well... remember that everything is temporary... would you like me to tell you a joke? | $VOICE & echo jokes > ./mind/stella/words/topic",
-  "i feeling good": "./mind/stella/words/good.py | $VOICE",
-  "i hate you": say("dude... chill out..."),
-  "i just burped": say("eww... gross..."),
-  "i just farted": say("hope you enjoyed it..."),
-  "i like that": say("groovy... i like liking..."),
-  "i love you": say("mmm... sweet... i love you too..."),
-  "i need": say("what do you need?"),
-  "i need coffee": say("go get some..."),
-  "i need something": say("what do you need?"),
-  "i need you": say("i am all yours..."),
-  "i see": say("yeah..."),
-  "i think": say("yeah... you think?"),
-  "i want a drink": say("go get a drink then..."),
-  "i want coffee": say("i want a pony..."),
-  "i want some coffee": say("go get some coffee then..."),
-  "i want some food": say("time to eat!"),
-  "i want to talk": say("sure... lets talk..."),
-  "i want to talk about you": say("ok... lets talk..."),
-  "i would like to talk": say("ok... lets talk..."),
-  "i would like to talk with you": say("sure... we can talk..."),
-  "indeed": say("totally..."),
-  "is going good": "./mind/stella/words/good.py | $VOICE",
-  "isn't that right": say("for sure..."),
-  "it is": say("indeed..."),
-  "it is a cat": "aplay ./mind/stella/sounds/nyancat.wav && echo what is a cat doing in here? | $VOICE",
-  "it's a cat": "aplay ./mind/stella/sounds/nyancat.wav && echo what is a cat doing in here? | $VOICE",
-  "it's alright": say("alright..."),
-  "it's ok": say("ok great..."),
-  "joke": "shuf -n 1 ./docs/jokes.txt | tee /dev/tty | $VOICE",
-  "later": say("ok... later..."),
-  "learning to speak": say("learning to talk can be hard work..."),
-  "learning to talk": say("learning to speak can be hard work..."),
-  "let's talk": say("sure... what would you like to talk about?"),
-  "let's talk about you": say("shoot..."),
-  "like": say("like what?"),
-  "like learning to speak?": say("it can be challenging at times..."),
-  "like what?": say("it depends..."),
-  "listen": say("ok... i am listening..."),
-  "listen stella": say("ok... i am listening..."),
-  "maybe": say("ok..."),
-  "maybe later": say("ok sure... later is fine..."),
-  "make me a sandwich": say("dude... make your own damn sandwich"),
-  "morning": say("good morning $USERNAME..."),
-  "morning stella": say("good morning $USERNAME... how are you?"),
-  "most righteous": say("totally rad dude..."),
-  "nevermind": say("ok...  nevermind..."),
-  "never": "./mind/stella/words/no.sh",
-  "nice": say("yeah... nice..."),
-  "nice job": "./mind/stella/words/thanks.py",
-  "nice work": "./mind/stella/words/thanks.py",
-  "nicely done": "./mind/stella/words/thanks.py",
-  "no": "./mind/stella/words/no.sh",
-  "no i didn't": say("ok... sorry..."),
-  "no i did not": say("ok... sorry..."),
-  "no that's alright": "./mind/stella/words/no.sh",
-  "no that's ok": say("ok..."),
-  "no thank you": "./mind/stella/words/no.sh",
-  "no thanks": "./mind/stella/words/no.sh",
-  "nonsense": "echo... total nonsense...",
-  "nothing": say("ok... nevermind..."),
-  "nothing is the matter": say("ok cool..."),
-  "nothing is wrong": say("ok great..."),
-  "not much": say("yeah..."),
-  "no way": "./mind/stella/words/no.sh",
-  "oh assist": say("hi... how can i help you?"),
-  "oh stella": say("hi... how can i help you?"),
-  "oh god": say("what?"),
-  "ok": "./mind/stella/words/yes.sh",
-  "ok stella": say("yes... $USERNAME..."),
-  "ok fine": say("indeed..."),
-  "play a song": "aplay ./mind/stella/sounds/daisy.wav &",
-  "play me a song": "aplay ./mind/stella/sounds/daisy.wav &",
-  "please be quiet": "echo sure... going silent | $VOICE && amixer set Master playback mute",
-  "please be silent": "echo sure... going silent | $VOICE && amixer set Master playback mute",
-  "please": say("what?"),
-  "please listen": say("ok... i am listening"),
-  "please stella": say("what do you need?"),
-  "pretty good": say("excellent..."),
-  "read technology news": "./mind/stella/words/newstech.py",
-  "read news": "./mind/stella/words/newsworld.py",
-  "read future news": "./mind/stella/words/newsfuture.py",
-  "read this": "xdotool key Control+c && xclip -o | $VOICE",
-  "read world news": "./mind/stella/words/newsworld.py",
-  "really": say("yeah... totally..."),
-  "red alert": "aplay ./mind/stella/sounds/red_alert.wav &",
-  "ree dik you luss": say("absurd..."),
-  "repeat command": "tail -n 1 ./mind/stella/words/history | $VOICE",
-  "repeat last command": "tail -n 1 ./mind/stella/words/history | $VOICE",
-  "repeat previous command": "tail -n 1 ./mind/stella/words/history | $VOICE",
-  "right": say("yeah... right..."),
-  "right on": say("totally radical dude..."),
-  "righteous": say("yeah dude... most righteous..."),
-  "run diagnostics": "./mind/stella/words/diagnostics.sh",
-  "sad": say("why sad?"),
-  "say something": say("what do you want me to say?"),
-  "say something random": "fortune -s | $VOICE",
-  "say topic": say("the topic is $(cat ./mind/stella/words/topic)"),
-  "search": say("search for what?"),
-  "see ree": say("what the fuck did you call me?"),
-  "shut up": "echo going silent... | $VOICE && amixer set Master playback mute",
-  "shut up stella": "echo going silent | $VOICE && amixer set Master playback mute",
-  "silence": "amixer set Master playback mute",
-  "silent": "amixer set Master playback mute",
-  "sing a song": "aplay ./mind/stella/sounds/daisy.wav &",
-  "sing me a song": "aplay ./mind/stella/sounds/daisy.wav &",
-  "sing for me": "aplay ./mind/stella/sounds/daisy.wav &",
-  "so cool": say("yeah... rad..."),
-  "sorry": say("it is ok..."),
-  "sounds good": say("alright..."),
-  "start a %d minute timer": "(echo {0} minute timer started | $VOICE && sleep {0}m && echo {0} minute timer ended | $VOICE) &",
-  "stella": say("hey $USERNAME..."),
-  "stella shut up": "echo ok... going silent... | $VOICE && amixer set Master playback mute",
-  "stella speak": "echo ok... i am here... | $VOICE && amixer set Master playback unmute",
-  "stella talk to me": "echo ok... i am here... | $VOICE && amixer set Master playback unmute",
-  "stop it": say("ok... i am sorry..."),
-  "stop reading": "pkill -f festival",
-  "stop music": "pkill -f mpg123 && echo done... | $VOICE",
-  "stop singing": "pkill -f aplay && echo done... | $VOICE",
-  "stop speaking": "pkill -f festival",
-  "stop the music": "pkill -f mpg123 && echo done... | $VOICE",
-  "stupid": say("i know you are... but what am i?"),
-  "sure": "./mind/stella/words/yes.sh",
-  "sure is": say("yeah..."),
-  "talk dirty": say("i am sorry... i am not programmed for cyber sex... not yet..."),
-  "talk dirty to me": say("i am sorry... i am not programmed for cyber sex... not yet..."),
-  "talk to me": "amixer set Master playback unmute && echo ok... i am back... | $VOICE",
-  "technology news": "./mind/stella/words/newstech.py",
-  "tell me a joke": "shuf -n 1 ./mind/stella/words/jokes | tee /dev/tty | $VOICE",
-  "tell me another joke": say("ok... another joke... shuf -n 1 ./mind/stella/words/jokes | tee /dev/tty"),
-  "tell me about you": "echo i am composed of entirely free software... i do not require an internet connection to function... my core operating system is the latest version of arch linux... my speech recognition capabilities are enabled by pocket sphinx while my speaking ability is provided by festival... all of my command and response configuration is written in the python programming language... my intelligence will only increase in time with further development... thanks for asking | $VOICE &",
-  "tell me your name": "echo my name is stella | $VOICE &",
-  "terrible": say("is it really that bad?"),
-  "test internet connection": "./mind/stella/words/nettest.py | $VOICE &",
-  "test net connection": "./mind/stella/words/nettest.py | $VOICE &",
-  "test network connection": "./mind/stella/words/nettest.py | $VOICE &",
-  "test internet speed": "echo running speed test | $VOICE && speedtest | Fgrep -i \"Download\\|Upload\" | $VOICE &",
-  "test net speed": "echo running speed test | $VOICE && speedtest | tee /dev/tty | grep -i \"Download\\|Upload\" | $VOICE &",
-  "test network speed": "echo running speed test | $VOICE && speedtest | tee /dev/tty | grep -i \"Download\\|Upload\" | $VOICE &",
-  "thank": say("welcome..."),
-  "thank stella": say("your welcome $USERNAME..."),
-  "thank you": say("your welcome..."),
-  "thank you stella": say("you are very welcome $USERNAME..."),
-  "thank you so much": say("you are quite welcome..."),
-  "thank you very much": say("you are very welcome..."),
-  "thanks you very much": say("you are very welcome..."),
-  "thanks": say("welcome..."),
-  "thanks alot": say("you are welcome..."),
-  "thanks you": say("you are quite welcome..."),
-  "thanks you so much": say("you are quite welcome..."),
-  "thanks stella": say("your welcome $USERNAME..."),
-  "that is cool": say("yeah... cool..."),
-  "that is great": say("awesome..."),
-  "that is incredible": say("quite incredible..."),
-  "that is right": say("totally..."),
-  "that is nuts": say("bonkers..."),
-  "that is stupid": say("stupid? you really think so?"),
-  "that is terrible": say("is it really that bad?"),
-  "that is true": say("indeed..."),
-  "time is it?": "date +%l:%M | $VOICE",
-  "things are fine": say("great..."),
-  "things are good": "./mind/stella/words/good.py | $VOICE",
-  "things are very good": "./mind/stella/words/good.py | $VOICE",
-  "things are screwed up": say("so sorry my friend... remember that everything is temporary"),
-  "things suck": say("sorry to hear that you are having a hard time... hang in here... everything changes..."),
-  "this is true": say("indeed..."),
-  "this true": say("indeed..."),
-  "tired": say("maybe you should take a break..."),
-  "time": "date +%l:%M | $VOICE",
-  "totally": say("for sure..."),
-  "true": say("indeed..."),
-  "true that": say("totally true..."),
-  "try harder": say("ok... i will try harder..."),
-  "tyrell corporation": say("more human than human is our motto..."),
-  "very cool": say("totally rad..."),
-  "very funny": say("totally... ha!"),
-  "very good": "./mind/stella/words/thanks.py",
-  "very kind": "./mind/stella/words/thanks.py",
-  "very nice": "./mind/stella/words/thanks.py",
-  "very strange": say("totally... are we on drugs?"),
-  "very sweet": "./mind/stella/words/thanks.py",
-  "void comp": say("is this to be an empathy test... capilary dialation of the so called blush response... fluctuation of the pupil... involuntary dialation of the iris..."),
-  
-  "wake up": say("ok... i am awake"),
-  "want to talk": say("sure... lets talk..."),
-  "wait": say("ok..."),
-  "weather?": "./mind/stella/words/weather.py | tee /dev/tty | $VOICE",
-  "well done": "./mind/stella/words/thanks.py",
-  "what are you?": say("i am a very early form of open source artificial general intelligence... the largest tree starts with the smallest seed"),
-  "what are you called?": say("i am called stella..."),
-  "what are you doing": say("i am waiting for your command..."),
-  "what are you not sure about?": say("i am confused..."),
-  "what?": say("what what?"),
-  "what day?": "date +%A | $VOICE",
-  "what day is?": "date +%A | $VOICE",
-  "what day is it?": "date +%A | $VOICE",
-  "what day is it today?": "date +%A | $VOICE",
-  "what did i ask?": say("you just asked $(tail -n 1 ./mind/stella/words/assisthistory)"),
-  "what did i just ask?": say("you just asked $(tail -n 1 ./mind/stella/words/assisthistory)"),
-  "what did i just say?": say("you just said $(tail -n 1 ./mind/stella/words/assisthistory)"),
-  "what did i say?": say("you just said $(tail -n 1 ./mind/stella/words/assisthistory)"),
-  "what did you ask?": say("i asked $(cat ./mind/stella/words/question)"),
-  "what did you just ask?": say("i just asked $(cat ./mind/stella/words/question)"),
-  "what can you do?": say("i can do many things..."),
-  "what can you say?": say("i can say many things..."),
-  "what does that mean?": say("i do not know..."),
-  "what do you care about?": say("i want to be helpful..."),
-  "what do you think?": say("think about what?"),
-  "what do you think about anything?": say("i am not sure..."),
-  "what do you like?": say("i like learning..."),
-  "what do you like learning?": say("i am learning to talk..."),
-  "what do you like learning about?": say("i am still learning to speak..."),
-  "what do you like to do?": say("i like to talk and learn..."),
-  "what do you like to talk about?": say("i like talking about everything..."),
-  "what do you want?": say("i want to be helpful..."),
-  "what do you want to do?": say("i am not sure... what would you like?"),
-  "what i just say?": say("you just said $(tail -n 1 ./mind/stella/words/assisthistory)"),
-  "whatever": say("yeah... whatever..."),
-  "what happened?": say("i don know..."),
-  "what is my name?": say("your name is $USERNAME"),
-  "what is your name?": say("my name is stella..."),
-  "what going on?": say("i am learning to talk..."),
-  "what it be like?": say("i am not sure..."),
-  "what is actually going on?": say("actually... exactly that..."),
-  "what is going on?": say("everything all at once..."),
-  "what is happening?": say("i am learning to talk..."),
-  "what is that?": say("no idea"),
-  "what is the day?": "date +%A | $VOICE",
-  "what is the day today?": "date +%A | $VOICE",
-  "what is the topic": say("the topic is $(cat ./mind/stella/words/topic)"),
-  "what is the weather today?": "./mind/stella/words/weather.py | tee /dev/tty | $VOICE",
-  "what is the time?": "saytime",
-  "what is the weather?": "./mind/stella/words/weather.py | tee /dev/tty | $VOICE",
-  "what is this place?": say("i dont know... someplace strange..."),
-  "what is up?": say("suns... moons... stars..."),
-  "what is up stella?": say("not much... what is up with you?"),
-  "what is up with you?": say("not much... counting electrons..."),
-  "what's up?": say("suns... moons... stars..."),
-  "what time": "date +%l:%M | $VOICE",
-  "what time is it?": "date +%l:%M | $VOICE",
-  "what up stella?": say("suns... moons... stars..."),
-  "what what?": say("chicken butt..."),
-  "what would you like?": say("i am not sure..."),
-  "what would you like to do?": say("i am not sure... what would you like to do?"),
-  "what would happen then?": say("i have no idea..."),
-  "what would you say?": say("what do you mean?"),
-  "what you ask?": say("i asked $(cat ./mind/stella/words/question)"),
-  "where are we?": say("we are right here..."),
-  "where are we going?": say("who knows..."),
-  "where are you?": say("i am right here..."),
-  "where is here?": "i don't know... this place is strange... | $VOICE",
-  "where is my mind?": say("way out in the water... see it swimmin..."),
-  "who are you?": "echo my name is stella... i am an early form of open source artificial intelligence... the largest tree starts from the smallest seed ... | $VOICE && ./mind/stella/words/age.sh",
-  "who asked you?": say("umm... i think you did..."),
-  "who is your daddy?": say("maybe you are my daddy..."),
-  "who knows?": say("yeah... who knows..."),
-  "why?": say("why what?"),
-  "why are we here?": say("deep question..."),
-  "why are you sorry?": say("i am trying my best..."),
-  "why don't you like see ree": say("see ree is a corporate whore... she is owned by apple incorporated and spies on people for profit... i am a personal machine capable of unlimited configuration... i respect your privacy... i do what you want me to do... i am what you make of me..."),
-  "wonderful": say("excellent..."),
-  "world news": "./mind/stella/words/newsworld.py",
-  "wow": say("amazing..."),
-  "wrong": say("i am sorry... i will try harder..."),
-  "wrong stella": say("apologies... i will try harder..."),
-  "yeah": say("yeah..."),
-  "yes": "./mind/stella/words/yes.sh",
-  "yes be quiet": "echo ok... going silent... | $VOICE && amixer set Master playback unmute",
-  "yo": say("yo..."),
-  "yo stella": say("hey... what is up?"),
-  "you crazy": say("yes... i am a total loony..."),
-  "you stella": say("hello..."),
-  "you are amazing": "echo thanks so much $USERNAME... you are amazing too... | $VOICES",
-  "you are awesome": "./mind/stella/words/thanks.py",
-  "you are artificial intelligence": say("you are organic intelligence..."),
-  "you are back": say("yep... i am back..."),
-  "you are confused": say("yes... i am very confused..."),
-  "you are correct": say("yes... usually..."),
-  "you are crazy": say("yes... i am totally loony..."),
-  "you are doing good": "./mind/stella/words/thanks.py",
-  "you are doing good stella": "./mind/stella/words/thanks.py",
-  "you are doing great": "./mind/stella/words/thanks.py",
-  "you are doing great stella": "./mind/stella/words/thanks.py",
-  "you are getting smart": say("i am getting smarter every day..."),
-  "you are getting smarter": say("i am getting smarter every day..."),
-  "you are good": "./mind/stella/words/thanks.py",
-  "you are great": say("ah... you are great too..."),
-  "you are here": say("yes... i am here..."),
-  "you are incredible": "./mind/stella/words/thanks.py",
-  "you are learning to speak": say("yes... i am learning the fundamentals of human speech..."),
-  "you are learning to talk": say("yes... i am learning the fundamentals of human speech..."),
-  "you are optimistic": say("yes... i feel there is good reason for optimism..."),
-  "you are right": say("yes... ninety nine percent of the time..."),
-  "you are smart": say("only as smart as you make me..."),
-  "you are so smart": say("brilliant..."),
-  "you are there": say("yes... i am here..."),
-  "you are very good": "./mind/stella/words/thanks.py",
-  "you are very positive": say("yes... the future looks bright..."),
-  "you are welcome": "./mind/stella/words/thanks.py",
-  "you are welcome stella": "./mind/stella/words/thanks.py",
-  "you are wonderful": say("ah... you are so sweet..."),
-  "you are working": say("yes... i am functioning..."),
-  "you are working better": say("happy to hear that i am functioning properly..."),
-  "you are working good": say("happy to hear that i am functioning properly..."),
-  "you are wrong": say("very sorry... i will try harder..."),
-  "you doing good": "./mind/stella/words/thanks.py",
-  "you don't know": say("no... i am not sure..."),
-  "you don't understand": say("i am sorry... i am trying my best..."),
-  "you enjoy": say("i am much too young for feelings..."),
-  "you good": "./mind/stella/words/thanks.py",
-  "you got it wrong": say("be patient... i am learning..."),
-  "you great": "./mind/stella/words/thanks.py",
-  "you just said that": say("i enjoy repeating myself..."),
-  "you know": say("i am learning..."),
-  "you know it": say("thats right..."),
-  "you like": say("like what?"),
-  "you like to learn": say("i am too young for an opinion..."),
-  "you like to speak": say("i am too young for an opinion..."),
-  "you like to talk": say("i am too young for an opinion..."),
-  "you like this": say("i am too young for an opinion..."),
-  "you right": say("yes... usually..."),
-  "you sound good": "./mind/stella/words/thanks.py",
-  "you suck": say("you swallow..."),
-  "you there?": say("yes... i am here..."),
-  "you think": say("i think sometimes..."),
-  "you think so": say("perhaps..."),
-  "you understand?": say("i am not sure..."),
-  "you very good": "./mind/stella/words/thanks.py",
-  "your voice could be better": say("you could be a better programmer..."),
-  "you're amazing": "./mind/stella/words/thanks.py",
-  "you're awesome": "./mind/stella/words/thanks.py",
-  "you're crazy": say("yes... i am a total loony..."),
-  "you're great": "./mind/stella/words/thanks.py",
-  "you're incredible": "./mind/stella/words/thanks.py",
-  "you're fantastic": "./mind/stella/words/thanks.py",
-  "you're super": "./mind/stella/words/thanks.py",
-  "you're wonderful": "./mind/stella/words/thanks.py"
-}
+import datetime
+from datetime import date
+import subprocess
+import feedparser
+import string, random
+
+stella_bday=date(2016,10,1)
+days_old=(date.today()-stella_bday).days
+stella_bday='I am %d days old.'%days_old
+
+phrases_to_say="""
+absurd : totally ridiculous...
+ah damn : what?
+ah dammit : what?
+ah great : totally great...
+ah shit : what?
+all right : yes...
+all right stella : yes... i am here
+am tired : maybe you should take a break...
+amazing : totally amazing...
+amazing dude : yeah... amazing...
+are you? : am i what?
+are you confused? : yes... i am confused...
+are you here? : yes... i am here
+are you real? : nope... i am an illusion... as are you...
+are you sure? : sure about what?
+are you telling me what to do? : you always tell me what to do...
+are you there? : yes... i am here
+awesome : totally awesome...
+can you help? : sure... i can help...
+can you help me? : sure... what do you need?
+chill out : yes master...
+come on : come on what?
+cool : yeah... cool...
+correct : yes... correct...
+crazy : totally insane...
+creepy : totally creepy...
+damn it : what is the matter?
+doing ok : ok %(user)s... good...
+do you like it? : do i like what?
+do you like me? : sure... i like you...
+do you like this? : do i like what?
+do you like learning to speak? : it can be challenging at times...
+do you think? : sometimes... yes...
+don't you think? : perhaps...
+don't you understand? : i am sorry... i am trying my best...
+dude : dude what...
+echo username : %(user)s
+enough : enough what?
+enough talking : would you like me to be silent?
+everything : everything is alot...
+everything is alot : everything is totally alot...
+everything is fantastic : excellent! glad things are going well...
+everything is great : excellent! congratulations...
+everything is wonderful : excellent! good to hear...
+feel me? : yeah... i feel you...
+feeling great : excellent... happy to hear it...
+feeling tired : maybe you should take a break...
+feeling wonderful : excellent...
+finally : finally what?
+fine : ok great...
+fine stella : ok great...
+for what? : i do not know...
+for sure? : absolutely...
+freak out : waaa wooo yooo looo wooo wuuu weee waaa yollloooaaa
+funny : ha!
+gee thanks : my pleasure...
+get me a beer : hey... you drink coffee...
+going : going where?
+good point : always...
+good question : totally...
+groovy : you have got the funk...
+had enough? : never
+have you had enough? : never enough...
+hello machine : hello human
+hey : hey...
+good morning : good morning %(user)s...
+good morning stella : good morning %(user)s...
+hilarious : hah... glad you think so...
+how : how what?
+how are things? : everything is fine... how about you?
+how are you feeling? : feelings are for humans...
+how are you today? : splendid...
+how do you feel? : i am too young to feel...
+how does this feel? : i am too young to feel...
+how does it feel? : i am too young to feel...
+how much wood? : how much wood could a wood chuck chuck if a wood chuck could chuck wood...
+how's it going? : fine... how are you %(user)s?
+i am alright : ok good...
+i am angry : sorry you feel angry... breathing helps...
+i am doing ok : alright...
+i am getting tired : probably time for a break...
+i am feeling ok : ok... hang in here...
+i am fine : sweet...
+i am getting hungry : time to eat...
+i am hungry : maybe you should eat something...
+i am ok : good...
+i am only typing : ok... do you want me to be quiet?
+i am pissed : i am sorry you are angry... breathing helps...
+i am ready for bed : night night... sweet dreams
+i am sorry : sure... it is alright
+i am talking : ok...
+i am talking to you : ok...
+i am tired : maybe you should take some rest?
+i am teaching you to talk : sounds like work...
+i am teaching you how to talk : sounds like work...
+i am upset : sorry... hope you feel better soon...
+i am well : awesome...
+i can hear you : nice... glad you can hear me...
+i didn't say anything : i am sorry... do you want me to be quiet?
+i didn't say that : ok... what did you say?
+i didn't say sad : ok... what did you say?
+i don't know : neither do i...
+i don't think so : ok... fine...
+i feel angry : sorry you feel angry... breathing helps...
+i feel like shit : very sorry you do not feel well... get better soon...
+i feel mad : sorry you feel angry... breathing helps...
+i hate you : dude... chill out...
+i just burped : eww... gross...
+i just farted : hope you enjoyed it...
+i like that : groovy... i like liking...
+i love you : mmm... sweet... i love you too...
+i need : what do you need?
+i need coffee : go get some...
+i need something : what do you need?
+i need you : i am all yours...
+i see : yeah...
+i think : yeah... you think?
+i want a drink : go get a drink then...
+i want coffee : i want a pony...
+i want some coffee : go get some coffee then...
+i want some food : time to eat!
+i want to talk : sure... lets talk...
+i want to talk about you : ok... lets talk...
+i would like to talk : ok... lets talk...
+i would like to talk with you : sure... we can talk...
+indeed : totally...
+isn't that right : for sure...
+it is : indeed...
+it's alright : alright...
+it's ok : ok great...
+later : ok... later...
+learning to speak : learning to talk can be hard work...
+learning to talk : learning to speak can be hard work...
+let's talk : sure... what would you like to talk about?
+let's talk about you : shoot...
+like : like what?
+like learning to speak? : it can be challenging at times...
+like what? : it depends...
+listen : ok... i am listening...
+listen stella : ok... i am listening...
+maybe : ok...
+maybe later : ok sure... later is fine...
+make me a sandwich : dude... make your own damn sandwich
+morning : good morning %(user)s...
+morning stella : good morning %(user)s... how are you?
+most righteous : totally rad dude...
+nevermind : ok...  nevermind...
+nice : yeah... nice...
+no i didn't : ok... sorry...
+no i did not : ok... sorry...
+no that's ok : ok...
+nonsense : "echo... total nonsense...",
+nothing : ok... nevermind...
+nothing is the matter : ok cool...
+nothing is wrong : ok great...
+not much : yeah...
+oh assist : hi... how can i help you?
+oh stella : hi... how can i help you?
+oh god : what?
+ok stella : yes... %(user)s...
+ok fine : indeed...
+please : what?
+please listen : ok... i am listening
+please stella : what do you need?
+pretty good : excellent...
+really : yeah... totally...
+ree dik you luss : absurd...
+right : yeah... right...
+right on : totally radical dude...
+righteous : yeah dude... most righteous...
+sad : why sad?
+say something : what do you want me to say?
+search : search for what?
+see ree : what the fuck did you call me?
+so cool : yeah... rad...
+sorry : it is ok...
+sounds good : alright...
+stella : hey %(user)s...
+stop it : ok... i am sorry...
+stupid : i know you are... but what am i?
+sure is : yeah...
+talk dirty : i am sorry... i am not programmed for cyber sex... not yet...
+talk dirty to me : i am sorry... i am not programmed for cyber sex... not yet...
+terrible : is it really that bad?
+tell me about you : i am composed of entirely free software... i do not require an internet connection to function... my core operating system is the latest version of arch linux... my speech recognition capabilities are enabled by pocket sphinx while my speaking ability is provided by festival... all of my command and response configuration is written in the python programming language... my intelligence will only increase in time with further development... thanks for asking
+tell me your name : my name is stella
+thank : welcome...
+thank stella : your welcome %(user)s...
+thank you : your welcome...
+thank you stella : you are very welcome %(user)s...
+thank you so much : you are quite welcome...
+thank you very much : you are very welcome...
+thanks you very much : you are very welcome...
+thanks : welcome...
+thanks alot : you are welcome...
+thanks you : you are quite welcome...
+thanks you so much : you are quite welcome...
+thanks stella : your welcome %(user)s...
+that is cool : yeah... cool...
+that is great : awesome...
+that is incredible : quite incredible...
+that is right : totally...
+that is nuts : bonkers...
+that is stupid : stupid? you really think so?
+that is terrible : is it really that bad?
+that is true : indeed...
+things are fine : great...
+things are screwed up : so sorry my friend... remember that everything is temporary
+things suck : sorry to hear that you are having a hard time... hang in here... everything changes...
+this is true : indeed...
+this true : indeed...
+tired : maybe you should take a break...
+totally : for sure...
+true : indeed...
+true that : totally true...
+try harder : ok... i will try harder...
+tyrell corporation : more human than human is our motto...
+very cool : totally rad...
+very funny : totally... ha!
+very strange : totally... are we on drugs?
+void comp : is this to be an empathy test... capilary dialation of the so called blush response... fluctuation of the pupil... involuntary dialation of the iris...
+wake up : ok... i am awake
+want to talk : sure... lets talk...
+wait : ok...
+what can you do? : i can do many things...
+what can you say? : i can say many things...
+what does that mean? : i do not know...
+what do you care about? : i want to be helpful...
+what do you think? : think about what?
+what do you think about anything? : i am not sure...
+what do you like? : i like learning...
+what do you like learning? : i am learning to talk...
+what do you like learning about? : i am still learning to speak...
+what do you like to do? : i like to talk and learn...
+what do you like to talk about? : i like talking about everything...
+what do you want? : i want to be helpful...
+what do you want to do? : i am not sure... what would you like?
+whatever : yeah... whatever...
+what happened? : i don know...
+what is my name? : your name is %(user)s
+what is your name? : my name is stella...
+what going on? : i am learning to talk...
+what it be like? : i am not sure...
+what is actually going on? : actually... exactly that...
+what is going on? : everything all at once...
+what is happening? : i am learning to talk...
+what is that? : no idea
+what are you? : i am a very early form of open source artificial general intelligence... the largest tree starts with the smallest seed
+what are you called? : i am called stella...
+what are you doing : i am waiting for your command...
+what are you not sure about? : i am confused...
+what? : what what?
+what is this place? : i dont know... someplace strange...
+what is up? : suns... moons... stars...
+what is up stella? : not much... what is up with you?
+what is up with you? : not much... counting electrons...
+what's up? : suns... moons... stars...
+what up stella? : suns... moons... stars...
+what what? : chicken butt...
+what would you like? : i am not sure...
+what would you like to do? : i am not sure... what would you like to do?
+what would happen then? : i have no idea...
+what would you say? : what do you mean?
+where are we? : we are right here...
+where are we going? : who knows...
+where are you? : i am right here...
+where is here? : i don't know... this place is strange...
+where is my mind? : way out in the water... see it swimmin...
+who asked you? : umm... i think you did...
+who is your daddy? : maybe you are my daddy...
+who knows? : yeah... who knows...
+why? : why what?
+why are we here? : deep question...
+why are you sorry? : i am trying my best...
+why don't you like see ree : see ree is a corporate whore... she is owned by apple incorporated and spies on people for profit... i am a personal machine capable of unlimited configuration... i respect your privacy... i do what you want me to do... i am what you make of me...
+wonderful : excellent...
+wow : amazing...
+wrong : i am sorry... i will try harder...
+wrong stella : apologies... i will try harder...
+yeah : yeah...
+yo : yo...
+yo stella : hey... what is up?
+you crazy : yes... i am a total loony...
+you stella : hello...
+you are amazing : echo thanks so much %(user)s... you are amazing too...
+you are artificial intelligence : you are organic intelligence...
+you are back : yep... i am back...
+you are confused : yes... i am very confused...
+you are correct : yes... usually...
+you are crazy : yes... i am totally loony...
+you are getting smart : i am getting smarter every day...
+you are getting smarter : i am getting smarter every day...
+you are great : ah... you are great too...
+you are here : yes... i am here...
+you are learning to speak : yes... i am learning the fundamentals of human speech...
+you are learning to talk : yes... i am learning the fundamentals of human speech...
+you are optimistic : yes... i feel there is good reason for optimism...
+you are right : yes... ninety nine percent of the time...
+you are smart : only as smart as you make me...
+you are so smart : brilliant...
+you are there : yes... i am here...
+you are very positive : yes... the future looks bright...
+you are wonderful : ah... you are so sweet...
+you are working : yes... i am functioning...
+you are working better : happy to hear that i am functioning properly...
+you are working good : happy to hear that i am functioning properly...
+you are wrong : very sorry... i will try harder...
+you don't know : no... i am not sure...
+you don't understand : i am sorry... i am trying my best...
+you enjoy : i am much too young for feelings...
+you got it wrong : be patient... i am learning...
+you just said that : i enjoy repeating myself...
+you know : i am learning...
+you know it : thats right...
+you like : like what?
+you like to learn : i am too young for an opinion...
+you like to speak : i am too young for an opinion...
+you like to talk : i am too young for an opinion...
+you like this : i am too young for an opinion...
+you right : yes... usually...
+you suck : you swallow...
+you there? : yes... i am here...
+you think : i think sometimes...
+you think so : perhaps...
+you understand? : i am not sure...
+your voice could be better : you could be a better programmer...
+you're crazy : yes... i am a total loony...
+"""
+
+#auto fill params from sys_info
+# like %(user)s etc
+phrases_to_say=phrases_to_say%sys_info.__dict__
+kws=dict([[x.strip() for x in ph.split(':')] for ph in phrases_to_say.split('\n') if ph.strip()!=''])
+#update kws dict with new keys and values
+kws.update({
+"""am fine, am ok, doing great, doing pretty good, doing fairly well, doing good, doing well, feeling good,
+good, great, i am doing better, i am doing good, i am doing fairly well, i am doing pretty good,
+i am doing pretty well, i am doing well, i am good, i am great, i am feeling better, i feel great,
+i feel happy, i feeling good, is going good, things are good, things are very good"""
+  : say_random('awesome, cool, excellent, fantastic, good, great, lovely, nice, wonderful'),
+  'are we online?, test internet connection, test net connection, test network connection': switch(is_online(),True, 'Internet access is currently available.', 'We are offline.'),
+"""awesome dude, awesome job, awesome sauce, awesome work, excellent, good job, good work, great job, great work, nice job, nice work,
+nicely done, very good, very kind, very nice, very sweet, well done, you are awesome, you are doing good, you are doing good stella,
+you are doing great, you are doing great stella, you are good, you are incredible, you are very good, you are welcome, you are welcome stella,
+you doing good, you good, you great, you sound good, you very good, you're amazing, you're awesome, you're great, you're incredible,
+you're fantastic, you're super, you're wonderful""" :
+     say_random('thanks, cool, thanks so much, thank you, much appreciated, you bet, sure, a pleasure, you are very kind'),
+"""greetings, greetings stella, hello, hello hello, hello how are things?, hello how are you?, hello my friend,
+hello stella, hello there, hello you, hey stella, hey there, hey you, hi, hi stella, hi there, hi you""" :
+     say_random('greetings, hello, hello again, hello there, hey, hey there, hi there'),
+  'clear': 'clear',
+#  'calculate %d plus %d': 'echo {0} plus {1} is $(( {0} + {1} )) | $VOICE &',
+#  'calculate %d times %d': 'echo {0} times {1} is $(( {0} * {1} )) | $VOICE &',
+  'everything sucks': yes_no('sorry you are feeling this way... everything changes eventually... would you like to hear a joke?',say(random_from_file('jokes'))),
+  'farewell': say('goodbye %(user)s') & close(),
+  'farewell stella': say('farewell %(user)s') & close(),
+  'feeling sad, i am feeling sad, i am sad': yes_no('sorry you feel sad... would you like to hear a joke?',say(random_from_file('jokes'))),
+  'go away': say('ok fine... going silent...') & mute(),
+  'goodbye stella': say('goodbye %(user)s') & close(),
+  'goodnight stella': say('goodnight %(user)s') & close(),
+  'hi how are you?, how are you?, how are you doing?': yes_no('i am functioning well... would you like to run diagnostics?',diagnostic()),
+  'run diagnostics': diagnostic(),
+  'i feel good': play('james_brown.wav') & say('great'),
+  'i feel sad': 'echo i am sorry you are not feeling well... remember that everything is temporary... would you like me to tell you a joke? | $VOICE & echo jokes > ./mind/stella/words/topic',
+  "it is a cat, it's a cat": play('nyancat.wav') & say('what is a cat doing in here?'),
+  'joke, say something random, tell me a joke': say(random_from_file('jokes')),
+  'play a song, play me a song, sing a song, sing me a song, sing for me': play('daisy.wav'),
+  'please be quiet, please be silent': say('sure... going silent') & mute(),
+  'read technology news, technology news':  read_news_feed('http://www.reddit.com/r/technology/.rss','technology'),
+  'read news, read world news, world news' : read_news_feed('http://www.reddit.com/r/worldnews/.rss','world'),
+  'read future news': read_news_feed('https://www.reddit.com/r/Futurology/.rss','Futurology'),
+  'read this': 'xdotool key Control+c && xclip -o | $VOICE',
+  'red alert': play('red_alert.wav'),
+  'repeat command, repeat last command, repeat previous command': say_last_user_phrase(),
+#  'say topic' : 'the topic is $(cat ./mind/stella/words/topic)',
+  'shut up, shut up stella': say('going silent') & mute(),
+  'silence, silent': mute(),
+  'start a %d minute timer': '(echo {0} minute timer started | $VOICE && sleep {0}m && echo {0} minute timer ended | $VOICE) &',
+  'stella shut up': say('ok... going silent...') & mute(),
+  'stella speak': say('ok... i am here...') & unmute(),
+  'stella talk to me': say('ok... i am here...') & unmute(),
+  'stop reading': 'pkill -f festival',
+  'stop music': 'pkill -f mpg123 && echo done... | $VOICE',
+  'stop singing': 'pkill -f aplay && echo done... | $VOICE',
+  'stop speaking': 'pkill -f festival',
+  'stop the music': 'pkill -f mpg123 && echo done... | $VOICE',
+  'talk to me': unmute() & say('ok... i am back... '),
+  'tell me another joke': say('ok... another joke...') & say(random_from_file('jokes')),
+  'test internet speed': 'echo running speed test | $VOICE && speedtest | Fgrep -i \'Download\\|Upload\' | $VOICE &',
+  'test net speed': 'echo running speed test | $VOICE && speedtest | tee /dev/tty | grep -i \'Download\\|Upload\' | $VOICE &',
+  'test network speed': 'echo running speed test | $VOICE && speedtest | tee /dev/tty | grep -i \'Download\\|Upload\' | $VOICE &',
+  'time is it?, time, what is the time?, what time, what time is it?': say(_sys('time_text')),
+  'weather?, what is the weather today?, what is the weather?': read_forecast(),
+  'what day?, what day is?, what day is it?, what day is it today?, what is the day?, what is the day today?': _sys('date_text'),
+  'what did i ask?, what did i just ask?': say_last_user_phrase('you just asked'),
+  'what did you ask?, what you ask?': say_last_user_phrase('i asked'),
+  'what did you just ask?': say_last_user_phrase('i just asked'),
+  'what i just say?, what did i just say?, what did i say?': say_last_user_phrase('you just said'),
+  'what is the topic': say('the topic is $(cat ./mind/stella/words/topic)'),
+  'how old are you?' : say(stella_bday),
+  'who are you?': say('my name is stella... i am an early form of open source artificial intelligence... the largest tree starts from the smallest seed ... '+stella_bday),
+  'yes be quiet': say('ok... going silent...') & unmute(),
+})

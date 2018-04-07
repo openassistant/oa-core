@@ -209,7 +209,7 @@ class AudioUtils():
         config = pocketsphinx.Decoder.default_config()
     #    config.set_string("-hmm", acoustic_parameters_directory)  # set the path of the hidden Markov model (HMM) parameter files
         config.set_string('-hmm', os.path.join(os.path.dirname(pocketsphinx.pocketsphinx.__file__), 'model','en-us'))
-        config.set_string("-lm", _.lang_file)
+#        config.set_string("-lm", _.lang_file)
         config.set_string("-dict", _.dic_file)
         config.set_string("-logfn", os.devnull)  # disable logging (logging causes unwanted output in terminal)
 
@@ -219,13 +219,16 @@ class AudioUtils():
         raw_data=adata
         #raw_data = audio_data.get_raw_data(convert_rate=sample_rate, convert_width=2)  # the included language models require audio to be 16-bit mono 16 kHz in little-endian format
 
+        #Please note that -kws conflicts with the -lm and -jsgf options. You cannot specify both.
+
         # obtain recognition results
         # perform the speech recognition with the keywords file (this is inside the context manager so the file isn;t deleted until we're done)
-#        decoder.set_kws("keywords", _.kws_file)
+        decoder.set_kws("keywords", _.kws_file)
+#        decoder.set_search("ngram/lm")
 #        decoder.set_search("keywords")
-        decoder.start_utt()  # begin utterance processing
+#        decoder.start_utt()  # begin utterance processing
         decoder.process_raw(raw_data, False, False)  # process audio data with recognition enabled (no_search = False), as a full utterance (full_utt = True)
-        decoder.end_utt()  # stop utterance processing
+#        decoder.end_utt()  # stop utterance processing
 
     ##    if show_all: return decoder
         # return results
