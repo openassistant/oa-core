@@ -11,7 +11,6 @@ def _parser(args):
             dest="agent", action="store",
             help="Agent to load")
 
-
     parser.add_argument("-d", "--debug",
             action='store_true', dest="debug", default=False,
             help="Enable debug-level logging")

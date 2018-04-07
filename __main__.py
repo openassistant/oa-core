@@ -14,7 +14,7 @@ if __name__ == '__main__':
     # Parse command-line options,
     #  use `Config` to load mind configuration
     #  command-line overrides config file
-    from .core.util.args import _parser as arg_parser
+    from .util.args import _parser as arg_parser
     args = arg_parser(sys.argv[1:])
     if args.debug:
         logging.root.setLevel(logging.DEBUG)
