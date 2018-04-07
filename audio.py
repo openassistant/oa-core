@@ -58,8 +58,8 @@ class AudioUtils():
         playsound.playsound(path)
 
     def say(_, text):
-	   _.tts.say(text)
-	   _.tts.runAndWait()
+        _.tts.say(text)
+        _.tts.runAndWait()
 
     def config_stt(_,mind_dir, keywords, kws_last_modification_time_in_sec=None):
         logger.debug("Configuring Module: Language")
