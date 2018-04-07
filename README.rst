@@ -1,4 +1,4 @@
-Description:
+Open Assistant Fork Description:
 =============
 
 This is fork of the original `Open Assistant <http://www.openassistant.org/>`__ (see below).
@@ -9,39 +9,41 @@ We would like to establish an OA.Agents blockchain network, add the ability for 
 
 This version contains a "check for silence delay" similar to  `SpeechRecognition-3.8.1 <https://pypi.python.org/pypi/SpeechRecognition/3.8.1>`__.
 
-JSON was replaced with commands.py modules, so this frees up any logic needed for commands: ``\mind\boot\conf\commands.py``
+JSON was replaced with ``commands.py`` modules, so this frees up any logic needed for commands
 
-``audio.py`` - all audio logic TTS, STT, and updates language files from web.
-``oa.py`` - main Assistant module.
-``oa_utils.py`` - utilities to simplify command process.
+``\mind\boot\conf\commands.py`` - Main commands file.
+``audio.py`` - Audio logic TTS, STT, and updates language files from web.
+``oa.py`` - Main Assistant module.
+``oa_utils.py`` - Utilities to simplify command processes.
 
-Removed : gstream, gobject.
+Removed : 
 =============
+``gstream``
+``gobject``
 
 Need To Fix:
 =============
-Need to replace all comands of "minds" via Py Stub calls. 
-(to make it work transparently in Win,Mac,Linux and other OS families)
-for now it's not complete version (all commands is related to Arch linux)
+Replace all commands in "minds" via Python Stub calls. 
+Make OA work transparently in Windows, Mac, Linux and all other OS families (all commands are currently related to Arch linux).
 
 Installation:
 =============
 Dependencies:
-Python  : 
-we suppose it may be any version 2.* or 3.* branch)
+Python: 
+(May be any version 2.* or 3.* branch.)
 
 Windows
-pip install keyboard pyaudio playsound requests pyttsx3 pocketsphinx psutil feedparser
-to start: python oa.py
+``pip install keyboard pyaudio playsound requests pyttsx3 pocketsphinx psutil feedparser``
+to start: ``python oa.py``
 
 Arch Linux
-sudo pacman -S portaudio python-pyaudio swig espeak && sudo pip install keyboard requests pyttsx3 playsound pocketsphinx psutil feedparser
--- still some problems with 
+``sudo pacman -S portaudio python-pyaudio swig espeak && sudo pip install keyboard requests pyttsx3 playsound pocketsphinx psutil feedparser``
+Still some problems with:
 -- ALSA lib pcm.c:2501:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.rear
 
 Ubuntu
-sudo apt-get install -y python python-dev python-pip build-essential swig git libpulse-dev espeak && sudo apt-get install python-pyaudio && sudo pip install keyboard pyttsx3 playsound psutil feedparser
-to start: sudo python oa.py
+``sudo apt-get install -y python python-dev python-pip build-essential swig git libpulse-dev espeak && sudo apt-get install python-pyaudio && sudo pip install keyboard pyttsx3 playsound psutil feedparser``
+To start: ``sudo python oa.py``
 
 Help:
 =============
