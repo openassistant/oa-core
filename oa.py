@@ -70,6 +70,7 @@ class Assistant:
         """
         info('Switch mind: %s->%s'%(_.mind,name))
         if history:
+            info('_.switch_hist.append : '+name)
             _.switch_hist.append(name)
         _.mind=name
         _.mind_dir=os.path.join(_.cur_dir, 'mind', _.mind)

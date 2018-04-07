@@ -309,7 +309,7 @@ class Stub():
     """
     def __init__(_,o, *args, **kwargs):
         _.commands=[[o,args,kwargs]]
-        info('init',o, args, kwargs)
+#        info('init',o, args, kwargs)
 
     def __and__(_,o):
 ##        info('__and__',o)
@@ -343,7 +343,7 @@ class Stub():
         ret=[]
         for func,args,kwargs in _.commands:
             #check args for Stubs (to perform them too)
-            args=[(isinstance(x,Stub) and x.perform()) or x for x in args]
+#            args=[(isinstance(x,Stub) and x.perform()) or x for x in args]
             ret.append(func(*args,**kwargs))
 
         if len(ret)==1:
@@ -489,11 +489,23 @@ def user_answer(mind):
       1 command - answer (voice, file path, etc - any) from user
     """
     sys_info.last_answer=None
-    oa.set_mind(mind)
+    #skip history
+    oa.set_mind(mind,0)
     #we will start loop in loop, until user say something
     oa.loop(condition=lambda : sys_info.last_answer is None)
     oa.switch_back()
     return sys_info.last_answer
+
+def call_func(func):
+    """
+      helper function.
+      For Stubs - call perform
+      for others functions - direct call.
+    """
+    if isinstance(func,Stub):
+        return func.perform()
+    else:
+        return func()
 
 def yes_no(msg,func):
     """
@@ -502,7 +514,7 @@ def yes_no(msg,func):
     """
     say(msg)
     if user_answer('yes_no')=='yes':
-        func()
+        call_func(func)
 
 def close():
     """
