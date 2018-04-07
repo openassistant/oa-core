@@ -339,9 +339,8 @@ you're crazy : yes... i am a total loony...
 """
 
 #auto fill params from sys_info
-# like %(user)s etc
-phrases_to_say=phrases_to_say%sys_info.__dict__
-kws=dict([[x.strip() for x in ph.split(':')] for ph in phrases_to_say.split('\n') if ph.strip()!=''])
+
+kws=sys_info.lines_to_dict(phrases_to_say)
 #update kws dict with new keys and values
 kws.update({
 """am fine, am ok, doing great, doing pretty good, doing fairly well, doing good, doing well, feeling good,

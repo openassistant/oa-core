@@ -365,6 +365,8 @@ class Stub():
                 #direct call without stub
 ##                setattr(nowait,name,body)
                 if hasattr(body,'__call__'):
+                    #lets add all funcs to sys_info - for direct call (no Stubs)
+                    setattr(sys_info,name,body)
                     ret[name]=Stub(body)
 
         return ret
@@ -496,3 +498,23 @@ def close():
 
 def say_last_user_phrase(s=''):
     say(s+' '+oa.last_phrase)
+
+def lines_to_dict(sLines,params={}):
+    """
+      tranlate dict string
+      where
+         end of line - separator between keys
+         : - separator between key and value
+         params and sys_info dicts - is using to fill parameters :
+            %(param)s, %(user)s etc
+      Example string:
+       key1 : value1
+       key2 : value2
+       ...
+       you there? : yes... i am here...
+       you think : i think sometimes...
+    """
+    params.update(sys_info.__dict__)
+    sLines=sLines%params
+    return dict([[x.strip() for x in ph.split(':')] for ph in sLines.split('\n') if ph.strip()!=''])
+##sys_info.lines_to_dict=lines_to_dict
