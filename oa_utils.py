@@ -1,6 +1,6 @@
 import os, sys, glob, random
 import subprocess, requests
-import operator,inspect
+import inspect
 import playsound
 import keyboard
 import platform
@@ -48,7 +48,7 @@ class AnyProp(object):
           we will return call of this function
         """
         att=object.__getattribute__(_, name)
-        if operator.isCallable(att):
+        if isCallable(att):
             insp=inspect.getargspec(att)
             if (len(insp.args)==0) and (att.func_name=='<lambda>'):
                 #return func Call result
@@ -125,6 +125,9 @@ def bytes2gb(size):
     """
     ##round(x,2)
     return size/float(1<<30)
+
+def isCallable(x):
+    return hasattr(x, "__call__")
 
 """
 useful functions which may be used in commands.py files of different mind.
@@ -503,7 +506,7 @@ def call_func(func_or_value):
       For Stubs - call perform
       for others functions - direct call.
     """
-    if operator.isCallable(func_or_value):
+    if isCallable(func_or_value):
         if isinstance(func_or_value,Stub):
             return func_or_value.perform()
         else:
