@@ -9,8 +9,7 @@ logger = logging.getLogger(__name__)
 
 if __name__ == '__main__':
 
-    from gi.repository import GObject
-    import sys
+    import sys, os
 
     # Parse command-line options,
     #  use `Config` to load mind configuration
@@ -36,8 +35,10 @@ if __name__ == '__main__':
 
 
     #
-    # Questionable dependencies
+    # TODO: remove
     #
+
+    from gi.repository import GObject
 
     # Initialize Gobject Threads
     GObject.threads_init()
@@ -49,11 +50,6 @@ if __name__ == '__main__':
     import signal
     signal.signal(signal.SIGINT, signal.SIG_DFL)
 
-    #
-    # End Questionable dependencies
-    #
-
-
     # Start Main Loop
     try:
         main_loop.run()
@@ -62,3 +58,7 @@ if __name__ == '__main__':
         print(e)
         main_loop.quit()
         sys.exit()
+
+    #
+    # End Questionable dependencies
+    #
