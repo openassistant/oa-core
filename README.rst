@@ -9,40 +9,51 @@ We would like to establish an OA.Agents blockchain network, add the ability for 
 
 This version contains a "check for silence delay" similar to  `SpeechRecognition-3.8.1 <https://pypi.python.org/pypi/SpeechRecognition/3.8.1>`__.
 
-JSON was replaced with ``commands.py`` modules, so this frees up any logic needed for commands
+JSON was replaced with ``commands.py`` modules, so this frees up any logic needed for commands.
 
-``\mind\boot\conf\commands.py`` - Main commands file.
+``\mind\boot\conf\commands.py`` - Main commands file (boot mind).
+
 ``audio.py`` - Audio logic TTS, STT, and updates language files from web.
+
 ``oa.py`` - Main Assistant module.
+
 ``oa_utils.py`` - Utilities to simplify command processes.
 
 Removed : 
 =============
 ``gstream``
+
 ``gobject``
 
 Need To Fix:
 =============
 Replace all commands in "minds" via Python Stub calls. 
+
 Make OA work transparently in Windows, Mac, Linux and all other OS families (all commands are currently related to Arch linux).
 
 Installation:
 =============
 Dependencies:
-Python: 
-(May be any version 2.* or 3.* branch.)
 
-Windows
+Python: (May be any version 2.* or 3.* branch.)
+
+Windows:
+
 ``pip install keyboard pyaudio playsound requests pyttsx3 pocketsphinx psutil feedparser``
 to start: ``python oa.py``
 
-Arch Linux
+Arch Linux:
+
 ``sudo pacman -S portaudio python-pyaudio swig espeak && sudo pip install keyboard requests pyttsx3 playsound pocketsphinx psutil feedparser``
+
 Still some problems with:
+
 -- ALSA lib pcm.c:2501:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.rear
 
-Ubuntu
+Ubuntu:
+
 ``sudo apt-get install -y python python-dev python-pip build-essential swig git libpulse-dev espeak && sudo apt-get install python-pyaudio && sudo pip install keyboard pyttsx3 playsound psutil feedparser``
+
 To start: ``sudo python oa.py``
 
 Help:
@@ -72,8 +83,7 @@ This fork will be merged with original branch, decision (what part to merge) wil
 
 Open Assistant
 =============
-Open Assistant is an evolving open source artificial intelligence agent able 
-to interact in basic conversation and automate an increasing number of tasks.
+Open Assistant is an evolving open source artificial intelligence agent able  to interact in basic conversation and automate an increasing number of tasks.
 
 Maintained by the `Open Assistant <http://www.openassistant.org/>`__ 
 working group lead by `Andrew Vavrek <https://youtu.be/cXqEv2OVwHE>`__, this software 
