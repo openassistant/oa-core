@@ -10,6 +10,9 @@ import psutil
 
 unknown_os='unknown operating system'
 
+def isCallable(x):
+    return hasattr(x, "__call__")
+
 def switch(*args):
     """
     simple switch function
@@ -125,9 +128,6 @@ def bytes2gb(size):
     """
     ##round(x,2)
     return size/float(1<<30)
-
-def isCallable(x):
-    return hasattr(x, "__call__")
 
 """
 useful functions which may be used in commands.py files of different mind.
