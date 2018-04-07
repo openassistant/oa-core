@@ -9,13 +9,12 @@ logger = logging.getLogger(__name__)
 
 if __name__ == '__main__':
 
-    from gi.repository import GObject
-    import sys
+    import sys, os
 
     # Parse command-line options,
     #  use `Config` to load mind configuration
     #  command-line overrides config file
-    from core.util.args import _parser as arg_parser
+    from .core.util.args import _parser as arg_parser
     args = arg_parser(sys.argv[1:])
     if args.debug:
         logging.root.setLevel(logging.DEBUG)
@@ -23,16 +22,23 @@ if __name__ == '__main__':
 
 
     # A configured Assistant
-    import importlib
-    A = importlib.import_module(args.mind_dir, "core")
-    logger.debug("Loading {}".format(A))
-    a = A.spawn()
-    logger.debug("Assistant: {}".format(a))
+    if args.agents_dir is not None:
+        agents_path = os.path.realpath(args.agents_dir)
+        logger.info("Agents Path: %s" % agents_path)
+        sys.path.insert(0, agents_path)
+
+    if args.agent is not None:
+        import importlib
+        A = importlib.import_module(args.agent)
+        logger.info("Loading {}".format(A))
+        a = A.__call__()
 
 
     #
-    # Questionable dependencies
+    # TODO: remove
     #
+
+    from gi.repository import GObject
 
     # Initialize Gobject Threads
     GObject.threads_init()
@@ -44,11 +50,6 @@ if __name__ == '__main__':
     import signal
     signal.signal(signal.SIGINT, signal.SIG_DFL)
 
-    #
-    # End Questionable dependencies
-    #
-
-
     # Start Main Loop
     try:
         main_loop.run()
@@ -57,3 +58,7 @@ if __name__ == '__main__':
         print(e)
         main_loop.quit()
         sys.exit()
+
+    #
+    # End Questionable dependencies
+    #
