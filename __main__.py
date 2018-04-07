@@ -23,11 +23,16 @@ if __name__ == '__main__':
 
 
     # A configured Assistant
-    import importlib
-    A = importlib.import_module(args.mind_dir, "core")
-    logger.debug("Loading {}".format(A))
-    a = A.spawn()
-    logger.debug("Assistant: {}".format(a))
+    if args.agents_dir is not None:
+        agents_path = os.path.realpath(args.agents_dir)
+        logger.info("Agents Path: %s" % agents_path)
+        sys.path.insert(0, agents_path)
+
+    if args.agent is not None:
+        import importlib
+        A = importlib.import_module(args.agent)
+        logger.info("Loading {}".format(A))
+        a = A.__call__()
 
 
     #
