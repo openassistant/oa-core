@@ -3,7 +3,7 @@ Open Assistant Fork Description:
 
 This is fork of the original `Open Assistant <http://www.openassistant.org/>`__ (see below).
 
-Our goals are to simplify and restructure modules to provide easy customization, operating system independence, as well as to implement more sophisticated logic, such as machine learning (TensorFlow).
+Our goals are to simplify and restructure modules to provide easy customization, operating system independence, as well as to implement more sophisticated logic such as machine learning (TensorFlow).
 
 We would like to establish an OA.Agents blockchain network, add the ability for customization on fly (adding or changing commands via voice), provide a graphical interface, and build auto installer scripts.
 
