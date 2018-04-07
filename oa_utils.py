@@ -224,6 +224,7 @@ def say(text):
       using oa.audio.say defined function
       to generate voice from `text`
     """
+    text=call_func(text)
     info(text)
     sys_info.last_say=text
     oa.audio.say(text)
@@ -496,16 +497,19 @@ def user_answer(mind):
     oa.switch_back()
     return sys_info.last_answer
 
-def call_func(func):
+def call_func(func_or_value):
     """
       helper function.
       For Stubs - call perform
       for others functions - direct call.
     """
-    if isinstance(func,Stub):
-        return func.perform()
+    if operator.isCallable(func_or_value):
+        if isinstance(func_or_value,Stub):
+            return func_or_value.perform()
+        else:
+            return func_or_value()
     else:
-        return func()
+        return func_or_value
 
 def yes_no(msg,func):
     """
@@ -544,5 +548,6 @@ def lines_to_dict(sLines,func=lambda s : s, params={}):
     sLines=sLines%params
     ret=dict([[k,func(v)] for k,v in [[x.strip() for x in ph.split(':')] for ph in sLines.split('\n') if ph.strip()!='']])
     return ret
+
 ##sys_info.lines_to_dict=lines_to_dict
 #print(bytes2gb(sys_info.free_memory))
