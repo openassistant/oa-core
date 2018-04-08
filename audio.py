@@ -8,7 +8,7 @@ import playsound
 import collections
 import pocketsphinx
 import difflib
-#from pocketsphinx.pocketsphinx import *
+from pocketsphinx.pocketsphinx import *
 #from sphinxbase.sphinxbase import *
 import oa_utils
 import math
