@@ -1,7 +1,6 @@
 import os, sys, glob, random
 import subprocess, requests
 import inspect
-import playsound
 import keyboard
 import platform
 import datetime
@@ -243,7 +242,7 @@ def play(fname):
     """
       playing sound file
     """
-    playsound.playsound(find_file(fname))
+    oa.audio.playsound(find_file(fname))
 
 def mind(name):
     """
