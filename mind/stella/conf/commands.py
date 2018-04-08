@@ -338,9 +338,10 @@ you're crazy : yes i am a total loony
 
 #auto fill params from sys_info
 
-kws=sys_info.lines_to_dict(phrases_to_say, say)
+kws=_lines_to_dict(phrases_to_say, say)
 #update kws dict with new keys and values
 kws.update({
+  'quit':quit_app(),
 """am fine, am ok, doing great, doing pretty good, doing fairly well, doing good, doing well, feeling good,
 good, great, i am doing better, i am doing good, i am doing fairly well, i am doing pretty good,
 i am doing pretty well, i am doing well, i am good, i am great, i am feeling better, i feel great,
@@ -397,9 +398,9 @@ hello stella, hello there, hello you, hey stella, hey there, hey you, hi, hi ste
   'test internet speed': 'echo running speed test | $VOICE && speedtest | Fgrep -i \'Download\\|Upload\' | $VOICE &',
   'test net speed': 'echo running speed test | $VOICE && speedtest | tee /dev/tty | grep -i \'Download\\|Upload\' | $VOICE &',
   'test network speed': 'echo running speed test | $VOICE && speedtest | tee /dev/tty | grep -i \'Download\\|Upload\' | $VOICE &',
-  'time is it?, time, what is the time?, what time, what time is it?': say(_sys('time_text')),
+  'time is it?, time, what is the time?, what time, what time is it?': say(get_sys('time_text')),
   'weather?, what is the weather today?, what is the weather?': read_forecast(),
-  'what day?, what day is?, what day is it?, what day is it today?, what is the day?, what is the day today?': say(_sys('date_text')),
+  'what day?, what day is?, what day is it?, what day is it today?, what is the day?, what is the day today?': say(get_sys('date_text')),
   'what did i ask?, what did i just ask?': say_last_user_phrase('you just asked'),
   'what did you ask?, what you ask?': say_last_user_phrase('i asked'),
   'what did you just ask?': say_last_user_phrase('i just asked'),
