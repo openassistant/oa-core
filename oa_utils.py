@@ -172,7 +172,7 @@ def mute(mute=True):
 
 def unmute():
     """set unmute for speakers"""
-    mute(false)
+    mute(False)
 
 def volume(move=2):
     """

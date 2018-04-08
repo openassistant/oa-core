@@ -399,7 +399,7 @@ hello stella, hello there, hello you, hey stella, hey there, hey you, hi, hi ste
   'test network speed': 'echo running speed test | $VOICE && speedtest | tee /dev/tty | grep -i \'Download\\|Upload\' | $VOICE &',
   'time is it?, time, what is the time?, what time, what time is it?': say(_sys('time_text')),
   'weather?, what is the weather today?, what is the weather?': read_forecast(),
-  'what day?, what day is?, what day is it?, what day is it today?, what is the day?, what is the day today?': _sys('date_text'),
+  'what day?, what day is?, what day is it?, what day is it today?, what is the day?, what is the day today?': say(_sys('date_text')),
   'what did i ask?, what did i just ask?': say_last_user_phrase('you just asked'),
   'what did you ask?, what you ask?': say_last_user_phrase('i asked'),
   'what did you just ask?': say_last_user_phrase('i just asked'),
