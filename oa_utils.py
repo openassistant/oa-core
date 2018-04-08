@@ -53,7 +53,7 @@ class AnyProp(object):
         att=object.__getattribute__(_, name)
         if isCallable(att):
             insp=inspect.getargspec(att)
-            if (len(insp.args)==0) and (att.func_name=='<lambda>'):
+            if (len(insp.args)==0) and (att.__name__=='<lambda>'):
                 #return func Call result
                 return att()
         return att
