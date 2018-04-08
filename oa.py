@@ -53,14 +53,15 @@ class Assistant:
             _.last_phrase=t
             #for now - 2 types of commands : Stub and Command line Text
             #for Stubs we will call perform
-            if isinstance(_.kws[t],Stub):
-                _.kws[t].perform()
+            if isCallable(_.kws[t]):
+                call_func(_.kws[t])
             #for string we will call sys_exec
             elif isinstance(_.kws[t],basestring):
                 sys_exec(_.kws[t])
             else:
                 #we have not idea what type of this command is, so we'll raise Exception
-                raise Exception('Unkown command type : %s'%str(_.kws[t]))
+                info('Unkown command')
+                #raise Exception('Unkown command type : %s'%str(_.kws[t]))
 
             _.log_history(text)
 

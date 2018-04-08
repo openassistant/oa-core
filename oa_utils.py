@@ -140,7 +140,7 @@ def activate(s):
     else:
         raise Exception('`activate` is unsupported')
 
-def _sys(s):
+def get_sys(s):
     """
       returns system information from sys_info
     """
@@ -236,7 +236,7 @@ def say_random(slist):
     return random.choice([x.strip() for x in slist.split(',')])
 
 def random_from_file(fname):
-    l=fread(find_file(fname),result_as_list=1)
+    l=fread(fname,result_as_list=1)
     return random.choice(l)
 
 def play(fname):
@@ -280,7 +280,13 @@ def fwrite(fname, data, append=False):
             f.write(data)
 
 def fread(fname, result_as_list=0):
+    """
+      just read file content and return as a string
+      or list of string - splitted by new line symbol
+    """
     try:
+        if not os.path.exists(fname):
+            fname=find_file(fname)
         with open(fname, 'r') as f:
             if result_as_list:
                 return f.readlines()
@@ -373,9 +379,8 @@ class Stub():
         #isinstance(open, types.FunctionType)
         for name,body in module.__dict__.items():
             # let's skip for current class definition. to prevent hard recursion =)
-            if name==_.__name__:
-                continue
-
+#            if name==_.__name__:
+#                continue
             #sys_info and others AnyProp instances
             if isinstance(body,AnyProp):
                 ret[name]=body
@@ -384,7 +389,9 @@ class Stub():
 ##                setattr(nowait,name,body)
                 if hasattr(body,'__call__'):
                     #lets add all funcs to sys_info - for direct call (no Stubs)
-                    setattr(sys_info,name,body)
+#                    setattr(sys_info,name,body)
+                    #if we call function with _ prefix it will be executed immediately without Stub
+                    ret['_'+name]=body
                     ret[name]=Stub(body)
 
         return ret
@@ -551,6 +558,17 @@ def lines_to_dict(sLines,func=lambda s : s, params={}):
     sLines=sLines%params
     ret=dict([[k,func(v)] for k,v in [[x.strip() for x in ph.split(':')] for ph in sLines.split('\n') if ph.strip()!='']])
     return ret
+
+def calculate():
+#    info('test1')
+    info(sys_info.expr)
+    say(eval(sys_info.expr))
+
+def add2expr(s):
+    sys_info.expr+=s
+
+def quit_app():
+    quit(0)
 
 ##sys_info.lines_to_dict=lines_to_dict
 #print(bytes2gb(sys_info.free_memory))
