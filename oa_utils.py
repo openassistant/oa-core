@@ -1,8 +1,9 @@
-import os, sys, glob, random
+import os, sys, glob, random, string
 import subprocess, requests
 import inspect
 import keyboard
 import platform
+import feedparser
 import datetime
 import getpass,socket
 import psutil
@@ -421,7 +422,7 @@ def say_last_phrase(s):
   say(s+' '+oa.last_phrase)
 
 def read_news_feed(news_feed, category):
-    rss = feedparser.parse()
+    rss = feedparser.parse(news_feed)
     info(rss['feed']['title'])
     say('reading %s news'%category)
     for post in rss.entries:
@@ -448,7 +449,7 @@ def read_forecast():
     byHour = forecast.hourly()
     byDay = forecast.daily()
     wheather_summary="""The weather is currently %s ...\n
-The temperature is %d degrees Celsius ..."""%(byNow.summary,int(byNow.temperature),byHour.summary,byDay.summary)
+The temperature is %d degrees Celsius ... %s %s"""%(byNow.summary,int(byNow.temperature),byHour.summary,byDay.summary)
     say(wheather_summary)
 
 def diagnostic():
