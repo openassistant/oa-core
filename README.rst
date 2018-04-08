@@ -39,12 +39,12 @@ Python: (May be any version 2.* or 3.* branch.)
 
 Windows:
 
-``pip install keyboard pyaudio playsound requests pyttsx3 pocketsphinx psutil feedparser``
+``pip install keyboard sounddevice playsound requests pyttsx3 pocketsphinx psutil feedparser``
 to start: ``python oa.py``
 
 Arch Linux:
 
-``sudo pacman -S portaudio python-pyaudio swig espeak && sudo pip install keyboard requests pyttsx3 playsound pocketsphinx psutil feedparser``
+``sudo pacman -S portaudio swig espeak && sudo pip install sounddevice playsound keyboard requests pyttsx3 pocketsphinx psutil feedparser``
 
 Still some problems with:
 
@@ -52,7 +52,7 @@ Still some problems with:
 
 Ubuntu:
 
-``sudo apt-get install -y python python-dev python-pip build-essential swig git libpulse-dev espeak && sudo apt-get install python-pyaudio && sudo pip install keyboard pyttsx3 playsound psutil feedparser``
+``sudo apt-get install -y python python-dev python-pip build-essential swig git libpulse-dev espeak && sudo pip install sounddevice playsound keyboard pyttsx3 psutil feedparser``
 
 To start: ``sudo python oa.py``
 
