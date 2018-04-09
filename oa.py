@@ -77,7 +77,6 @@ class Assistant:
         _.mind_dir=os.path.join(_.cur_dir, 'mind', _.mind)
         # let's make dirs
 #        _._make_dir(_.cache_dir)
-#        _._make_dir(_.conf_dir)
         cf=_.commands_file()
         cf_data=fread(cf)
         d_exec=dict(_.d_funcs.items())
@@ -98,17 +97,11 @@ class Assistant:
         """
         _.set_mind(_.switch_hist.pop(),0)
 
-    def conf_path(_,fname):#, check_exists=0
-        """
-          returns full path from conf folder
-        """
-        return os.path.join(_.mind_dir,'conf', fname)
-
     def history_file(_):
         return os.path.join(_.mind_dir,'cache', 'history')
 
     def commands_file(_):
-        return _.conf_path("commands.py")
+        return os.path.join(_.mind_dir,"commands.py")
 
     def check_langs(_):
         """
