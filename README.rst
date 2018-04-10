@@ -46,10 +46,6 @@ Arch Linux:
 
 ``sudo pacman -S swig espeak && sudo pip install sounddevice playsound keyboard requests pyttsx3 pocketsphinx psutil feedparser python-forecastio``
 
-Still some problems with:
-
--- ALSA lib pcm.c:2501:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.rear
-
 Ubuntu:
 
 ``sudo apt-get install -y python python-dev python-pip build-essential swig git libpulse-dev espeak && sudo pip install sounddevice playsound keyboard pyttsx3 psutil feedparser python-forecastio``
