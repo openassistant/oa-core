@@ -1,0 +1,3255 @@
+AutoGen Definitions dummy;
+class = {
+  cp-id     = 'dc/d83/classcore_1_1assistant_1_1Assistant';
+  cp-name   = 'core::assistant::Assistant';
+  cp-section = {
+    sec-kind = 'public-func';
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'dc/d83/classcore_1_1assistant_1_1Assistant_1af3731daa479b5ddefd5ca0b38dbbaf31';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+def
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = '__init__';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+self
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'self';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+config
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'config';
+        sec-mem-param-defval = <<_EnD_oF_dEf_TeXt_
+None
+_EnD_oF_dEf_TeXt_;
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/core/assistant.py';
+      sec-mem-desc-line = '12';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'dc/d83/classcore_1_1assistant_1_1Assistant_1a39fbe7ec1f18717ffb7e22f661dae7b9';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'config';
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/core/assistant.py';
+      sec-mem-desc-line = '14';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'dc/d83/classcore_1_1assistant_1_1Assistant_1aacbbd761def4249558ad4b0be2bdd15b';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'history';
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/core/assistant.py';
+      sec-mem-desc-line = '15';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/admin/Documents/open_assistant/Open-Assistant/core/assistant.py';
+  cp-fileline  = '10';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* class */
+class = {
+  cp-id     = 'd2/d5e/classconfig_1_1Config';
+  cp-name   = 'config::Config';
+  cp-section = {
+    sec-kind = 'public-func';
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'd2/d5e/classconfig_1_1Config_1a4d50dd77454fa803fdbc617a62ce0856';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+def
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = '__init__';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+self
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'self';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+path
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'path';
+        sec-mem-param-defval = <<_EnD_oF_dEf_TeXt_
+None
+_EnD_oF_dEf_TeXt_;
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+opts
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'opts';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/core/util/config.py';
+      sec-mem-desc-line = '11';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'd2/d5e/classconfig_1_1Config_1ad732f116c212b8178e2ab0137cc59626';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'cache_dir';
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/core/util/config.py';
+      sec-mem-desc-line = '15';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'd2/d5e/classconfig_1_1Config_1a38f95924f412558903e42b301b910cc9';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'conf_dir';
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/core/util/config.py';
+      sec-mem-desc-line = '16';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'd2/d5e/classconfig_1_1Config_1a518c54a937ad2a2142a82bbc72a1272b';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'opt_file';
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/core/util/config.py';
+      sec-mem-desc-line = '19';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'd2/d5e/classconfig_1_1Config_1a2064525f53747ffc1f7dd7fe449b66b7';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'cmd_file';
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/core/util/config.py';
+      sec-mem-desc-line = '20';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'd2/d5e/classconfig_1_1Config_1a064d0b388057631f1260d3948b972766';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'history_file';
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/core/util/config.py';
+      sec-mem-desc-line = '23';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'd2/d5e/classconfig_1_1Config_1a6393fa202d268e719e4d5b8c809c861e';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'hash_file';
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/core/util/config.py';
+      sec-mem-desc-line = '24';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'd2/d5e/classconfig_1_1Config_1a15b45e0e3ab73cc95af705c26df4276e';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'options';
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/core/util/config.py';
+      sec-mem-desc-line = '29';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'd2/d5e/classconfig_1_1Config_1a63287cd6de3779000c99c0dc882d370e';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'commands';
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/core/util/config.py';
+      sec-mem-desc-line = '33';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-section = {
+    sec-kind = 'private-func';
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'd2/d5e/classconfig_1_1Config_1aebdcbbbdedf45745dec1cf01b441ed66';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+def
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = '_make_dir';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+self
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'self';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+directory
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'directory';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/core/util/config.py';
+      sec-mem-desc-line = '37';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'd2/d5e/classconfig_1_1Config_1a03accb6722aeece7825293873f5e19e0';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+def
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = '_read_options_file';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+self
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'self';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/core/util/config.py';
+      sec-mem-desc-line = '42';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'd2/d5e/classconfig_1_1Config_1af812e6722b0ee072a790942fc9aeef20';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+def
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = '_read_commands_file';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+self
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'self';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/core/util/config.py';
+      sec-mem-desc-line = '54';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/admin/Documents/open_assistant/Open-Assistant/core/util/config.py';
+  cp-fileline  = '8';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+@verbatim OPEN ASSISTANT CONFIGURATION\endverbatim  
+_EnD_oF_dEf_TeXt_;
+}; /* class */
+class = {
+  cp-id     = 'd0/d6f/classdb_1_1DB';
+  cp-name   = 'db::DB';
+  cp-section = {
+    sec-kind = 'public-func';
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'd0/d6f/classdb_1_1DB_1a0c22d94b1070f48510783ce5368bf22a';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+def
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = '__init__';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+self
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'self';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+path
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'path';
+        sec-mem-param-defval = <<_EnD_oF_dEf_TeXt_
+None
+_EnD_oF_dEf_TeXt_;
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/core/util/db.py';
+      sec-mem-desc-line = '8';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'd0/d6f/classdb_1_1DB_1abb38f7813fcd0da8da52e1bdbaaf7588';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+def
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'create_schema';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+self
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'self';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/core/util/db.py';
+      sec-mem-desc-line = '12';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'd0/d6f/classdb_1_1DB_1ab64416c15f5730145be257a771bfd1f1';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+def
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'add_action';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+self
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'self';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+prompt
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'prompt';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+command
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'command';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/core/util/db.py';
+      sec-mem-desc-line = '18';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'd0/d6f/classdb_1_1DB_1ad8583a02fa25336d2ab3c2372949ffa0';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+def
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'get_action';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+self
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'self';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+prompt
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'prompt';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/core/util/db.py';
+      sec-mem-desc-line = '37';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'd0/d6f/classdb_1_1DB_1a3f2d6197dd6eb15f2b0058489e7e8213';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+def
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'get_prompts';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+self
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'self';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/core/util/db.py';
+      sec-mem-desc-line = '42';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'd0/d6f/classdb_1_1DB_1a3dac3ac46e3a37cbd1a41b4daea5c9cc';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+def
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'load_commands';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+self
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'self';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+path
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'path';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/core/util/db.py';
+      sec-mem-desc-line = '46';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'd0/d6f/classdb_1_1DB_1a7733c9d9ac79f459e1e79cc4a96b04f8';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'path';
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/core/util/db.py';
+      sec-mem-desc-line = '9';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'd0/d6f/classdb_1_1DB_1a2a6202220c0957d43fac24b2a580beca';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'db';
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/core/util/db.py';
+      sec-mem-desc-line = '10';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/admin/Documents/open_assistant/Open-Assistant/core/util/db.py';
+  cp-fileline  = '7';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* class */
+class = {
+  cp-id     = 'de/df0/classGObject_1_1GObject';
+  cp-name   = 'GObject::GObject';
+  cp-ref     = {
+    ref-type = derived;
+    ref-id   = 'dd/d70/classspeech__recognition_1_1gst_1_1Recognizer';
+    ref-prot = public;
+    ref-virt = non-virtual;
+  };
+  cp-filename  = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/speech_recognition/gst.py';
+  cp-fileline  = '12';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-inheritancegraph = <<_EnD_oF_dEf_TeXt_
+      node = {
+        node-id    = 7;
+        node-label = 'speech_recognition.gst.Recognizer';
+        node-link = {
+          node-link-id = 'dd/d70/classspeech__recognition_1_1gst_1_1Recognizer';
+        };
+        node-child = {
+          child-id = '6';
+          relation = public-inheritance;
+        }; /* node-child */
+      }; /* node */
+      node = {
+        node-id    = 6;
+        node-label = 'GObject';
+      }; /* node */
+
+_EnD_oF_dEf_TeXt_;
+}; /* class */
+class = {
+  cp-id     = 'd8/df7/classhasher_1_1Hasher';
+  cp-name   = 'hasher::Hasher';
+  cp-section = {
+    sec-kind = 'public-func';
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'd8/df7/classhasher_1_1Hasher_1a4fea7fe78ade0c3ac1786a7d68a5c84b';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+def
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = '__init__';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+self
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'self';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+config
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'config';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/core/util/hasher.py';
+      sec-mem-desc-line = '8';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'd8/df7/classhasher_1_1Hasher_1a45442e68125a6fa75f218180d1f50d55';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+def
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = '__getitem__';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+self
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'self';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+hashname
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'hashname';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/core/util/hasher.py';
+      sec-mem-desc-line = '17';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'd8/df7/classhasher_1_1Hasher_1aa103d6b1da47e3acff0bd214d006c42b';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+def
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = '__setitem__';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+self
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'self';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+hashname
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'hashname';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+value
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'value';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/core/util/hasher.py';
+      sec-mem-desc-line = '23';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'd8/df7/classhasher_1_1Hasher_1acd8ae3a231b118fdcbbdeb4039a91acc';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+def
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'get_hash_object';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+self
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'self';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/core/util/hasher.py';
+      sec-mem-desc-line = '26';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+@verbatim Returns an object to compute a new hash\endverbatim  
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'd8/df7/classhasher_1_1Hasher_1ade1434c2e57ee4a6689b2efd584a3897';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+def
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'store';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+self
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'self';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/core/util/hasher.py';
+      sec-mem-desc-line = '30';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+@verbatim Store the current hashes into a the hash file\endverbatim  
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'd8/df7/classhasher_1_1Hasher_1a77e58c1bdd4acc11f5562a5f91682620';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'config';
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/core/util/hasher.py';
+      sec-mem-desc-line = '9';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'd8/df7/classhasher_1_1Hasher_1a369a448a9f5ec7714ca153be3914bbaf';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'hashes';
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/core/util/hasher.py';
+      sec-mem-desc-line = '12';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/admin/Documents/open_assistant/Open-Assistant/core/util/hasher.py';
+  cp-fileline  = '5';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+@verbatim Keep track of hashes\endverbatim  
+_EnD_oF_dEf_TeXt_;
+}; /* class */
+class = {
+  cp-id     = 'da/dfa/classlanguage_1_1LanguageUpdater';
+  cp-name   = 'language::LanguageUpdater';
+  cp-section = {
+    sec-kind = 'public-func';
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'da/dfa/classlanguage_1_1LanguageUpdater_1ae2d68cda787672d1c85b826f5a1853ba';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+def
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = '__init__';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+self
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'self';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+config
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'config';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/language/__init__.py';
+      sec-mem-desc-line = '25';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'da/dfa/classlanguage_1_1LanguageUpdater_1ad8986f6446c62f71faa5a22b3f4f30b0';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+def
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'create_strings_file';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+self
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'self';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/language/__init__.py';
+      sec-mem-desc-line = '58';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'da/dfa/classlanguage_1_1LanguageUpdater_1a3d916afdb3d484888e4069084b1281ab';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+def
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'update_language';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+self
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'self';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/language/__init__.py';
+      sec-mem-desc-line = '105';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+@verbatim Update the language using the online lmtool\endverbatim  
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'da/dfa/classlanguage_1_1LanguageUpdater_1aa8bcbfd49790c22ecfad23f5eb4d3e0e';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'config';
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/language/__init__.py';
+      sec-mem-desc-line = '26';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-section = {
+    sec-kind = 'private-func';
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'da/dfa/classlanguage_1_1LanguageUpdater_1afdd85484d229e0ed493cf41308f57706';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+def
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = '_download_file';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+self
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'self';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+url
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'url';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+path
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'path';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/language/__init__.py';
+      sec-mem-desc-line = '147';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/language/__init__.py';
+  cp-fileline  = '15';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+@verbatim 
+Handles updating the language using the online lmtool.
+
+This class provides methods to check if the corpus has changed, and to
+update the language to match the new corpus using the lmtool.  This allows
+us to automatically update the language if the corpus has changed, saving
+the user from having to do this manually.
+\endverbatim  
+_EnD_oF_dEf_TeXt_;
+}; /* class */
+class = {
+  cp-id     = 'df/dd5/classnumbers_1_1NumberParser';
+  cp-name   = 'numbers::NumberParser';
+  cp-section = {
+    sec-kind = 'public-func';
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'df/dd5/classnumbers_1_1NumberParser_1a34d2142f8dc3d1a86d7b9adf0c986203';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+def
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = '__init__';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+self
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'self';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/numbers/__init__.py';
+      sec-mem-desc-line = '75';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'df/dd5/classnumbers_1_1NumberParser_1af532d0bc22a3b238a71cfedb89df8a53';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+def
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'parse_number';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+self
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'self';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+text_line
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'text_line';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/numbers/__init__.py';
+      sec-mem-desc-line = '93';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+@verbatim PARSE A NUMBER FROM ENGLISH INTO AN INT\endverbatim  
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'df/dd5/classnumbers_1_1NumberParser_1a725fb2e38e879cfda92548aad2e90845';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+def
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'parse_all_numbers';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+self
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'self';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+text_line
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'text_line';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/numbers/__init__.py';
+      sec-mem-desc-line = '143';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+@verbatim 
+PARSE ALL NUMBERS FROM ENGLISH TO INTEGERS
+
+RETURNS A TUPLE WHOSE FIRST ELEMENT IS TEXT_LINE WITH ALL ENGLISH
+NUMBERS REPLACED WITH "%d", AND WHOSE SECOND ELEMENT IS A LIST
+CONTAINING ALL THE PARSED NUMBERS AS INTS.
+\endverbatim  
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'df/dd5/classnumbers_1_1NumberParser_1a411b667d3089bbc727b58f0a74552961';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'number_words';
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/numbers/__init__.py';
+      sec-mem-desc-line = '76';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'df/dd5/classnumbers_1_1NumberParser_1a603d141eb4ac0e8d1bccaeea810a6402';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'mandatory_number_words';
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/numbers/__init__.py';
+      sec-mem-desc-line = '89';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-section = {
+    sec-kind = 'public-static-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'df/dd5/classnumbers_1_1NumberParser_1a537bb8dfaf49dab7fa86b6d9c099b793';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+dictionary
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'zero';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  {
+        'zero': 0
+    }
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/numbers/__init__.py';
+      sec-mem-desc-line = '21';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'df/dd5/classnumbers_1_1NumberParser_1a0eb03b5e7b9a0ec1a599ff07b7c565e8';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+dictionary
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'ones';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  {
+        'one': 1,
+        'two': 2,
+        'three': 3,
+        'four': 4,
+        'five': 5,
+        'six': 6,
+        'seven': 7,
+        'eight': 8,
+        'nine': 9
+    }
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/numbers/__init__.py';
+      sec-mem-desc-line = '25';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'df/dd5/classnumbers_1_1NumberParser_1a37e4cd35adaa58891c095dbe486fa01e';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+dictionary
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'special_ones';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  {
+        'ten': 10,
+        'eleven': 11,
+        'twelve': 12,
+        'thirteen': 13,
+        'fourteen': 14,
+        'fifteen': 15,
+        'sixteen': 16,
+        'seventeen': 17,
+        'eighteen': 18,
+        'ninteen': 19
+    }
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/numbers/__init__.py';
+      sec-mem-desc-line = '37';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'df/dd5/classnumbers_1_1NumberParser_1a46c13d28327dc304487403ab0f7af441';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+dictionary
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'tens';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  {
+        'twenty': 20,
+        'thirty': 30,
+        'forty': 40,
+        'fifty': 50,
+        'sixty': 60,
+        'seventy': 70,
+        'eighty': 80,
+        'ninty': 90
+    }
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/numbers/__init__.py';
+      sec-mem-desc-line = '50';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'df/dd5/classnumbers_1_1NumberParser_1a3a23109a9ace3c2ac1c9e814526e1ef5';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+dictionary
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'hundred';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  {
+        'hundred': 100
+    }
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/numbers/__init__.py';
+      sec-mem-desc-line = '61';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'df/dd5/classnumbers_1_1NumberParser_1affa53f0c1bf720c11e01b095f3e43a21';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+dictionary
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'exp';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  {
+        'thousand': 1000,
+        'million': 1000000,
+        'billion': 1000000000
+    }
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/numbers/__init__.py';
+      sec-mem-desc-line = '65';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'df/dd5/classnumbers_1_1NumberParser_1a7cf9dc076dee69950637bf989049c56d';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+list
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'allowed';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  [
+        'and'
+    ]
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/numbers/__init__.py';
+      sec-mem-desc-line = '71';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/numbers/__init__.py';
+  cp-fileline  = '18';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+@verbatim Parses integers from English strings\endverbatim  
+_EnD_oF_dEf_TeXt_;
+}; /* class */
+class = {
+  cp-id     = 'dd/d70/classspeech__recognition_1_1gst_1_1Recognizer';
+  cp-name   = 'speech_recognition::gst::Recognizer';
+  cp-ref     = {
+    ref-type = base;
+    ref-id   = 'de/df0/classGObject_1_1GObject';
+    ref-prot = public;
+    ref-virt = non-virtual;
+  };
+  cp-section = {
+    sec-kind = 'public-func';
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'dd/d70/classspeech__recognition_1_1gst_1_1Recognizer_1a09c5ca0a0de9fc25a2d6d5a8e566a6bb';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+def
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = '__init__';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+self
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'self';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+config
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'config';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/speech_recognition/gst.py';
+      sec-mem-desc-line = '19';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'dd/d70/classspeech__recognition_1_1gst_1_1Recognizer_1a59d38da8089c82b8f19526bd2ab84578';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+def
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'listen';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+self
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'self';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/speech_recognition/gst.py';
+      sec-mem-desc-line = '63';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'dd/d70/classspeech__recognition_1_1gst_1_1Recognizer_1a97ce168a253db0c4c999d779bf672540';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+def
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'pause';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+self
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'self';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/speech_recognition/gst.py';
+      sec-mem-desc-line = '67';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'function';
+      sec-mem-id   = 'dd/d70/classspeech__recognition_1_1gst_1_1Recognizer_1a0237dcdd695ccc033d90de55f5e7008c';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+def
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'result';
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+self
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'self';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+bus
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'bus';
+      }; /*        sec-mem-param--param */
+      sec-mem-param = {
+        sec-mem-param-type = <<_EnD_oF_dEf_TeXt_
+msg
+_EnD_oF_dEf_TeXt_;
+        sec-mem-param-defname = 'msg';
+      }; /*        sec-mem-param--param */
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/speech_recognition/gst.py';
+      sec-mem-desc-line = '71';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-section = {
+    sec-kind = 'public-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'dd/d70/classspeech__recognition_1_1gst_1_1Recognizer_1a92eadb8c55045f3049db6a29c5652e7e';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'commands';
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/speech_recognition/gst.py';
+      sec-mem-desc-line = '22';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'dd/d70/classspeech__recognition_1_1gst_1_1Recognizer_1a4914220634286aa10e99ed79ce5e333c';
+      sec-mem-virt = normal;
+      sec-mem-prot = public;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = 'pipeline';
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/speech_recognition/gst.py';
+      sec-mem-desc-line = '52';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-section = {
+    sec-kind = 'private-static-attrib';
+    sec-member = {
+      sec-mem-kind = 'variable';
+      sec-mem-id   = 'dd/d70/classspeech__recognition_1_1gst_1_1Recognizer_1a26d0adaff67aab500c187e1398b98518';
+      sec-mem-virt = normal;
+      sec-mem-prot = private;
+      sec-mem-type = <<_EnD_oF_dEf_TeXt_
+dictionary
+_EnD_oF_dEf_TeXt_;
+      sec-mem-name = '__gsignals__';
+      sec-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  {
+        'finished' : (GObject.SIGNAL_RUN_LAST, GObject.TYPE_NONE,
+                      (GObject.TYPE_STRING,))
+    }
+_EnD_oF_dEf_TeXt_;
+      sec-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/speech_recognition/gst.py';
+      sec-mem-desc-line = '13';
+      sec-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      sec-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* sec-member */
+  }; /* cp-section */
+  cp-filename  = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/speech_recognition/gst.py';
+  cp-fileline  = '12';
+  cp-briefdesc = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  cp-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* class */
+file = {
+  file-id   = 'd8/d0d/core_2____init_____8py';
+  file-name = '__init__.py';
+  file-full-name  = '/Users/admin/Documents/open_assistant/Open-Assistant/core/__init__.py';
+  file-first-line = '1';
+  file-briefdesc  = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  file-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* file */
+file = {
+  file-id   = 'd8/d52/modules_2language_2____init_____8py';
+  file-name = '__init__.py';
+    var = {
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd8/da3/namespacelanguage_1aa92e89726c1d1a2e7d599b8443899825';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'logger';
+      var-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  logging.getLogger(__name__)
+_EnD_oF_dEf_TeXt_;
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/language/__init__.py';
+      var-mem-desc-line = '2';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd8/da3/namespacelanguage_1aa1889377f13b1528e183f7eb10c05db4';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+string
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'NET_TEST_SERVER';
+      var-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  "http://www.speech.cs.cmu.edu"
+_EnD_oF_dEf_TeXt_;
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/language/__init__.py';
+      var-mem-desc-line = '12';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    };
+  file-full-name  = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/language/__init__.py';
+  file-first-line = '1';
+  file-briefdesc  = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  file-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* file */
+file = {
+  file-id   = 'd2/d61/modules_2numbers_2____init_____8py';
+  file-name = '__init__.py';
+    var = {
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd2/d40/namespacenumbers_1ad7a65db63a708d73973150b3fd28a7be';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'np';
+      var-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  NumberParser()
+_EnD_oF_dEf_TeXt_;
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/numbers/__init__.py';
+      var-mem-desc-line = '185';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd2/d40/namespacenumbers_1a0e62a0a217cc03cb0a11cd0d2ebe72fd';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'text_line';
+      var-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  input('Enter a string: ')
+_EnD_oF_dEf_TeXt_;
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/numbers/__init__.py';
+      var-mem-desc-line = '187';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd2/d40/namespacenumbers_1a44667ec689ab853c8ce79fb6567b1e94';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'value';
+      var-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  np.parse_all_numbers(text_line)
+_EnD_oF_dEf_TeXt_;
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/numbers/__init__.py';
+      var-mem-desc-line = '189';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    };
+  file-full-name  = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/numbers/__init__.py';
+  file-first-line = '1';
+  file-briefdesc  = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  file-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* file */
+file = {
+  file-id   = 'db/d4f/modules_2speech__recognition_2____init_____8py';
+  file-name = '__init__.py';
+    var = {
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd6/d50/namespacespeech__recognition_1ac99bea05ef32bbb6eda41705d1bd045b';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'logger';
+      var-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  logging.getLogger(__name__)
+_EnD_oF_dEf_TeXt_;
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/speech_recognition/__init__.py';
+      var-mem-desc-line = '8';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    };
+  file-full-name  = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/speech_recognition/__init__.py';
+  file-first-line = '1';
+  file-briefdesc  = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  file-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* file */
+file = {
+  file-id   = 'df/dda/assistant_8py';
+  file-name = 'assistant.py';
+    var = {
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'de/d09/namespacecore_1_1assistant_1a6120ac3922e61579a69f78ab76bffe8e';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'logger';
+      var-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  logging.getLogger(__name__)
+_EnD_oF_dEf_TeXt_;
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/core/assistant.py';
+      var-mem-desc-line = '8';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    };
+  file-full-name  = '/Users/admin/Documents/open_assistant/Open-Assistant/core/assistant.py';
+  file-first-line = '1';
+  file-briefdesc  = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  file-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* file */
+file = {
+  file-id   = 'dd/deb/config_8py';
+  file-name = 'config.py';
+    var = {
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd6/d7f/namespaceconfig_1a7ccfa8b7be656a9a088648ed09a960a0';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'logger';
+      var-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  logging.getLogger(__name__)
+_EnD_oF_dEf_TeXt_;
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/core/util/config.py';
+      var-mem-desc-line = '2';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    };
+  file-full-name  = '/Users/admin/Documents/open_assistant/Open-Assistant/core/util/config.py';
+  file-first-line = '1';
+  file-briefdesc  = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  file-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* file */
+file = {
+  file-id   = 'd8/d33/db_8py';
+  file-name = 'db.py';
+  file-full-name  = '/Users/admin/Documents/open_assistant/Open-Assistant/core/util/db.py';
+  file-first-line = '1';
+  file-briefdesc  = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  file-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* file */
+file = {
+  file-id   = 'dc/d79/hasher_8py';
+  file-name = 'hasher.py';
+  file-full-name  = '/Users/admin/Documents/open_assistant/Open-Assistant/core/util/hasher.py';
+  file-first-line = '1';
+  file-briefdesc  = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  file-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* file */
+file = {
+  file-id   = 'db/d97/good_8py';
+  file-name = 'good.py';
+    var = {
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'da/d54/namespacegood_1ae425db6d1d9d8b90d514d7ad60900a12';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+list
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'response';
+      var-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  ['awesome', 'cool', 'excellent', 'fantastic', 'good', 'great', 'lovely', 'nice', 'wonderful']
+_EnD_oF_dEf_TeXt_;
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/mind/stella/words/good.py';
+      var-mem-desc-line = '5';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    };
+  file-full-name  = '/Users/admin/Documents/open_assistant/Open-Assistant/mind/stella/words/good.py';
+  file-first-line = '1';
+  file-briefdesc  = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  file-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* file */
+file = {
+  file-id   = 'd5/dc3/hello_8py';
+  file-name = 'hello.py';
+    var = {
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd9/d4d/namespacehello_1a25f60b8a86cc38df0aeb0cf6d8feae3d';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+list
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'response';
+      var-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  ['greetings', 'hello', 'hello again', 'hello there', 'hey', 'hey there', 'hi there']
+_EnD_oF_dEf_TeXt_;
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/mind/stella/words/hello.py';
+      var-mem-desc-line = '5';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    };
+  file-full-name  = '/Users/admin/Documents/open_assistant/Open-Assistant/mind/stella/words/hello.py';
+  file-first-line = '1';
+  file-briefdesc  = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  file-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* file */
+file = {
+  file-id   = 'db/d93/nettest_8py';
+  file-name = 'nettest.py';
+    func = {
+    func-member = {
+      func-mem-kind = 'function';
+      func-mem-id   = 'd2/d6b/namespacenettest_1a39b2e4f5e7d9ce7b5c97bfdfc5d27e34';
+      func-mem-virt = normal;
+      func-mem-prot = public;
+      func-mem-type = <<_EnD_oF_dEf_TeXt_
+def
+_EnD_oF_dEf_TeXt_;
+      func-mem-name = 'is_connected';
+      func-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/mind/stella/words/nettest.py';
+      func-mem-desc-line = '16';
+      func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      func-mem-documentation = <<_EnD_oF_dEf_TeXt_
+@verbatim If Connected Return True, Or Else False\endverbatim  
+_EnD_oF_dEf_TeXt_;
+    }; /* func-member */
+    };
+    var = {
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd2/d6b/namespacenettest_1a03262c8173ca277aec873f1c1948848e';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+string
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'REMOTE_SERVER';
+      var-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  "http://www.speech.cs.cmu.edu"
+_EnD_oF_dEf_TeXt_;
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/mind/stella/words/nettest.py';
+      var-mem-desc-line = '14';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    };
+  file-full-name  = '/Users/admin/Documents/open_assistant/Open-Assistant/mind/stella/words/nettest.py';
+  file-first-line = '1';
+  file-briefdesc  = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  file-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* file */
+file = {
+  file-id   = 'd0/db1/newsfuture_8py';
+  file-name = 'newsfuture.py';
+    var = {
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd1/df3/namespacenewsfuture_1a8c92dbad31e0c718ecd3b65891841b57';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'rss';
+      var-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  feedparser.parse('https://www.reddit.com/r/Futurology/.rss')
+_EnD_oF_dEf_TeXt_;
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/mind/stella/words/newsfuture.py';
+      var-mem-desc-line = '7';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd1/df3/namespacenewsfuture_1af2c40cd2d5d37324b73ebc185f82f57e';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'shell';
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/mind/stella/words/newsfuture.py';
+      var-mem-desc-line = '11';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd1/df3/namespacenewsfuture_1aa7abedf84b60528236cdaab9a77fda8b';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'headline';
+      var-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  post.title
+_EnD_oF_dEf_TeXt_;
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/mind/stella/words/newsfuture.py';
+      var-mem-desc-line = '14';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd1/df3/namespacenewsfuture_1af0ab3b4668e095704231d3c40613ea6f';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'exclude';
+      var-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  set(string.punctuation)
+_EnD_oF_dEf_TeXt_;
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/mind/stella/words/newsfuture.py';
+      var-mem-desc-line = '15';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    };
+  file-full-name  = '/Users/admin/Documents/open_assistant/Open-Assistant/mind/stella/words/newsfuture.py';
+  file-first-line = '1';
+  file-briefdesc  = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  file-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* file */
+file = {
+  file-id   = 'db/dca/newstech_8py';
+  file-name = 'newstech.py';
+    var = {
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd1/d72/namespacenewstech_1a9554c383d1f282e6bd7caa3bb06f0a0c';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'rss';
+      var-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  feedparser.parse('http://www.reddit.com/r/technology/.rss')
+_EnD_oF_dEf_TeXt_;
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/mind/stella/words/newstech.py';
+      var-mem-desc-line = '7';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd1/d72/namespacenewstech_1afed94396d76041611ef9c6dc01e923f9';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'shell';
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/mind/stella/words/newstech.py';
+      var-mem-desc-line = '11';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd1/d72/namespacenewstech_1a2af0a1c0376b92e3daba704aadec8942';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'headline';
+      var-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  post.title
+_EnD_oF_dEf_TeXt_;
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/mind/stella/words/newstech.py';
+      var-mem-desc-line = '14';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd1/d72/namespacenewstech_1a42da9773da6f810f8eb6052cf46405c4';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'exclude';
+      var-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  set(string.punctuation)
+_EnD_oF_dEf_TeXt_;
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/mind/stella/words/newstech.py';
+      var-mem-desc-line = '15';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    };
+  file-full-name  = '/Users/admin/Documents/open_assistant/Open-Assistant/mind/stella/words/newstech.py';
+  file-first-line = '1';
+  file-briefdesc  = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  file-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* file */
+file = {
+  file-id   = 'db/dbe/newsworld_8py';
+  file-name = 'newsworld.py';
+    var = {
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'dc/d1e/namespacenewsworld_1af79472fe6d869cedd14e005b97be6377';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'rss';
+      var-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  feedparser.parse('http://www.reddit.com/r/worldnews/.rss')
+_EnD_oF_dEf_TeXt_;
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/mind/stella/words/newsworld.py';
+      var-mem-desc-line = '7';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'dc/d1e/namespacenewsworld_1ab08550cb9698c4dec3aa7c5c41dc0932';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'shell';
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/mind/stella/words/newsworld.py';
+      var-mem-desc-line = '11';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'dc/d1e/namespacenewsworld_1ad5c3188c33312ba8daf459902b6faac4';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'headline';
+      var-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  post.title
+_EnD_oF_dEf_TeXt_;
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/mind/stella/words/newsworld.py';
+      var-mem-desc-line = '14';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'dc/d1e/namespacenewsworld_1a668d2c3b6b0a1f041727ca84c75e1272';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'exclude';
+      var-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  set(string.punctuation)
+_EnD_oF_dEf_TeXt_;
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/mind/stella/words/newsworld.py';
+      var-mem-desc-line = '15';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    };
+  file-full-name  = '/Users/admin/Documents/open_assistant/Open-Assistant/mind/stella/words/newsworld.py';
+  file-first-line = '1';
+  file-briefdesc  = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  file-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* file */
+file = {
+  file-id   = 'd8/dc8/thanks_8py';
+  file-name = 'thanks.py';
+    var = {
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd1/dfc/namespacethanks_1a2f3cc4eeb1f336493f0db940ce3c304d';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+list
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'response';
+      var-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  ['thanks', 'cool', 'thanks so much', 'thank you', 'much appreciated', 'you bet', 'sure', 'a pleasure', 'you are very kind']
+_EnD_oF_dEf_TeXt_;
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/mind/stella/words/thanks.py';
+      var-mem-desc-line = '5';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    };
+  file-full-name  = '/Users/admin/Documents/open_assistant/Open-Assistant/mind/stella/words/thanks.py';
+  file-first-line = '1';
+  file-briefdesc  = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  file-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* file */
+file = {
+  file-id   = 'df/dec/weather_8py';
+  file-name = 'weather.py';
+    var = {
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd0/dee/namespaceweather_1a9c4bd99ae052805fe4da8e142b49d0ce';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+string
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'api_key';
+      var-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  "e3f8667cb539171dc2f4b389d33648ce"
+_EnD_oF_dEf_TeXt_;
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/mind/stella/words/weather.py';
+      var-mem-desc-line = '16';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd0/dee/namespaceweather_1a3c4a3378fe162370f27e1544111f0931';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+float
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'lat';
+      var-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  49.8705556
+_EnD_oF_dEf_TeXt_;
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/mind/stella/words/weather.py';
+      var-mem-desc-line = '17';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd0/dee/namespaceweather_1a05dff027c3b0465dceded43f5f69c711';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+float
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'lng';
+      var-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  8.6494444
+_EnD_oF_dEf_TeXt_;
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/mind/stella/words/weather.py';
+      var-mem-desc-line = '18';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd0/dee/namespaceweather_1a7850860a951931415db7eb3c3ac51802';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'forecast';
+      var-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  forecastio.load_forecast(api_key, lat, lng)
+_EnD_oF_dEf_TeXt_;
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/mind/stella/words/weather.py';
+      var-mem-desc-line = '20';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd0/dee/namespaceweather_1a9f383b8c0de85f1348c426d4d43c3c0b';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'byHour';
+      var-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  forecast.currently()
+_EnD_oF_dEf_TeXt_;
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/mind/stella/words/weather.py';
+      var-mem-desc-line = '21';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd0/dee/namespaceweather_1a145ce555ab8edab55168ccc5553c1640';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'currentTemp';
+      var-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  int(byHour.temperature)
+_EnD_oF_dEf_TeXt_;
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/mind/stella/words/weather.py';
+      var-mem-desc-line = '22';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    };
+  file-full-name  = '/Users/admin/Documents/open_assistant/Open-Assistant/mind/stella/words/weather.py';
+  file-first-line = '1';
+  file-briefdesc  = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  file-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* file */
+file = {
+  file-id   = 'dd/d6a/weather2_8py';
+  file-name = 'weather2.py';
+    func = {
+    func-member = {
+      func-mem-kind = 'function';
+      func-mem-id   = 'd8/dcd/namespaceweather2_1a5af54b211b54e2c3dd643fec9bd0683c';
+      func-mem-virt = normal;
+      func-mem-prot = public;
+      func-mem-type = <<_EnD_oF_dEf_TeXt_
+def
+_EnD_oF_dEf_TeXt_;
+      func-mem-name = 'main';
+      func-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/mind/stella/words/weather2.py';
+      func-mem-desc-line = '13';
+      func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      func-mem-documentation = <<_EnD_oF_dEf_TeXt_
+@verbatim 
+Run load_forecast() with the given lat, lng, and time arguments.
+\endverbatim  
+_EnD_oF_dEf_TeXt_;
+    }; /* func-member */
+    };
+  file-full-name  = '/Users/admin/Documents/open_assistant/Open-Assistant/mind/stella/words/weather2.py';
+  file-first-line = '1';
+  file-briefdesc  = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  file-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* file */
+file = {
+  file-id   = 'da/d02/gst_8py';
+  file-name = 'gst.py';
+    var = {
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'de/dc7/namespacespeech__recognition_1_1gst_1ac8af4f913e23e684e5727d6d9539d7ad';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'logger';
+      var-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  logging.getLogger(__name__)
+_EnD_oF_dEf_TeXt_;
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/speech_recognition/gst.py';
+      var-mem-desc-line = '2';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    };
+  file-full-name  = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/speech_recognition/gst.py';
+  file-first-line = '1';
+  file-briefdesc  = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  file-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* file */
+file = {
+  file-id   = 'd0/d92/wsr_8py';
+  file-name = 'wsr.py';
+    var = {
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd5/db4/namespacespeech__recognition_1_1wsr_1ae10ed07e763f4f0655a6edca7012a27b';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'logger';
+      var-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  logging.getLogger(__name__)
+_EnD_oF_dEf_TeXt_;
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/speech_recognition/wsr.py';
+      var-mem-desc-line = '2';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    };
+  file-full-name  = '/Users/admin/Documents/open_assistant/Open-Assistant/modules/speech_recognition/wsr.py';
+  file-first-line = '1';
+  file-briefdesc  = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  file-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* file */
+file = {
+  file-id   = 'd5/d87/run_8py';
+  file-name = 'run.py';
+    func = {
+    func-member = {
+      func-mem-kind = 'function';
+      func-mem-id   = 'd4/d7e/namespacerun_1ae2e49d44c80de28c6b3fd8ecdd90da41';
+      func-mem-virt = normal;
+      func-mem-prot = private;
+      func-mem-type = <<_EnD_oF_dEf_TeXt_
+def
+_EnD_oF_dEf_TeXt_;
+      func-mem-name = '_parser';
+      func-mem-param = {
+        func-mem-param-type = <<_EnD_oF_dEf_TeXt_
+args
+_EnD_oF_dEf_TeXt_;
+        func-mem-param-defname = 'args';
+      }; /*        func-mem-param--param */
+      func-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/run.py';
+      func-mem-desc-line = '18';
+      func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      func-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* func-member */
+    func-member = {
+      func-mem-kind = 'function';
+      func-mem-id   = 'd4/d7e/namespacerun_1a645ea22407295d44687bd43b3bea60f6';
+      func-mem-virt = normal;
+      func-mem-prot = public;
+      func-mem-type = <<_EnD_oF_dEf_TeXt_
+def
+_EnD_oF_dEf_TeXt_;
+      func-mem-name = 'recognizer_finished';
+      func-mem-param = {
+        func-mem-param-type = <<_EnD_oF_dEf_TeXt_
+a
+_EnD_oF_dEf_TeXt_;
+        func-mem-param-defname = 'a';
+      }; /*        func-mem-param--param */
+      func-mem-param = {
+        func-mem-param-type = <<_EnD_oF_dEf_TeXt_
+recognizer
+_EnD_oF_dEf_TeXt_;
+        func-mem-param-defname = 'recognizer';
+      }; /*        func-mem-param--param */
+      func-mem-param = {
+        func-mem-param-type = <<_EnD_oF_dEf_TeXt_
+text
+_EnD_oF_dEf_TeXt_;
+        func-mem-param-defname = 'text';
+      }; /*        func-mem-param--param */
+      func-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/run.py';
+      func-mem-desc-line = '60';
+      func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      func-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* func-member */
+    func-member = {
+      func-mem-kind = 'function';
+      func-mem-id   = 'd4/d7e/namespacerun_1a1d8133d7a71c97f4b1ee816d3fb5ea13';
+      func-mem-virt = normal;
+      func-mem-prot = public;
+      func-mem-type = <<_EnD_oF_dEf_TeXt_
+def
+_EnD_oF_dEf_TeXt_;
+      func-mem-name = 'log_history';
+      func-mem-param = {
+        func-mem-param-type = <<_EnD_oF_dEf_TeXt_
+a
+_EnD_oF_dEf_TeXt_;
+        func-mem-param-defname = 'a';
+      }; /*        func-mem-param--param */
+      func-mem-param = {
+        func-mem-param-type = <<_EnD_oF_dEf_TeXt_
+text
+_EnD_oF_dEf_TeXt_;
+        func-mem-param-defname = 'text';
+      }; /*        func-mem-param--param */
+      func-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/run.py';
+      func-mem-desc-line = '104';
+      func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      func-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* func-member */
+    func-member = {
+      func-mem-kind = 'function';
+      func-mem-id   = 'd4/d7e/namespacerun_1ad3a8e9b9366e4a1b53f8bad239675290';
+      func-mem-virt = normal;
+      func-mem-prot = public;
+      func-mem-type = <<_EnD_oF_dEf_TeXt_
+def
+_EnD_oF_dEf_TeXt_;
+      func-mem-name = 'run_command';
+      func-mem-param = {
+        func-mem-param-type = <<_EnD_oF_dEf_TeXt_
+a
+_EnD_oF_dEf_TeXt_;
+        func-mem-param-defname = 'a';
+      }; /*        func-mem-param--param */
+      func-mem-param = {
+        func-mem-param-type = <<_EnD_oF_dEf_TeXt_
+cmd
+_EnD_oF_dEf_TeXt_;
+        func-mem-param-defname = 'cmd';
+      }; /*        func-mem-param--param */
+      func-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/run.py';
+      func-mem-desc-line = '116';
+      func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      func-mem-documentation = <<_EnD_oF_dEf_TeXt_
+@verbatim PRINT COMMAND AND RUN\endverbatim  
+_EnD_oF_dEf_TeXt_;
+    }; /* func-member */
+    func-member = {
+      func-mem-kind = 'function';
+      func-mem-id   = 'd4/d7e/namespacerun_1aad0ee1f4ff855af96083a412bc0b60bb';
+      func-mem-virt = normal;
+      func-mem-prot = public;
+      func-mem-type = <<_EnD_oF_dEf_TeXt_
+def
+_EnD_oF_dEf_TeXt_;
+      func-mem-name = 'process_command';
+      func-mem-param = {
+        func-mem-param-type = <<_EnD_oF_dEf_TeXt_
+self
+_EnD_oF_dEf_TeXt_;
+        func-mem-param-defname = 'self';
+      }; /*        func-mem-param--param */
+      func-mem-param = {
+        func-mem-param-type = <<_EnD_oF_dEf_TeXt_
+command
+_EnD_oF_dEf_TeXt_;
+        func-mem-param-defname = 'command';
+      }; /*        func-mem-param--param */
+      func-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/run.py';
+      func-mem-desc-line = '124';
+      func-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      func-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* func-member */
+    };
+    var = {
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd4/d7e/namespacerun_1a3dd00304f4f9bbfc23c42df912799d1d';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'level';
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/run.py';
+      var-mem-desc-line = '6';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd4/d7e/namespacerun_1a3b7bfedc46828781900f5fb782e01d3b';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'logger';
+      var-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  logging.getLogger(__name__)
+_EnD_oF_dEf_TeXt_;
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/run.py';
+      var-mem-desc-line = '7';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd4/d7e/namespacerun_1a999c0102f11207fab83e03978dc69d36';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+def
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'args';
+      var-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  _parser(sys.argv[1:])
+_EnD_oF_dEf_TeXt_;
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/run.py';
+      var-mem-desc-line = '149';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd4/d7e/namespacerun_1a9e2e6d29849f2a82daba77e20a88c5cb';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'conf';
+      var-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  Config(path=args.mind_dir, **vars(args))
+_EnD_oF_dEf_TeXt_;
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/run.py';
+      var-mem-desc-line = '154';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd4/d7e/namespacerun_1a946ad57cf07203129b9cc1618fde16cf';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'strings_file';
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/run.py';
+      var-mem-desc-line = '175';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd4/d7e/namespacerun_1a85a14db5e32014f0106d287f4d788abc';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'dic_file';
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/run.py';
+      var-mem-desc-line = '176';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd4/d7e/namespacerun_1ae3efbb684d9b86bf90c9cafddaa1c78b';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'lang_file';
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/run.py';
+      var-mem-desc-line = '178';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd4/d7e/namespacerun_1a96fb698f0c306a1a6bed867e29825929';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'hmm_path';
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/run.py';
+      var-mem-desc-line = '180';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd4/d7e/namespacerun_1aac1c9f9e38835ceb541f9b447a966c56';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'fsg_file';
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/run.py';
+      var-mem-desc-line = '181';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd4/d7e/namespacerun_1a1cd1e9a4e55dde7d5dbe5bc07e593ef8';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'l';
+      var-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  LanguageUpdater(conf)
+_EnD_oF_dEf_TeXt_;
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/run.py';
+      var-mem-desc-line = '191';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd4/d7e/namespacerun_1a7174b78d7bdcae398bd729e62e54622f';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'recognizer';
+      var-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  Recognizer(conf)
+_EnD_oF_dEf_TeXt_;
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/run.py';
+      var-mem-desc-line = '203';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd4/d7e/namespacerun_1a76e639ac5a2748659483d5bdda6e46c3';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'a';
+      var-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  Assistant(config=conf)
+_EnD_oF_dEf_TeXt_;
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/run.py';
+      var-mem-desc-line = '211';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd4/d7e/namespacerun_1a3241f3a50dbf64cda5a002a8c1e5c508';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'rec';
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/run.py';
+      var-mem-desc-line = '219';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd4/d7e/namespacerun_1ac03dd7a44c37e336f416a710aa46bf73';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'txt';
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/run.py';
+      var-mem-desc-line = '219';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd4/d7e/namespacerun_1a86c4ea98f9cf85149224c3e09bdbc439';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'agent';
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/run.py';
+      var-mem-desc-line = '219';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd4/d7e/namespacerun_1a92c2c3a9b4f7808ea9b0bc30eb58fa44';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'main_loop';
+      var-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  GObject.MainLoop()
+_EnD_oF_dEf_TeXt_;
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/run.py';
+      var-mem-desc-line = '234';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'd4/d7e/namespacerun_1a3f578cde34106c7531adf62ff91d67ce';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'continuous_listen';
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/run.py';
+      var-mem-desc-line = '131';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    };
+  file-full-name  = '/Users/admin/Documents/open_assistant/Open-Assistant/run.py';
+  file-first-line = '1';
+  file-briefdesc  = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  file-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* file */
+file = {
+  file-id   = 'da/dab/setup_8py';
+  file-name = 'setup.py';
+    var = {
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'dd/dc4/namespacesetup_1a4cda9dbfb952875376a0749fe08a5bde';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'long_description';
+      var-mem-initializer = <<_EnD_oF_dEf_TeXt_
+=  file.read()
+_EnD_oF_dEf_TeXt_;
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/setup.py';
+      var-mem-desc-line = '10';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'dd/dc4/namespacesetup_1ab3a7a0638d76a01367c5bc3cc699447f';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'name';
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/setup.py';
+      var-mem-desc-line = '13';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'dd/dc4/namespacesetup_1a2aa722b36a933088812b50ea79b97a5c';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'version';
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/setup.py';
+      var-mem-desc-line = '14';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'dd/dc4/namespacesetup_1a3a57a4772d418a06835249cbade0d86a';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'author';
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/setup.py';
+      var-mem-desc-line = '15';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'dd/dc4/namespacesetup_1a5b08034343aa2be607722a8b315f3625';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'author_email';
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/setup.py';
+      var-mem-desc-line = '16';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'dd/dc4/namespacesetup_1aedf461ec52a946bda975938ba0b93ec0';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'description';
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/setup.py';
+      var-mem-desc-line = '17';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'dd/dc4/namespacesetup_1a8ed6f50a28bd6a8794f8e1153baa6de9';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'license';
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/setup.py';
+      var-mem-desc-line = '18';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'dd/dc4/namespacesetup_1a73ae9ecb109f0dcab6f0b6a89043c5c3';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'keywords';
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/setup.py';
+      var-mem-desc-line = '19';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'dd/dc4/namespacesetup_1afc13124aa5c0124e84e1d965e3f4b0fb';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'url';
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/setup.py';
+      var-mem-desc-line = '20';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'dd/dc4/namespacesetup_1aff2375a361fd5865c77bd9aa093be747';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'packages';
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/setup.py';
+      var-mem-desc-line = '21';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'dd/dc4/namespacesetup_1abe96a9c38c1c61f9f0fdb002c482f785';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'classifiers';
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/setup.py';
+      var-mem-desc-line = '23';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'dd/dc4/namespacesetup_1abead4f26b530856f858f0d44c7cf2588';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'install_requires';
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/setup.py';
+      var-mem-desc-line = '34';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'dd/dc4/namespacesetup_1ad027a8e9452da003dca32bf7467bd16e';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'data_files';
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/setup.py';
+      var-mem-desc-line = '35';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    var-member = {
+      var-mem-kind = 'variable';
+      var-mem-id   = 'dd/dc4/namespacesetup_1ada7058afc98897f073d3f3b8b9157059';
+      var-mem-virt = normal;
+      var-mem-prot = public;
+      var-mem-type = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-name = 'entry_points';
+      var-mem-desc-file = '/Users/admin/Documents/open_assistant/Open-Assistant/setup.py';
+      var-mem-desc-line = '39';
+      var-mem-briefdesc =    <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+      var-mem-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+    }; /* var-member */
+    };
+  file-full-name  = '/Users/admin/Documents/open_assistant/Open-Assistant/setup.py';
+  file-first-line = '1';
+  file-briefdesc  = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+  file-documentation = <<_EnD_oF_dEf_TeXt_
+
+_EnD_oF_dEf_TeXt_;
+}; /* file */
