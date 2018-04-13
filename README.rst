@@ -19,11 +19,10 @@ JSON was replaced with ``commands.py`` modules, so this frees up any logic neede
 
 ``oa_utils.py`` - Utilities to simplify command processes.
 
-Removed : 
+Demo : 
 =============
-``gstream``
-
-``gobject``
+first run on win
+https://www.youtube.com/watch?v=6_tA081SA8Y
 
 Need To Fix:
 =============
