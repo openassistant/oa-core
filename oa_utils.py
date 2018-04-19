@@ -566,6 +566,8 @@ def isNum(s):
 
 def expr2str():
     ret=''
+    #calc_opers=lines_to_dict(fread('nums'))
+    info(sys_info.calc_opers.values())
     for k, g in groupby(sys_info.expr, lambda x: ((x in sys_info.calc_opers.values()) and 1) or 2):
         l=list(g)
         if len(l)>1:
@@ -586,10 +588,12 @@ def expr2str():
 
 def calculate():
 #    info('test1')
-    info(sys_info.expr)
+#    info(sys_info.expr)
 #    if isNum(s) and isNum(sys_info.last_expr):
 #        sys_info.expr+='+'
     ret=expr2str()
+    info(sys_info.expr)
+    info('expr='+ret)
     try:
         say(eval(ret))
     except:
