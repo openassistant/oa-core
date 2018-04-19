@@ -42,6 +42,7 @@ class AudioUtils():
         _.non_speaking_duration = 0.5  # seconds of non-speaking audio to keep on both sides of the recording
         _.chunk=1024 # number of frames stored in each buffer
         _.sample_rate=16000 # sampling rate in Hertz
+#        _.sample_rate=48000#16000 # sampling rate in Hertz
 ##        _.pa_format=pyaudio.paInt16 # 16-bit int sampling
         _.sample_width=2 #pyaudio.get_sample_size(_.pa_format) # size of each sample
         _.seconds_per_buffer = float(_.chunk) / _.sample_rate
@@ -72,8 +73,20 @@ class AudioUtils():
         _.fsg_file = None #os.path.join(_.cache_dir, 'fsg')
         _.dic_file = _.cache_path('dic')
         _.kws_file = _.cache_path("kws")
-        #let's save keywords (to further checks)
-        _.keywords = keywords
+        #let's save keywords (to further checks). we call config_stt every time (on mind switch), to check for changes.
+        #_.keywords = [k in  for x in keywords]
+        _.d_kwords={}
+        _.max_w_cnt=0
+        for phrase in keywords:
+            spl_ph=phrase.strip().split(' ')
+            w_cnt=len(spl_ph)
+            if w_cnt>_.max_w_cnt:
+                _.max_w_cnt=w_cnt
+            for kword in spl_ph:
+                #combine all phrases which use kword
+                r_phrases=_.d_kwords.setdefault(kword,{})
+                r_phrases[phrase]=w_cnt
+
 
         # check if commands file was modified
         if kws_last_modification_time_in_sec:
@@ -146,7 +159,7 @@ class AudioUtils():
         elapsed_time = 0  # number of seconds of audio read
         buf = b""  # an empty buffer means that the stream has ended and there is no data left to read
         _.energy_threshold = 300  # minimum audio energy to consider for recording
-        _.stream=sounddevice.Stream(samplerate=_.sample_rate, channels=_.channels, dtype='int16')
+        _.stream=sounddevice.Stream(samplerate=_.sample_rate, channels=_.channels, dtype='int16')#dtype='float32')#
         with _.stream:
             while True:
                 frames = collections.deque()
@@ -207,7 +220,36 @@ class AudioUtils():
             frame_data=numpy.concatenate(frames)
             return frame_data #AudioData(frame_data, _.sample_rate, _.sample_width)
 
-    def speech_to_text(_, adata):
+    def BestHyp(_,s):
+        drank={}
+        s=s.lower()
+        len_ws=len(s.split(' '))
+        #max_rank=[result,rank,diff in words count]
+        max_rank=['',0,100]
+        for kword in s.split(' '):
+            phrases=_.d_kwords.get(kword,{})
+            for phrase,lw_ph in phrases.items():
+                drank.setdefault(phrase,0)
+                drank[phrase]+=1
+                rank=drank[phrase]
+                # choose by rank - max words (from seacrh) contains in phrase
+                # if rank is equal - looking for similar words count
+                w_cnt_diff=abs(len_ws-lw_ph)
+                if rank>max_rank[1]:
+                    max_rank[0]=phrase
+                    max_rank[1]=rank
+                    max_rank[2]=w_cnt_diff
+                elif rank==max_rank[1]:
+                    #fit better by words count
+                    if w_cnt_diff<max_rank[2]:
+                        max_rank[0]=phrase
+                        max_rank[2]=w_cnt_diff
+
+        if max_rank[1]>0:
+            return max_rank[0]
+        return ''
+
+    def speech_to_text(_, raw_data):
         """
           stt
           speech to text
@@ -220,45 +262,21 @@ class AudioUtils():
         config.set_string("-lm", _.lang_file)
         config.set_string("-dict", _.dic_file)
         config.set_string("-logfn", os.devnull)  # disable logging (logging causes unwanted output in terminal)
-
         decoder = pocketsphinx.Decoder(config)
-
         # obtain audio data
-        raw_data=adata
-        #raw_data = audio_data.get_raw_data(convert_rate=sample_rate, convert_width=2)  # the included language models require audio to be 16-bit mono 16 kHz in little-endian format
-
-        #Please note that -kws conflicts with the -lm and -jsgf options. You cannot specify both.
-
-        # obtain recognition results
-        # perform the speech recognition with the keywords file (this is inside the context manager so the file isn;t deleted until we're done)
-#        decoder.set_kws('keyphrase',  _.kws_file)
-#        decoder.set_search('keyphrase')
-#        config.set_float('-kws_threshold', 1e-5)
-##        kws_threshold=1e+20
-#        decoder.set_search("ngram/lm")
-#        decoder.set_search("keywords")
         decoder.start_utt()  # begin utterance processing
         decoder.process_raw(raw_data, False, False)  # process audio data with recognition enabled (no_search = False), as a full utterance (full_utt = True)
         decoder.end_utt()  # stop utterance processing
 
-    ##    if show_all: return decoder
-        # return results
-#        print ('Best 10 hypothesis: ')
-        for best, i in zip(decoder.nbest(), range(100)):
-            if not best.hypstr:
-                continue
-#            print (best.hypstr, best.score)
-            lSearch=best.hypstr.lower()
-            lDiff=difflib.get_close_matches(lSearch,_.keywords,2,0.9)
-            if lDiff:
-                print('lDiff')
-                print(lDiff)
-                return lDiff[0]
-#            if  in _.keywords:
-#                return best.hypstr.lower()
-#                break
+        hypothesis = decoder.hyp()
+        if hypothesis is not None:
+            hyp=hypothesis.hypstr
+            #1 word check
+            if _.max_w_cnt==1:
+                return map(_.BestHyp,hyp.split(' '))
+            else:
+                return [_.BestHyp(hyp)]
+
         info('no transcriptions available')
-        #hypothesis = decoder.hyp()
-        #if hypothesis is not None: return hypothesis.hypstr
-        #raise Exception('no transcriptions available')
+        return []
 

@@ -4,9 +4,11 @@ import inspect
 import keyboard
 import platform
 import feedparser
-import datetime
+import datetime, math
 import getpass,socket
 import psutil
+import itertools
+from itertools import *
 
 unknown_os='unknown operating system'
 
@@ -559,13 +561,46 @@ def lines_to_dict(sLines,func=lambda s : s, params={}):
     ret=dict([[k,func(v)] for k,v in [[x.strip() for x in ph.split(':')] for ph in sLines.split('\n') if ph.strip()!='']])
     return ret
 
+def isNum(s):
+    return s.replace('.','').isdigit()
+
+def expr2str():
+    ret=''
+    for k, g in groupby(sys_info.expr, lambda x: ((x in sys_info.calc_opers.values()) and 1) or 2):
+        l=list(g)
+        if len(l)>1:
+            if k==1:#oper
+                raise Exception('two opers')
+            else:
+                sr='('+l[0]
+                for x in l[1:]:
+                    if isNum(x):
+                        sr+='+'+x
+                    else:
+                        #'hundreds, thousands so on'
+                        sr+=x
+                ret+=sr+')'
+        else:
+            ret+=l[0]
+    return ret
+
 def calculate():
 #    info('test1')
     info(sys_info.expr)
-    say(eval(sys_info.expr))
+#    if isNum(s) and isNum(sys_info.last_expr):
+#        sys_info.expr+='+'
+    ret=expr2str()
+    try:
+        say(eval(ret))
+    except:
+        say('Error. wrong expression. '+ret)
+    #clear expr
+    sys_info.expr=[]
 
 def add2expr(s):
-    sys_info.expr+=s
+    #check for calc - we must move it to nums def file
+    #for nums we will add sum oper
+    sys_info.expr.append(s)
 
 def quit_app():
     quit(0)

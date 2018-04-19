@@ -35,8 +35,8 @@ class Assistant:
     def loop(_, condition=lambda : True):
         while condition():
             adata=_.audio.listen()
-            phrase=_.audio.speech_to_text(adata)
-            _.perform(phrase)
+            for phrase in _.audio.speech_to_text(adata):
+                _.perform(phrase)
 
     def log_history(_, text):
         fwrite(_.history_file(), text, append=True)

@@ -1,0 +1,99 @@
+ok, about ear and eye. 　
+i'll make one more branch where we may try to do it right =) heh
+
+db - indexed data or structured file. (memory and/or disk persistent)
+Possible logical structure of OA:
+
+parts : anything which may receive input - electrical signal (wave data)
+and store in database (or files) with `time` labels.
+Like eye, ear, EEG (bci), heart beat and so on.
+
+every part may (will) subscribe to data change (onchange) of 
+  device such 
+    keyboard, mouse, webcam audio, webcam video, network data, any sensors of the body and so on
+  or other parts.
+
+all parts works in asynchronous mode - their task to generate `raw output` db and/or signal 
+(any functionality of PC : speaker or draw on screen or send message via network etc).
+
+It's similar to processing system messages queue in any OS.
+==========
+
+minds (local and network): processing tools that can remember last processed data (by `time` label). 
+They may read raw data from any `part` or any data generated from other minds.
+
+every mind may (will) subscribe to data change (onchange) of 
+parts or other minds.
+
+all minds works in asynchronous mode - their task to generate some  
+output (processed) and store it in db.
+
+so basicaly parts and minds - pretty similar substances, 
+we did separate them only for similarity with humans.
+===============
+for "rude" analogy : 
+  ear generate signal for brain (mind)
+  brain (mind) is generate signals for hands muscles or to open mouth =)
+  
+In short:
+  Input signal (subscribed or raw)
+  Processing
+  Output
+  
+Many "open" boxes which works in asynchronous mode.
+In short bunch of information processors.
+https://en.wikipedia.org/wiki/Information_processor
+
+database used to simplify processing data (simplify programming)
+
+===============
+examples 
+  we may use 1 file for different operations input, processing, output:
+  *.in, *.out - nodes in database
+  
+keys.py
+  input : read raw data from keyboard store into keys.in
+  process : convert keys into char sequences (depends from keyboard layout, language) and store into keys.out
+  
+ear.py 
+  input : read raw data from mic - store into ear.in
+  process : remove noises and store in ear.out
+
+eye.py 
+  input : read raw data from webcam - store into eye.in
+  process : convert data into images (with frequency we need), remove noises and store in eye.out
+  
+voice.py
+  input : subscribed on ear.out
+  process : convert into text - store in voice.out 
+  
+object.py
+  input : subscribed on eye.out
+  process : opencv - ocr data and store into object.out as a string description/identifier of object
+ 
+net.recv.py
+  input : read packages from network
+  process : format and put in net.recv.out
+
+net.send.py
+  input : subscribed to net.send.in
+  process : send packages in network
+  
+root.py
+  input : subscribed on voice.out, object.out, keys.out, net.recv.out etc
+  process : store data into display.in, speaker.in, net.send.in (depends from settings - in debug mode we may see all changes)
+  
+stella.py 
+  input : subscribed on voice.out, object.out, keys.out changes and so on (this mind will be subscribed for many "parts")
+  process : find corresponded answer for `voice` string or `object name` string and store answer into display.in or speaker.in 
+	may/will change parameters of other devices 
+	   speaker.mute=True 
+	   display.lock=False ... and so on 
+
+display.py
+  input : subscribed on display.in
+  process : show text/windows/dialogs - depends from display.in data
+  
+speaker.py 
+  input : subscribed on speaker.in
+  process : continiusly reads from speaker.in and send signal to speakers device
