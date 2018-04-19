@@ -24,6 +24,9 @@ Demo :
 first run on win
 https://www.youtube.com/watch?v=6_tA081SA8Y
 
+small calc demo:
+https://www.youtube.com/watch?v=ueQCmmUdmLo
+
 Need To Fix:
 =============
 Replace all commands in "minds" via Python Stub calls. 
