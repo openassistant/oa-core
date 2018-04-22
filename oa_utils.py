@@ -7,10 +7,25 @@ import feedparser
 import datetime, math
 import getpass,socket
 import psutil
+import threading
 import itertools
 from itertools import *
 
+try:
+    import queue
+except:
+    import Queue as queue
+
+
 unknown_os='unknown operating system'
+
+import logging
+logging.basicConfig(filename='oa.log', level=logging.INFO)
+#logger = logging.getLogger(__name__)
+#log_level = logging.getLevelName('INFO')
+#logger.setLevel('INFO')
+#logger.setLevel(log_level)
+#info=logger.info
 
 def isCallable(x):
     return hasattr(x, "__call__")
@@ -41,18 +56,43 @@ def switch(*args):
 class AnyProp(object):
     """
       simple class to store any properties
+      if attribute doesn't exists yet -
+      we will assign it and return AnyProp
     """
     def __init__(_,*args,**kwargs):
-        _.args=args
+        if args:
+            _.args=args
         #simply update from kwargs
         _.__dict__.update(kwargs)
+
+    def __nonzero__(_):
+        return len(_.__dict__)
+
+    def __bool__(_):
+         return len(_.__dict__)>0
+
+    def __getitem__(_, key):
+        if not isinstance(key,str):
+            print(key)
+        return getattr(_,key)
+
+    def __setitem__(_, key, value):
+        setattr(_,key,value)
 
     def __getattribute__(_, name):
         """
           if attribute is a function and no arguments -
           we will return call of this function
         """
-        att=object.__getattribute__(_, name)
+        try:
+            att=object.__getattribute__(_, name)
+        except AttributeError as e:
+            #for unknown attributes - returns new Instance of AnyProp (except system attrs __*__)
+            if name.startswith('__') and name.endswith('__'):
+                raise
+            att=AnyProp()
+            object.__setattr__(_, name, att)
+
         if isCallable(att):
             insp=inspect.getargspec(att)
             if (len(insp.args)==0) and (att.__name__=='<lambda>'):
@@ -60,29 +100,35 @@ class AnyProp(object):
                 return att()
         return att
 
-sys_info=AnyProp()
-#common sys_info funcs
+#all global shared dependencies and resources
+oa=AnyProp()
+#oa=AnyProp(**{'a':1})
+#print(oa.a)
+#print(oa['aaa'])
+#oa['bbb'].v=1
+#print(oa.sys.test)
+#common oa.sys funcs
 #      OS name : 'win','mac','linux'
-sys_info.os=switch(platform.system(),'Windows','win','Linux','linux','Darwin','mac','unknown')
-sys_info.user=getpass.getuser()
-sys_info.host=socket.gethostname()
-sys_info.ip=socket.gethostbyname(sys_info.host)
+oa.sys.os=switch(platform.system(),'Windows','win','Linux','linux','Darwin','mac','unknown')
+oa.sys.user=getpass.getuser()
+oa.sys.host=socket.gethostname()
+oa.sys.ip=socket.gethostbyname(oa.sys.host)
 #date funcs
 #property(fget=None, fset=None, fdel=None, doc=None)
-sys_info.now=lambda : datetime.datetime.now()
-sys_info.second=lambda : sys_info.now.second
-sys_info.hour=lambda : sys_info.now.hour
-sys_info.day=lambda : sys_info.now.day
-sys_info.month=lambda : sys_info.now.month
-sys_info.month_name=lambda : sys_info.now.strftime("%B")
-sys_info.year=lambda : sys_info.now.year
-sys_info.date_text=lambda : '%d %s %d'%(sys_info.day,sys_info.month_name,sys_info.year)
-sys_info.time_text=lambda : '%d:%d'%(sys_info.hour,sys_info.second)
-sys_info.date_time_text=lambda : sys_info.date_text+' '+sys_info.time_text
-sys_info.free_memory=lambda : psutil.virtual_memory()[-1]
-#sys_info.public_ip=
+oa.sys.now=lambda : datetime.datetime.now()
+oa.sys.second=lambda : oa.sys.now.second
+oa.sys.hour=lambda : oa.sys.now.hour
+oa.sys.day=lambda : oa.sys.now.day
+oa.sys.month=lambda : oa.sys.now.month
+oa.sys.month_name=lambda : oa.sys.now.strftime("%B")
+oa.sys.year=lambda : oa.sys.now.year
+oa.sys.date_text=lambda : '%d %s %d'%(oa.sys.day,oa.sys.month_name,oa.sys.year)
+oa.sys.time_text=lambda : '%d:%d'%(oa.sys.hour,oa.sys.second)
+oa.sys.date_time_text=lambda : oa.sys.date_text+' '+oa.sys.time_text
+oa.sys.free_memory=lambda : psutil.virtual_memory()[-1]
+#oa.sys.public_ip=
 
-if sys_info.os=='win':
+if oa.sys.os=='win':
     global wshell
     import win32com.client
     from win32com.client import Dispatch as CreateObject
@@ -117,12 +163,6 @@ if sys_info.os=='win':
             """put the window in the foreground"""
             win32gui.SetForegroundWindow(self._handle)
 
-#import logging
-#logger = logging.getLogger(__name__)
-#info=logger.info
-
-oa=None
-
 def bytes2gb(size):
     """
       convert size from bytes to gigabytes
@@ -135,7 +175,7 @@ def bytes2gb(size):
 useful functions which may be used in commands.py files of different mind.
 """
 def activate(s):
-    if sys_info.os=='win':
+    if oa.sys.os=='win':
         w = WindowMgr()
         w.find_window_wildcard('.*'+s+'.*')
         w.set_foreground()
@@ -144,16 +184,36 @@ def activate(s):
 
 def get_sys(s):
     """
-      returns system information from sys_info
+      returns system information from oa.sys
     """
-    return getattr(sys_info,s)
+    return getattr(oa.sys,s)
 
-def info(*args):
-#    logger.info(args)
-    if len(args)==1:
-        print(args[0])
+def thread_name():
+    """
+      returns current thread name only
+    """
+    return threading.current_thread().name.split(' ')[0]
+
+def info(*args,**kwargs):
+    #'\nThread : '
+    s=thread_name()+' '
+    if args:
+        s+=' '.join([str(v) for v in args])+'\n'
+#        s+=' '.join([' %d : %s'%(i,str(v)) for i,v in enumerate(args)])
+
+    if kwargs:
+        s+='\n'.join([' %s : %s'%(str(k),str(v)) for k,v in args.items()])
+
+    if oa.console and oa.alive:
+        oa.console.q_in.put(s)
     else:
-        print(args)
+        print(s)
+
+    logging.info(s)
+#    if len(args)==1:
+#        print(args[0])
+#    else:
+#        print(args)
 
 def close(s):
     """
@@ -165,9 +225,9 @@ def close(s):
 
 def mute(mute=True):
     """set mute/unmute for speakers"""
-    if sys_info.os=='win':
+    if oa.sys.os=='win':
         wshell.SendKeys(chr(173))
-    elif sys_info.os in ('linux','mac'):
+    elif oa.sys.os in ('linux','mac'):
         sys_exec('amixer set Master %smute'(((not mute) and 'un') or ''))
     else:
         info(unknown_os)
@@ -182,7 +242,7 @@ def volume(move=2):
         positive `move` - Volume Up
         negative `move` - Volume Down
     """
-    if sys_info.os=='win':
+    if oa.sys.os=='win':
         #up by 2
         if move>0:
             #volume up
@@ -194,7 +254,7 @@ def volume(move=2):
         while move>0:
             wshell.SendKeys(key)
             move-=2
-    elif sys_info.os in ('linux','mac'):
+    elif oa.sys.os in ('linux','mac'):
         if move>0:
             sys_exec('pamixer --increase %d'%move)
         else:
@@ -218,10 +278,53 @@ def find_file(fname):
       NEED FIX - put files names into Cache list ?
     """
     cur_dir=os.path.dirname(__file__)
-    ret=glob.glob(os.path.join(cur_dir,'mind/*/*/%s'%fname))
+    ret=glob.glob(os.path.join(cur_dir,'mind/*/%s'%fname))
+    if not ret:
+        ret=glob.glob(os.path.join(cur_dir,'mind/*/*/%s'%fname))
     if len(ret)!=1:
         raise Exception('%s : found %d results.'%(fname,len(ret)))
     return ret[0]
+
+def cur_part():
+    """
+      returns "current" part
+      which is associated with current thread
+    """
+    name=thread_name()
+    ret=oa.app.parts.get(name,None)
+    if ret is None:
+        err='%s Error : Cannot find a corresponed part'%name
+        info(err)
+        raise Exception(err)
+    return ret
+
+def get(part=None,timeout=.1):
+    """
+      no params
+      thread safe
+      simply returns message
+      from part.q_in input Queue
+      if part is None - takes message from current q_in (thread)
+    """
+    if part is None:
+        part=cur_part()
+    if part.name=='mind':
+        info('get for :',part.name)
+    while oa.alive:
+        try:
+            return part.q_in.get(timeout=timeout)
+        except queue.Empty:
+            pass
+    #terminated - raise Exception
+    raise Exception('App.Terminated')
+
+
+def put(part,value):
+    """
+      let's put message into
+      part.q_in - input messages Queue
+    """
+    oa[part].q_in.put(value)
 
 def say(text):
     """
@@ -231,8 +334,9 @@ def say(text):
     """
     text=call_func(text)
     info(text)
-    sys_info.last_say=text
-    oa.audio.say(text)
+    oa.sys.last_say=text
+    #put message into voice
+    put('voice',text)
 
 def say_random(slist):
     return random.choice([x.strip() for x in slist.split(',')])
@@ -242,27 +346,20 @@ def random_from_file(fname):
     return random.choice(l)
 
 def play(fname):
-    """
-      playing sound file
-    """
-    oa.audio.playsound(find_file(fname))
+    """ playing sound file  """
+    put('sound',find_file(fname))
 
-def mind(name):
-    """
-      switch current mind to `name`
-    """
-    global oa
-    info('!mind!',name)
-    oa.set_mind(name)
+def mind(name, history=1):
+    """ switch current mind to `name` """
+#    info('Test Mind',oa.mind.__dict__)
+    oa.mind.set_mind(name, history)
 
 def sys_exec(cmd):
-    """print cmd execute in OS env"""
+    """ print cmd execute in OS env """
     subprocess.call(cmd, shell=True)
 
 def download_file(url, path):
-    """
-      download file by url and save it by local path
-    """
+    """ download file by url and save it by local path """
     r = requests.get(url, stream=True)
     if r.status_code == 200:
         with open(path, 'wb') as f:
@@ -287,6 +384,7 @@ def fread(fname, result_as_list=0):
       or list of string - splitted by new line symbol
     """
     try:
+        info('read file', fname)
         if not os.path.exists(fname):
             fname=find_file(fname)
         with open(fname, 'r') as f:
@@ -294,8 +392,9 @@ def fread(fname, result_as_list=0):
                 return f.readlines()
             else:
                 return f.read()
-    except FileNotFoundError:
-        logger.warn("Error loading file: {path}".format(path=fname))
+    except:# FileNotFoundError:
+        info("Error loading file: {path}".format(path=fname))
+        #logger.warn("Error loading file: {path}".format(path=fname))
         return ''
 
 def stat_size(fname):
@@ -383,15 +482,15 @@ class Stub():
             # let's skip for current class definition. to prevent hard recursion =)
 #            if name==_.__name__:
 #                continue
-            #sys_info and others AnyProp instances
+            #oa.sys and others AnyProp instances
             if isinstance(body,AnyProp):
                 ret[name]=body
             else:
                 #direct call without stub
 ##                setattr(nowait,name,body)
                 if hasattr(body,'__call__'):
-                    #lets add all funcs to sys_info - for direct call (no Stubs)
-#                    setattr(sys_info,name,body)
+                    #lets add all funcs to oa.sys - for direct call (no Stubs)
+#                    setattr(oa.sys,name,body)
                     #if we call function with _ prefix it will be executed immediately without Stub
                     ret['_'+name]=body
                     ret[name]=Stub(body)
@@ -479,11 +578,11 @@ def diagnostic():
                 break
     # Memory Free
     #freemem=$(free -h | grep "Mem:" | awk -F "Mem: " '{print $2}' | awk '{print $3}' | sed 's/G//') && echo "System memory has $freemem Gigabytes free..." | tee /dev/tty | $VOICE
-    sDiag+='System memory has %.2f Gigabytes free...\n'%bytes2gb(sys_info.free_memory)
+    sDiag+='System memory has %.2f Gigabytes free...\n'%bytes2gb(oa.sys.free_memory)
     # Drive Space Free
     #space=$(df -h /dev/sda1 | awk '{print $4}' | grep G | cut -d "G" -f1 -) && echo "Internal hard drive has $space Gigabytes free..." | tee /dev/tty | $VOICE
 #psutil.disk_usage('/')
-#sys_info.disk_usage=sdiskusage(total=21378641920, used=4809781248, free=15482871808, percent=22.5)
+#oa.sys.disk_usage=sdiskusage(total=21378641920, used=4809781248, free=15482871808, percent=22.5)
     sDiag+='Internal hard drive has %.2f Gigabytes free...\n'%bytes2gb(psutil.disk_usage('/').free)
     # Network Status
     sDiag+=switch(is_online(),True, 'Internet access is currently available.', 'We are offline.')
@@ -494,20 +593,29 @@ def answer(text):
       save ret func parameter
       and switch `mind` to previous
     """
-    sys_info.last_answer=text
+##    info('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA:   ',text)
+    #oa.sys.last_answer=text
+    text=text.lower()
+    func=oa.mind.user_choices.get(text,None)
+    if func:
+        call_func(func)
+    oa.mind.switch_back()
+##    evt_answer.clear()
 
-def user_answer(mind):
+def user_answer(mind_for_answer, choices):
     """
       within `mind` we will get
       1 command - answer (voice, file path, etc - any) from user
     """
-    sys_info.last_answer=None
-    #skip history
-    oa.set_mind(mind,0)
-    #we will start loop in loop, until user say something
-    oa.loop(condition=lambda : sys_info.last_answer is None)
-    oa.switch_back()
-    return sys_info.last_answer
+    mind(mind_for_answer,0)#no history
+##    #we will start loop in loop, until user say something
+##    evt_answer = threading.Event()
+##    evt_answer.set()
+##    # no loops
+##    !!!!!!oa.app.loop(condition=lambda : evt_answer.is_set())
+##    info('last answer',oa.sys.last_answer)
+    oa.mind.user_choices=choices
+##    return oa.sys.last_answer
 
 def call_func(func_or_value):
     """
@@ -529,8 +637,9 @@ def yes_no(msg,func):
       we will use here `yes_no` - mind.
     """
     say(msg)
-    if user_answer('yes_no')=='yes':
-        call_func(func)
+    user_answer('yes_no',{'yes':func})
+#        info("yes_no->yes. let's start function")
+
 
 def close():
     """
@@ -547,7 +656,7 @@ def lines_to_dict(sLines,func=lambda s : s, params={}):
       where
          end of line - separator between keys
          : - separator between key and value
-         params and sys_info dicts - is using to fill parameters :
+         params and oa.sys dicts - is using to fill parameters :
             %(param)s, %(user)s etc
       Example string:
        key1 : value1
@@ -556,7 +665,7 @@ def lines_to_dict(sLines,func=lambda s : s, params={}):
        you there? : yes... i am here...
        you think : i think sometimes...
     """
-    params.update(sys_info.__dict__)
+    params.update(oa.sys.__dict__)
     sLines=sLines%params
     ret=dict([[k,func(v)] for k,v in [[x.strip() for x in ph.split(':')] for ph in sLines.split('\n') if ph.strip()!='']])
     return ret
@@ -567,8 +676,8 @@ def isNum(s):
 def expr2str():
     ret=''
     #calc_opers=lines_to_dict(fread('nums'))
-    info(sys_info.calc_opers.values())
-    for k, g in groupby(sys_info.expr, lambda x: ((x in sys_info.calc_opers.values()) and 1) or 2):
+    info(oa.sys.calc_opers.values())
+    for k, g in groupby(oa.sys.expr, lambda x: ((x in oa.sys.calc_opers.values()) and 1) or 2):
         l=list(g)
         if len(l)>1:
             if k==1:#oper
@@ -588,26 +697,27 @@ def expr2str():
 
 def calculate():
 #    info('test1')
-#    info(sys_info.expr)
-#    if isNum(s) and isNum(sys_info.last_expr):
-#        sys_info.expr+='+'
+#    info(oa.sys.expr)
+#    if isNum(s) and isNum(oa.sys.last_expr):
+#        oa.sys.expr+='+'
     ret=expr2str()
-    info(sys_info.expr)
+    info(oa.sys.expr)
     info('expr='+ret)
     try:
         say(eval(ret))
     except:
         say('Error. wrong expression. '+ret)
     #clear expr
-    sys_info.expr=[]
+    oa.sys.expr=[]
 
 def add2expr(s):
     #check for calc - we must move it to nums def file
     #for nums we will add sum oper
-    sys_info.expr.append(s)
+    oa.sys.expr.append(s)
 
 def quit_app():
     quit(0)
 
-##sys_info.lines_to_dict=lines_to_dict
-#print(bytes2gb(sys_info.free_memory))
+##oa.sys.lines_to_dict=lines_to_dict
+#print(bytes2gb(oa.sys.free_memory))
+#info('oa',oa)

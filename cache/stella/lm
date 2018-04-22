@@ -1,0 +1,59 @@
+Language model created by QuickLM on Sun Apr 22 09:41:45 EDT 2018
+Copyright (c) 1996-2010 Carnegie Mellon University and Alexander I. Rudnicky
+
+The model is in standard ARPA format, designed by Doug Paul while he was at MITRE.
+
+The code that was used to produce this language model is available in Open Source.
+Please visit http://www.speech.cs.cmu.edu/tools/ for more information
+
+The (fixed) discount mass is 0.5. The backoffs are computed using the ratio method.
+This model based on a corpus of 5 sentences and 11 words
+
+\data\
+ngram 1=11
+ngram 2=14
+ngram 3=11
+
+\1-grams:
+-0.9823 </s> -0.3010
+-0.9823 <s> -0.2430
+-1.6812 ABSURD -0.2533
+-1.6812 ALERT -0.2533
+-1.2041 ARE -0.2730
+-1.6812 DOING? -0.2533
+-1.6812 HI -0.2730
+-1.2041 HOW -0.2730
+-1.6812 RED -0.2919
+-1.6812 YOU -0.2919
+-1.3802 YOU? -0.2533
+
+\2-grams:
+-1.0000 <s> ABSURD 0.0000
+-1.0000 <s> HI 0.0000
+-0.6990 <s> HOW 0.0000
+-1.0000 <s> RED 0.0000
+-0.3010 ABSURD </s> -0.3010
+-0.3010 ALERT </s> -0.3010
+-0.7782 ARE YOU 0.0000
+-0.4771 ARE YOU? 0.0000
+-0.3010 DOING? </s> -0.3010
+-0.3010 HI HOW 0.0000
+-0.3010 HOW ARE 0.0000
+-0.3010 RED ALERT 0.0000
+-0.3010 YOU DOING? 0.0000
+-0.3010 YOU? </s> -0.3010
+
+\3-grams:
+-0.3010 <s> ABSURD </s>
+-0.3010 <s> HI HOW
+-0.3010 <s> HOW ARE
+-0.3010 <s> RED ALERT
+-0.3010 ARE YOU DOING?
+-0.3010 ARE YOU? </s>
+-0.3010 HI HOW ARE
+-0.7782 HOW ARE YOU
+-0.4771 HOW ARE YOU?
+-0.3010 RED ALERT </s>
+-0.3010 YOU DOING? </s>
+
+\end\

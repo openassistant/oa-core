@@ -11,7 +11,7 @@ square:**0.5
 open:(
 close:)
 """
-sys_info.expr=[]
+oa.sys.expr=[]
 
 kws={
   'equal, result':calculate(),
@@ -19,6 +19,6 @@ kws={
   'quit':quit_app()
 }
 
-sys_info.calc_opers=_lines_to_dict(opers)
+oa.sys.calc_opers=_lines_to_dict(opers)
 kws.update(_lines_to_dict(_fread('nums'), add2expr))
 kws.update(_lines_to_dict(opers,add2expr))

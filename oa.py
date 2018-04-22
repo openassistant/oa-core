@@ -3,117 +3,111 @@
 # By Andrew Vavrek, Clayton G. Hobbs, Jezra, Jonathan Kulp
 
 # core.py - Open Assistant System Core
-import os
-import audio
+import os, time
+import threading
 import oa_utils
 from oa_utils import *
 
+#subscribers- listeners will receive message from part
+oa.ear.subs=[oa.stt]
+oa.stt.subs=[oa.mind]
+oa.keyb.subs=[oa.mind,oa.display]
+
+def _in(part):
+    """
+      processing messages using q_in
+    """
+    #subscribers
+    if not isinstance(part.subs,list):
+        raise Exception('Wrong Subs: '+part.name)
+
+    fn=part._in
+    info('started')
+    for x in fn():#locals={'q_in':q_in}
+#        info('Send to !sub:',sc.name)
+        for sc in part.subs:
+#            info('Send to !sub:',sc.name)
+            info('Send to sub:',sc.name)
+            sc.q_in.put(x)
+#        continue
+#        info(part.name,'_in data. len(data)=',len(x))
+    info('closed')
+
 class Assistant:
-    def __init__(_, mind='boot'):
+    def __init__(_):
         info("Initializing Assistant")
-        _.cur_dir=os.path.dirname(__file__)
-        _.audio=audio.AudioUtils()
-        _.mind='undefined'
-        _.files=[]
-        # stubs for functions of oa_utils
         # let's add link to OA itself
-        oa_utils.oa=_
-        _.d_funcs=Stub.prepare_stubs(oa_utils)
+        oa.cur_dir=os.path.dirname(__file__)
+        oa.app=_
+#        oa.__dict__.update(oa_utils.__dict__)
+        # stubs for functions of oa_utils
+        _.stub_funcs=Stub.prepare_stubs(oa_utils)
+        _.active = threading.Event()
+        _.active.set()
+        oa.alive=lambda : _.active.is_set()
+        _.parts={}
+        _.thread_pool=[]
+        _.load_parts()
 
-        # history for switch minds commands
-        _.switch_hist=[]
-        #last perform
-        _.last_phrase=''
+    def loop(_):#,condition=lambda : True):
+        try:
+            while oa.alive:# and condition():
+                time.sleep(.1)
+        except KeyboardInterrupt:
+            info('attempting to close threads.')
+            _.active.clear()
+            [thr.join() for thr in _.thread_pool]
+            info('threads successfully closed')
 
-        if mind:
-            if mind=='boot':
-                #check langs - dic, lm and other files. auto update if commands file was modified.
-                _.check_langs()
+    def load_parts(_):
+        #def full_path(name):
+        #    return os.path.join(os.path.dirname(__file__),name)
 
-            _.set_mind(mind)
+        #get all In/Out operations from parts
+        #load parts
+        for pname in os.listdir('part'):
+            info('Load part : '+pname)
+            name=pname[:-3]
+#            if name<>'ear':
+#                continue
+        #    cf_data=fread(full_path('parts/%s.py'%part))
+            fdata=fread('part/'+pname)
 
-    def loop(_, condition=lambda : True):
-        while condition():
-            adata=_.audio.listen()
-            for phrase in _.audio.speech_to_text(adata):
-                _.perform(phrase)
+            dinf=dict(list(oa_utils.__dict__.items())[:])
+            #dinf={'oa':oa,'q_in':queue.Queue()}
+            #add queues
+            dinf['q_in']=queue.Queue()
+            exec(fdata,dinf)
+            part=AnyProp(**dinf)
+            oa[name].__dict__.update(part.__dict__)
+            part=oa[name]
+            setattr(part,'name',name)
+#            if name=='mind':
+#                pass
+            part.__dict__.setdefault('subs',[])
+#                setattr(part,'subs',[])
+#            print(oa.ear)
+#            print(part)
+#            _in(oa.ear)
+#            return
+            if dinf.get('_in',None) is not None:
+                #additional check for yield
+                if 'yield' not in fdata.lower():
+                    info('WARNING: Please check part %s for yield in _in()'%name)
+                #start process in
+                thr=threading.Thread(target=_in, name=name, args=(part,))
+#                thr.daemon=True
+                _.parts[name]=part
+                _.thread_pool.append(thr)
 
-    def log_history(_, text):
-        fwrite(_.history_file(), text, append=True)
+        #    p=threading.Thread(target=_in, args=(fn_in,part[:-3]))
+        #    p.start()
+        #    p.join()
+        #start all together
+#        for x in parts:
+#            print(x.name,x.subs)
+        [thr.start() for thr in _.thread_pool]
 
-    def perform(_,text):
-        info('%s.Command : %s'%(_.mind,text))
-        if (text is None) or (text.strip()==''):
-            #nothing to do
-            return
-        t = text.lower()
-        # Is There A Matching Command?
-        if t in _.kws:
-            info('Perform : %s'%str(_.kws[t]))
-            _.last_phrase=t
-            #for now - 2 types of commands : Stub and Command line Text
-            #for Stubs we will call perform
-            if isCallable(_.kws[t]):
-                call_func(_.kws[t])
-            #for string we will call sys_exec
-            elif isinstance(_.kws[t],basestring):
-                sys_exec(_.kws[t])
-            else:
-                #we have not idea what type of this command is, so we'll raise Exception
-                info('Unkown command')
-                #raise Exception('Unkown command type : %s'%str(_.kws[t]))
-
-            _.log_history(text)
-
-    def set_mind(_, name, history=1):
-        """
-          use this to switch current mind to `name` mind
-        """
-        info('Switch mind: %s->%s'%(_.mind,name))
-        if history:
-            info('_.switch_hist.append : '+name)
-            _.switch_hist.append(name)
-        _.mind=name
-        _.mind_dir=os.path.join(_.cur_dir, 'mind', _.mind)
-        # let's make dirs
-#        _._make_dir(_.cache_dir)
-        cf=_.commands_file()
-        cf_data=fread(cf)
-        d_exec=dict(_.d_funcs.items())
-        exec(cf_data,d_exec)
-        #let's add commands without spaces
-#        _.kws=d_exec['kws']
-        _.kws={}#d_exec['kws']
-        for key, value in d_exec['kws'].items():
-            for synonym in key.strip().split(','):
-                _.kws[synonym]=value
-            #_.kws[key.replace(' ','').replace('?','').replace("'",'')]=value
-        # Configure Speech to text dictionaries
-        _.audio.config_stt(_.mind_dir, _.kws.keys(), stat_mtime(cf))
-
-    def switch_back(_):
-        """
-          let's switch to previous `mind` (from switch_hist)
-        """
-        _.set_mind(_.switch_hist.pop(),0)
-
-    def history_file(_):
-        return os.path.join(_.mind_dir,'cache', 'history')
-
-    def commands_file(_):
-        return os.path.join(_.mind_dir,"commands.py")
-
-    def check_langs(_):
-        """
-          check dictionaries for all minds.
-          Handles updating the language using the online lmtool.
-          see :
-        """
-        info('Update for "Speech to text" dictionaries (all minds).\nPlease wait...')
-        for mind in os.listdir('mind'):
-            _.set_mind(mind)
-        info('Done!')
 
 if __name__ == '__main__':
-    oa=Assistant()
-    oa.loop()
+    Assistant().loop()
