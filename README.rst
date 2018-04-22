@@ -17,12 +17,6 @@ https://www.youtube.com/watch?v=6_tA081SA8Y
 small calc demo:
 https://www.youtube.com/watch?v=ueQCmmUdmLo
 
-Need To Fix:
-=============
-Replace all commands in "minds" via Python Stub calls. 
-
-Make OA work transparently in Windows, Mac, Linux and all other OS families (all commands are currently related to Arch linux).
-
 Installation:
 =============
 Dependencies:
@@ -46,6 +40,35 @@ To start: ``sudo python oa.py``
 
 for all systems:
 ``pip install keyboard sounddevice playsound requests pyttsx3 pocketsphinx psutil feedparser python-forecastio numpy``
+
+TO-DO list:
+=============
+Clean commands in "minds". 
+Make OA work transparently in Windows, Mac, Linux and all other OS families 
+(fix and rename `root_arch` mind).
+
+Display.py (use embedded browser as a display)
+	embedded chromium (https://github.com/cztomczak/cefpython)
+	
+Keyboard commands input.
+
+Add new commands via commands. (extend minds functionality on fly).
+
+Eye tracking system (mouse with eyes and webcam) 
+  https://github.com/esdalmaijer/webcam-eyetracker
+  https://github.com/esdalmaijer/PyGaze
+  https://github.com/pupil-labs/pupil
+
+Emotions interaction / Lip syncing
+(advanced interactions)
+  https://github.com/deepconvolution/LipNet
+  https://github.com/rizkiarm/LipNet
+
+3D object creation via voice 
+  using programmable Openscad (https://github.com/SolidCode/SolidPython).
+
+Add installer (for all OSes):
+  (via PyInstaller)
 
 Help:
 =============
@@ -97,8 +120,7 @@ Subscribers (defined in oa.py - for now):
 
 parts:
   `console.py` - display messages in console.
-  `display.py` - display messages in py automated web browser. (in development)
-               embedded chromium (https://github.com/cztomczak/cefpython)
+  `display.py` - display messages/windows/dialogs/video in py automated web browser. (in development)               
   `ear.py` - listen mic
   `eye.py` - web camera
   `keybd.py` - get keyboard keys/emulate keyboard keys from Input Queue (q_in)
