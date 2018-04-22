@@ -48,6 +48,7 @@ Make OA work transparently in Windows, Mac, Linux and all other OS families
 (fix and rename `root_arch` mind).
 
 Display.py (use embedded browser as a display)
+	messages/windows/dialogs/video/input/search/db browser.
 	embedded chromium (https://github.com/cztomczak/cefpython)
 	
 Keyboard commands input.
@@ -112,11 +113,11 @@ Development:
   automatically loaded into each `mind` space (with auto-delayed execution stubs).
   please take a look on any `mind` for example.
 
-Subscribers (defined in oa.py - for now):
-#subscribers- listeners will receive message from part
-  oa.ear.subs=[oa.stt] (speech to text will receive message from ear)
-  oa.stt.subs=[oa.mind] ...
-  oa.keyb.subs=[oa.mind,oa.display]
+Subscribers (defined in oa.py - for now). 
+Listeners will receive message from part.
+  `oa.ear.subs=[oa.stt] (speech to text will receive message from ear).`
+  `oa.stt.subs=[oa.mind] ...`
+  `oa.keyb.subs=[oa.mind,oa.display]`
 
 parts:
   `console.py` - display messages in console.
