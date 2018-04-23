@@ -150,7 +150,11 @@ def _in():
         dinf=get_decoder()
         decoder=dinf.decoder
         decoder.start_utt()  # begin utterance processing
-        decoder.process_raw(raw_data, False, False)  # process audio data with recognition enabled (no_search = False), as a full utterance (full_utt = True)
+        try:
+            decoder.process_raw(raw_data, False, False)  # process audio data with recognition enabled (no_search = False), as a full utterance (full_utt = True)
+        except Exception as e:
+            info(str(e))
+#        decoder.process_raw(raw_data, False, False)  # process audio data with recognition enabled (no_search = False), as a full utterance (full_utt = True)
         decoder.end_utt()  # stop utterance processing
 
         hypothesis = decoder.hyp()
