@@ -136,7 +136,7 @@ def _in():
     mute=0
     while oa.alive:
         raw_data=get()
-        if isinstance(raw_data,(str,unicode)):
+        if isinstance(raw_data,(str)):
             if raw_data=='mute':
                 mute=1
             elif raw_data=='unmute':
