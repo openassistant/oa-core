@@ -1,5 +1,5 @@
 #speech to text
-import os, time, pocketsphinx
+import os, re, time, pocketsphinx
 from pocketsphinx.pocketsphinx import *
 
 def config_stt(cache_dir, keywords, kws_last_modification_time_in_sec=None):
@@ -136,7 +136,7 @@ def _in():
     mute=0
     while oa.alive:
         raw_data=get()
-        if isinstance(raw_data,(str)):
+        if isinstance(raw_data,str):
             if raw_data=='mute':
                 mute=1
             elif raw_data=='unmute':
