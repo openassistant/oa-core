@@ -77,7 +77,7 @@ def _in():
             if isCallable(fn):
                 call_func(fn)
             #for string we will call sys_exec
-            elif isinstance(fn,(str)):
+            elif isinstance(fn,str):
                 sys_exec(fn)
             else:
                 #we have not idea what type of this command is, so we'll raise Exception

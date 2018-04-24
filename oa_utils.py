@@ -298,6 +298,21 @@ def cur_part():
         raise Exception(err)
     return ret
 
+def empty(part=None):
+    """
+      no params
+      thread safe
+      simply remove all messages
+      from part.q_in input Queue
+    """
+    if part is None:
+        part=cur_part()
+    try:
+        while True:
+            part.q_in.get(False):
+    except queue.Empty:
+        pass
+
 def get(part=None,timeout=.1):
     """
       no params

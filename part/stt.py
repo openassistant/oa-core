@@ -134,14 +134,19 @@ def get_decoder():
 def _in():
 #    oa.stt.last_phrase=''
     mute=0
+    skipIt=0
     while oa.alive:
         raw_data=get()
         if isinstance(raw_data,str):
             if raw_data=='mute':
+                info('stt mute')
                 mute=1
             elif raw_data=='unmute':
+                info('stt unmute')
                 mute=0
-                time.sleep(.3)
+                time.sleep(.4)
+                empty()
+                continue
         #mute mode - do not parse audio data. until unmute
         if mute:
             time.sleep(.1)
