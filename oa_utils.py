@@ -309,7 +309,7 @@ def empty(part=None):
         part=cur_part()
     try:
         while True:
-            part.q_in.get(False):
+            part.q_in.get(False)
     except queue.Empty:
         pass
 
