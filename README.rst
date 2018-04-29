@@ -86,80 +86,62 @@ General Open Assistant overview: https://www.patreon.com/posts/open-assistant-16
   `mind.py`  - Load and control all minds.
   
 `Minds`:
-    
-   `boot.py` - First mind booted. Listens for ``open assistant`` to launch root mind.
+  `boot.py` - First mind booted. Listens for ``open assistant`` to launch root mind.
        
-   `calc.py` - Voice calculator.
+  `calc.py` - Voice calculator.
        
-   `empty.py` - Test mind.
+  `empty.py` - Test mind.
+      
+  `root.py` - Core system mind (will be configured for various operating systems).
        
-   `root.py` - Core system mind (will be configured for various operating systems).
+  `stella.py` - User mind to talk, get news, hear jokes, and so on.
        
-   `stella.py` - User mind to talk, get news, hear jokes, and so on.
-       
-    yes_no.py` - Mind which offers voice options. (You may test this mind via stella ->"How Are you ?" to start diagnostics.)
+  `yes_no.py` - Mind which offers voice options. (You may test this mind via stella ->"How Are you ?" to start diagnostics.)
 	  
 TO-DO List:
 =============
-  Clean commands in "minds". 
+Clean commands in "minds". 
 
-  Make OA work transparently in Windows, Mac, Linux, and all other operating systems.
+Make OA work transparently in Windows, Mac, Linux, and all other operating systems.
 
-  Display.py (use embedded browser as a display)
-
-	messages/windows/dialogs/video/input/search/db browser.
+Display.py (use embedded browser as a display)
+  messages/windows/dialogs/video/input/search/db browser.
+  embedded chromium (https://github.com/cztomczak/cefpython)
 	
-	embedded chromium (https://github.com/cztomczak/cefpython)
-	
-  Keyboard command input.
+Keyboard command input.
 
-  Add new commands via voice (extend mind functionality on fly).
+Add new commands via voice (extend mind functionality on fly).
 
-  Eye tracking system (mouse with eyes and webcam):
+Eye tracking system (mouse with eyes and webcam):
+  https://github.com/esdalmaijer/webcam-eyetracker
+  https://github.com/esdalmaijer/PyGaze
+  https://github.com/pupil-labs/pupil
 
-    https://github.com/esdalmaijer/webcam-eyetracker
-  
-    https://github.com/esdalmaijer/PyGaze
-  
-    https://github.com/pupil-labs/pupil
+Emotions interaction / Lip syncing (advanced interactions):
+  https://github.com/deepconvolution/LipNet
+  https://github.com/rizkiarm/LipNet
 
-  Emotions interaction / Lip syncing (advanced interactions):
+3D object creation via voice using programmable Openscad: 
+  https://github.com/SolidCode/SolidPython
 
-    https://github.com/deepconvolution/LipNet
-  
-    https://github.com/rizkiarm/LipNet
-
-  3D object creation via voice using programmable Openscad: 
-
-    https://github.com/SolidCode/SolidPython
-
-  Build an installer (for all operating systems via PyInstaller).
+Build an installer (for all operating systems via PyInstaller).
       
 Support Open Assistant:
 =============
-  Become a patron: https://www.patreon.com/openassistant
+Become a patron: https://www.patreon.com/openassistant
 
-  Donate tokens:
+Donate tokens:
+  BTC: 1HWciwsZ1jCgH9VYRRb4A21WoRByn2tnpc
+  ETH: 0x90A534862fA94FE1fFC1Fe5c660E3683c219c87a
+  NEO: Ad3FZrL9Gr1WyNcR6GTbPRqgv1c58E2G1q
+  QTUM: Qd7bqFAGCC5ViHaZqkuYHHo9Jg8h1a1Ugc
+  DOGE: DMeiGCpCK96xp9g9A1achnB7gYvH6KNc6u
+  MANNA: GLfvi9GWmRQdpeN8nDdjMkbCjvk55viTXp
 
-    BTC: 1HWciwsZ1jCgH9VYRRb4A21WoRByn2tnpc
-
-    ETH: 0x90A534862fA94FE1fFC1Fe5c660E3683c219c87a
-
-    NEO: Ad3FZrL9Gr1WyNcR6GTbPRqgv1c58E2G1q
-
-    QTUM: Qd7bqFAGCC5ViHaZqkuYHHo9Jg8h1a1Ugc
-
-    DOGE: DMeiGCpCK96xp9g9A1achnB7gYvH6KNc6u
-
-    MANNA: GLfvi9GWmRQdpeN8nDdjMkbCjvk55viTXp
-
-  Join our team:
-
-    Feel free to fork and enhance this project.
-
-    Email us at: `info@openassistant.org <mailto:info@openassistant.org>`__
-
-    Visit our website: `Open Assistant <http://www.openassistant.org/>`__
+Join our team:
+  Feel free to fork and enhance this code.
+  Email us at: `info@openassistant.org <mailto:info@openassistant.org>`__
+  Visit our website: `Open Assistant <http://www.openassistant.org/>`__
 
 `Free the robot brains!` 
 
