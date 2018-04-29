@@ -3,7 +3,7 @@ Open Assistant
 
 Make your own minds! Free open source AI OS development.
 
-This is fork of the original `Open Assistant https://github.com/openassistant/oa-core/>`__.
+This is fork of the original `Open Assistant <https://github.com/openassistant/oa-core/>`__.
 
 Our goals are to simplify and restructure modules to provide easy customization, operating system independence, as well as to implement more sophisticated logic such as machine learning (TensorFlow).
 
