@@ -3,7 +3,7 @@ Open Assistant
 
 Make your own minds! Free open source AI OS development.
 
-This is fork of the original `Open Assistant <https://github.com/openassistant/>`__.
+This is fork of the original `Open Assistant https://github.com/openassistant/oa-core/>`__.
 
 Our goals are to simplify and restructure modules to provide easy customization, operating system independence, as well as to implement more sophisticated logic such as machine learning (TensorFlow).
 
@@ -21,27 +21,29 @@ Short caculator demo: https://www.youtube.com/watch?v=ueQCmmUdmLo
 
 Installation:
 =============
-Dependencies:
+`Dependencies`:
 
 Python: (May be any version 2.* or 3.* branch.)
 
 For all systems:
 ``pip install keyboard sounddevice playsound requests pyttsx3 pocketsphinx psutil feedparser python-forecastio numpy``
 
-Windows (recommended : Python 2.7 or 3.5):
+`Windows` (recommended : Python 2.7 or 3.5):
 
 Install common list of py packages plus: ``pip install pywin32``
 
 To start Open Assistant: ``python oa.py``
 
-Arch Linux: ``sudo pacman -S swig espeak``
+`Arch Linux`: ``sudo pacman -S swig espeak``
 
-Ubuntu: ``sudo apt-get install -y python python-dev python-pip build-essential swig git libpulse-dev espeak``
+`Ubuntu`: ``sudo apt-get install -y python python-dev python-pip build-essential swig git libpulse-dev espeak``
 
 To start Open Assistant: ``sudo python oa.py``
 
 System Information:
 =============
+General Open Assistant overview: https://www.patreon.com/posts/open-assistant-16695777
+
 `oa.py` - Main Open Assistant module.
   /part - Part modules. 
     ``_in()``: function which `yields` processed data.
@@ -57,40 +59,61 @@ System Information:
   Automatically loaded into each `mind` space (with auto-delayed execution stubs).
   Look within any `mind` for examples.
 
-Subscribers (defined in ``oa.py`` - for now). 
+`Subscribers`: (defined in ``oa.py`` - for now). 
+
 Listeners will receive messages from parts.
+
   `oa.ear.subs=[oa.stt] (speech to text will receive message from ear).`
+  
   `oa.stt.subs=[oa.mind] ...`
+  
   `oa.keyb.subs=[oa.mind,oa.display]`
 
-Parts:
+`Parts`:
   `console.py` - Display messages in the console.
-  `display.py` - Display messages/windows/dialogs/video in py automated web browser (under development).             
+  
+  `display.py` - Display messages/windows/dialogs/video in py automated web browser (under development).
+  
   `ear.py` - Listening via microphone.
+  
   `eye.py` - Camera and computer vision (planned).
+  
   `keybd.py` - Recieve keyboard keys/emulate keyboard keys from input queue (q_in).
+  
   `sound.py` - Play audio file.
+  
   `stt.py` - Speech to text.
+  
   `voice.py` - Text to speech.
+  
   `mind.py`  - Load and control all minds.
+  
     \mind
+    
        `boot.py` - First mind booted. Listens for ``open assistant`` to launch root mind.
+       
        `calc.py` - Voice calculator.
+       
        `empty.py` - Test mind.
+       
        `root.py` - Core system mind (will be configured for various operating systems).
+       
        `stella.py` - User mind to talk, get news, hear jokes, and so on.
+       
        `yes_no.py` - Mind which offers voice options. 
+       
           (You may test this mind via stella->"How Are you ?" to start diagnostics)
 	  
 TO-DO List:
 =============
 Clean commands in "minds". 
 
-Make OA work transparently in Windows, Mac, Linux and all other OS families 
-(fix and rename `root_arch` mind).
+Make OA work transparently in Windows, Mac, Linux, and all other operating systems.
 
 Display.py (use embedded browser as a display)
+
 	messages/windows/dialogs/video/input/search/db browser.
+	
 	embedded chromium (https://github.com/cztomczak/cefpython)
 	
 Keyboard command input.
@@ -98,19 +121,24 @@ Keyboard command input.
 Add new commands via voice (extend mind functionality on fly).
 
 Eye tracking system (mouse with eyes and webcam):
+
   https://github.com/esdalmaijer/webcam-eyetracker
+  
   https://github.com/esdalmaijer/PyGaze
+  
   https://github.com/pupil-labs/pupil
 
-Emotions interaction / Lip syncing
-(advanced interactions)
+Emotions interaction / Lip syncing (advanced interactions):
+
   https://github.com/deepconvolution/LipNet
+  
   https://github.com/rizkiarm/LipNet
 
-3D object creation via voice using programmable Openscad (https://github.com/SolidCode/SolidPython).
+3D object creation via voice using programmable Openscad: 
 
-Add installer (for all OSes):
-  (via PyInstaller)
+  https://github.com/SolidCode/SolidPython
+
+Build an installer (for all operating systems via PyInstaller).
       
 Support Open Assistant:
 =============
@@ -132,8 +160,13 @@ DOGE: DMeiGCpCK96xp9g9A1achnB7gYvH6KNc6u
 MANNA: GLfvi9GWmRQdpeN8nDdjMkbCjvk55viTXp
 
 Join our team:
+
 Feel free to fork and enhance this project.
+
 Email us at: `info@openassistant.org <mailto:info@openassistant.org>`__
+
 Visit our website: `Open Assistant <http://www.openassistant.org/>`__
 
-Free the robot brains! Support your privacy and freedom.
+Free the robot brains! 
+
+Support your privacy and freedom.
