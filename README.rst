@@ -25,14 +25,13 @@ Installation:
 
 Python: (May be any version 2.* or 3.* branch.)
 
-For all systems:
-``pip install keyboard sounddevice playsound requests pyttsx3 pocketsphinx psutil feedparser python-forecastio numpy``
+For all systems: ``pip install keyboard sounddevice playsound requests pyttsx3 pocketsphinx psutil feedparser python-forecastio numpy``
 
 `Windows` (recommended : Python 2.7 or 3.5):
 
-Install common list of py packages plus: ``pip install pywin32``
+  Install common list of py packages plus: ``pip install pywin32``
 
-To start Open Assistant: ``python oa.py``
+  To start Open Assistant: ``python oa.py``
 
 `Arch Linux`: ``sudo pacman -S swig espeak``
 
@@ -59,9 +58,7 @@ General Open Assistant overview: https://www.patreon.com/posts/open-assistant-16
   Automatically loaded into each `mind` space (with auto-delayed execution stubs).
   Look within any `mind` for examples.
 
-`Subscribers`: (defined in ``oa.py`` - for now). 
-
-Listeners will receive messages from parts.
+`Listeners`:  Parts able to receive messages.
 
   `oa.ear.subs=[oa.stt] (speech to text will receive message from ear).`
   
@@ -88,85 +85,82 @@ Listeners will receive messages from parts.
   
   `mind.py`  - Load and control all minds.
   
-    \mind
+`Minds`:
     
-       `boot.py` - First mind booted. Listens for ``open assistant`` to launch root mind.
+   `boot.py` - First mind booted. Listens for ``open assistant`` to launch root mind.
        
-       `calc.py` - Voice calculator.
+   `calc.py` - Voice calculator.
        
-       `empty.py` - Test mind.
+   `empty.py` - Test mind.
        
-       `root.py` - Core system mind (will be configured for various operating systems).
+   `root.py` - Core system mind (will be configured for various operating systems).
        
-       `stella.py` - User mind to talk, get news, hear jokes, and so on.
+   `stella.py` - User mind to talk, get news, hear jokes, and so on.
        
-       `yes_no.py` - Mind which offers voice options. 
-       
-          (You may test this mind via stella->"How Are you ?" to start diagnostics)
+    yes_no.py` - Mind which offers voice options. (You may test this mind via stella ->"How Are you ?" to start diagnostics.)
 	  
 TO-DO List:
 =============
-Clean commands in "minds". 
+  Clean commands in "minds". 
 
-Make OA work transparently in Windows, Mac, Linux, and all other operating systems.
+  Make OA work transparently in Windows, Mac, Linux, and all other operating systems.
 
-Display.py (use embedded browser as a display)
+  Display.py (use embedded browser as a display)
 
 	messages/windows/dialogs/video/input/search/db browser.
 	
 	embedded chromium (https://github.com/cztomczak/cefpython)
 	
-Keyboard command input.
+  Keyboard command input.
 
-Add new commands via voice (extend mind functionality on fly).
+  Add new commands via voice (extend mind functionality on fly).
 
-Eye tracking system (mouse with eyes and webcam):
+  Eye tracking system (mouse with eyes and webcam):
 
-  https://github.com/esdalmaijer/webcam-eyetracker
+    https://github.com/esdalmaijer/webcam-eyetracker
   
-  https://github.com/esdalmaijer/PyGaze
+    https://github.com/esdalmaijer/PyGaze
   
-  https://github.com/pupil-labs/pupil
+    https://github.com/pupil-labs/pupil
 
-Emotions interaction / Lip syncing (advanced interactions):
+  Emotions interaction / Lip syncing (advanced interactions):
 
-  https://github.com/deepconvolution/LipNet
+    https://github.com/deepconvolution/LipNet
   
-  https://github.com/rizkiarm/LipNet
+    https://github.com/rizkiarm/LipNet
 
-3D object creation via voice using programmable Openscad: 
+  3D object creation via voice using programmable Openscad: 
 
-  https://github.com/SolidCode/SolidPython
+    https://github.com/SolidCode/SolidPython
 
-Build an installer (for all operating systems via PyInstaller).
+  Build an installer (for all operating systems via PyInstaller).
       
 Support Open Assistant:
 =============
-Become a patron:
-https://www.patreon.com/openassistant
+  Become a patron: https://www.patreon.com/openassistant
 
-Donate tokens:
+  Donate tokens:
 
-BTC: 1HWciwsZ1jCgH9VYRRb4A21WoRByn2tnpc
+    BTC: 1HWciwsZ1jCgH9VYRRb4A21WoRByn2tnpc
 
-ETH: 0x90A534862fA94FE1fFC1Fe5c660E3683c219c87a
+    ETH: 0x90A534862fA94FE1fFC1Fe5c660E3683c219c87a
 
-NEO: Ad3FZrL9Gr1WyNcR6GTbPRqgv1c58E2G1q
+    NEO: Ad3FZrL9Gr1WyNcR6GTbPRqgv1c58E2G1q
 
-QTUM: Qd7bqFAGCC5ViHaZqkuYHHo9Jg8h1a1Ugc
+    QTUM: Qd7bqFAGCC5ViHaZqkuYHHo9Jg8h1a1Ugc
 
-DOGE: DMeiGCpCK96xp9g9A1achnB7gYvH6KNc6u
+    DOGE: DMeiGCpCK96xp9g9A1achnB7gYvH6KNc6u
 
-MANNA: GLfvi9GWmRQdpeN8nDdjMkbCjvk55viTXp
+    MANNA: GLfvi9GWmRQdpeN8nDdjMkbCjvk55viTXp
 
-Join our team:
+  Join our team:
 
-Feel free to fork and enhance this project.
+    Feel free to fork and enhance this project.
 
-Email us at: `info@openassistant.org <mailto:info@openassistant.org>`__
+    Email us at: `info@openassistant.org <mailto:info@openassistant.org>`__
 
-Visit our website: `Open Assistant <http://www.openassistant.org/>`__
+    Visit our website: `Open Assistant <http://www.openassistant.org/>`__
 
-Free the robot brains! 
+`Free the robot brains!` 
 
-Support your privacy and freedom.
+`Support your privacy and freedom.`
