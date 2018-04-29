@@ -146,27 +146,28 @@ Support Open Assistant
 
 `Donate tokens`:
 
-BTC: 1HWciwsZ1jCgH9VYRRb4A21WoRByn2tnpc
+ BTC: 1HWciwsZ1jCgH9VYRRb4A21WoRByn2tnpc
   
-ETH: 0x90A534862fA94FE1fFC1Fe5c660E3683c219c87a
+ ETH: 0x90A534862fA94FE1fFC1Fe5c660E3683c219c87a
   
-NEO: Ad3FZrL9Gr1WyNcR6GTbPRqgv1c58E2G1q
+ NEO: Ad3FZrL9Gr1WyNcR6GTbPRqgv1c58E2G1q
   
-QTUM: Qd7bqFAGCC5ViHaZqkuYHHo9Jg8h1a1Ugc
+ QTUM: Qd7bqFAGCC5ViHaZqkuYHHo9Jg8h1a1Ugc
   
-DOGE: DMeiGCpCK96xp9g9A1achnB7gYvH6KNc6u
+ DOGE: DMeiGCpCK96xp9g9A1achnB7gYvH6KNc6u
   
-MANNA: GLfvi9GWmRQdpeN8nDdjMkbCjvk55viTXp
+ MANNA: GLfvi9GWmRQdpeN8nDdjMkbCjvk55viTXp
 
 Join Our Team
 =============
 
-Feel free to fork and enhance this code.
+ Feel free to fork and enhance this code.
   
-Email us at: `info@openassistant.org <mailto:info@openassistant.org>`__
+ Email us at: `info@openassistant.org <mailto:info@openassistant.org>`__
   
-Visit our website: http://www.openassistant.org
+ Visit our website: http://www.openassistant.org
 
-``Free the robot brains!`` 
-
-``Support your privacy and freedom.``
+Free the robot brains!
+=============
+Support your privacy and freedom!
+=============
