@@ -163,12 +163,11 @@ Support Open Assistant
 
 Join Our Team
 =============
- Feel free to fork and enhance this code.
-  
- Email us at: `info@openassistant.org <mailto:info@openassistant.org>`__
-  
- Visit our website: http://www.openassistant.org
- 
+Feel free to fork and enhance this code.
+
+Email us at: `info@openassistant.org <mailto:info@openassistant.org>`__
+
+Visit our website: http://www.openassistant.org
 
 Free the robot brains!
 =============
