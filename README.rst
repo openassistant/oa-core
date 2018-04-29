@@ -45,17 +45,22 @@ General Open Assistant overview: https://www.patreon.com/posts/open-assistant-16
 
 `oa.py` - Main Open Assistant module.
   /part - Part modules. 
-    ``_in()``: function which `yields` processed data.
-    Each part works in separate thread. 
+    ``_in()``: function which `yields` processed data. Each part works in separate thread.
+    
     Each part reads messages (signals) from devices and/or from input message queue (q_in).
-    To send messages to a part ('voice' for example) use : put('voice','any sentence')
-    To read messages (for current part) use: ``data=get()`` #get waits until any messages appear in the queue.
+    
+    To send messages to a part ('voice' for example) use: ``put('voice','any sentence')``
+    To read messages (for current part) use: ``data=get()`` (get waits until any messages appear in the queue).
+    
     In sophisticated cases you may use ``q_in`` queue directly (with or without locks).
+    
     Newly added parts will start automatically.
 
 `oa_utils.py`
   Collection of utilities to play sounds, find files, and execute functions.
+  
   Automatically loaded into each `mind` space (with auto-delayed execution stubs).
+  
   Look within any `mind` for examples.
 
 `Listeners`:  Parts able to receive messages.
@@ -105,7 +110,9 @@ Clean commands in "minds".
 Make OA work transparently in Windows, Mac, Linux, and all other operating systems.
 
 Display.py (use embedded browser as a display)
+
   messages/windows/dialogs/video/input/search/db browser.
+  
   embedded chromium (https://github.com/cztomczak/cefpython)
 	
 Keyboard command input.
@@ -113,15 +120,21 @@ Keyboard command input.
 Add new commands via voice (extend mind functionality on fly).
 
 Eye tracking system (mouse with eyes and webcam):
+
   https://github.com/esdalmaijer/webcam-eyetracker
+  
   https://github.com/esdalmaijer/PyGaze
+  
   https://github.com/pupil-labs/pupil
 
 Emotions interaction / Lip syncing (advanced interactions):
+
   https://github.com/deepconvolution/LipNet
+  
   https://github.com/rizkiarm/LipNet
 
 3D object creation via voice using programmable Openscad: 
+
   https://github.com/SolidCode/SolidPython
 
 Build an installer (for all operating systems via PyInstaller).
@@ -131,17 +144,26 @@ Support Open Assistant:
 Become a patron: https://www.patreon.com/openassistant
 
 Donate tokens:
+
   BTC: 1HWciwsZ1jCgH9VYRRb4A21WoRByn2tnpc
+  
   ETH: 0x90A534862fA94FE1fFC1Fe5c660E3683c219c87a
+  
   NEO: Ad3FZrL9Gr1WyNcR6GTbPRqgv1c58E2G1q
+  
   QTUM: Qd7bqFAGCC5ViHaZqkuYHHo9Jg8h1a1Ugc
+  
   DOGE: DMeiGCpCK96xp9g9A1achnB7gYvH6KNc6u
+  
   MANNA: GLfvi9GWmRQdpeN8nDdjMkbCjvk55viTXp
 
 Join our team:
   Feel free to fork and enhance this code.
+  
   Email us at: `info@openassistant.org <mailto:info@openassistant.org>`__
+  
   Visit our website: `Open Assistant <http://www.openassistant.org/>`__
+
 
 `Free the robot brains!` 
 
