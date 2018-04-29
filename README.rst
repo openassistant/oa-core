@@ -21,11 +21,12 @@ Short caculator demo: https://www.youtube.com/watch?v=ueQCmmUdmLo
 
 Installation:
 =============
+
 `Dependencies`:
+  Python: (May be any version 2.* or 3.* branch.)
 
-Python: (May be any version 2.* or 3.* branch.)
-
-For all systems: ``pip install keyboard sounddevice playsound requests pyttsx3 pocketsphinx psutil feedparser python-forecastio numpy``
+`For all systems`: 
+ ``pip install keyboard sounddevice playsound requests pyttsx3 pocketsphinx psutil feedparser python-forecastio numpy``
 
 `Windows` (recommended : Python 2.7 or 3.5):
 
@@ -37,7 +38,7 @@ For all systems: ``pip install keyboard sounddevice playsound requests pyttsx3 p
 
 `Ubuntu`: ``sudo apt-get install -y python python-dev python-pip build-essential swig git libpulse-dev espeak``
 
-To start Open Assistant: ``sudo python oa.py``
+`To start Open Assistant`: ``sudo python oa.py``
 
 System Information:
 =============
@@ -166,6 +167,7 @@ Join Our Team
  Email us at: `info@openassistant.org <mailto:info@openassistant.org>`__
   
  Visit our website: http://www.openassistant.org
+ 
 
 Free the robot brains!
 =============
