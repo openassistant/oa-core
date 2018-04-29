@@ -63,7 +63,8 @@ General Open Assistant overview: https://www.patreon.com/posts/open-assistant-16
   
   Look within any `mind` for examples.
 
-`Listeners`:  Parts able to receive messages.
+`Listeners`:
+  Parts able to receive messages.
 
   `oa.ear.subs=[oa.stt] (speech to text will receive message from ear).`
   
@@ -103,7 +104,7 @@ General Open Assistant overview: https://www.patreon.com/posts/open-assistant-16
        
   `yes_no.py` - Mind which offers voice options. (You may test this mind via stella ->"How Are you ?" to start diagnostics.)
 	  
-TO-DO List:
+To-Do List:
 =============
 Clean commands in "minds". 
 
