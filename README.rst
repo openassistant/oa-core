@@ -145,10 +145,10 @@ Build an installer (for all operating systems via PyInstaller).
       
 Support Open Assistant
 =============
-`Become a patron`: https://www.patreon.com/openassistant
+`Become a patron`:
+  https://www.patreon.com/openassistant
 
 `Donate tokens`:
-
  BTC: 1HWciwsZ1jCgH9VYRRb4A21WoRByn2tnpc
   
  ETH: 0x90A534862fA94FE1fFC1Fe5c660E3683c219c87a
@@ -163,7 +163,6 @@ Support Open Assistant
 
 Join Our Team
 =============
-
  Feel free to fork and enhance this code.
   
  Email us at: `info@openassistant.org <mailto:info@openassistant.org>`__
@@ -173,5 +172,6 @@ Join Our Team
 
 Free the robot brains!
 =============
+
 Support your privacy and freedom!
 =============
