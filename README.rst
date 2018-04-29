@@ -3,7 +3,7 @@ Open Assistant
 
 Make your own minds! Free open source AI OS development.
 
-This is fork of the original `Open Assistant <http://www.openassistant.org/>`__.
+This is fork of the original `Open Assistant <https://github.com/openassistant/>`__.
 
 Our goals are to simplify and restructure modules to provide easy customization, operating system independence, as well as to implement more sophisticated logic such as machine learning (TensorFlow).
 
@@ -11,17 +11,13 @@ We would like to establish an OA.Agents blockchain network, add the ability for 
 
 Video Demonstrations: 
 =============
-First run on Arch Linux:
-https://youtu.be/-7Vh1ny9FsQ
+First run on Arch Linux: https://youtu.be/-7Vh1ny9FsQ
 
-Version 0.11 on Arch Linux:
-https://youtu.be/_zBjn_LgiZM
+Version 0.11 on Arch Linux: https://youtu.be/_zBjn_LgiZM
 
-First run on Windows:
-https://www.youtube.com/watch?v=6_tA081SA8Y
+First run on Windows: https://www.youtube.com/watch?v=6_tA081SA8Y
 
-Short caculator demo:
-https://www.youtube.com/watch?v=ueQCmmUdmLo
+Short caculator demo: https://www.youtube.com/watch?v=ueQCmmUdmLo
 
 Installation:
 =============
@@ -33,21 +29,20 @@ For all systems:
 ``pip install keyboard sounddevice playsound requests pyttsx3 pocketsphinx psutil feedparser python-forecastio numpy``
 
 Windows (recommended : Python 2.7 or 3.5):
-Install common list of py packages plus:
-``pip install pywin32``
+
+Install common list of py packages plus: ``pip install pywin32``
+
 To start Open Assistant: ``python oa.py``
 
-Arch Linux:
-``sudo pacman -S swig espeak``
+Arch Linux: ``sudo pacman -S swig espeak``
 
-Ubuntu:
-``sudo apt-get install -y python python-dev python-pip build-essential swig git libpulse-dev espeak``
+Ubuntu: ``sudo apt-get install -y python python-dev python-pip build-essential swig git libpulse-dev espeak``
 
 To start Open Assistant: ``sudo python oa.py``
 
 System Information:
 =============
-``oa.py`` - Main Open Assistant module.
+`oa.py` - Main Open Assistant module.
   /part - Part modules. 
     ``_in()``: function which `yields` processed data.
     Each part works in separate thread. 
@@ -123,11 +118,17 @@ Become a patron:
 https://www.patreon.com/openassistant
 
 Donate tokens:
+
 BTC: 1HWciwsZ1jCgH9VYRRb4A21WoRByn2tnpc
+
 ETH: 0x90A534862fA94FE1fFC1Fe5c660E3683c219c87a
+
 NEO: Ad3FZrL9Gr1WyNcR6GTbPRqgv1c58E2G1q
+
 QTUM: Qd7bqFAGCC5ViHaZqkuYHHo9Jg8h1a1Ugc
+
 DOGE: DMeiGCpCK96xp9g9A1achnB7gYvH6KNc6u
+
 MANNA: GLfvi9GWmRQdpeN8nDdjMkbCjvk55viTXp
 
 Join our team:
