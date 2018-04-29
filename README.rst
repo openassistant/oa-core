@@ -139,11 +139,11 @@ Emotions interaction / Lip syncing (advanced interactions):
 
 Build an installer (for all operating systems via PyInstaller).
       
-Support Open Assistant:
+Support Open Assistant
 =============
-Become a patron: https://www.patreon.com/openassistant
+`Become a patron`: https://www.patreon.com/openassistant
 
-Donate tokens:
+`Donate tokens`:
 
 BTC: 1HWciwsZ1jCgH9VYRRb4A21WoRByn2tnpc
   
@@ -157,7 +157,8 @@ DOGE: DMeiGCpCK96xp9g9A1achnB7gYvH6KNc6u
   
 MANNA: GLfvi9GWmRQdpeN8nDdjMkbCjvk55viTXp
 
-Join our team:
+Join Our Team
+=============
 
 Feel free to fork and enhance this code.
   
@@ -165,6 +166,6 @@ Email us at: `info@openassistant.org <mailto:info@openassistant.org>`__
   
 Visit our website: http://www.openassistant.org
 
-`Free the robot brains!` 
+``Free the robot brains!`` 
 
-`Support your privacy and freedom.`
+``Support your privacy and freedom.``
