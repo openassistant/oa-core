@@ -1,20 +1,26 @@
-Open Assistant Fork Description:
+Open Assistant
 =============
 
-This is fork of the original `Open Assistant <http://www.openassistant.org/>`__ (see below).
+Make your own minds! Free open source AI OS development.
+
+This is fork of the original `Open Assistant <http://www.openassistant.org/>`__.
 
 Our goals are to simplify and restructure modules to provide easy customization, operating system independence, as well as to implement more sophisticated logic such as machine learning (TensorFlow).
 
 We would like to establish an OA.Agents blockchain network, add the ability for customization on fly (adding or changing commands via voice), provide a graphical interface, and build auto installer scripts.
 
-For additional technical information please take a look at Development section.
-
-Demo : 
+Video Demonstrations: 
 =============
-first run on win
+First run on Arch Linux:
+https://youtu.be/-7Vh1ny9FsQ
+
+Version 0.11 on Arch Linux:
+https://youtu.be/_zBjn_LgiZM
+
+First run on Windows:
 https://www.youtube.com/watch?v=6_tA081SA8Y
 
-small calc demo:
+Short caculator demo:
 https://www.youtube.com/watch?v=ueQCmmUdmLo
 
 Installation:
@@ -23,12 +29,13 @@ Dependencies:
 
 Python: (May be any version 2.* or 3.* branch.)
 
-Windows (recommended : python 2.7 or 3.5):
+For all systems:
+``pip install keyboard sounddevice playsound requests pyttsx3 pocketsphinx psutil feedparser python-forecastio numpy``
 
-please install common list of py packages plus:
-pip install pywin32
-
-to start: ``python oa.py``
+Windows (recommended : Python 2.7 or 3.5):
+Install common list of py packages plus:
+``pip install pywin32``
+To start Open Assistant: ``python oa.py``
 
 Arch Linux:
 ``sudo pacman -S swig espeak``
@@ -36,14 +43,54 @@ Arch Linux:
 Ubuntu:
 ``sudo apt-get install -y python python-dev python-pip build-essential swig git libpulse-dev espeak``
 
-To start: ``sudo python oa.py``
+To start Open Assistant: ``sudo python oa.py``
 
-for all systems:
-``pip install keyboard sounddevice playsound requests pyttsx3 pocketsphinx psutil feedparser python-forecastio numpy``
+System Information:
+=============
+``oa.py`` - Main Open Assistant module.
+  /part - Part modules. 
+    ``_in()``: function which `yields` processed data.
+    Each part works in separate thread. 
+    Each part reads messages (signals) from devices and/or from input message queue (q_in).
+    To send messages to a part ('voice' for example) use : put('voice','any sentence')
+    To read messages (for current part) use: ``data=get()`` #get waits until any messages appear in the queue.
+    In sophisticated cases you may use ``q_in`` queue directly (with or without locks).
+    Newly added parts will start automatically.
 
-TO-DO list:
+`oa_utils.py`
+  Collection of utilities to play sounds, find files, and execute functions.
+  Automatically loaded into each `mind` space (with auto-delayed execution stubs).
+  Look within any `mind` for examples.
+
+Subscribers (defined in ``oa.py`` - for now). 
+Listeners will receive messages from parts.
+  `oa.ear.subs=[oa.stt] (speech to text will receive message from ear).`
+  `oa.stt.subs=[oa.mind] ...`
+  `oa.keyb.subs=[oa.mind,oa.display]`
+
+Parts:
+  `console.py` - Display messages in the console.
+  `display.py` - Display messages/windows/dialogs/video in py automated web browser (under development).             
+  `ear.py` - Listening via microphone.
+  `eye.py` - Camera and computer vision (planned).
+  `keybd.py` - Recieve keyboard keys/emulate keyboard keys from input queue (q_in).
+  `sound.py` - Play audio file.
+  `stt.py` - Speech to text.
+  `voice.py` - Text to speech.
+  `mind.py`  - Load and control all minds.
+    \mind
+       `boot.py` - First mind booted. Listens for ``open assistant`` to launch root mind.
+       `calc.py` - Voice calculator.
+       `empty.py` - Test mind.
+       `root.py` - Core system mind (will be configured for various operating systems).
+       `stella.py` - User mind to talk, get news, hear jokes, and so on.
+       `yes_no.py` - Mind which offers voice options. 
+          (You may test this mind via stella->"How Are you ?" to start diagnostics)
+	  
+TO-DO List:
 =============
 Clean commands in "minds". 
+
 Make OA work transparently in Windows, Mac, Linux and all other OS families 
 (fix and rename `root_arch` mind).
 
@@ -51,11 +98,11 @@ Display.py (use embedded browser as a display)
 	messages/windows/dialogs/video/input/search/db browser.
 	embedded chromium (https://github.com/cztomczak/cefpython)
 	
-Keyboard commands input.
+Keyboard command input.
 
-Add new commands via commands. (extend minds functionality on fly).
+Add new commands via voice (extend mind functionality on fly).
 
-Eye tracking system (mouse with eyes and webcam) 
+Eye tracking system (mouse with eyes and webcam):
   https://github.com/esdalmaijer/webcam-eyetracker
   https://github.com/esdalmaijer/PyGaze
   https://github.com/pupil-labs/pupil
@@ -65,86 +112,27 @@ Emotions interaction / Lip syncing
   https://github.com/deepconvolution/LipNet
   https://github.com/rizkiarm/LipNet
 
-3D object creation via voice 
-  using programmable Openscad (https://github.com/SolidCode/SolidPython).
+3D object creation via voice using programmable Openscad (https://github.com/SolidCode/SolidPython).
 
 Add installer (for all OSes):
   (via PyInstaller)
-
-Help:
-=============
-If you want to help support this development, you may donate a cup of coffee. (My "core" works better with this stuff =) )
-
-BTC
-1HWciwsZ1jCgH9VYRRb4A21WoRByn2tnpc
-
-ETH
-0x90A534862fA94FE1fFC1Fe5c660E3683c219c87a
-
-NEO
-Ad3FZrL9Gr1WyNcR6GTbPRqgv1c58E2G1q
-
-QTUM
-Qd7bqFAGCC5ViHaZqkuYHHo9Jg8h1a1Ugc
-
-DOGE
-DMeiGCpCK96xp9g9A1achnB7gYvH6KNc6u
-
-(All tokens are accepted, based on corresponded platforms ^^ =) )
-
-Original:
-=============
-This fork will be merged with original branch, decision (what part to merge) will be made by OA community.
-
-Development:
-=============
-`oa.py` - main Open Assistant module
-  /part - part modules. 
-    Please define _in(): function which will `yield` processed data.
-    each part works in separate thread. 
-    each part may read messages (signals) from devices and/or from input messages Queue. (q_in)
-    to send message to some Part ('voice' for example) please use : put('voice','Any sentence')
-    to read message (for current part) use : data=get() #get wait until any message appear in Queue.
-    in sophisticated causes you may use `q_in` - Queue - directly. (with or without locks).
-    you may add a new part and it will start automatically.
-
-`oa_utils.py`
-  set of utils to play sound, find and execute files and so on.
-  automatically loaded into each `mind` space (with auto-delayed execution stubs).
-  please take a look on any `mind` for example.
-
-Subscribers (defined in oa.py - for now). 
-Listeners will receive message from part.
-  `oa.ear.subs=[oa.stt] (speech to text will receive message from ear).`
-  `oa.stt.subs=[oa.mind] ...`
-  `oa.keyb.subs=[oa.mind,oa.display]`
-
-parts:
-  `console.py` - display messages in console.
-  `display.py` - display messages/windows/dialogs/video in py automated web browser. (in development)               
-  `ear.py` - listen mic
-  `eye.py` - web camera
-  `keybd.py` - get keyboard keys/emulate keyboard keys from Input Queue (q_in)
-  `sound.py` - play audio file
-  `stt.py` - speech to text
-  `voice.py` - text to speech
-  `mind.py`  - load and control all minds
-    \mind
-       `boot.py` - main loader
-       `calc.py` - voice calculator 
-       `empty.py` - tests
-       `root_arch.py` - basic system config (will be used for different OSes too).
-       `stella.py` - mind to talk, get news, jokes and so on.
-       `yes_no.py` - mind which let choose user voice option. 
-          (you may test it via stella->"How Are you ?" to start diagnostic)
       
-Open Assistant
+Support Open Assistant:
 =============
-Open Assistant is an evolving open source artificial intelligence agent able  to interact in basic conversation and automate an increasing number of tasks.
+Become a patron:
+https://www.patreon.com/openassistant
 
-Maintained by the `Open Assistant <http://www.openassistant.org/>`__ 
-working group lead by `Andrew Vavrek <https://youtu.be/cXqEv2OVwHE>`__, this software 
-is an extension of `Blather <https://gitlab.com/jezra/blather>`__ 
-by `Jezra <http://www.jezra.net/>`__, `Kaylee <https://github.com/Ratfink/kaylee>`__ 
-by `Clayton G. Hobbs <https://bzratfink.wordpress.com/>`__, and includes work 
-done by `Jonathan Kulp <http://jonathankulp.org/>`__.
+Donate tokens:
+BTC: 1HWciwsZ1jCgH9VYRRb4A21WoRByn2tnpc
+ETH: 0x90A534862fA94FE1fFC1Fe5c660E3683c219c87a
+NEO: Ad3FZrL9Gr1WyNcR6GTbPRqgv1c58E2G1q
+QTUM: Qd7bqFAGCC5ViHaZqkuYHHo9Jg8h1a1Ugc
+DOGE: DMeiGCpCK96xp9g9A1achnB7gYvH6KNc6u
+MANNA: GLfvi9GWmRQdpeN8nDdjMkbCjvk55viTXp
+
+Join our team:
+Feel free to fork and enhance this project.
+Email us at: `info@openassistant.org <mailto:info@openassistant.org>`__
+Visit our website: `Open Assistant <http://www.openassistant.org/>`__
+
+Free the robot brains! Support your privacy and freedom.
