@@ -33,7 +33,8 @@ Installation:
  ``pip install keyboard sounddevice playsound requests pyttsx3 pocketsphinx psutil feedparser python-forecastio numpy``
 
 `Windows` (recommended : Python 2.7 or 3.5):
-  `Install common list of Python packages <https://www.python.org/downloads/windows/>`__ plus: ``pip install pywin32``
+  `Install common list of Python packages <https://www.python.org/downloads/windows/>`__ plus run: 
+   ``pip install pywin32``
 
   To start Open Assistant: ``python oa.py``
 
