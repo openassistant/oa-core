@@ -131,12 +131,15 @@ Add new commands via voice (extend mind functionality on fly).
 Eye tracking system (mouse control via eyes and video camera):
 
  https://github.com/esdalmaijer/webcam-eyetracker
+ 
  https://github.com/esdalmaijer/PyGaze
+ 
  https://github.com/pupil-labs/pupil
 
 Emotional interaction / lip reading (advanced functionality):
 
  https://github.com/deepconvolution/LipNet
+ 
  https://github.com/rizkiarm/LipNet
 
 3D object creation via voice using programmable Openscad:
