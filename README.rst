@@ -1,7 +1,7 @@
 Open Assistant
 =============
 
-Make your own minds! Free open source AI OS development.
+Make your own minds! Free and open source AI OS development.
 
 This is fork of the original `Open Assistant <https://github.com/openassistant/oa-core/>`__.
 
@@ -11,19 +11,23 @@ We would like to establish an OA.Agents blockchain network, add the ability for 
 
 Video Demonstrations: 
 =============
-First run on Arch Linux: https://youtu.be/-7Vh1ny9FsQ
+First run on Arch Linux: 
+ https://youtu.be/-7Vh1ny9FsQ
 
-Version 0.11 on Arch Linux: https://youtu.be/_zBjn_LgiZM
+Version 0.11 on Arch Linux: 
+ https://youtu.be/_zBjn_LgiZM
 
-First run on Windows: https://www.youtube.com/watch?v=6_tA081SA8Y
+First run on Windows: 
+ https://youtu.be/6_tA081SA8Y
 
-Short caculator demo: https://www.youtube.com/watch?v=ueQCmmUdmLo
+Short calculator demo: 
+ https://youtu.be/ueQCmmUdmLo
 
 Installation:
 =============
 
 `Dependencies`:
-  Python: (May be any version 2.* or 3.* branch.)
+  Python: (May be any version 2.* or 3.*)
 
 `For all systems`: 
  ``pip install keyboard sounddevice playsound requests pyttsx3 pocketsphinx psutil feedparser python-forecastio numpy``
@@ -44,7 +48,8 @@ Installation:
 
 System Information:
 =============
-General Open Assistant overview: https://www.patreon.com/posts/open-assistant-16695777
+General Open Assistant overview:
+ https://www.patreon.com/posts/open-assistant-16695777
 
 `oa.py` - Main Open Assistant module.
   /part - Part modules. 
@@ -60,7 +65,7 @@ General Open Assistant overview: https://www.patreon.com/posts/open-assistant-16
     Newly added parts will start automatically.
 
 `oa_utils.py`
-  Collection of utilities to play sounds, find files, and execute functions.
+  Collection of utilities to play sounds, find files, and execute functions (will be split into individual 'abilities').
   
   Automatically loaded into each `mind` space (with auto-delayed execution stubs).
   
@@ -69,43 +74,44 @@ General Open Assistant overview: https://www.patreon.com/posts/open-assistant-16
 `Listeners`:
   Parts able to receive messages.
 
-  `oa.ear.subs=[oa.stt] (speech to text will receive message from ear).`
+  `oa.ear.subs=[oa.stt] (speech to text will receive messages from ear)`
   
-  `oa.stt.subs=[oa.mind] ...`
+  `oa.stt.subs=[oa.mind]`
   
   `oa.keyb.subs=[oa.mind,oa.display]`
 
 `Parts`:
   `console.py` - Display messages in the console.
   
-  `display.py` - Display messages/windows/dialogs/video in py automated web browser (under development).
+  `display.py` - Display messages/windows/dialogs/video in automated Python-based web browser (under development).
   
-  `ear.py` - Listening via microphone.
+  `ear.py` - Listening to audio via microphone.
   
   `eye.py` - Camera and computer vision (planned).
   
-  `keybd.py` - Recieve keyboard keys/emulate keyboard keys from input queue (q_in).
+  `keybd.py` - Recieve keyboard keys/emulate keyboard keys from input queue (`q_in`).
   
-  `sound.py` - Play audio file.
+  `sound.py` - Play audio file via speakers.
   
-  `stt.py` - Speech to text.
+  `stt.py` - Internal speech to text.
   
-  `voice.py` - Text to speech.
+  `voice.py` - Text to speech via speakers.
   
   `mind.py`  - Load and control all minds.
   
 `Minds`:
-  `boot.py` - First mind booted. Listens for ``open assistant`` to launch root mind.
+  `boot.py` - First mind booted. Listens for ``open assistant`` vocal command to launch root mind.
        
   `calc.py` - Voice calculator.
        
-  `empty.py` - Test mind.
+  `empty.py` - Blank test mind.
       
-  `root.py` - Core system mind (will be configured for various operating systems).
+  `root.py` - Core system mind (will be configured for specific operating systems).
        
-  `stella.py` - User mind to talk, get news, hear jokes, and so on.
+  `stella.py` - User mind to talk, get news, hear jokes, and so on (personality mind).
        
-  `yes_no.py` - Mind which offers voice options. (You may test this mind via stella ->"How Are you ?" to start diagnostics.)
+  `yes_no.py` - Mind which offers voice options. 
+   (You may test this mind via stella ->"How Are you ?" to start diagnostics.)
 	  
 To-Do List:
 =============
@@ -115,33 +121,29 @@ Make OA work transparently in Windows, Mac, Linux, and all other operating syste
 
 Display.py (use embedded browser as a display)
 
-  messages/windows/dialogs/video/input/search/db browser.
+  Messages / windows / dialogs / video / input / search / database browser.
   
-  embedded chromium (https://github.com/cztomczak/cefpython)
+  Using embedded chromium:
+   https://github.com/cztomczak/cefpython
 	
 Keyboard command input.
 
 Add new commands via voice (extend mind functionality on fly).
 
-Eye tracking system (mouse with eyes and webcam):
+Eye tracking system (mouse control via eyes and video camera):
+ https://github.com/esdalmaijer/webcam-eyetracker
+ https://github.com/esdalmaijer/PyGaze
+ https://github.com/pupil-labs/pupil
 
-  https://github.com/esdalmaijer/webcam-eyetracker
-  
-  https://github.com/esdalmaijer/PyGaze
-  
-  https://github.com/pupil-labs/pupil
+Emotional interaction / lip reading (advanced functionality):
+ https://github.com/deepconvolution/LipNet
+ https://github.com/rizkiarm/LipNet
 
-Emotions interaction / Lip syncing (advanced interactions):
+3D object creation via voice using programmable Openscad:
+ https://github.com/SolidCode/SolidPython
 
-  https://github.com/deepconvolution/LipNet
-  
-  https://github.com/rizkiarm/LipNet
-
-3D object creation via voice using programmable Openscad: 
-
-  https://github.com/SolidCode/SolidPython
-
-Build an installer (for all operating systems via PyInstaller).
+Build a simple installer for all operating systems via PyInstaller:
+ http://www.pyinstaller.org
       
 Support Open Assistant
 =============
@@ -165,9 +167,11 @@ Join Our Team
 =============
 Feel free to fork and enhance this code.
 
-Email us at: `info@openassistant.org <mailto:info@openassistant.org>`__
+Email us at:
+ `info@openassistant.org <mailto:info@openassistant.org>`__
 
-Visit our website: http://www.openassistant.org
+Visit our website:
+ http://www.openassistant.org
 
 Free the robot brains!
 =============
