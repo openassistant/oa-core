@@ -87,7 +87,7 @@ General Open Assistant overview:
   
   ``ear.py`` - Listening to audio via microphone.
   
-  `eye.py` - Camera and computer vision (planned).
+  ``eye.py`` - Camera and computer vision (planned).
   
   ``keybd.py`` - Recieve keyboard keys/emulate keyboard keys from input queue (`q_in`).
   
