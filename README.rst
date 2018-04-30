@@ -73,7 +73,7 @@ General Open Assistant overview:
 `Listeners`:
   Parts able to receive messages.
 
-  ``oa.ear.subs=[oa.stt]`` (speech to text will receive messages from ear)`
+  ``oa.ear.subs=[oa.stt]`` (speech to text will receive messages from ear)
   
   ``oa.stt.subs=[oa.mind]``
   
@@ -117,11 +117,11 @@ Clean commands in "minds".
 
 Make OA work transparently in Windows, Mac, Linux, and all other operating systems.
 
-Display.py (use embedded browser as a display)
+Display.py (use embedded browser as a display).
 
-  Messages / windows / dialogs / video / input / search / database browser.
+ Messages / windows / dialogs / video / input / search / database browser.
   
-  Using embedded chromium: https://github.com/cztomczak/cefpython
+ Using embedded chromium: https://github.com/cztomczak/cefpython
 	
 Keyboard command input.
 
