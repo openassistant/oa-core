@@ -74,43 +74,43 @@ General Open Assistant overview:
 `Listeners`:
   Parts able to receive messages.
 
-  `oa.ear.subs=[oa.stt] (speech to text will receive messages from ear)`
+  ``oa.ear.subs=[oa.stt]`` (speech to text will receive messages from ear)`
   
-  `oa.stt.subs=[oa.mind]`
+  ``oa.stt.subs=[oa.mind]``
   
-  `oa.keyb.subs=[oa.mind,oa.display]`
+  ``oa.keyb.subs=[oa.mind,oa.display]``
 
 `Parts`:
-  `console.py` - Display messages in the console.
+  ``console.py`` - Display messages in the console.
   
-  `display.py` - Display messages/windows/dialogs/video in automated Python-based web browser (under development).
+  ``display.py`` - Display messages/windows/dialogs/video in automated Python-based web browser (under development).
   
-  `ear.py` - Listening to audio via microphone.
+  ``ear.py`` - Listening to audio via microphone.
   
   `eye.py` - Camera and computer vision (planned).
   
-  `keybd.py` - Recieve keyboard keys/emulate keyboard keys from input queue (`q_in`).
+  ``keybd.py`` - Recieve keyboard keys/emulate keyboard keys from input queue (`q_in`).
   
-  `sound.py` - Play audio file via speakers.
+  ``sound.py`` - Play audio file via speakers.
   
-  `stt.py` - Internal speech to text.
+  ``stt.py`` - Internal speech to text.
   
-  `voice.py` - Text to speech via speakers.
+  ``voice.py`` - Text to speech via speakers.
   
-  `mind.py`  - Load and control all minds.
+  ``mind.py``  - Load and control all minds.
   
 `Minds`:
-  `boot.py` - First mind booted. Listens for ``open assistant`` vocal command to launch root mind.
+  ``boot.py`` - First mind booted. Listens for ``open assistant`` vocal command to launch root mind.
        
-  `calc.py` - Voice calculator.
+  ``calc.py`` - Voice calculator.
        
-  `empty.py` - Blank test mind.
+  ``empty.py`` - Blank test mind.
       
-  `root.py` - Core system mind (will be configured for specific operating systems).
+  ``root.py`` - Core system mind (will be configured specifically for various operating systems).
        
-  `stella.py` - User mind to talk, get news, hear jokes, and so on (personality mind).
+  ``stella.py`` - User mind to talk, get news, hear jokes, and so on (personality mind).
        
-  `yes_no.py` - Mind which offers voice options. (Test this mind via stella ->"How Are you ?" to start diagnostics.)
+  ``yes_no.py`` - Mind which offers voice options. (Test this mind via stella ->"How Are you ?" to start diagnostics.)
 	  
 To-Do List:
 =============
@@ -164,7 +164,7 @@ Support Open Assistant
 
 Join Our Team
 =============
-Feel free to fork and enhance this code.
+Feel free to fork and enhance this code!
 
 Email us at:
  `info@openassistant.org <mailto:info@openassistant.org>`__
