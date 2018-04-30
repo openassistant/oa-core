@@ -83,7 +83,7 @@ General Open Assistant overview:
 `Parts`:
   ``console.py`` - Display messages in the console.
   
-  ``display.py`` - Display messages/windows/dialogs/video in automated Python-based web browser (under development).
+  ``display.py`` - Show messages/windows/dialogs/video in Python web browser (under development).
   
   ``ear.py`` - Listening to audio via microphone.
   
@@ -122,26 +122,29 @@ Display.py (use embedded browser as a display)
 
   Messages / windows / dialogs / video / input / search / database browser.
   
-  Using embedded chromium:
-   https://github.com/cztomczak/cefpython
+  Using embedded chromium: https://github.com/cztomczak/cefpython
 	
 Keyboard command input.
 
 Add new commands via voice (extend mind functionality on fly).
 
 Eye tracking system (mouse control via eyes and video camera):
+
  https://github.com/esdalmaijer/webcam-eyetracker
  https://github.com/esdalmaijer/PyGaze
  https://github.com/pupil-labs/pupil
 
 Emotional interaction / lip reading (advanced functionality):
+
  https://github.com/deepconvolution/LipNet
  https://github.com/rizkiarm/LipNet
 
 3D object creation via voice using programmable Openscad:
+
  https://github.com/SolidCode/SolidPython
 
 Build a simple installer for all operating systems via PyInstaller:
+
  http://www.pyinstaller.org
       
 Support Open Assistant
