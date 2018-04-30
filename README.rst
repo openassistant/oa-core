@@ -29,22 +29,20 @@ Installation:
 `Dependencies`:
   Python: (May be any version 2.* or 3.*)
 
-`For all systems`: 
- ``pip install keyboard sounddevice playsound requests pyttsx3 pocketsphinx psutil feedparser python-forecastio numpy``
-
 `Windows` (recommended : Python 2.7 or 3.5):
   `Install common list of Python packages <https://www.python.org/downloads/windows/>`__ plus run: 
    ``pip install pywin32``
-
-  To start Open Assistant: ``python oa.py``
 
 `Arch Linux`: 
   ``sudo pacman -S swig espeak``
 
 `Ubuntu`: 
   ``sudo apt-get install -y python python-dev python-pip build-essential swig git libpulse-dev espeak``
+ 
+`For all systems run`: 
+ ``pip install keyboard sounddevice playsound requests pyttsx3 pocketsphinx psutil feedparser python-forecastio numpy``
 
-`To start Open Assistant`: 
+`To launch Open Assistant`: 
   ``sudo python oa.py``
 
 System Information:
