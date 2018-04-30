@@ -99,7 +99,7 @@ General Open Assistant overview:
   ``mind.py``  - Load and control all minds.
   
 `Minds`:
-  ``boot.py`` - First mind booted. Listens for ``open assistant`` vocal command to launch root mind.
+  ``boot.py`` - First mind booted. Listens for ``open assistant`` vocal command to launch "root mind."
        
   ``calc.py`` - Voice calculator.
        
@@ -107,9 +107,9 @@ General Open Assistant overview:
       
   ``root.py`` - Core system mind (will be configured specifically for various operating systems).
        
-  ``stella.py`` - User mind to talk, get news, hear jokes, and so on (personality mind).
+  ``stella.py`` - "User mind" to talk, get news, hear jokes, and so on (personality mind).
        
-  ``yes_no.py`` - Mind which offers voice options. (Test this mind via stella ->"How Are you ?" to start diagnostics.)
+  ``yes_no.py`` - Mind which offers voice options. (Test this mind via stella -> "how are you?" to run diagnostics.)
 	  
 To-Do List:
 =============
