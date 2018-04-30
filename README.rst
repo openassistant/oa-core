@@ -110,8 +110,7 @@ General Open Assistant overview:
        
   `stella.py` - User mind to talk, get news, hear jokes, and so on (personality mind).
        
-  `yes_no.py` - Mind which offers voice options. 
-   (You may test this mind via stella ->"How Are you ?" to start diagnostics.)
+  `yes_no.py` - Mind which offers voice options. (Test this mind via stella ->"How Are you ?" to start diagnostics.)
 	  
 To-Do List:
 =============
