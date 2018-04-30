@@ -5,7 +5,7 @@ Make your own minds! Free and open source AI OS development.
 
 This is fork of the original `Open Assistant <https://github.com/openassistant/oa-core/>`__.
 
-Our goals are to simplify and restructure modules to provide easy customization, operating system independence, as well as to implement more sophisticated logic such as machine learning (TensorFlow).
+Our current goals are to simplify and restructure modules to provide easy customization, operating system independence, as well as to implement more sophisticated logic such as machine learning (TensorFlow).
 
 We would like to establish an OA.Agents blockchain network, add the ability for customization on fly (adding or changing commands via voice), provide a graphical interface, and build auto installer scripts.
 
@@ -32,8 +32,8 @@ Installation:
 `For all systems`: 
  ``pip install keyboard sounddevice playsound requests pyttsx3 pocketsphinx psutil feedparser python-forecastio numpy``
 
-`Windows` (recommended : Python 2.7 or 3.5):
-  Install common list of py packages plus: ``pip install pywin32``
+`Windows` (recommended : Python 2.7 or 3.5): https://www.python.org/downloads/windows/
+  `Install common list of Python packages <https://www.python.org/downloads/windows/>`__ plus: ``pip install pywin32``
 
   To start Open Assistant: ``python oa.py``
 
