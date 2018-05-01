@@ -53,7 +53,7 @@ General Open Assistant overview:
 ``oa.py`` - Main Open Assistant module.
 
 `Minds`:
-  ``boot.py`` - First mind booted. Listens for ``open assistant`` vocal command to launch "root mind."
+  ``boot.py`` - First mind booted. Listens for "open assistant" vocal command to launch ``root.py``.
        
   ``calc.py`` - Voice calculator.
        
