@@ -87,7 +87,7 @@ General Open Assistant overview:
   About parts:
     ``_in()`` - function which `yields` processed data. Each part works in separate thread.
     
-    Each part reads messages (signals) from devices and/or from input message queue (q_in).
+    Each part reads messages (signals) from devices and/or from input message queue (``q_in``).
     
     To send messages to a part ('voice' for example) use: ``put('voice','any sentence')``
     To read messages (for current part) use: ``data=get()`` (get waits until any messages appear in the queue).
@@ -96,7 +96,7 @@ General Open Assistant overview:
     
     Newly added parts will start automatically.
     
-    Listeners` - parts able to receive messages.
+    `Listeners` - Parts able to receive messages.
 
     ``oa.ear.subs=[oa.stt]`` (speech to text will receive messages from ear)
   
@@ -104,7 +104,7 @@ General Open Assistant overview:
   
     ``oa.keyb.subs=[oa.mind,oa.display]``
 
-`oa_utils.py`
+``oa_utils.py``
   Collection of utilities to play sounds, find files, and execute functions (will be split into individual 'abilities').
   
   Automatically loaded into each `mind` space (with auto-delayed execution stubs).
