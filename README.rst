@@ -50,7 +50,7 @@ System Information:
 General Open Assistant overview:
  https://www.patreon.com/posts/open-assistant-16695777
 
-`oa.py` - Main Open Assistant module.
+``oa.py`` - Main Open Assistant module.
 
 `Minds`:
   ``boot.py`` - First mind booted. Listens for ``open assistant`` vocal command to launch "root mind."
