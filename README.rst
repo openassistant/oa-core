@@ -105,6 +105,7 @@ General Open Assistant overview:
     ``oa.keyb.subs=[oa.mind,oa.display]``
 
 ``oa_utils.py`` - Utilities to play sounds, find files, and execute functions (will be split into 'abilities').
+
   Automatically loaded into each `mind` space (with auto-delayed execution stubs).
   
   Look within any `mind` for examples.
