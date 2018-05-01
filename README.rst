@@ -51,34 +51,20 @@ General Open Assistant overview:
  https://www.patreon.com/posts/open-assistant-16695777
 
 `oa.py` - Main Open Assistant module.
-  /part - Part modules. 
-    ``_in()``: function which `yields` processed data. Each part works in separate thread.
-    
-    Each part reads messages (signals) from devices and/or from input message queue (q_in).
-    
-    To send messages to a part ('voice' for example) use: ``put('voice','any sentence')``
-    To read messages (for current part) use: ``data=get()`` (get waits until any messages appear in the queue).
-    
-    In sophisticated cases you may use ``q_in`` queue directly (with or without locks).
-    
-    Newly added parts will start automatically.
 
-`oa_utils.py`
-  Collection of utilities to play sounds, find files, and execute functions (will be split into individual 'abilities').
-  
-  Automatically loaded into each `mind` space (with auto-delayed execution stubs).
-  
-  Look within any `mind` for examples.
-
-`Listeners`:
-  Parts able to receive messages.
-
-  ``oa.ear.subs=[oa.stt]`` (speech to text will receive messages from ear)
-  
-  ``oa.stt.subs=[oa.mind]``
-  
-  ``oa.keyb.subs=[oa.mind,oa.display]``
-
+`Minds`:
+  ``boot.py`` - First mind booted. Listens for ``open assistant`` vocal command to launch "root mind."
+       
+  ``calc.py`` - Voice calculator.
+       
+  ``empty.py`` - Blank test mind.
+      
+  ``root.py`` - Core system mind (will be configured specifically for various operating systems).
+       
+  ``stella.py`` - "User mind" to talk, get news, hear jokes, and so on (personality mind).
+       
+  ``yes_no.py`` - Mind which offers voice options. (Test this mind via stella -> "how are you?" to run diagnostics.)
+ 
 `Parts`:
   ``console.py`` - Display messages in the console.
   
@@ -98,18 +84,32 @@ General Open Assistant overview:
   
   ``mind.py``  - Load and control all minds.
   
-`Minds`:
-  ``boot.py`` - First mind booted. Listens for ``open assistant`` vocal command to launch "root mind."
-       
-  ``calc.py`` - Voice calculator.
-       
-  ``empty.py`` - Blank test mind.
-      
-  ``root.py`` - Core system mind (will be configured specifically for various operating systems).
-       
-  ``stella.py`` - "User mind" to talk, get news, hear jokes, and so on (personality mind).
-       
-  ``yes_no.py`` - Mind which offers voice options. (Test this mind via stella -> "how are you?" to run diagnostics.)
+  About parts:
+    ``_in()`` - function which `yields` processed data. Each part works in separate thread.
+    
+    Each part reads messages (signals) from devices and/or from input message queue (q_in).
+    
+    To send messages to a part ('voice' for example) use: ``put('voice','any sentence')``
+    To read messages (for current part) use: ``data=get()`` (get waits until any messages appear in the queue).
+    
+    In sophisticated cases you may use ``q_in`` queue directly (with or without locks).
+    
+    Newly added parts will start automatically.
+    
+    Listeners` - parts able to receive messages.
+
+    ``oa.ear.subs=[oa.stt]`` (speech to text will receive messages from ear)
+  
+    ``oa.stt.subs=[oa.mind]``
+  
+    ``oa.keyb.subs=[oa.mind,oa.display]``
+
+`oa_utils.py`
+  Collection of utilities to play sounds, find files, and execute functions (will be split into individual 'abilities').
+  
+  Automatically loaded into each `mind` space (with auto-delayed execution stubs).
+  
+  Look within any `mind` for examples.
 	  
 To-Do List:
 =============
