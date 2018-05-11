@@ -40,7 +40,7 @@ Installation:
   ``sudo apt-get install -y python python-dev python-pip build-essential swig git libpulse-dev espeak``
  
 `For all systems run`: 
- ``pip install keyboard sounddevice playsound requests pyttsx3 pocketsphinx psutil feedparser python-forecastio numpy``
+ ``pip install keyboard sounddevice playsound requests pyttsx3 pocketsphinx psutil feedparser python-forecastio numpy cefpython3``
 
 `To launch Open Assistant`: 
   ``sudo python oa.py``
