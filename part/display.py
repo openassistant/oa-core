@@ -40,7 +40,7 @@ class External(object):
 def _in():
     cef.g_commandLineSwitches = {'enable-media-stream': '','allow-universal-access-from-files':''}
     cef.Initialize(settings={})
-    browser = cef.CreateBrowserSync(url='file:///C:/!OA/part/display/index.html',
+    browser = cef.CreateBrowserSync(url='file:///'+os.path.join(oa.cur_dir,'part/display/index.html'),
                                     window_title="Tutorial")
     set_javascript_bindings(browser)
     while oa.alive:
