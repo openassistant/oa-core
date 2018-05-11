@@ -313,7 +313,7 @@ def empty(part=None):
     except queue.Empty:
         pass
 
-def get(part=None,timeout=.1):
+def get(part=None,timeout=0):
     """
       no params
       thread safe
@@ -323,13 +323,20 @@ def get(part=None,timeout=.1):
     """
     if part is None:
         part=cur_part()
+
+#    print('!!',part,'!!')
+#    print('!',part.name,'!')
     if part.name=='mind':
         info('get for :',part.name)
+
     while oa.alive:
         try:
             return part.q_in.get(timeout=timeout)
         except queue.Empty:
             pass
+        if timeout!=0:
+            return None
+
     #terminated - raise Exception
     raise Exception('App.Terminated')
 

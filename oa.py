@@ -10,7 +10,7 @@ from oa_utils import *
 
 #subscribers- listeners will receive message from part
 oa.ear.subs=[oa.stt]
-oa.stt.subs=[oa.mind]
+oa.stt.subs=[oa.mind,oa.display]
 oa.keyb.subs=[oa.mind,oa.display]
 
 def _in(part):
