@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dynamic panel</title>
+  <link href="css/jquery-ui.css" rel="stylesheet">
+  <link href="css/jquery-ui.theme.css" rel="stylesheet">
+  <link href="css/font-awesome.css" rel="stylesheet"/>
+  <link href="style.css" rel="stylesheet"/>
+  <link href="css/talkr.css" rel="stylesheet"/>
+  <!--link rel="stylesheet" href="css/bootstrap.min.css"/-->
+  <script src="js/jquery.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <!--script src="js/lobipanel.js"></script-->
+  <script src="js/jquery.editable.min.js"></script>
+  <script type="text/javascript" src="js/libgif.js"></script>
+  <script type="text/javascript" src="new_talkr.js"></script>
+  <script> 
+
+var sup1=0;
+
+var 
+  notes={
+'panel_toolbar':`
+	<div class="w100"> 
+	    <div class="toolbar">	
+	    <div href="#" class="dropdown">
+    		<button class="dropbtn">
+		  <i class="fa fa-cog"></i>
+	        </button>
+    		<div class="dropdown-content">
+      		  <div class="dock_side">
+		    <span>Dock:</span> 
+		    <a href="#" class="left"><i class="fa fa-caret-left"></i></a>
+		    <a href="#" class="top"><i class="fa fa-caret-up"></i></a>
+		    <a href="#" class="center"><i class="fa fa-expand"></i></a>
+		    <a href="#" class="right"><i class="fa fa-caret-right"></i></a>
+		    <a href="#" class="bottom"><i class="fa fa-caret-down"></i></a>
+		  </div>
+      		  <!--a href="#">Link 2</a>
+      		  <a href="#">Link 3</a-->
+    		</div>
+    	    </div>
+	    <a href="#" class="search" style=""><i class="fa fa-search" style="float:left;clear:none"></i>
+	    <input style="float:left;clear:none"></input></a>
+	    <a href="#" class="drag"><i class="fa fa-arrows"></i></a>
+	    <a href="#" class="copy"><i class="fa fa-files-o"></i></a>
+	    <a href="#" class="remove"><i class="fa fa-times"></i></a></div>
+	  </div>
+	</div>`
+}
+
+function SetToolbar(items){
+  items.each(function(){
+//     alert('123');
+     var hov=$(this);
+     var tb=hov.find('.toolbar');
+     if (tb.length==0){
+       tb=hov.append(notes['panel_toolbar']);
+     };
+
+     tb.find('.copy').click(function(){
+	  var html=hov[0].outerHTML;
+	  var nPanel=hov.after(html).next();
+//	  nPanel.attr('id','12312312');
+	  nPanel.attr('class','panel');
+	  nPanel.find('.ui-resizable-handle').remove();
+//	  hov.find('span').text(nPanel[0].outerHTML);
+	  SetPanel(nPanel);
+	});
+    tb.find('.dock_side a').click(function(){
+	var tgt=$(this);
+	var _=tgt.closest('.panel');
+	_.removeClass('left top right bottom center');
+	_.css('width','');
+	_.css('height','');
+	_.addClass(tgt.attr('class'));
+    });
+
+    tb.find('.remove').click(function(){
+	hov.remove();
+	});	
+  });
+}
+  
+function SetPanel(panels){
+  SetToolbar(panels);
+  
+  panels.hover(
+    function() {
+	//remove all hover
+        $('.hover').removeClass('hover');
+        $(this).addClass('hover');
+    }, function() {
+//        $(this).removeClass('hover');
+	$('.hover').removeClass('hover');
+	$(':hover').last().addClass('hover');
+   }
+  );
+
+  panels.resizable({
+//      alsoResize: '.panel',
+      grid: 50
+    }); 
+
+  panels.draggable({
+      connectToSortable: ".panel",
+      helper: "clone",
+      handle:'.drag',
+//      cancel:".drag"
+      revert: "invalid"    
+    });
+
+  panels.droppable({accept: '.panel',
+      activeClass: "ui-state-highlight",
+      addClasses: true,
+      classes: {
+        "ui-droppable-active": "ui-state-highlight",
+        "ui-droppable-active": "ui-state-active",
+        "ui-droppable-hover": "ui-state-hover"
+      },
+      drop: function(event, ui) {
+//	alert('123');
+        var drag=ui.draggable;
+	var drop=$(this);
+	drag.appendTo(drop);
+	SetPanel(drag);
+/*        drag.fadeOut(function() {
+		drag.appendTo(drop);
+		drag.fadeIn();
+		SetPanel(drag);
+//		drag.remove();
+      		});*/
+	}
+	});
+  }
+  
+  function play(filename_or_url) {
+   //   msg = "<b class="+lang+">"+lang+": "+event+":</b> " + msg;
+   //    console = document.getElementById("console")
+   //    console.innerHTML += "<div class=msg>"+msg+"</div>";
+  }
+  
+  function say(phrase) {
+     var tspeak=$('texttospeakinput', top.window.frames[0].document)
+ //   msg = "<b class="+lang+">"+lang+": "+event+":</b> " + msg;
+//    console = document.getElementById("console")
+//    console.innerHTML += "<div class=msg>"+msg+"</div>";
+  }
+  
+  function say_start(name){
+     oa_msg(name);
+  }
+
+  function say_word(name, location, length){
+//     oa_msg(name+'.'+location+'.'+length);
+   sup1.play_for_duration(length);
+  }
+  
+  function say_stop(name, completed){
+     oa_msg(name+'.'+completed);
+  }
+
+  function oa_msg(msg) {
+    var cons = $('#messages');
+    $('<span>'+msg+'</span><br/>').prependTo(cons);
+  }
+
+  $( function() {
+    var origPanel=$('#root').html();
+//    alert(origPanel);
+    var root=$('#root>.panel');
+    root.addClass('center');
+    var panels={
+	'avatar': 
+/*`<iframe width="100%" height="100%" src="talkr.html" style="position:absolute;left:0px;top:0px;float:left" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`,*/
+`
+  <center>
+    <div id="ttsoptions">
+      <div>
+	<label>Voice:</label>
+	<select id="voiceSelector" class="guioption"></select>
+      </div>
+      <div>
+	<input type="text" id="texttospeakinput" value="Pretty cool." class="guioption"  onClick="this.setSelectionRange(0, this.value.length)"/>
+	<div id="texterrormessage" class="guierrormessage"></div>
+      </div>
+    </div>
+    <div id="imagecontainer">
+     <img id="exampleimg" src="js/ork8hoP.gif" rel:animated_src="js/ork8hoP.gif" rel:auto_play="0" />
+    </div>
+   </center>`,
+//        'riot left2x2' :`<iframe width="100%" height="100%" src="https://riot.im/app/#/room/#openassistant:matrix.org" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`,
+	/*'video':`<!--video width=320 height=240 controls autoplay>
+			<source src="file:///C:/!OA/part/display/test.mp4" type="video/mp4">Your browser does not support the video tag.
+			</video-->`,*/
+//	    'youtube left2x2' :`<iframe width="480" height="320" src="https://www.youtube.com/embed/QqxfoywkKP0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`,
+//	    'game':`<!--iframe src="games/bricks/index.html" width="480" height="320" frameborder="0" scrolling="no"></iframe-->`,
+	    'console left2x2':`<h1>Messages:</h1><div id="messages"></div>`};
+  for (name in panels){  
+      var pnl=$(origPanel).appendTo(root);
+      pnl.addClass(name);
+      var html=panels[name];
+      if (html.trim()!=''){
+        $(html).appendTo(pnl);
+	};
+  };
+/*    var mTop=;
+    mTop.addClass('top main_top');
+    $(origPanel).appendTo(mTop).addClass('left');
+    $(origPanel).appendTo(mTop).addClass('left');
+
+    var mBottom=$(origPanel).appendTo(root);
+    mBottom.addClass('top main_bottom');
+    $(origPanel).appendTo(mBottom).addClass('left');
+    $(origPanel).appendTo(mBottom).addClass('left');
+*/
+    SetPanel($('#root .panel'));
+    sup1 = new SuperGif({ gif: document.getElementById('exampleimg') } );
+    sup1.load(function(){
+      sup1.play_for_duration(100);
+     });
+   });
+  </script>
+</head>
+<body>
+  <div id="root" class="user"><div class="panel"></div></div>
+</body>
+</html>

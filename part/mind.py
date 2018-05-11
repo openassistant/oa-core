@@ -84,3 +84,4 @@ def _in():
                 info('Unkown command',str(fn))
                 #raise Exception('Unkown command type : %s'%str(_.kws[t]))
 #            fwrite(hist_file, 'mind %s:%s'%(t), append=True)
+        yield ''
