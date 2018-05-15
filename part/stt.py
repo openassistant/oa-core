@@ -88,7 +88,7 @@ def BestHyp(s):
     len_ws=len(s.split(' '))
     kwords=get_decoder().kwords
     #max_rank=[result,rank,diff in words count]
-    max_rank=['',0,100]
+    max_rank=['',0,0]
     for kword in s.split(' '):
         phrases=kwords.get(kword,{})
         for phrase,lw_ph in phrases.items():
@@ -96,19 +96,22 @@ def BestHyp(s):
             ranks[phrase]+=1
             rank=ranks[phrase]
             # choose by rank - max words (from seacrh) contains in phrase
-            # if rank is equal - looking for similar words count
-            w_cnt_diff=abs(len_ws-lw_ph)
+#            w_cnt_diff=abs(len_ws-lw_ph)
             if rank>max_rank[1]:
                 max_rank[0]=phrase
                 max_rank[1]=rank
-                max_rank[2]=w_cnt_diff
+                max_rank[2]=lw_ph
             elif rank==max_rank[1]:
                 #fit better by words count
-                if w_cnt_diff<max_rank[2]:
+                # if rank is equal - looking for smaller (words count) sentence
+                if lw_ph<max_rank[2]:
                     max_rank[0]=phrase
-                    max_rank[2]=w_cnt_diff
+                    max_rank[2]=lw_ph
 
-    if max_rank[1]>0:
+# 1.there is word match 
+#2. and phrase (which we found) contains only 1 word 
+#    or more than 75% of search sentence (words) contains in search result.
+    if (max_rank[1]>0) and ((max_rank[2]==1) or ((abs(len_ws-max_rank[2])/max_rank[2])<0.25)):
         return max_rank[0]
     return ''
 
