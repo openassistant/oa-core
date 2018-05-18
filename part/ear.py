@@ -9,7 +9,7 @@ def _in():
     dynamic_energy_adjustment_damping = 0.15
     dynamic_energy_ratio = 1.5
     dynamic_energy_threshold = True
-    energy_threshold = 300  # minimum audio energy to consider for recording
+    energy_threshold = 3000  # minimum audio energy to consider for recording
     pause_threshold = 0.5  # seconds of non-speaking audio before a phrase is considered complete
     phrase_threshold = 0.3  # minimum seconds of speaking audio before we consider the speaking audio a phrase - values below this are ignored (for filtering out clicks and pops)
     non_speaking_duration = 0.5  # seconds of non-speaking audio to keep on both sides of the recording
