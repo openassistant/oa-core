@@ -26,7 +26,7 @@ def _in():
         while oa.alive:
             elapsed_time = 0  # number of seconds of audio read
             buf = b""  # an empty buffer means that the stream has ended and there is no data left to read
-            energy_threshold = 300  # minimum audio energy to consider for recording
+#            energy_threshold = 300  # minimum audio energy to consider for recording
             while oa.alive:
                 frames = collections.deque()
                 
