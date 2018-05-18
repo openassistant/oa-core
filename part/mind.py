@@ -16,6 +16,8 @@ def load_mind(name):
     cf_data=fread(mind.module)
     d_exec=dict(oa.app.stub_funcs.items())
     exec(cf_data,d_exec)
+    #default lang
+    mind.lang=d_exec.get('lang','en-us')
     #let's add commands without spaces
 #        _.kws=d_exec['kws']
     mind.kws={}#d_exec['kws']

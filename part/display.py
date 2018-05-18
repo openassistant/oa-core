@@ -49,7 +49,8 @@ def _in():
         yield ''
         if pars is None:
             continue
-#        browser.ExecuteFunction('oa_msg',str(pars))
+        if isinstance(pars,str):
+            browser.ExecuteFunction('oa_msg',str(pars))
         if isinstance(pars,(tuple,list)):
             browser.ExecuteFunction(*pars)
     cef.Shutdown()

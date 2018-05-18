@@ -124,7 +124,8 @@ def get_decoder():
         # Process audio chunk by chunk. On keyphrase detected perform action and restart search
         config = pocketsphinx.Decoder.default_config()
         #    config.set_string("-hmm", acoustic_parameters_directory)  # set the path of the hidden Markov model (HMM) parameter files
-        config.set_string('-hmm', os.path.join(os.path.dirname(pocketsphinx.pocketsphinx.__file__), 'model','en-us'))
+        info('cur lang = '+mind.lang)
+        config.set_string('-hmm', os.path.join(os.path.dirname(pocketsphinx.pocketsphinx.__file__), 'model',mind.lang))
 #        info("-lm", ret.lang_file)
         config.set_string("-lm", ret.lang_file)
         config.set_string("-dict", ret.dic_file)
