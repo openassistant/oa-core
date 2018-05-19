@@ -1,8 +1,9 @@
-# Open Assistant 0.03
-# 2016 General Public License V3
-# By Andrew Vavrek, Clayton G. Hobbs, Jezra, Jonathan Kulp
+# Open Assistant 0.2
+# 2018 General Public License V3
+# By Alex Kamosko, Andrew Vavrek, Jenya Chernotalova
 
-# core.py - Open Assistant System Core
+# oa.py - Launch Open Assistant.
+
 import os, time
 import threading
 import oa_utils
@@ -14,15 +15,13 @@ oa.stt.subs=[oa.mind,oa.display]
 oa.keyb.subs=[oa.mind,oa.display]
 
 def _in(part):
-    """
-      processing messages using q_in
-    """
+    """ Process messages using `q_in`. """
     #subscribers
     if not isinstance(part.subs,list):
         raise Exception('Wrong Subs: '+part.name)
 
     fn=part._in
-    info('started')
+    info('- Started.')
     for x in fn():#locals={'q_in':q_in}
 #        info('Send to !sub:',sc.name)
         for sc in part.subs:
@@ -31,11 +30,11 @@ def _in(part):
             sc.q_in.put(x)
 #        continue
 #        info(part.name,'_in data. len(data)=',len(x))
-    info('closed')
+    info('- Closed.')
 
 class Assistant:
     def __init__(_):
-        info("Initializing Assistant")
+        info("- Loading Open Assistant...")
         # let's add link to OA itself
         oa.cur_dir=os.path.dirname(__file__)
         oa.app=_
@@ -54,10 +53,10 @@ class Assistant:
             while oa.alive:# and condition():
                 time.sleep(.1)
         except KeyboardInterrupt:
-            info('attempting to close threads.')
+            info('- Attempting to close threads...')
             _.active.clear()
             [thr.join() for thr in _.thread_pool]
-            info('threads successfully closed')
+            info('- Threads closed.')
 
     def load_parts(_):
         #def full_path(name):
