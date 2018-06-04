@@ -3,8 +3,6 @@ Open Assistant
 
 Make your own minds! Free and open source AI OS development.
 
-This is fork of the original `Open Assistant <https://github.com/openassistant/oa-core/>`__.
-
 Our current goals are to simplify and restructure modules to provide easy customization, operating system independence, as well as to implement more sophisticated logic such as machine learning (TensorFlow).
 
 We would like to establish an OA.Agents blockchain network, add the ability for customization on fly (adding or changing commands via voice), provide a graphical interface, and build auto installer scripts.
@@ -40,17 +38,35 @@ Installation:
   ``sudo apt-get install -y python python-dev python-pip build-essential swig git libpulse-dev espeak``
  
 `For all systems run`: 
- ``pip install keyboard sounddevice playsound requests pyttsx3 pocketsphinx psutil feedparser python-forecastio numpy cefpython3``
+ ``pip install keyboard sounddevice playsound requests pyttsx3 pocketsphinx psutil feedparser python-forecastio numpy``
 
 `To launch Open Assistant`: 
   ``sudo python oa.py``
 
-System Information:
-=============
 General Open Assistant overview:
  https://www.patreon.com/posts/open-assistant-16695777
 
 ``oa.py`` - Main Open Assistant module.
+=======
+Running Open Assistant
+=============
+
+Make sure your microphone is working and levels are set properly.
+
+Say "Boot mind!" as a listening test. If you hear R2D2, boot mind is listening.
+
+Say "Open assistant!" to launch root mind. Say "Root mind!" to see if you can get the reply, "Hello world!"
+
+Say "List commands!" to get a list of available voice commands.
+
+System Information:
+=============
+General Open Assistant overview:
+ http://openassistant.org/wp/
+
+``oa.py`` - Main Open Assistant loading module.
+
+``core.py`` - Essential functions and utilities. This also contains additional functions to play sounds, run diagnostics, report the weather, and read the news. (These functions will eventually be split into individual 'ability files'). Look within 'minds/root.py' for various voice command examples.
 
 `Minds`:
   ``boot.py`` - First mind booted. Listens for "open assistant" vocal command to launch ``root.py``.
@@ -60,10 +76,6 @@ General Open Assistant overview:
   ``empty.py`` - Blank test mind.
       
   ``root.py`` - Core system mind (will be configured specifically for various operating systems).
-       
-  ``stella.py`` - "User mind" to talk, get news, hear jokes, and so on (personality mind).
-       
-  ``yes_no.py`` - Mind which offers voice options. (Test this mind via stella -> "how are you?" to run diagnostics.)
  
 `Parts`:
   ``console.py`` - Display messages in the console.
@@ -74,7 +86,7 @@ General Open Assistant overview:
   
   ``eye.py`` - Camera and computer vision (planned).
   
-  ``keybd.py`` - Recieve keyboard keys/emulate keyboard keys from input queue (`q_in`).
+  ``keyboard.py`` - Recieve keyboard keys/emulate keyboard keys from input queue (`wire_in`).
   
   ``sound.py`` - Play audio file via speakers.
   
@@ -85,30 +97,25 @@ General Open Assistant overview:
   ``mind.py``  - Load and control all minds.
   
   About parts:
-    ``_in()`` - function which `yields` processed data. Each part works in separate thread.
+Clean commands in "minds". 
+=======
+    ``_in()`` - function which `yields` processed data. Each part works in a separate thread.
     
-    Each part reads messages (signals) from devices and/or from input message queue (``q_in``).
+    Each part reads messages (signals) from devices and/or from an input message wire (``wire_in``).
     
     To send messages to a part ('voice' for example) use: ``put('voice','any sentence')``
-    To read messages (for current part) use: ``data=get()`` (get waits until any messages appear in the queue).
+    To read messages (for current part) use: ``data = get()`` (get waits until any messages appear on the wire).
     
-    In sophisticated cases you may use ``q_in`` queue directly (with or without locks).
+    In sophisticated cases you may use ``wire_in`` directly (with or without locks).
     
     Newly added parts will start automatically.
-    
-    `Listeners` - Parts able to receive messages.
 
-    ``oa.ear.subs=[oa.stt]`` (speech to text will receive messages from ear)
-  
-    ``oa.stt.subs=[oa.mind]``
-  
-    ``oa.keyb.subs=[oa.mind,oa.display]``
-
-``oa_utils.py`` - Utilities to play sounds, find files, and execute functions (will be split into 'abilities'). Automatically loaded into each `mind` space (with auto-delayed execution stubs). Look within any `mind` for examples.
 	  
 To-Do List:
 =============
-Clean commands in "minds". 
+Develop further abilities and minds.
+
+Improve speech recogition and voice synthesis.
 
 Make OA work transparently in Windows, Mac, Linux, and all other operating systems.
 
