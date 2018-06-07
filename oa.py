@@ -1,4 +1,4 @@
-# Open Assistant 0.2
+# Open Assistant 0.21
 # 2018 General Public License V3
 # By Alex Kamosko, Andrew Vavrek, Jenya Chernotalova
 
@@ -99,5 +99,8 @@ def _in(part):
 
 
 """ Boot Open Assistant. """
-if __name__ == '__main__':
+def runapp():
     OpenAssistant().loop()
+
+if __name__ == '__main__':
+    runapp()

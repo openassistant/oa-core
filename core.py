@@ -425,7 +425,7 @@ def diagnostics():
     # Network Status.
     response += switch(is_online(), True, 'Internet access is currently available.', 'We are offline.')
 
-    say(sDiag)
+    say(response)
 
 def expr2str():
     """ Convert a numerical expression into a string. """

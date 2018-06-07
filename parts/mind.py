@@ -44,7 +44,7 @@ def load_minds():
     for mind in os.listdir(os.path.join(oa.core_directory, 'minds')):
         if mind.lower().endswith('.py'):
             load_mind(mind[:-3])
-    info('- Minds loaded.')
+    info('- All minds are loaded! "Boot mind" is now listening. \n       Say "Boot Mind!" to see if it can hear you. Make sure your microphone is active. \n       Say "Open Assistant!" to launch "root mind". \n       Once root mind loads, say "List Commands!" to hear the commands available.')
 
 def _in():
     global switch_hist

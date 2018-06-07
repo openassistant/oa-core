@@ -1,7 +1,7 @@
 kws={
   'root mind': say('- Hello world!'),
   'close assistant': play('beep_close.wav') & mind('boot'),
-  'list commands': say('- The currently available voice commands are, root mind, read world news, run diagnostics, sing a song, what day is it, what did i say, what is the weather, what time is it, and close assistant.'),
+  'list commands': say('- The currently available voice commands are: \n       "root mind", "what time is it", "what day is it", "what did i say", \n       "run diagnostics", "what is the weather", "read world news", "sing a song", \n        and "close assistant".'),
   'read world news': read_news_feed('https://www.reddit.com/r/worldnews/.rss', 'world'),
   'run diagnostics': diagnostics(),
   'sing a song': play('daisy.wav'),
