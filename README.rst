@@ -3,8 +3,6 @@ Open Assistant
 
 Make your own minds! Free and open source AI OS development.
 
-Open Assistant is a decentralized open source personal assistant system able to engage in conversations and complete an increasing amount of tasks using vocal commands.
-
 Our current goals are to simplify and restructure modules to provide easy customization, operating system independence, as well as to implement more sophisticated logic such as machine learning (TensorFlow).
 
 We would like to establish an OA.Agents blockchain network, add the ability for customization on fly (adding or changing commands via voice), provide a graphical interface, and build auto installer scripts.
@@ -23,13 +21,13 @@ First run on Windows:
 Short calculator demo: 
  https://youtu.be/ueQCmmUdmLo
 
-Installation:
+Install & Run:
 =============
 
-`Dependencies`:
-  Python: (May be any version 2.* or 3.*)
+`Windows`:
+  Click ``oa.exe`` found in the core directory.
 
-`Windows` (recommended : Python 2.7 or 3.5):
+`Windows Python Install (recommended : Python 2.7 or 3.5):
   `Install common list of Python packages <https://www.python.org/downloads/windows/>`__ plus run: 
    ``pip install pywin32``
 
@@ -45,12 +43,9 @@ Installation:
 `To launch Open Assistant`: 
   ``sudo python oa.py``
 
-General Open Assistant overview:
- https://www.patreon.com/posts/open-assistant-16695777
-
-``oa.py`` - Main Open Assistant module.
-=======
 Running Open Assistant
+=======
+Using Open Assistant
 =============
 
 Make sure your microphone is working and levels are set properly.
