@@ -20,7 +20,7 @@ Version 0.11 on Arch Linux:
 First run on Windows: 
  https://youtu.be/6_tA081SA8Y
 
-Short calculator demo: 
+Short Calculator Demonstration: 
  https://youtu.be/ueQCmmUdmLo
 
 German Language Demonstration: 
@@ -33,7 +33,7 @@ Download, Install, & Run:
   `Download <http://openassistant.org/download/oa_0.21_windows.zip>`__, `unzip package <http://www.peazip.org>`__, and click the ``oa.exe`` file found in the "Open Assistant" folder.
 
 `Windows Python Install (Python 2.7 or 3.5 Recommended):
-  `Install common list of Python packages <https://www.python.org/downloads/windows/>`__ then run: 
+ `Install common list of Python packages <https://www.python.org/downloads/windows/>`__ then run: 
   
  ``pip install pywin32 keyboard sounddevice playsound requests pyttsx3 pocketsphinx psutil feedparser python-forecastio numpy``
 
