@@ -1,59 +1,179 @@
 Open Assistant
 =============
 
-Open Assistant is an evolving open source artificial intelligence agent able
-to interact in basic conversation and automate an increasing number of tasks.
+Make your own minds! Free and open source AI OS development.
 
-Maintained by the `Open Assistant <http://www.openassistant.org/>`__
-working group lead by `Andrew Vavrek <https://youtu.be/cXqEv2OVwHE>`__, this software
-is an extension of `Blather <https://gitlab.com/jezra/blather>`__
-by `Jezra <http://www.jezra.net/>`__, `Kaylee <https://github.com/Ratfink/kaylee>`__
-by `Clayton G. Hobbs <https://bzratfink.wordpress.com/>`__, and includes work
-done by `Jonathan Kulp <http://jonathankulp.org/>`__.
+This is fork of the original `Open Assistant <https://github.com/openassistant/oa-core/>`__.
 
+Our current goals are to simplify and restructure modules to provide easy customization, operating system independence, as well as to implement more sophisticated logic such as machine learning (TensorFlow).
 
-Dependencies
-------------
+We would like to establish an OA.Agents blockchain network, add the ability for customization on fly (adding or changing commands via voice), provide a graphical interface, and build auto installer scripts.
 
-* `Arch Linux <https://www.archlinux.org/>`_ or `Ubuntu Linux <http://openassistant.org/forum/support/ubuntu-16-04-installation/>`_ (Testing Soon on `macOS <https://www.apple.com/macos>`_)
-* `Python 3.5 <https://www.python.org/downloads>`__
-* `PocketSphinx 5PreAlpha <https://github.com/cmusphinx/pocketsphinx>`__
-* `GStreamer-1.0 <https://github.com/GStreamer/gstreamer>`__
-* `GStreamer-1.0 Base Plugins <https://github.com/GStreamer/gst-plugins-base>`__
-* `Python-GObject <https://wiki.gnome.org/action/show/Projects/PyGObject>`__
-* `Python-Requests <https://pypi.python.org/pypi/requests>`__
+Video Demonstrations: 
+=============
+First run on Arch Linux: 
+ https://youtu.be/-7Vh1ny9FsQ
 
+Version 0.11 on Arch Linux: 
+ https://youtu.be/_zBjn_LgiZM
 
-Useful Tools
-------------
+First run on Windows: 
+ https://youtu.be/6_tA081SA8Y
 
-* aplay - console audio player
-* plaympeg - console mp3 player
-* projectm - visualizations responsive to sound
-* wmctrl - window manager control. opening, closing, resize, switch windows.
-* xdotool - command line x automation tool
-* xvkbd - virtual keyboard for x
+Short calculator demo: 
+ https://youtu.be/ueQCmmUdmLo
 
-Running Open Assistant
----------------------
+Installation:
+=============
 
-* Download and unpack the latest ``openassistant-master.zip`` package.
+`Dependencies`:
+  Python: (May be any version 2.* or 3.*)
 
-* Edit ``run.sh`` to configure desired variables, then save.
+`Windows` (recommended : Python 2.7 or 3.5):
+  `Install common list of Python packages <https://www.python.org/downloads/windows/>`__ plus run: 
+   ``pip install pywin32``
 
-* Make ``run.sh`` executable with: ``$chmod +x ./run.sh``
+`Arch Linux`: 
+  ``sudo pacman -S swig espeak``
 
-* Run ``./run.sh -c -H20 -m0 -M mind/boot``. Global variables will be set and ``run.py`` will launch.
+`Ubuntu`: 
+  ``sudo apt-get install -y python python-dev python-pip build-essential swig git libpulse-dev espeak``
+ 
+`For all systems run`: 
+ ``pip install keyboard sounddevice playsound requests pyttsx3 pocketsphinx psutil feedparser python-forecastio numpy cefpython3``
 
-* If ``$MINDDIR/conf/commands.json`` has changed and your machine is online, a new dictionary and language model will be created via the `Sphinx Knowledge Base Tool <http://www.speech.cs.cmu.edu/tools/lmtool.html>`__.
+`To launch Open Assistant`: 
+  ``sudo python oa.py``
 
-* Say `Launch Open Assistant` to enable operating system control commands such as `Maximize Window` and `Fullscreen`. Say `Launch Stella` to initiate a dialogue with her mind. To have Stella quit say `Goodbye Stella`. Say `Close Open Assistant` to quit operating system command recognition.
+System Information:
+=============
+General Open Assistant overview:
+ https://www.patreon.com/posts/open-assistant-16695777
 
-* To change assistant commands and language, edit ``conf/commands.json``. Exit and relaunch ``run.sh``.
+``oa.py`` - Main Open Assistant module.
 
+`Minds`:
+  ``boot.py`` - First mind booted. Listens for "open assistant" vocal command to launch ``root.py``.
+       
+  ``calc.py`` - Voice calculator.
+       
+  ``empty.py`` - Blank test mind.
+      
+  ``root.py`` - Core system mind (will be configured specifically for various operating systems).
+       
+  ``stella.py`` - "User mind" to talk, get news, hear jokes, and so on (personality mind).
+       
+  ``yes_no.py`` - Mind which offers voice options. (Test this mind via stella -> "how are you?" to run diagnostics.)
+ 
+`Parts`:
+  ``console.py`` - Display messages in the console.
+  
+  ``display.py`` - Show messages/windows/dialogs/video in Python web browser (under development).
+  
+  ``ear.py`` - Listening to audio via microphone.
+  
+  ``eye.py`` - Camera and computer vision (planned).
+  
+  ``keybd.py`` - Recieve keyboard keys/emulate keyboard keys from input queue (`q_in`).
+  
+  ``sound.py`` - Play audio file via speakers.
+  
+  ``stt.py`` - Internal speech to text.
+  
+  ``voice.py`` - Text to speech via speakers.
+  
+  ``mind.py``  - Load and control all minds.
+  
+  About parts:
+    ``_in()`` - function which `yields` processed data. Each part works in separate thread.
+    
+    Each part reads messages (signals) from devices and/or from input message queue (``q_in``).
+    
+    To send messages to a part ('voice' for example) use: ``put('voice','any sentence')``
+    To read messages (for current part) use: ``data=get()`` (get waits until any messages appear in the queue).
+    
+    In sophisticated cases you may use ``q_in`` queue directly (with or without locks).
+    
+    Newly added parts will start automatically.
+    
+    `Listeners` - Parts able to receive messages.
 
-Open Assistant Fork
-==================
+    ``oa.ear.subs=[oa.stt]`` (speech to text will receive messages from ear)
+  
+    ``oa.stt.subs=[oa.mind]``
+  
+    ``oa.keyb.subs=[oa.mind,oa.display]``
 
-Open Assistant fork for Crux System:
-https://github.com/s1lvino/c9-ports/tree/master/openassistant
+``oa_utils.py`` - Utilities to play sounds, find files, and execute functions (will be split into 'abilities'). Automatically loaded into each `mind` space (with auto-delayed execution stubs). Look within any `mind` for examples.
+	  
+To-Do List:
+=============
+Clean commands in "minds". 
+
+Make OA work transparently in Windows, Mac, Linux, and all other operating systems.
+
+Display.py (use embedded browser as a display).
+
+ Messages / windows / dialogs / video / input / search / database browser.
+  
+ Using embedded chromium: https://github.com/cztomczak/cefpython
+	
+Keyboard command input.
+
+Add new commands via voice (extend mind functionality on fly).
+
+Eye tracking system (mouse control via eyes and video camera):
+
+ https://github.com/esdalmaijer/webcam-eyetracker
+ 
+ https://github.com/esdalmaijer/PyGaze
+ 
+ https://github.com/pupil-labs/pupil
+
+Emotional interaction / lip reading (advanced functionality):
+
+ https://github.com/deepconvolution/LipNet
+ 
+ https://github.com/rizkiarm/LipNet
+
+3D object creation via voice using programmable Openscad:
+
+ https://github.com/SolidCode/SolidPython
+
+Build a simple installer for all operating systems via PyInstaller:
+
+ http://www.pyinstaller.org
+      
+Support Open Assistant
+=============
+`Become a patron`:
+  https://www.patreon.com/openassistant
+
+`Donate tokens`:
+ BTC: 1HWciwsZ1jCgH9VYRRb4A21WoRByn2tnpc
+  
+ ETH: 0x90A534862fA94FE1fFC1Fe5c660E3683c219c87a
+  
+ NEO: Ad3FZrL9Gr1WyNcR6GTbPRqgv1c58E2G1q
+  
+ QTUM: Qd7bqFAGCC5ViHaZqkuYHHo9Jg8h1a1Ugc
+  
+ DOGE: DMeiGCpCK96xp9g9A1achnB7gYvH6KNc6u
+  
+ MANNA: GLfvi9GWmRQdpeN8nDdjMkbCjvk55viTXp
+
+Join Our Team
+=============
+Feel free to fork and enhance this code!
+
+Email us at:
+ `info@openassistant.org <mailto:info@openassistant.org>`__
+
+Visit our website:
+ http://www.openassistant.org
+
+Free the robot brains!
+=============
+
+Support your privacy and freedom!
+=============

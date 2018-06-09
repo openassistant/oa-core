@@ -1,0 +1,46 @@
+/* the superGifCanvas elements can be styled if you need to*/
+/*
+.superGifCanvas {
+	width:100%;
+}
+*/
+* {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.guierrormessage {
+	color: #FF0000;
+}
+.guioption{
+	width: 280px;
+	padding: 0.2em;
+	font-size: 1em;
+	display: inline-block;
+	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1) inset;
+}
+#giferrormessage {
+	display: inline-block;
+}
+#newgifbutton {
+font-size: 1.0rem;
+padding: 0.5rem 0.6em;
+background: #69c773;
+border-bottom: 1px solid #498b50;
+color: white;
+-webkit-font-smoothing: antialiased;
+font-weight: bold;
+margin: 0;
+height: 35px;
+text-align: center;
+}
+#texttospeakinput {
+	width:96%;
+}
+.superGifCanvas{
+	max-width: 100%; 
+}
+
+.avatar{
+  float : left;
+  width:50%;
+  height:100%;
+}
