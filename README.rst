@@ -34,14 +34,17 @@ Download, Install, & Run:
 
 `Windows Python Install (Python 2.7 or 3.5 Recommended):
   `Install common list of Python packages <https://www.python.org/downloads/windows/>`__ then run: 
+  
    ``pip install pywin32 keyboard sounddevice playsound requests pyttsx3 pocketsphinx psutil feedparser python-forecastio numpy``
 
 `Ubuntu Linux`: 
   ``sudo apt-get install -y python python-dev python-pip build-essential swig git libpulse-dev espeak``
+  
   ``pip install keyboard sounddevice playsound requests pyttsx3 pocketsphinx psutil feedparser python-forecastio numpy``
 
 `Arch Linux`: 
   ``sudo pacman -S swig espeak``
+  
   ``pip install keyboard sounddevice playsound requests pyttsx3 pocketsphinx psutil feedparser python-forecastio numpy``
 
 `Download Open Assistant`:
