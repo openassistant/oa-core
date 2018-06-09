@@ -43,8 +43,6 @@ Install & Run:
 `To launch Open Assistant`: 
   ``sudo python oa.py``
 
-Running Open Assistant
-=======
 Using Open Assistant
 =============
 
@@ -94,8 +92,6 @@ General Open Assistant overview:
   ``mind.py``  - Load and control all minds.
   
   About parts:
-Clean commands in "minds". 
-=======
     ``_in()`` - function which `yields` processed data. Each part works in a separate thread.
     
     Each part reads messages (signals) from devices and/or from an input message wire (``wire_in``).
