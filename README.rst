@@ -24,10 +24,10 @@ Short calculator demo:
 Install & Run:
 =============
 
-`Windows`:
-  Click ``oa.exe`` found in the core directory.
+`Windows (Click & Run)`:
+  `Download <http://openassistant.org/download/oa_0.21_windows.zip>`__, `unzip <http://www.peazip.org>`__, and click ``oa.exe`` found in the "Open Assistant" folder.
 
-`Windows Python Install (recommended : Python 2.7 or 3.5):
+`Windows Python Install (Python 2.7 or 3.5 Recommended):
   `Install common list of Python packages <https://www.python.org/downloads/windows/>`__ plus run: 
    ``pip install pywin32``
 
