@@ -1,7 +1,9 @@
 Open Assistant
 =============
 
-Make your own minds! Free and open source AI OS development.
+Make your own minds! Open source AI OS development.
+
+Open Assistant is a private open source personal assistant system able to engage in conversations and complete an increasing amount of tasks using vocal commands.
 
 Our current goals are to simplify and restructure modules to provide easy customization, operating system independence, as well as to implement more sophisticated logic such as machine learning (TensorFlow).
 
@@ -21,26 +23,31 @@ First run on Windows:
 Short calculator demo: 
  https://youtu.be/ueQCmmUdmLo
 
-Install & Run:
+German Language Demonstration: 
+ https://youtu.be/ElWUBI2e5Mg
+
+Download, Install, & Run:
 =============
 
 `Windows (Click & Run)`:
-  `Download <http://openassistant.org/download/oa_0.21_windows.zip>`__, `unzip <http://www.peazip.org>`__, and click ``oa.exe`` found in the "Open Assistant" folder.
+  `Download <http://openassistant.org/download/oa_0.21_windows.zip>`__, `unzip package <http://www.peazip.org>`__, and click the ``oa.exe`` file found in the "Open Assistant" folder.
 
 `Windows Python Install (Python 2.7 or 3.5 Recommended):
-  `Install common list of Python packages <https://www.python.org/downloads/windows/>`__ plus run: 
-   ``pip install pywin32``
+  `Install common list of Python packages <https://www.python.org/downloads/windows/>`__ then run: 
+   ``pip install pywin32 keyboard sounddevice playsound requests pyttsx3 pocketsphinx psutil feedparser python-forecastio numpy``
+
+`Ubuntu Linux`: 
+  ``sudo apt-get install -y python python-dev python-pip build-essential swig git libpulse-dev espeak``
+  ``pip install keyboard sounddevice playsound requests pyttsx3 pocketsphinx psutil feedparser python-forecastio numpy``
 
 `Arch Linux`: 
   ``sudo pacman -S swig espeak``
+  ``pip install keyboard sounddevice playsound requests pyttsx3 pocketsphinx psutil feedparser python-forecastio numpy``
 
-`Ubuntu`: 
-  ``sudo apt-get install -y python python-dev python-pip build-essential swig git libpulse-dev espeak``
- 
-`For all systems run`: 
- ``pip install keyboard sounddevice playsound requests pyttsx3 pocketsphinx psutil feedparser python-forecastio numpy``
+`Download Open Assistant`:
+  https://github.com/openassistant/oa-core/archive/next.zip
 
-`To launch Open Assistant`: 
+`Run Open Assistant`: 
   ``sudo python oa.py``
 
 Using Open Assistant
@@ -65,10 +72,6 @@ General Open Assistant overview:
 
 `Minds`:
   ``boot.py`` - First mind booted. Listens for "open assistant" vocal command to launch ``root.py``.
-       
-  ``calc.py`` - Voice calculator.
-       
-  ``empty.py`` - Blank test mind.
       
   ``root.py`` - Core system mind (will be configured specifically for various operating systems).
  
