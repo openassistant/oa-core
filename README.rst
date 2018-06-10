@@ -1,5 +1,5 @@
-Open Assistant 0.2.1
-=============
+Open Assistant
+==============
 
 Make your own minds! Open source AI OS development.
 
