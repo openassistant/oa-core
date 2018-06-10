@@ -16,15 +16,14 @@ class Recognizer(GObject.GObject):
     }
 
     # def __init__(self, mic=None, dic_file=None, lm_file=None, fsg_file=None):
-    def __init__(self, config):
+    def __init__(self, **config):
         GObject.GObject.__init__(self)
         logger.debug("Initializing Recognizer")
         self.commands = {}
         logger.debug(config)
-        logger.debug(config.options)
 
         # Configure Audio Source
-        src = config.options['microphone']
+        src = config.get('microphone', None)
         if src is not None:
             #audio_src = 'alsasrc device="hw:{0},0"'.format(src)
             audio_src = 'autoaudiosrc device="hw:{0},0"'.format(src)
@@ -38,10 +37,10 @@ class Recognizer(GObject.GObject):
             ' ! audioresample' +
             ' ! pocketsphinx {}'.format(' '.join([
                     '{}={}'.format(opt, val) for opt, val in [
-                        ('lm', config.lang_file),
-                        ('dict', config.dic_file),
-                        ('fsg', config.fsg_file),
-                        ('hmm', config.hmm_path),
+                        ('lm', config.get('lang_file', None)),
+                        ('dict', config.get('dic_file', None)),
+                        ('fsg', config.get('fsg_file', None)),
+                        ('hmm', config.get('hmm_path', None)),
                     ] if val is not None
                 ])) +
             ' ! appsink sync=false'
