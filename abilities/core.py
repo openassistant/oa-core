@@ -116,7 +116,7 @@ def info(*args, **kwargs):
     if args:
         string += ' '.join([str(v) for v in args]) + '\n'
     if kwargs:
-        string += '\n'.join([' %s: %s' %(str(k), str(v)) for k, v in args.items()])
+        string += '\n'.join([' %s: %s' %(str(k), str(v)) for k, v in kwargs.items()])
     if oa.console and oa.alive:
         oa.console.wire_in.put(string)
     else:
@@ -286,7 +286,7 @@ def mute(mute = True):
     if oa.sys.os == 'win':
         wshell.SendKeys(chr(173))
     elif oa.sys.os in ('linux', 'mac'):
-        sys_exec('amixer set Master %smute'(((not mute) and 'un') or ''))
+        sys_exec('amixer set Master %smute' % (((not mute) and 'un') or ''))
     else:
         info('Unknown operating system.')
 
