@@ -1,15 +1,12 @@
 # core.py - Essential OA classes and functions.
 
-import os, sys, glob, random, string
-import subprocess, requests
+import datetime
+import getpass
 import inspect
-import keyboard
 import platform
-import feedparser
-import datetime, math
-import getpass,socket
+import socket
 import psutil
-import threading
+
 import itertools
 from itertools import *
 
