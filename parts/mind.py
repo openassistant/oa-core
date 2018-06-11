@@ -1,5 +1,6 @@
 # mind.py - Core mind operations.
 
+import importlib
 import os
 
 from core import oa, isCallable, Stub
@@ -18,13 +19,12 @@ def load_mind(name):
     if not os.path.exists(mind.cache_dir):
         os.makedirs(mind.cache_dir)
 
-    cf_data = read_file(mind.module)
-    d_exec = dict(oa.core.stub_funcs.items())
-    exec(cf_data, d_exec)
+    pkg = os.path.split(oa.core_directory)[-1]
+    M = importlib.import_module('minds.'+name, package=pkg)
     
     # Add command keywords without spaces.
     mind.kws = {}
-    for key, value in d_exec['kws'].items():
+    for key, value in M.kws.items():
         for synonym in key.strip().split(','):
             mind.kws[synonym] = value
 
