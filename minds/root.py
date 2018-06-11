@@ -1,12 +1,47 @@
-kws={
-  'root mind': say('- Hello world!'),
-  'close assistant': play('beep_close.wav') & mind('boot'),
-  'list commands': say('- The currently available voice commands are: \n       "root mind", "what time is it", "what day is it", "what did i say", \n       "run diagnostics", "what is the weather", "read world news", "sing a song", \n        and "close assistant".'),
-  'read world news': read_news_feed('https://www.reddit.com/r/worldnews/.rss', 'world'),
-  'run diagnostics': diagnostics(),
-  'sing a song': play('daisy.wav'),
-  'what day is it': say_day(),
-  'what did i say': say_last_command('You just said:'),
-  'what is the weather': read_forecast(),
-  'what time is it': say_time()
-}
+from core import command_registry
+from abilities.core import mind, say, play, read_news_feed, diagnostics, say_day, say_last_command, read_forecast, say_time
+
+kws = {}
+
+command = command_registry(kws)
+
+@command("root mind")
+def hello_world():
+     say('- Hello world!')
+
+@command("close assistant")
+def close_assistant():
+    play('beep_close.wav')
+    mind('boot')
+
+@command("list commands")
+def list_commands():
+    say('- The currently available voice commands are: #\n       "root mind", "what time is it", "what day is it", "what did i say", \n       "run diagnostics", "what is the weather", "read world news", "sing a song", \n        and "close assistant".')
+
+@command("read world news")
+def read_world_news():
+    read_news_feed('https://www.reddit.com/r/worldnews/.rss', 'world')
+
+@command("run diagnostics")
+def run_diagnostics():
+    diagnostics()
+
+@command("sing a song")
+def sing_a_song():
+    play('daisy.wav')
+
+@command("what day is it")
+def what_day():
+    say_day()
+
+@command("what did I say")
+def what_command():
+    say_last_command('You just said:')
+
+@command("what is the weather")
+def what_weather():
+    read_forecast()
+
+@command("what time is it")
+def what_time():
+    say_time()
