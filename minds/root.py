@@ -16,7 +16,7 @@ def close_assistant():
 
 @command("list commands")
 def list_commands():
-    say('- The currently available voice commands are: #\n       "root mind", "what time is it", "what day is it", "what did i say", \n       "run diagnostics", "what is the weather", "read world news", "sing a song", \n        and "close assistant".')
+    say('- The currently available voice commands are:\n{}'.format(',\n'.join(kws.keys())))
 
 @command("read world news")
 def read_world_news():
