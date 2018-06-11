@@ -8,7 +8,11 @@ import os, time
 import threading
 
 import core
-from core import *
+
+from core import oa, Core, Stub
+
+import abilities.core
+from abilities.core import info, read_file, queue
 
 
 # Setup connections between parts.
