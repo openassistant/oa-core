@@ -1,5 +1,5 @@
 from core import command_registry
-from abilities.core import mind, play
+from abilities.core import mind, play, say
 
 kws = {}
 
@@ -13,3 +13,7 @@ def response_sound():
 def open_root():
   play('beep_open.wav')
   mind('root')
+
+@command(["list commands", "help"])
+def list_commands():
+    say('- The currently available voice commands are:\n{}'.format(',\n'.join(kws.keys())))
