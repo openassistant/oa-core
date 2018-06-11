@@ -2,6 +2,9 @@
 
 import playsound
 
+from core import oa
+from abilities.core import get, put
+
 def _in():
     while oa.alive:
         path = get()

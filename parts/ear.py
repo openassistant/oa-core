@@ -3,6 +3,8 @@
 import sounddevice, audioop
 import math, collections, numpy
 
+from core import oa
+
 def _in():
     timeout = None
     channels = 1

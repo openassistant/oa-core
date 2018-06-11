@@ -2,6 +2,10 @@
 
 import pyttsx3
 
+from core import oa
+from abilities.core import get, put
+
+
 def _in():
     tts = pyttsx3.init()
     

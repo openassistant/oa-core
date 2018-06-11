@@ -3,6 +3,11 @@
 import os, re, time, pocketsphinx
 from pocketsphinx.pocketsphinx import *
 
+import requests
+
+from core import oa, Core
+from abilities.core import info, write_file, download_file, get, empty, stat_mtime
+
 def config_stt(cache_dir, keywords, kws_last_modification_time_in_sec = None):
     _ = Core()
     cache_path = lambda x: os.path.join(cache_dir, x)
