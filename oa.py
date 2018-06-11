@@ -5,6 +5,7 @@
 # oa.py - Launch Open Assistant.
 
 import os, time
+import importlib
 import threading
 
 import core
@@ -56,15 +57,22 @@ class OpenAssistant:
 
     def load_parts(_):
         """ Setup all parts. """
+
         for part_name in os.listdir('parts'):
+            if not part_name[-3:] == ".py": continue
             info('- Loading part: ' + part_name)
             name = part_name[:-3]
             part_core = read_file('parts/' + part_name)
             stream = dict(list(core.__dict__.items())[:])
 
+            # Import part as module
+            pkg = os.path.split(oa.core_directory)[-1]
+            P = importlib.import_module('parts.'+name, package=pkg)
+            info("Part: {}".format(repr(P)))
+            stream.update(P.__dict__)
+
             # Connect parts to the message wire.
             stream['wire_in'] = queue.Queue()
-            exec(part_core, stream)
             part = Core(**stream)
             oa[name].__dict__.update(part.__dict__)
             part = oa[name]
