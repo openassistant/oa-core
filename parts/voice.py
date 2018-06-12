@@ -8,11 +8,11 @@ from abilities.core import get, put
 
 import platform
 sys_os = platform.system()
-flMac = (sys_os != 'mac')
-if not flMac:
-    import pyttsx3
-else:
+flMac = (sys_os == 'Darwin')
+if flMac:
     import subprocess
+else:
+    import pyttsx3
 
 
 def _in():
