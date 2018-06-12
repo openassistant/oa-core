@@ -86,7 +86,7 @@ def update_language(_):
 
 def get_decoder():
     mind = oa.mind.active
-    ret = oa.stt.decoders[mind.name]
+    ret = oa.speech_recognition.decoders[mind.name]
     if not ret:
         # Configure Speech to text dictionaries.
         ret = config_stt(mind.cache_dir, mind.kws.keys(), stat_mtime(mind.module))
@@ -101,7 +101,7 @@ def get_decoder():
         config.set_string("-logfn", os.devnull)  # Disable logging.
 
         ret.decoder = pocketsphinx.Decoder(config)
-        oa.stt.decoders[mind.name] = ret
+        oa.speech_recognition.decoders[mind.name] = ret
 
     return ret
 

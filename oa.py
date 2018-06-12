@@ -16,9 +16,9 @@ from abilities.core import info, read_file, queue
 
 
 # Setup connections between parts.
-oa.ear.input = [oa.stt]
-oa.stt.input = [oa.mind]
-oa.keyboard.input = [oa.mind, oa.display]
+oa.ear.output = [oa.speech_recognition]
+oa.speech_recognition.output = [oa.mind]
+oa.keyboard.output = [oa.mind, oa.display]
 
 
 class OpenAssistant:
@@ -58,37 +58,40 @@ class OpenAssistant:
     def load_parts(_):
         """ Setup all parts. """
 
-        for part_name in os.listdir('parts'):
-            if not part_name[-3:] == ".py": continue
-            info('- Loading part: ' + part_name)
-            name = part_name[:-3]
-            part_core = read_file('parts/' + part_name)
-            stream = dict(list(core.__dict__.items())[:])
+        pkg = os.path.split(oa.core_directory)[-1]
 
-            # Import part as module
-            pkg = os.path.split(oa.core_directory)[-1]
-            P = importlib.import_module('parts.'+name, package=pkg)
-            info("Part: {}".format(repr(P)))
-            stream.update(P.__dict__)
+        for module_name in os.listdir('modules'):
+            try:
 
-            # Connect parts to the message wire.
-            stream['wire_in'] = queue.Queue()
-            part = Core(**stream)
-            oa[name].__dict__.update(part.__dict__)
-            part = oa[name]
-            setattr(part, 'name', name)
-            part.__dict__.setdefault('input', [])
+                # A module is a folder with an __init__.py file
+                if not all([
+                    os.path.isdir(os.path.join('modules', module_name)),
+                    os.path.exists(os.path.join('modules', module_name, '__init__.py')),
+                ]): continue
 
-            if stream.get('_in', None) is not None:
+                info('Loading Module: {} <- {}'.format(module_name, os.path.join('modules', module_name, '__init__.py')))
 
-                # Additional check for yield.
-                if 'yield' not in part_core.lower():
-                    info('- WARNING: Please check part `%s` for yield in _in()' %(name))
+                # Import part as module
+                M = importlib.import_module('modules.{}'.format(module_name), package=pkg)
+                info("Module: {}".format(repr(M)))
 
-                # Setup input threads.
-                thr = threading.Thread(target = _in, name = name, args = (part,))
-                _.parts[name] = part
-                _.thread_pool.append(thr)
+                # If the module provides an input queue, link it
+                if getattr(M, '_in', None) is not None:
+
+                    m = oa[module_name]
+                    m.__dict__.update(M.__dict__)
+                    
+                    setattr(m, 'name', module_name)
+                    m.__dict__.setdefault('wire_in', queue.Queue())
+                    m.__dict__.setdefault('output', [])
+
+                    # Setup input threads.
+                    thr = threading.Thread(target = _in, name = module_name, args = (m,))
+                    _.parts[module_name] = m
+                    _.thread_pool.append(thr)
+                    
+            except Exception as ex:
+                info(ex)
 
         # Start all threads.
         [thr.start() for thr in _.thread_pool]
@@ -96,16 +99,18 @@ class OpenAssistant:
 
 def _in(part):
     """ Setup part inputs to the message wire. """
-    if not isinstance(part.input, list):
+    if not isinstance(part.output, list):
         raise Exception('Wrong part: ' + part.name)
 
-    stream = part._in
     info('- Started.')
 
-    for message in stream():
-        for listener in part.input:
-            info('- Sending to part:', listener.name)
-            listener.wire_in.put(message)
+    for message in part._in():
+        try:
+            for listener in part.output:
+                info('- Sending to part:', listener.name)
+                listener.wire_in.put(message)
+        except Exception as ex:
+            info(ex)
     info('- Closed.')
 
 

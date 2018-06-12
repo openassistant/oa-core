@@ -22,7 +22,7 @@ def _in():
     while oa.alive:
         s = get()
         # Pause Ear (listening) while talking. Mute TTS.
-        put('stt','mute')
+        put('speech_recognition','mute')
 
         if flMac:
             _msg = subprocess.Popen(['echo', s], stdout=subprocess.PIPE)
@@ -35,5 +35,5 @@ def _in():
 
         # Wait until speaking ends.
         # Continue ear (listening). Unmute TTS.
-        put('stt','unmute')
+        put('speech_recognition','unmute')
         yield ''

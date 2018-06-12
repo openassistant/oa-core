@@ -50,10 +50,10 @@ def command_registry(kws):
     def command(cmd):
         def _command(fn):
             if type(cmd) == str:
-                kws[cmd] = fn
+                kws[cmd.upper()] = fn
             elif type(cmd) == list:
                 for kw in cmd:
-                    kws[kw] = fn
+                    kws[kw.upper()] = fn
             return fn
         return _command
     return command

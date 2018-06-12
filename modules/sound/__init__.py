@@ -10,9 +10,9 @@ def _in():
         path = get()
         
         # Pause listening while talking. Mute STT.
-        put('stt','mute')
+        put('speech_recognition','mute')
         playsound.playsound(path)
    
         # Audio complete. Begin listening. Unmute STT.
-        put('stt','unmute')
+        put('speech_recognition','unmute')
         yield ''

@@ -64,7 +64,7 @@ def _in():
         if (text is None) or (text.strip() == ''):
             # Nothing to do.
             continue
-        t = text.lower()
+        t = text.upper()
 
         # Check for a matching command.
         fn = mind.kws.get(t, None)
