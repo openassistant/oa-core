@@ -148,14 +148,6 @@ class Stub():
 
         return ret
 
-    @classmethod
-    def test(self):
-        c1 = Stub(play)
-        c2 = Stub(mind)
-        ret = c1('beep_hello.wav') & c2('root')
-
-        # Execute all.
-        ret.perform()
 
 
 """ CORE VARIABLE ASSIGNMENTS """
