@@ -23,27 +23,27 @@ oa.keyboard.output = [oa.mind, oa.display]
 
 class OpenAssistant:
     """ Main OA loading class. """
-    def __init__(_):
+    def __init__(self):
         info("- Loading Open Assistant...")
 
         # Establish OA core.
-        oa.core = _
+        oa.core = self
         oa.core_directory = os.path.dirname(__file__)
 
         # Setup Stubs for functions of `core.py`.
-        _.stub_funcs = Stub.prepare_stubs(core)
+        self.stub_funcs = Stub.prepare_stubs(core)
 
         # Activate OA.
-        _.active = threading.Event()
-        _.active.set()
-        oa.alive = lambda : _.active.is_set()
+        self.active = threading.Event()
+        self.active.set()
+        oa.alive = lambda : self.active.is_set()
 
         # Setup parts and threads.
-        _.parts = {}
-        _.thread_pool = []
-        _.load_parts()
+        self.parts = {}
+        self.thread_pool = []
+        self.load_parts()
 
-    def loop(_):
+    def loop(self):
         """ Remain active until exit. """
         try:
             while oa.alive:
@@ -51,11 +51,11 @@ class OpenAssistant:
 
         except KeyboardInterrupt:
             info('- Attempting to close threads...')
-            _.active.clear()
-            [thr.join() for thr in _.thread_pool]
+            self.active.clear()
+            [thr.join() for thr in self.thread_pool]
             info('- Threads closed.')
 
-    def load_parts(_):
+    def load_parts(self):
         """ Setup all parts. """
 
         pkg = os.path.split(oa.core_directory)[-1]
@@ -87,14 +87,14 @@ class OpenAssistant:
 
                     # Setup input threads.
                     thr = threading.Thread(target = _in, name = module_name, args = (m,))
-                    _.parts[module_name] = m
-                    _.thread_pool.append(thr)
+                    self.parts[module_name] = m
+                    self.thread_pool.append(thr)
                     
             except Exception as ex:
                 info(ex)
 
         # Start all threads.
-        [thr.start() for thr in _.thread_pool]
+        [thr.start() for thr in self.thread_pool]
 
 
 def _in(part):

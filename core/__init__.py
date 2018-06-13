@@ -60,37 +60,37 @@ def command_registry(kws):
 
 class Core(object):
     """ General template to store all properties. If attributes do not exist, assign them and return Core(). """
-    def __init__(_, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         if args:
-            _.args = args
+            self.args = args
         # Get keyword arguments.
-        _.__dict__.update(kwargs)
+        self.__dict__.update(kwargs)
 
-    def __nonzero__(_):
-        return len(_.__dict__)
+    def __nonzero__(self):
+        return len(self.__dict__)
 
-    def __bool__(_):
-         return len(_.__dict__) > 0
+    def __bool__(self):
+         return len(self.__dict__) > 0
 
-    def __getitem__(_, key):
+    def __getitem__(self, key):
         if not isinstance(key, str):
             print(key)
-        return getattr(_, key)
+        return getattr(self, key)
 
-    def __setitem__(_, key, value):
-        setattr(_, key, value)
+    def __setitem__(self, key, value):
+        setattr(self, key, value)
 
-    def __getattribute__(_, name):
+    def __getattribute__(self, name):
         """ If an attribute is a function without arguments, return the call. """
         try:
-            attributes = object.__getattribute__(_, name)
+            attributes = object.__getattribute__(self, name)
         except AttributeError as e:
 
             # For unknown attributes, return a fresh instance of Core (except for system attributes `__*__`).
             if name.startswith('__') and name.endswith('__'):
                 raise
             attributes = Core()
-            object.__setattr__(_, name, attributes)
+            object.__setattr__(self, name, attributes)
 
         if isCallable(attributes):
             insp = inspect.getargspec(attributes)
@@ -101,28 +101,28 @@ class Core(object):
 
 class Stub():
     """ Stubs for delayed command calls. """
-    def __init__(_,o, *args, **kwargs):
-        _.commands = [[o,args,kwargs]]
+    def __init__(self, o, *args, **kwargs):
+        self.commands = [[o,args,kwargs]]
 
-    def __and__(_,o):
-        _.commands.append(o.commands[0])
-        return _
+    def __and__(self, o):
+        self.commands.append(o.commands[0])
+        return self
 
-    def __add__(_, o):
+    def __add__(self, o):
         """ Redirect to `__and__` operator. """
-        return _ & o
+        return self & o
 
-    def __call__(_,*args,**kwargs):
+    def __call__(self, *args,**kwargs):
         """ Fill function parameters all at once for real calls and use `perform()`. """
-        ret = Stub(_.commands[0][0])
+        ret = Stub(self.commands[0][0])
         ret.commands[0][1] = args
         ret.commands[0][2] = kwargs
         return ret
 
-    def perform(_):
+    def perform(self):
         """ Call all functions one by one. """
         ret = []
-        for func, args, kwargs in _.commands:
+        for func, args, kwargs in self.commands:
             # Check arguments for Stubs and perform them.
             ret.append(func(*args, **kwargs))
         if len(ret) == 1:
@@ -131,7 +131,7 @@ class Stub():
             return ret
 
     @classmethod
-    def prepare_stubs(_, module):
+    def prepare_stubs(self, module):
         """ Return dictionary with Stubs of all functions in related `module`. """
         # Nowait - to call a function without delays.
         ret = {}
@@ -149,7 +149,7 @@ class Stub():
         return ret
 
     @classmethod
-    def test(_):
+    def test(self):
         c1 = Stub(play)
         c2 = Stub(mind)
         ret = c1('beep_hello.wav') & c2('root')
