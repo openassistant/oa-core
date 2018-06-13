@@ -85,6 +85,6 @@ def _in():
                 if phrase_count >= phrase_buffer_count or len(buf) == 0: break  # Phrase is long enough or we've reached the end of the stream, so stop listening.
            
             # Obtain frame data.
-            for i in range(pause_count - non_speaking_buffer_count): frames.pop()  # Remove extra non-speaking frames at the end.
+            for _ in range(pause_count - non_speaking_buffer_count): frames.pop()  # Remove extra non-speaking frames at the end.
             frame_data = numpy.concatenate(frames)
             yield frame_data
