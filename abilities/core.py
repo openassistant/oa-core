@@ -101,8 +101,8 @@ def get(part = None, timeout = .1):
     """ Get a message from the wire. If there is no part found, take a message from the current wire input thread. (No parameters. Thread safe) """
     if part is None:
         part = current_part()
-    if part.name == 'mind':
-        info('- Listening: ', part.name)
+    # if part.name == 'mind':
+        # info('- Listening: ', part.name)
     while oa.alive:
         try:
             return part.wire_in.get(timeout = timeout)
