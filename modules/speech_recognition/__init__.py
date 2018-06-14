@@ -1,6 +1,9 @@
 # stt.py - Speech to text.
 
-import os, re, time, pocketsphinx
+import os, re, time
+import logging
+
+import pocketsphinx
 from pocketsphinx.pocketsphinx import *
 
 import requests
@@ -112,10 +115,10 @@ def _in():
         raw_data = get()
         if isinstance(raw_data, str):
             if raw_data == 'mute':
-                info('- Muted.')
+                logging.debug('Muted')
                 mute = 1
             elif raw_data == 'unmute':
-                info('- Unmuted.')
+                logging.debug('Unmuted')
                 mute = 0
                 time.sleep(.9)
                 empty()
@@ -141,11 +144,11 @@ def _in():
             hyp = hypothesis.hypstr
             if (hyp is None) or (hyp.strip() == ''):
                 continue
-            info('- Heard:', hyp)
+            logging.info("Heard: {}".format(hyp))
             if hyp.upper() in dinf.phrases:
                 yield hyp
             else:
                 continue
 
         else:
-            info('- Listening...')
+            logging.warn('Speech not recognized')

@@ -108,19 +108,19 @@ def thread_loop(part):
     if not isinstance(part.output, list):
         raise Exception('No output list defined: ' + part.name)
 
-    logging.info('Started')
+    logging.debug('Started')
 
     muted = False
     for message in part._in():
         if not muted:
             try:
                 for listener in part.output:
-                    logging.info('{} -> {}'.format(part.name, listener.name))
+                    logging.debug('{} -> {}'.format(part.name, listener.name))
                     listener.wire_in.put(message)
             except Exception as ex:
                 logging.error(ex)
 
-    logging.info('Closed')
+    logging.debug('Closed')
 
 
 """ Boot Open Assistant. """
