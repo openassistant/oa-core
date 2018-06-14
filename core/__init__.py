@@ -15,9 +15,6 @@ try:
 except:
     import Queue as queue
 
-import logging
-logging.basicConfig(filename = 'oa.log', level = logging.INFO)
-
 
 """ CORE FUNCTIONS AND CLASSES """
 
