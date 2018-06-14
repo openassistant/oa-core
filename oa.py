@@ -6,13 +6,11 @@
 
 import os, time
 import importlib
+import logging
+import signal
 import threading
 
-import core
-from core import oa, Core, Stub
-
-import abilities.core
-from abilities.core import info, read_file, queue
+from core import oa, queue
 
 
 # Setup connections between parts.
@@ -23,44 +21,40 @@ oa.keyboard.output = [oa.mind, oa.display]
 
 class OpenAssistant:
     """ Main OA loading class. """
+    
     def __init__(self):
-        info("- Loading Open Assistant...")
+        logging.info("Initializing Open Assistant")
 
         # Establish OA core.
         oa.core = self
         oa.core_directory = os.path.dirname(__file__)
 
-        # Setup Stubs for functions of `core.py`.
-        self.stub_funcs = Stub.prepare_stubs(core)
-
         # Activate OA.
+        self.finished = threading.Event()
         self.active = threading.Event()
         self.active.set()
-        oa.alive = lambda : self.active.is_set()
-
+        oa.alive = lambda self=self : self.active.is_set()
+    
         # Setup parts and threads.
         self.parts = {}
         self.thread_pool = []
-        self.load_parts()
 
-    def loop(self):
+
+    def run(self):
         """ Remain active until exit. """
-        try:
-            while oa.alive:
-                time.sleep(.1)
+        self.load_modules()
+        self.start_modules()
 
-        except KeyboardInterrupt:
-            info('- Attempting to close threads...')
-            self.active.clear()
-            [thr.join() for thr in self.thread_pool]
-            info('- Threads closed.')
+        self.finished.wait()
 
-    def load_parts(self):
+
+    def load_modules(self):
         """ Setup all parts. """
 
         pkg = os.path.split(oa.core_directory)[-1]
 
-        for module_name in os.listdir('modules'):
+        logging.info("Loading Modules..")
+        for module_name in os.listdir(os.path.join(oa.core_directory, 'modules')):
             try:
 
                 # A module is a folder with an __init__.py file
@@ -69,11 +63,9 @@ class OpenAssistant:
                     os.path.exists(os.path.join('modules', module_name, '__init__.py')),
                 ]): continue
 
-                info('Loading Module: {} <- {}'.format(module_name, os.path.join('modules', module_name, '__init__.py')))
-
                 # Import part as module
+                logging.info('{} <- {}'.format(module_name, os.path.abspath(os.path.join('modules', module_name))))
                 M = importlib.import_module('modules.{}'.format(module_name), package=pkg)
-                info("Module: {}".format(repr(M)))
 
                 # If the module provides an input queue, link it
                 if getattr(M, '_in', None) is not None:
@@ -85,38 +77,57 @@ class OpenAssistant:
                     m.__dict__.setdefault('wire_in', queue.Queue())
                     m.__dict__.setdefault('output', [])
 
-                    # Setup input threads.
-                    thr = threading.Thread(target = _in, name = module_name, args = (m,))
                     self.parts[module_name] = m
-                    self.thread_pool.append(thr)
                     
             except Exception as ex:
-                info(ex)
+                logging.error(ex)
+
+
+    def start_modules(self):
+        # Setup input threads.
+        for module_name, m in self.parts.items():
+            if getattr(m, '_in', None) is not None:
+                thr = threading.Thread(target=thread_loop, name=module_name, args=(m,))
+                self.thread_pool.append(thr)
 
         # Start all threads.
         [thr.start() for thr in self.thread_pool]
 
 
-def _in(part):
+    def sigint_handler(self, signal, frame):
+        logging.info("Ctrl-C Pressed")
+        logging.info('Attempting to close threads')
+        self.finished.set()
+        [thr.join() for thr in self.thread_pool]
+        logging.info('Threads closed')
+        quit(0)
+
+
+def thread_loop(part):
     """ Setup part inputs to the message wire. """
     if not isinstance(part.output, list):
-        raise Exception('Wrong part: ' + part.name)
+        raise Exception('No output list defined: ' + part.name)
 
-    info('- Started.')
+    logging.info('Started')
 
+    muted = False
     for message in part._in():
-        try:
-            for listener in part.output:
-                info('- Sending to part:', listener.name)
-                listener.wire_in.put(message)
-        except Exception as ex:
-            info(ex)
-    info('- Closed.')
+        if not muted:
+            try:
+                for listener in part.output:
+                    logging.info('{} -> {}'.format(part.name, listener.name))
+                    listener.wire_in.put(message)
+            except Exception as ex:
+                logging.error(ex)
+
+    logging.info('Closed')
 
 
 """ Boot Open Assistant. """
 def runapp():
-    OpenAssistant().loop()
+    OpenAssistant().run()
 
 if __name__ == '__main__':
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(threadName)s:%(filename)s:%(funcName)s:%(lineno)d %(message)s")
+    logging.info("Open Assistant Starting..")
     runapp()
