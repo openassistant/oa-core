@@ -1,6 +1,7 @@
 # mind.py - Core mind operations.
 
 import importlib
+import logging
 import os
 
 from core import oa, isCallable, Stub
@@ -30,7 +31,7 @@ def load_mind(name):
 
 def set_mind(name, history = 1):
     """ Activate new mind. """
-    info('- Opening mind: %s' %(name))
+    logging.info('Opening Mind: {}'.format(name))
     if history:
         switch_hist.append(name)
     oa.mind.active = oa.mind.minds[name]
@@ -43,24 +44,28 @@ def switch_back():
 def load_minds():
     """ Load and check dictionaries for all minds. Handles updating language models using the online `lmtool`.
     """
-    info('- Loading minds...')
+    logging.info('Loading minds...')
     for mind in os.listdir(os.path.join(oa.core_directory, 'minds')):
         if mind.lower().endswith('.py'):
             load_mind(mind[:-3])
-    info('- All minds are loaded! "Boot mind" is now listening. \n       Say "Boot Mind!" to see if it can hear you. Make sure your microphone is active. \n       Say "Open Assistant!" to launch "root mind". \n       Once root mind loads, say "List Commands!" to hear the commands available.')
+    logging.info('Minds loaded!')
 
 def _in():
-    global switch_hist
     # History of mind switching.
+    global switch_hist
     switch_hist = []
+    
+    default_mind = 'boot'
     load_minds()
-    set_mind('boot')
+    set_mind(default_mind)
+
+    logging.debug('"{}" is now listening. Say "Boot Mind!" to see if it can hear you.'.format(default_mind))
+
 
     while oa.alive:
         text = get()
-        info('- Text:',text)
+        logging.info('Input: {}'.format(text))
         mind = oa.mind.active
-        info('%s - Command: %s' %(mind.name, text))
         if (text is None) or (text.strip() == ''):
             # Nothing to do.
             continue
@@ -81,5 +86,5 @@ def _in():
                 oa.last_command = t
             else:
                 # Any unknown command raises an exception.
-                info('- Unknown command: ', str(fn))
+                raise Exception("Unable to process: {}".format(text))
 

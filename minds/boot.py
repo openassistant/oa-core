@@ -1,8 +1,8 @@
-from core import command_registry
+from core import command_registry, oa
 from abilities.core import mind, play, say
 
-kws = {}
 
+kws = {}
 command = command_registry(kws)
 
 @command("boot mind")
@@ -16,4 +16,9 @@ def open_root():
 
 @command(["list commands", "help"])
 def list_commands():
-    say('- The currently available voice commands are:\n{}'.format(',\n'.join(kws.keys())))
+    say('The currently available voice commands are..')
+    [say(cmd) for cmd in kws.keys()]
+
+@command(["close", "quit", "exit"])
+def do_exit():
+    oa.core.finished.set()
