@@ -1,6 +1,7 @@
 # mind.py - Core mind operations.
 
 import importlib
+import logging
 import os
 
 from core import oa, isCallable, Stub
@@ -43,11 +44,12 @@ def switch_back():
 def load_minds():
     """ Load and check dictionaries for all minds. Handles updating language models using the online `lmtool`.
     """
-    info('- Loading minds...')
+    logging.debug('Loading minds...')
     for mind in os.listdir(os.path.join(oa.core_directory, 'minds')):
         if mind.lower().endswith('.py'):
             load_mind(mind[:-3])
-    info('- All minds are loaded! "Boot mind" is now listening. \n       Say "Boot Mind!" to see if it can hear you. Make sure your microphone is active. \n       Say "Open Assistant!" to launch "root mind". \n       Once root mind loads, say "List Commands!" to hear the commands available.')
+    logging.debug('Minds loaded!')
+    logging.debug('"Boot mind" is now listening. Say "Boot Mind!" to see if it can hear you.')
 
 def _in():
     global switch_hist
