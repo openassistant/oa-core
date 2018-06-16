@@ -57,10 +57,10 @@ class OpenAssistant:
         for module_name in os.listdir(os.path.join(oa.core_directory, 'modules')):
             try:
 
-                # A module is a folder with an __init__.py file
+                # A module is a folder with an __oa__.py file
                 if not all([
                     os.path.isdir(os.path.join('modules', module_name)),
-                    os.path.exists(os.path.join('modules', module_name, '__init__.py')),
+                    os.path.exists(os.path.join('modules', module_name, '__oa__.py')),
                 ]): continue
 
                 # Import part as module
