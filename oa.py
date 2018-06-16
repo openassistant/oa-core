@@ -99,16 +99,16 @@ def thread_loop(part):
     logging.debug('Started')
 
     muted = False
-    for message in part._in():
-        if not muted:
-            try:
+    try:
+        for message in part._in():
+            if not muted:
                 for listener in part.output:
                     logging.debug('{} -> {}'.format(part.name, listener.name))
                     listener.wire_in.put(message)
-            except Exception as ex:
-                logging.error(ex)
+    except Exception as ex:
+        logging.error(ex)
 
-    logging.debug('Closed')
+    logging.debug('Stopped')
 
 
 """ Boot Open Assistant. """
