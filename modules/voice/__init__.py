@@ -19,7 +19,7 @@ def _in():
     if not flMac:
         tts = pyttsx3.init()
 
-    while oa.alive:
+    while not oa.core.finished.is_set():
         s = get()
         # Pause Ear (listening) while talking. Mute TTS.
         put('speech_recognition','mute')

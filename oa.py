@@ -31,9 +31,6 @@ class OpenAssistant:
 
         # Activate OA.
         self.finished = threading.Event()
-        self.active = threading.Event()
-        self.active.set()
-        oa.alive = lambda self=self : self.active.is_set()
     
         # Setup parts and threads.
         self.parts = {}
@@ -94,15 +91,6 @@ class OpenAssistant:
         [thr.start() for thr in self.thread_pool]
 
 
-    def sigint_handler(self, signal, frame):
-        logging.info("Ctrl-C Pressed")
-        logging.info('Attempting to close threads')
-        self.finished.set()
-        [thr.join() for thr in self.thread_pool]
-        logging.info('Threads closed')
-        quit(0)
-
-
 def thread_loop(part):
     """ Setup part inputs to the message wire. """
     if not isinstance(part.output, list):
@@ -125,10 +113,25 @@ def thread_loop(part):
 
 """ Boot Open Assistant. """
 def runapp():
-    OpenAssistant().run()
+    try:
+        a = OpenAssistant()
+        a.run()
+
+    except KeyboardInterrupt:
+        logging.info("Ctrl-C Pressed")
+
+        logging.info("Signaling Shutdown")
+        oa.core.finished.set()
+        
+        logging.info('Waiting on threads')
+        [thr.join() for thr in oa.core.thread_pool]
+        logging.info('Threads closed')
+
 
 if __name__ == '__main__':
     # filename='oa.log'
     logging.basicConfig(level=logging.DEBUG, format="%(asctime)s %(levelname)s %(threadName)s:%(filename)s:%(funcName)s:%(lineno)d %(message)s")
     logging.info("Open Assistant Starting..")
+
     runapp()
+    quit(0)

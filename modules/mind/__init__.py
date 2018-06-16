@@ -62,7 +62,7 @@ def _in():
     logging.debug('"{}" is now listening. Say "Boot Mind!" to see if it can hear you.'.format(default_mind))
 
 
-    while oa.alive:
+    while not oa.core.finished.is_set():
         text = get()
         logging.info('Input: {}'.format(text))
         mind = oa.mind.active

@@ -111,7 +111,7 @@ def get_decoder():
 def _in():
     mute = 0
     skipIt = 0
-    while oa.alive:
+    while not oa.core.finished.is_set():
         raw_data = get()
         if isinstance(raw_data, str):
             if raw_data == 'mute':

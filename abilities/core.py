@@ -103,7 +103,7 @@ def get(part = None, timeout = .1):
         part = current_part()
     # if part.name == 'mind':
         # info('- Listening: ', part.name)
-    while oa.alive:
+    while not oa.core.finished.is_set():
         try:
             return part.wire_in.get(timeout = timeout)
         except queue.Empty:
@@ -117,7 +117,7 @@ def info(*args, **kwargs):
         string += ' '.join([str(v) for v in args]) + '\n'
     if kwargs:
         string += '\n'.join([' %s: %s' %(str(k), str(v)) for k, v in kwargs.items()])
-    if oa.console and oa.alive:
+    if oa.console and not oa.core.finished.is_set():
         oa.console.wire_in.put(string)
     else:
         print(string)

@@ -28,15 +28,15 @@ def _in():
     non_speaking_buffer_count = int(math.ceil(non_speaking_duration / seconds_per_buffer))  # Maximum number of buffers of non-speaking audio to retain before and after a phrase.
     stream = sounddevice.Stream(samplerate = sample_rate, channels = channels, dtype = 'int16')
     with stream:
-        while oa.alive:
+        while not oa.core.finished.is_set():
             elapsed_time = 0  # Number of seconds of audio read
             buf = b""  # An empty buffer means that the stream has ended and there is no data left to read.
             # energy_threshold = 3000  # Minimum audio energy to consider for recording.
-            while oa.alive:
+            while not oa.core.finished.is_set():
                 frames = collections.deque()
                 
                 # Store audio input until the phrase starts
-                while oa.alive:
+                while not oa.core.finished.is_set():
                     # Handle waiting too long for phrase by raising an exception
                     elapsed_time += seconds_per_buffer
                     if timeout and elapsed_time > timeout:
@@ -61,7 +61,7 @@ def _in():
                 # Read audio input until the phrase ends.
                 pause_count, phrase_count = 0, 0
                 phrase_start_time = elapsed_time
-                while oa.alive:
+                while not oa.core.finished.is_set():
                     # Handle phrase being too long by cutting off the audio.
                     elapsed_time += seconds_per_buffer
                     if phrase_time_limit and elapsed_time - phrase_start_time > phrase_time_limit:
