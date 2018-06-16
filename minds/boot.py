@@ -19,6 +19,6 @@ def list_commands():
     say('The currently available voice commands are..')
     [say(cmd) for cmd in kws.keys()]
 
-@command(["close", "quit", "exit"])
+@command("stop listening")
 def do_exit():
     oa.core.finished.set()
