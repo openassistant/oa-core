@@ -15,6 +15,7 @@ import requests
 
 from core import isCallable, groupby, oa, queue, Stub, switch
 
+
 """ CORE FUNCTIONS """
 
 def answer(text):
@@ -101,8 +102,6 @@ def get(part = None, timeout = .1):
     """ Get a message from the wire. If there is no part found, take a message from the current wire input thread. (No parameters. Thread safe) """
     if part is None:
         part = current_part()
-    # if part.name == 'mind':
-        # info('- Listening: ', part.name)
     while not oa.core.finished.is_set():
         try:
             return part.wire_in.get(timeout = timeout)
@@ -112,7 +111,7 @@ def get(part = None, timeout = .1):
 
 def info(*args, **kwargs):
     """ Display information to the screen. """
-    string = thread_name() + ' '
+    string = "[{}]".format(thread_name()) + ' '
     if args:
         string += ' '.join([str(v) for v in args]) + '\n'
     if kwargs:
@@ -121,8 +120,6 @@ def info(*args, **kwargs):
         oa.console.wire_in.put(string)
     else:
         print(string)
-
-    logging.info(string)
 
 def lines_to_dict(sLines, func = lambda s : s, params = {}):
     """ Tranlate dictionary string.
@@ -340,7 +337,6 @@ def read_news_feed(news_feed, category):
 def say(text):
     """ Text to speech using the `oa.audio.say` defined function. """
     text = call_function(text)
-    info(text)
     oa.sys.last_say = text
 
     # Put message into voice.
