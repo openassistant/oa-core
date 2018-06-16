@@ -15,4 +15,3 @@ def _in():
    
         # Audio complete. Begin listening. Unmute STT.
         put('speech_recognition','unmute')
-        yield ''

@@ -36,4 +36,3 @@ def _in():
         # Wait until speaking ends.
         # Continue ear (listening). Unmute TTS.
         put('speech_recognition','unmute')
-        yield ''
