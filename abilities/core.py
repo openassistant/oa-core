@@ -13,7 +13,8 @@ import feedparser
 import keyboard
 import requests
 
-from core import isCallable, groupby, oa, queue, Stub, switch
+from core import oa, queue, Stub
+from core.util import isCallable, bytes2gb
 
 
 """ CORE FUNCTIONS """
@@ -179,11 +180,6 @@ def add2expr(s):
     # Check for calculator. Move to a numbers definition file.
     # For numbers, add sum operator.
     oa.sys.expr.append(s)
-
-def bytes2gb(size):
-    """ Convert size from bytes to gigabytes.
-        Precision: 2 digits after point. """
-    return size / float(1 << 30)
 
 def calculate():
     ret = expr2str()

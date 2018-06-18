@@ -4,8 +4,9 @@ import importlib
 import logging
 import os
 
-from core import oa, isCallable, Stub
 from abilities.core import read_file, info, call_function, get, sys_exec
+from core import oa
+from core.util import isCallable
 
 """ Core mind functions. """
 
