@@ -1,5 +1,8 @@
 from core import command_registry
-from abilities.core import mind, say, play, read_news_feed, diagnostics, say_day, say_last_command, read_forecast, say_time
+
+from abilities.interact import say, play, mind
+from abilities.other import read_news_feed, diagnostics, read_forecast
+from abilities.other import say_day, say_last_command, say_time
 
 kws = {}
 
