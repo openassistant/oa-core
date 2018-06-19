@@ -47,12 +47,13 @@ class Core(object):
          return len(self.__dict__) > 0
 
     def __getitem__(self, key):
-        if not isinstance(key, str):
-            print(key)
         return getattr(self, key)
 
     def __setitem__(self, key, value):
         setattr(self, key, value)
+
+    def __iter__(self):
+        yield from self.__dict__
 
 
 class Stub():
