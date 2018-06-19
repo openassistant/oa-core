@@ -54,24 +54,6 @@ class Core(object):
     def __setitem__(self, key, value):
         setattr(self, key, value)
 
-    def __getattribute__(self, name):
-        """ If an attribute is a function without arguments, return the call. """
-        try:
-            attributes = object.__getattribute__(self, name)
-        except AttributeError as e:
-
-            # For unknown attributes, return a fresh instance of Core (except for system attributes `__*__`).
-            if name.startswith('__') and name.endswith('__'):
-                raise
-            attributes = Core()
-            object.__setattr__(self, name, attributes)
-
-        if isCallable(attributes):
-            insp = inspect.getargspec(attributes)
-            if (len(insp.args) == 0) and (attributes.__name__ == '<lambda>'):
-                # Return the function call result.
-                return attributes()
-        return attributes
 
 class Stub():
     """ Stubs for delayed command calls. """
@@ -128,6 +110,7 @@ class Stub():
 
 oa = Core()
 
+oa.sys = Core()
 oa.sys.os = switch(platform.system(),'Windows','win','Linux','linux','Darwin','mac','unknown')
 oa.sys.user = getpass.getuser()
 oa.sys.host = socket.gethostname()
@@ -136,15 +119,14 @@ oa.sys.free_memory = lambda : psutil.virtual_memory()[4]
 
 # Date functions.
 oa.sys.now = lambda : datetime.datetime.now()
-oa.sys.second = lambda : oa.sys.now.second
-oa.sys.minute = lambda : oa.sys.now.minute
-oa.sys.hour = lambda : oa.sys.now.hour
-oa.sys.day = lambda : oa.sys.now.day
-oa.sys.day_name = lambda : oa.sys.now.strftime("%A")
-oa.sys.month = lambda : oa.sys.now.month
-oa.sys.month_name = lambda : oa.sys.now.strftime("%B")
-oa.sys.year = lambda : oa.sys.now.year
-oa.sys.date_text = lambda : '%d %s %d' %(oa.sys.day, oa.sys.month_name,oa.sys.year)
-oa.sys.time_text = lambda : '%d:%d' %(oa.sys.hour, oa.sys.minute)
-oa.sys.date_time_text = lambda : oa.sys.date_text + ' ' + oa.sys.time_text
-
+oa.sys.second = lambda : oa.sys.now().second
+oa.sys.minute = lambda : oa.sys.now().minute
+oa.sys.hour = lambda : oa.sys.now().hour
+oa.sys.day = lambda : oa.sys.now().day
+oa.sys.day_name = lambda : oa.sys.now().strftime("%A")
+oa.sys.month = lambda : oa.sys.now().month
+oa.sys.month_name = lambda : oa.sys.now().strftime("%B")
+oa.sys.year = lambda : oa.sys.now().year
+oa.sys.date_text = lambda : '%d %s %d' %(oa.sys.day(), oa.sys.month_name(), oa.sys.year())
+oa.sys.time_text = lambda : '%d:%d' %(oa.sys.hour(), oa.sys.minute())
+oa.sys.date_time_text = lambda : oa.sys.date_text() + ' ' + oa.sys.time_text()
