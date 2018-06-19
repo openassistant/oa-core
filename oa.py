@@ -10,13 +10,9 @@ import logging
 import signal
 import threading
 
-from core import oa, queue
+from core import oa, queue, Core
 
 
-# Setup connections between parts.
-oa.ear.output = [oa.speech_recognition]
-oa.speech_recognition.output = [oa.mind]
-oa.keyboard.output = [oa.mind, oa.display]
 
 
 class OpenAssistant:
@@ -33,7 +29,9 @@ class OpenAssistant:
         self.finished = threading.Event()
     
         # Setup parts and threads.
-        self.parts = {}
+        oa.core.parts = Core()
+        oa.core.minds = Core()
+        oa.core.mind = None
         self.thread_pool = []
 
 
@@ -41,6 +39,13 @@ class OpenAssistant:
         """ Remain active until exit. """
         self.load_modules()
         self.start_modules()
+
+        # Setup connections between parts.
+        # XXX: can't ensure load order yet
+        oa.core.parts.ear.output += [oa.core.parts.speech_recognition]
+        oa.core.parts.speech_recognition.output += [oa.core.parts.mind]
+        # oa.core.parts.keyboard.output = [oa.mind, oa.display]
+        # oa.core.parts.mind.output = [oa.display]
 
         self.finished.wait()
 
@@ -67,14 +72,15 @@ class OpenAssistant:
                 # If the module provides an input queue, link it
                 if getattr(M, '_in', None) is not None:
 
-                    m = oa[module_name]
-                    m.__dict__.update(M.__dict__)
-                    
-                    setattr(m, 'name', module_name)
+                    m = Core()
+                    m.name = module_name
+
                     m.__dict__.setdefault('wire_in', queue.Queue())
                     m.__dict__.setdefault('output', [])
 
-                    self.parts[module_name] = m
+                    m.__dict__.update(M.__dict__)
+                    
+                    oa.core.parts[module_name] = m
                     
             except Exception as ex:
                 logging.error(ex)
@@ -82,7 +88,8 @@ class OpenAssistant:
 
     def start_modules(self):
         # Setup input threads.
-        for module_name, m in self.parts.items():
+        for module_name in oa.core.parts:
+            m = oa.core.parts[module_name]
             if getattr(m, '_in', None) is not None:
                 thr = threading.Thread(target=thread_loop, name=module_name, args=(m,))
                 self.thread_pool.append(thr)
@@ -96,6 +103,9 @@ def thread_loop(part):
     if not isinstance(part.output, list):
         raise Exception('No output list defined: ' + part.name)
 
+    if hasattr(part, 'init'):
+        part.init()
+
     logging.debug('Started')
 
     muted = False
@@ -103,8 +113,11 @@ def thread_loop(part):
         for message in part._in():
             if not muted:
                 for listener in part.output:
-                    logging.debug('{} -> {}'.format(part.name, listener.name))
-                    listener.wire_in.put(message)
+                    try:
+                        logging.debug('{} -> {}'.format(part.name, listener.name))
+                        listener.wire_in.put(message)
+                    except Exception as ex:
+                        logging.error("Sending {} -> {}: {}".format(part.name, listener.name, ex))
     except Exception as ex:
         logging.error(ex)
 
