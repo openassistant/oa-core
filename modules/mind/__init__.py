@@ -4,26 +4,29 @@ import importlib
 import logging
 import os
 
-from core import oa
+from core import oa, Core
 from core.util import isCallable
 from abilities.core import info, call_function, get
 from abilities.system import read_file, sys_exec
 
 """ Core mind functions. """
 
-def load_mind(name):
+_history = []
+
+def load_mind(path):
     """ Load a mind by its `name`. """
-    mind = oa.mind.minds[name]
-    mind.name = name
-    mind.module = os.path.join(oa.core_directory, 'minds', name +'.py')
-    mind.cache_dir = os.path.join(oa.core_directory, 'cache', name)
+    mind = Core()
+    mind.module = path
+    mind.name = os.path.basename(mind.module)[:-3]
+    mind.cache_dir = os.path.join(oa.core_directory, 'cache', mind.name)
 
     # Make directories.
     if not os.path.exists(mind.cache_dir):
         os.makedirs(mind.cache_dir)
 
     pkg = os.path.split(oa.core_directory)[-1]
-    M = importlib.import_module('minds.'+name, package=pkg)
+    M = importlib.import_module('minds.{}'.format(mind.name), package=pkg)
+    mind.__dict__.update(M.__dict__)
     
     # Add command keywords without spaces.
     mind.kws = {}
@@ -31,17 +34,20 @@ def load_mind(name):
         for synonym in key.strip().split(','):
             mind.kws[synonym] = value
 
-def set_mind(name, history = 1):
+    return mind
+
+def set_mind(name, history=True):
     """ Activate new mind. """
     logging.info('Opening Mind: {}'.format(name))
     if history:
-        switch_hist.append(name)
-    oa.mind.active = oa.mind.minds[name]
-    return oa.mind.active
+        _history.append(name)
+        
+    oa.core.mind = oa.core.minds[name]
+    return oa.core.mind
 
 def switch_back():
     """ Switch back to the previous mind. (from `switch_hist`). """
-    set_mind(switch_hist.pop(), 0)
+    set_mind(_history.pop(), history=False)
 
 def load_minds():
     """ Load and check dictionaries for all minds. Handles updating language models using the online `lmtool`.
@@ -49,14 +55,13 @@ def load_minds():
     logging.info('Loading minds...')
     for mind in os.listdir(os.path.join(oa.core_directory, 'minds')):
         if mind.lower().endswith('.py'):
-            load_mind(mind[:-3])
+            logging.info("<- {}".format(mind))
+            m = load_mind(os.path.join(oa.core_directory, 'minds', mind))
+            oa.core.minds[m.name] = m
     logging.info('Minds loaded!')
 
 def _in():
-    # History of mind switching.
-    global switch_hist
-    switch_hist = []
-    
+
     default_mind = 'boot'
     load_minds()
     set_mind(default_mind)
@@ -67,7 +72,7 @@ def _in():
     while not oa.core.finished.is_set():
         text = get()
         logging.info('Input: {}'.format(text))
-        mind = oa.mind.active
+        mind = oa.core.mind
         if (text is None) or (text.strip() == ''):
             # Nothing to do.
             continue
@@ -89,4 +94,5 @@ def _in():
             else:
                 # Any unknown command raises an exception.
                 raise Exception("Unable to process: {}".format(text))
+        yield text
 

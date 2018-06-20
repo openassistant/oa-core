@@ -12,6 +12,8 @@ from core import oa, Core
 from abilities.core import info, get, empty
 from abilities.system import download_file, write_file, stat_mtime
 
+_decoders = Core()
+
 def config_stt(cache_dir, keywords, kws_last_modification_time_in_sec = None):
     _ = Core()
     cache_path = lambda x: os.path.join(cache_dir, x)
@@ -89,9 +91,8 @@ def update_language(_):
     download_file(dic_url, _.dic_file) 
 
 def get_decoder():
-    mind = oa.mind.active
-    ret = oa.speech_recognition.decoders[mind.name]
-    if not ret:
+    mind = oa.core.mind
+    if not hasattr(_decoders, mind.name):
         # Configure Speech to text dictionaries.
         ret = config_stt(mind.cache_dir, mind.kws.keys(), stat_mtime(mind.module))
         
@@ -105,13 +106,14 @@ def get_decoder():
         config.set_string("-logfn", os.devnull)  # Disable logging.
 
         ret.decoder = pocketsphinx.Decoder(config)
-        oa.speech_recognition.decoders[mind.name] = ret
+        _decoders[mind.name] = ret
+    else:
+        return _decoders[mind.name]
 
     return ret
 
 def _in():
     mute = 0
-    skipIt = 0
     while not oa.core.finished.is_set():
         raw_data = get()
         if isinstance(raw_data, str):
@@ -123,12 +125,14 @@ def _in():
                 mute = 0
                 time.sleep(.9)
                 empty()
-                continue
+            continue
+            
         # Mute mode. Do not listen until unmute.
         if mute:
-            time.sleep(.9)
             continue
+        
         # Obtain audio data.
+        # XXX: race condition when mind isn't set yet
         dinf = get_decoder()
         decoder = dinf.decoder
         decoder.start_utt()  # Begin utterance processing.
@@ -136,7 +140,7 @@ def _in():
             decoder.process_raw(raw_data, False, False)  
             # Process audio data with recognition enabled (no_search = False), as a full utterance (full_utt = True)
         except Exception as e:
-            info(str(e))
+            logging.error(e)
 
         decoder.end_utt()  # Stop utterance processing.
 
