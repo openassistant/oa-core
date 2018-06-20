@@ -23,7 +23,7 @@ We would like to establish an OA.Agents blockchain network, add the ability for 
 
 ## General
 
-``pip install keyboard sounddevice playsound requests pyttsx3 pocketsphinx psutil feedparser python-forecastio numpy``
+`pip install -r requirements.txt`
 
 ## Windows
 
