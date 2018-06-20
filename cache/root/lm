@@ -1,4 +1,4 @@
-Language model created by QuickLM on Sun Jun  3 21:18:14 EDT 2018
+Language model created by QuickLM on Wed Jun 20 05:55:11 EDT 2018
 Copyright (c) 1996-2010 Carnegie Mellon University and Alexander I. Rudnicky
 
 The model is in standard ARPA format, designed by Doug Paul while he was at MITRE.
@@ -7,51 +7,53 @@ The code that was used to produce this language model is available in Open Sourc
 Please visit http://www.speech.cs.cmu.edu/tools/ for more information
 
 The (fixed) discount mass is 0.5. The backoffs are computed using the ratio method.
-This model based on a corpus of 10 sentences and 26 words
+This model based on a corpus of 11 sentences and 27 words
 
 \data\
-ngram 1=26
-ngram 2=35
-ngram 3=29
+ngram 1=27
+ngram 2=37
+ngram 3=32
 
 \1-grams:
--1.0000 </s> -0.3010
--1.0000 <s> -0.2553
--2.0000 A -0.2967
--2.0000 ASSISTANT -0.2553
--2.0000 CLOSE -0.2967
--2.0000 COMMANDS -0.2553
--2.0000 DAY -0.2878
--2.0000 DIAGNOSTICS -0.2553
--2.0000 DID -0.2967
--2.0000 I -0.2967
--1.5229 IS -0.2878
--1.6990 IT -0.2553
--2.0000 LIST -0.2967
--2.0000 MIND -0.2553
--2.0000 NEWS -0.2553
--2.0000 READ -0.2967
--2.0000 ROOT -0.2967
--2.0000 RUN -0.2967
--2.0000 SAY -0.2553
--2.0000 SING -0.2967
--2.0000 SONG -0.2553
--2.0000 THE -0.2967
--2.0000 TIME -0.2878
--2.0000 WEATHER -0.2553
--1.3979 WHAT -0.2742
--2.0000 WORLD -0.2967
+-1.0078 </s> -0.3010
+-1.0078 <s> -0.2561
+-2.0492 A -0.2971
+-2.0492 ASSISTANT -0.2561
+-2.0492 CAN -0.2932
+-2.0492 CLOSE -0.2971
+-2.0492 COMMANDS -0.2561
+-2.0492 DAY -0.2892
+-2.0492 DIAGNOSTICS -0.2561
+-2.0492 DID -0.2932
+-1.7482 I -0.2932
+-1.5721 IS -0.2892
+-1.7482 IT -0.2561
+-2.0492 LIST -0.2971
+-2.0492 MIND -0.2561
+-2.0492 NEWS -0.2561
+-2.0492 READ -0.2971
+-2.0492 ROOT -0.2971
+-2.0492 RUN -0.2971
+-1.7482 SAY -0.2561
+-2.0492 SING -0.2971
+-2.0492 SONG -0.2561
+-2.0492 THE -0.2971
+-2.0492 TIME -0.2892
+-2.0492 WEATHER -0.2561
+-1.3502 WHAT -0.2730
+-2.0492 WORLD -0.2971
 
 \2-grams:
--1.3010 <s> CLOSE 0.0000
--1.3010 <s> LIST 0.0000
--1.3010 <s> READ 0.0000
--1.3010 <s> ROOT 0.0000
--1.3010 <s> RUN 0.0000
--1.3010 <s> SING 0.0000
--0.6990 <s> WHAT 0.0000
+-1.3424 <s> CLOSE 0.0000
+-1.3424 <s> LIST 0.0000
+-1.3424 <s> READ 0.0000
+-1.3424 <s> ROOT 0.0000
+-1.3424 <s> RUN 0.0000
+-1.3424 <s> SING 0.0000
+-0.6435 <s> WHAT 0.0000
 -0.3010 A SONG 0.0000
 -0.3010 ASSISTANT </s> -0.3010
+-0.3010 CAN I 0.0000
 -0.3010 CLOSE ASSISTANT 0.0000
 -0.3010 COMMANDS </s> -0.3010
 -0.3010 DAY IS -0.1249
@@ -73,10 +75,11 @@ ngram 3=29
 -0.3010 THE WEATHER 0.0000
 -0.3010 TIME IS -0.1249
 -0.3010 WEATHER </s> -0.3010
--0.9031 WHAT DAY 0.0000
--0.9031 WHAT DID 0.0000
--0.9031 WHAT IS -0.2218
--0.9031 WHAT TIME 0.0000
+-1.0000 WHAT CAN 0.0000
+-1.0000 WHAT DAY 0.0000
+-1.0000 WHAT DID 0.0000
+-1.0000 WHAT IS -0.2218
+-1.0000 WHAT TIME 0.0000
 -0.3010 WORLD NEWS 0.0000
 
 \3-grams:
@@ -86,11 +89,13 @@ ngram 3=29
 -0.3010 <s> ROOT MIND
 -0.3010 <s> RUN DIAGNOSTICS
 -0.3010 <s> SING A
--0.9031 <s> WHAT DAY
--0.9031 <s> WHAT DID
--0.9031 <s> WHAT IS
--0.9031 <s> WHAT TIME
+-1.0000 <s> WHAT CAN
+-1.0000 <s> WHAT DAY
+-1.0000 <s> WHAT DID
+-1.0000 <s> WHAT IS
+-1.0000 <s> WHAT TIME
 -0.3010 A SONG </s>
+-0.3010 CAN I SAY
 -0.3010 CLOSE ASSISTANT </s>
 -0.3010 DAY IS IT
 -0.3010 DID I SAY
@@ -104,6 +109,7 @@ ngram 3=29
 -0.3010 SING A SONG
 -0.3010 THE WEATHER </s>
 -0.3010 TIME IS IT
+-0.3010 WHAT CAN I
 -0.3010 WHAT DAY IS
 -0.3010 WHAT DID I
 -0.3010 WHAT IS THE
