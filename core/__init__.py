@@ -2,7 +2,10 @@
 
 import datetime
 import getpass
+import importlib
 import inspect
+import logging
+import os
 import platform
 import socket
 import psutil
@@ -31,6 +34,35 @@ def command_registry(kws):
             return fn
         return _command
     return command
+
+
+def load_module(path):
+    """Load a module.
+    
+    """
+
+    # A module is a folder with an __oa__.py file
+    if not all([
+        os.path.isdir(path),
+        os.path.exists(os.path.join(path, '__oa__.py')),
+    ]): raise Exception("Invalid module: {}".format(path))
+
+
+    # Import part as module
+    module_name = os.path.basename(path)
+    logging.info('{} <- {}'.format(module_name, path))
+    M = importlib.import_module('modules.{}'.format(module_name))
+
+    # If the module provides an input queue, link it
+    if getattr(M, '_in', None) is not None:
+
+        m = Core()
+        m.__dict__.setdefault('wire_in', queue.Queue())
+        m.__dict__.setdefault('output', [])
+        m.__dict__.update(M.__dict__)
+        
+        return m
+            
 
 class Core(object):
     """ General template to store all properties. If attributes do not exist, assign them and return Core(). """
