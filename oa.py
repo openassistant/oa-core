@@ -12,7 +12,7 @@ from core.agent import Agent
 
 
 class OpenAssistant(Agent):
-    """Example Agent class."""
+    """Example Implementation: Agent."""
     
     def __init__(self):
         logging.info("Initializing Open Assistant")
@@ -97,6 +97,8 @@ def thread_loop(part):
 
 
 def runapp():
+    """Initialize and run the OpenAssistant Agent"""
+
     try:
         a = OpenAssistant()
         a.run()
@@ -114,7 +116,7 @@ def runapp():
 
 if __name__ == '__main__':
     # filename='oa.log'
-    logging.basicConfig(level=logging.DEBUG, format="[%(asctime)s] %(levelname)-8s %(threadName)-24s [%(filename)s:%(funcName)s:%(lineno)d]    %(message)s")
+    logging.basicConfig(level=logging.DEBUG, format="[%(asctime)s] %(levelname)-8s %(threadName)-10s [%(filename)s:%(funcName)s:%(lineno)d]    %(message)s")
     logging.info("Start Open Assistant")
 
     runapp()
