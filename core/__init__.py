@@ -7,8 +7,8 @@ import inspect
 import logging
 import os
 import platform
-import socket
 import psutil
+import socket
 
 import itertools
 from itertools import *
