@@ -44,4 +44,4 @@ def play(fname):
 
 def mind(name, history = 1):
     """ Switch the current mind to `name`. """
-    oa.mind.set_mind(name, history)
+    oa.core.parts.mind.set_mind(name, history)
