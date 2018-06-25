@@ -17,7 +17,7 @@ def close_assistant():
     play('beep_close.wav')
     mind('boot')
 
-@command("list commands")
+@command(["list commands", "what can i say"])
 def list_commands():
     say('- The currently available voice commands are:\n{}'.format(',\n'.join(kws.keys())))
 
