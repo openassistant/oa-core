@@ -51,7 +51,7 @@ Download, Install, & Run:
   https://github.com/openassistant/oa-core/archive/next.zip
 
 `Run Open Assistant`: 
-  ``sudo python oa.py``
+  ``python __main__.py``
 
 Using Open Assistant
 =============
