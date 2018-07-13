@@ -1,8 +1,8 @@
 import logging
 import threading
 
-from core import oa, queue, Stub
-from core.util import isCallable, bytes2gb
+from core import oa, queue
+from core.util import isCallable, bytes2gb, Stub
 
 
 """ CORE FUNCTIONS """
