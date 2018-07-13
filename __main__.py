@@ -27,8 +27,8 @@ class OpenAssistant(core.agent.Agent):
         core.agent.Agent.__init__(self, home=home, modules=modules)
 
         # Establish OA core.
-        # core.oa.core = self
-        # core.oa.core_directory = self.home
+        core.oa.core = self
+        core.oa.core_directory = self.home
 
 
 
