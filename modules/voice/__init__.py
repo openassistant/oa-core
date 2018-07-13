@@ -3,7 +3,7 @@
 import pyttsx3
 
 from core import oa
-from abilities.core import get, put
+from modules.abilities.core import get, put
 
 
 import platform

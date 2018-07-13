@@ -68,8 +68,8 @@ def runapp():
 
 
 if __name__ == '__main__':
-    # filename='oa.log'
-    logging.basicConfig(level=logging.DEBUG, filename='oa.log', format="[%(asctime)s] %(levelname)-8s %(threadName)-10s [%(filename)s:%(funcName)s:%(lineno)d]    %(message)s")
+    fn = 'oa.log'
+    logging.basicConfig(level=logging.DEBUG, filename=fn, format="[%(asctime)s] %(levelname)-8s %(threadName)-10s [%(filename)s:%(funcName)s:%(lineno)d]    %(message)s")
     logging.info("Start Open Assistant")
 
     runapp()

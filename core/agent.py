@@ -29,7 +29,7 @@ class Agent:
         """ Setup all parts. """
 
         modules_path = os.path.join(self.home, 'modules')
-        logging.info("Loading Modules <- {}".format(modules_path))
+        logging.info("Loading Modules <- {}".format(os.path.realpath(modules_path)))
 
         # for module_name in os.listdir(modules_path):
         for module_name in self.modules:
