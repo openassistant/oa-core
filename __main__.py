@@ -9,7 +9,7 @@ import threading
 
 import core
 import core.agent
-# from core.agent import Agent
+
 
 # Setup connections between parts.
 # XXX: can't ensure load order yet
@@ -32,7 +32,7 @@ class OpenAssistant(core.agent.Agent):
 
 
 
-def runapp():
+def start():
     """Initialize and run the OpenAssistant Agent"""
 
     try:
@@ -45,12 +45,22 @@ def runapp():
         a.run()
 
         # from modules.abilities.core import get, put
+        def command_loop():
+            while not a.finished.is_set():
+                cmd = input("OA> ")
+                if cmd in ['q', 'quit']:
+                    a.finished.set()
+                    continue
+                p, m = cmd[:cmd.find(' ')], cmd[cmd.find(' ')+1:]
+                a.parts[p].__call__(m)
+
+        
         while not a.finished.is_set():
-            cmd = input("OA> ")
-            if cmd in ['q', 'quit']:
-                a.finished.set()
-                continue
-            a.parts.voice.__call__(cmd)
+            try:
+                command_loop()
+            except Exception as ex:
+                logging.error("Command Loop: {}".format(ex))
+                print("Command Loop: {}".format(ex))
 
 
         a.finished.wait()
@@ -72,5 +82,5 @@ if __name__ == '__main__':
     logging.basicConfig(level=logging.DEBUG, filename=fn, format="[%(asctime)s] %(levelname)-8s %(threadName)-10s [%(filename)s:%(funcName)s:%(lineno)d]    %(message)s")
     logging.info("Start Open Assistant")
 
-    runapp()
+    start()
     quit(0)
