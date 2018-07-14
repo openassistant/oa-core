@@ -71,30 +71,9 @@ def thread_loop(agent, part, b):
 
     b.wait()
     
-    agent.finished.wait()
 
     while not agent.finished.is_set():
-        msg = get()
-            # for message in part._in():
-            # for listener in part.output:
-            # logging.error("Sending {} -> {}: {}".format(part.name, listener.name, ex))
-     #       part.__call__(msg)
-    #    except Exception as ex:
-    #        logging.error
+        part._in()
 
-
-    # part("test")
-    # muted = False
-    # try:
-    #     
-    #             
-    #                 try:
-    #                     logging.debug('{} -> {}'.format(part.name, listener.name))
-    #                     # listener.wire_in.put(message)
-    #                     listener(message)
-    #                 except Exception as ex:
-    #                     
-    # except Exception as ex:
-    #     logging.error(ex)
 
     logging.debug('Stopped')
