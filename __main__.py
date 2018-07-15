@@ -31,6 +31,7 @@ def start():
         a = OpenAssistant(
             home=os.path.dirname(__file__),
             modules=[
+                'sound',
                 'voice',
                 'speech_recognition',
                 'ear',
@@ -49,7 +50,7 @@ def start():
         # from modules.abilities.core import get, put
         def command_loop():
             from modules.abilities.core import put
-            
+
             while not a.finished.is_set():
                 cmd = input("OA> ")
                 if cmd in ['q', 'quit']:
