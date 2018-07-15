@@ -48,13 +48,15 @@ def start():
         
         # from modules.abilities.core import get, put
         def command_loop():
+            from modules.abilities.core import put
+            
             while not a.finished.is_set():
                 cmd = input("OA> ")
                 if cmd in ['q', 'quit']:
                     a.finished.set()
                     continue
                 p, m = cmd[:cmd.find(' ')], cmd[cmd.find(' ')+1:]
-                a.parts[p].__call__(m)
+                put(p, m)
 
         
         while not a.finished.is_set():
