@@ -18,6 +18,7 @@ class Agent:
         self.parts =  Core()
         self.thread_pool = []
         self.mind = None
+        self.minds = {}
 
 
     def run(self):
