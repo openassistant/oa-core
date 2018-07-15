@@ -15,4 +15,8 @@ def _parser(args):
             action='store_true', dest="debug", default=False,
             help="Enable debug-level logging")
 
+    parser.add_argument("-l", "--log",
+            dest='log_file', action='store', default='/dev/stdout',
+            help="Path to log file")
+
     return parser.parse_args(args)

@@ -85,8 +85,11 @@ def start():
 
 
 if __name__ == '__main__':
-    fn = 'oa.log'
-    logging.basicConfig(level=logging.DEBUG, filename=fn, format="[%(asctime)s] %(levelname)-8s %(threadName)-10s [%(filename)s:%(funcName)s:%(lineno)d]    %(message)s")
+    import sys
+    from util.args import _parser
+    args = _parser(sys.argv[1:])
+    
+    logging.basicConfig(level=logging.DEBUG, filename=args.log_file, format="[%(asctime)s] %(levelname)-8s %(threadName)-10s [%(filename)s:%(funcName)s:%(lineno)d]    %(message)s")
     logging.info("Start Open Assistant")
 
     start()
