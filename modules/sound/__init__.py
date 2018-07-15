@@ -1,5 +1,7 @@
 # sound.py - Play audio.
 
+import logging
+
 import playsound
 
 from core import oa
@@ -11,7 +13,11 @@ def _in():
         
         # Pause listening while talking. Mute STT.
         put('speech_recognition','mute')
-        playsound.playsound(path)
+
+        try:
+            playsound.playsound(path)
+        except Exception as ex:
+            logging.error("Error playing sound: {}".format(ex))
    
         # Audio complete. Begin listening. Unmute STT.
         put('speech_recognition','unmute')
