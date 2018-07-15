@@ -74,7 +74,10 @@ def thread_loop(agent, part, b):
     
 
     while not agent.finished.is_set():
-        part._in()
+        for msg in part._in():
+            for listener in part.output:
+                logging.debug('{} -> {}'.format(part.name, listener.name))
+                listener.wire_in.put(msg)
 
 
     logging.debug('Stopped')
