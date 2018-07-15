@@ -91,6 +91,7 @@ def update_language(_):
     download_file(dic_url, _.dic_file) 
 
 def get_decoder():
+    # XXX: race condition when mind isn't set yet
     mind = oa.core.mind
     if not hasattr(_decoders, mind.name):
         # Configure Speech to text dictionaries.
@@ -132,28 +133,29 @@ def _in():
             continue
         
         # Obtain audio data.
-        # XXX: race condition when mind isn't set yet
-        dinf = get_decoder()
-        decoder = dinf.decoder
-        decoder.start_utt()  # Begin utterance processing.
         try:
-            decoder.process_raw(raw_data, False, False)  
+            dinf = get_decoder()
+            decoder = dinf.decoder
+            decoder.start_utt()  # Begin utterance processing.
+
             # Process audio data with recognition enabled (no_search = False), as a full utterance (full_utt = True)
+            decoder.process_raw(raw_data, False, False)  
+
+            decoder.end_utt()  # Stop utterance processing.
+
+            hypothesis = decoder.hyp()
+            if hypothesis is not None: 
+                hyp = hypothesis.hypstr
+                if (hyp is None) or (hyp.strip() == ''):
+                    continue
+                logging.info("Heard: {}".format(hyp))
+                if hyp.upper() in dinf.phrases:
+                    yield hyp
+                else:
+                    continue
+
+            else:
+                logging.warn('Speech not recognized')
+
         except Exception as e:
             logging.error(e)
-
-        decoder.end_utt()  # Stop utterance processing.
-
-        hypothesis = decoder.hyp()
-        if hypothesis is not None: 
-            hyp = hypothesis.hypstr
-            if (hyp is None) or (hyp.strip() == ''):
-                continue
-            logging.info("Heard: {}".format(hyp))
-            if hyp.upper() in dinf.phrases:
-                yield hyp
-            else:
-                continue
-
-        else:
-            logging.warn('Speech not recognized')
