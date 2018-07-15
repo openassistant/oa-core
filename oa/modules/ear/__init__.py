@@ -3,7 +3,7 @@
 import sounddevice, audioop
 import math, collections, numpy
 
-from core import oa
+from oa.core import oa
 
 def _in():
     timeout = None

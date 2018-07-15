@@ -7,8 +7,8 @@ import logging
 import os
 import threading
 
-import core
-import core.agent
+from oa import core
+from oa.core import agent
 
 
 class OpenAssistant(core.agent.Agent):
@@ -49,7 +49,7 @@ def start():
         
         # from modules.abilities.core import get, put
         def command_loop():
-            from modules.abilities.core import put
+            from oa.modules.abilities.core import put
 
             while not a.finished.is_set():
                 cmd = input("OA> ")
@@ -86,7 +86,8 @@ def start():
 
 if __name__ == '__main__':
     import sys
-    from util.args import _parser
+    
+    from oa.util.args import _parser
     args = _parser(sys.argv[1:])
     
     logging.basicConfig(level=logging.DEBUG, filename=args.log_file, format="[%(asctime)s] %(levelname)-8s %(threadName)-10s [%(filename)s:%(funcName)s:%(lineno)d]    %(message)s")

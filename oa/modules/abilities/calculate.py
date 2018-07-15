@@ -1,9 +1,9 @@
 from itertools import groupby
 
-from core import oa
+from oa.core import oa
 
-from modules.abilities.core import info
-from modules.abilities.interact import say
+from oa.modules.abilities.core import info
+from oa.modules.abilities.interact import say
 
 def isNum(s):
     return s.replace('.', '').isdigit()

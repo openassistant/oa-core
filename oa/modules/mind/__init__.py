@@ -4,10 +4,10 @@ import importlib
 import logging
 import os
 
-from core import oa, Core
-from core.util import isCallable
-from modules.abilities.core import info, call_function, get
-from modules.abilities.system import read_file, sys_exec
+from oa.core import oa
+from oa.core.util import Core, isCallable
+from oa.modules.abilities.core import info, call_function, get
+from oa.modules.abilities.system import read_file, sys_exec
 
 """ Core mind functions. """
 
@@ -24,8 +24,8 @@ def load_mind(path):
     if not os.path.exists(mind.cache_dir):
         os.makedirs(mind.cache_dir)
 
-    pkg = "modules.mind"
-    M = importlib.import_module(".minds.{}".format(mind.name), package=pkg)
+    pkg = "oa.modules.mind.minds"
+    M = importlib.import_module(".{}".format(mind.name), package=pkg)
     mind.__dict__.update(M.__dict__)
     
     # Add command keywords without spaces.

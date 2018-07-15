@@ -8,24 +8,17 @@ import logging
 import os
 import platform
 import psutil
+import queue
 import socket
-
-import itertools
-from itertools import *
-
-try:
-    import queue
-except:
-    import Queue as queue
 
 
 """ CORE VARIABLE ASSIGNMENTS """
-from .util import Core, switch
+from . import util
 
-oa = Core()
+oa = util.Core()
 
-oa.sys = Core()
-oa.sys.os = switch(platform.system(),'Windows','win','Linux','linux','Darwin','mac','unknown')
+oa.sys = util.Core()
+oa.sys.os = util.switch(platform.system(),'Windows','win','Linux','linux','Darwin','mac','unknown')
 oa.sys.user = getpass.getuser()
 oa.sys.host = socket.gethostname()
 oa.sys.ip = socket.gethostbyname(oa.sys.host)

@@ -4,7 +4,7 @@ import logging
 import os
 import threading
 
-from .util import Core, load_module
+from . import util
 
 
 class Agent:
@@ -15,7 +15,7 @@ class Agent:
 
         self.home = home if home is not None else os.getcwd()
         self.modules = opts.get('modules', [])
-        self.parts =  Core()
+        self.parts = util.Core()
         self.thread_pool = []
         self.mind = None
         self.minds = {}
@@ -35,7 +35,7 @@ class Agent:
         # for module_name in os.listdir(modules_path):
         for module_name in self.modules:
             try:
-                m = load_module(os.path.join(modules_path, module_name))
+                m = util.load_module(os.path.join(modules_path, module_name))
                 m.name = module_name
                 self.parts[module_name] = m
             except Exception as ex:
@@ -54,9 +54,7 @@ class Agent:
         # Start all threads.
         [thr.start() for thr in self.thread_pool]
         b.wait()
-        
 
-from modules.abilities.core import get
 
 def thread_loop(agent, part, b):
     """ Setup part inputs to the message wire. """

@@ -5,12 +5,12 @@ import string
 
 import feedparser
 
-from core import oa
-from core.util import  bytes2gb, switch
+from oa.core import oa
+from oa.core.util import  bytes2gb, switch
 
-from modules.abilities.core import info
-from modules.abilities.interact import say
-from modules.abilities.system import read_file
+from oa.modules.abilities.core import info
+from oa.modules.abilities.interact import say
+from oa.modules.abilities.system import read_file
 
 def diagnostics():
     """ Run system diagnostics. """

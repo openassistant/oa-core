@@ -4,8 +4,8 @@ import logging
 
 import playsound
 
-from core import oa
-from modules.abilities.core import get, put
+from oa.core import oa
+from oa.modules.abilities.core import get, put
 
 def _in():
     while not oa.core.finished.is_set():

@@ -2,8 +2,8 @@
 
 import pyttsx3
 
-from core import oa
-from modules.abilities.core import get, put
+from oa.core import oa
+from oa.modules.abilities.core import get, put
 
 
 import platform
