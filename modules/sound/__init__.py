@@ -3,7 +3,7 @@
 import playsound
 
 from core import oa
-from abilities.core import get, put
+from modules.abilities.core import get, put
 
 def _in():
     while not oa.core.finished.is_set():
