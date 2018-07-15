@@ -24,8 +24,8 @@ def load_mind(path):
     if not os.path.exists(mind.cache_dir):
         os.makedirs(mind.cache_dir)
 
-    pkg = os.path.split(oa.core_directory)[-1]
-    M = importlib.import_module('minds.{}'.format(mind.name), package=pkg)
+    pkg = "modules.mind"
+    M = importlib.import_module(".minds.{}".format(mind.name), package=pkg)
     mind.__dict__.update(M.__dict__)
     
     # Add command keywords without spaces.
@@ -53,10 +53,11 @@ def load_minds():
     """ Load and check dictionaries for all minds. Handles updating language models using the online `lmtool`.
     """
     logging.info('Loading minds...')
-    for mind in os.listdir(os.path.join(oa.core_directory, 'minds')):
+    mind_path = os.path.join(os.path.dirname(__file__), 'minds')
+    for mind in os.listdir(mind_path):
         if mind.lower().endswith('.py'):
             logging.info("<- {}".format(mind))
-            m = load_mind(os.path.join(oa.core_directory, 'minds', mind))
+            m = load_mind(os.path.join(mind_path, mind))
             oa.core.minds[m.name] = m
     logging.info('Minds loaded!')
 
