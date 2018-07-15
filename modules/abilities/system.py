@@ -5,7 +5,7 @@ import subprocess
 import requests
 
 from core import oa
-from abilities.core import info
+from .core import info
 
 def download_file(url, path):
     """ Download a file by url and save it to a local path. """

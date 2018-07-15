@@ -6,8 +6,8 @@ import os
 
 from core import oa, Core
 from core.util import isCallable
-from abilities.core import info, call_function, get
-from abilities.system import read_file, sys_exec
+from modules.abilities.core import info, call_function, get
+from modules.abilities.system import read_file, sys_exec
 
 """ Core mind functions. """
 

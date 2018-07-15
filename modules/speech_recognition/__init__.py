@@ -9,7 +9,7 @@ from pocketsphinx.pocketsphinx import *
 import requests
 
 from core import oa, Core
-from modules.abilities.core import info, get, empty
+from modules.abilities.core import get, empty
 from modules.abilities.system import download_file, write_file, stat_mtime
 
 _decoders = Core()

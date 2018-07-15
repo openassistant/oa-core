@@ -1,6 +1,7 @@
-from core import command_registry, oa
+from core import oa
+from core.util import command_registry
 
-from abilities.interact import say, play, mind
+from modules.abilities.interact import say, play, mind
 
 
 kws = {}
