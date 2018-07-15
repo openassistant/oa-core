@@ -72,10 +72,13 @@ def thread_loop(agent, part, b):
     
 
     while not agent.finished.is_set():
-        for msg in part._in():
-            for listener in part.output:
-                logging.debug('{} -> {}'.format(part.name, listener.name))
-                listener.wire_in.put(msg)
+        try:
+            for msg in part._in():
+                for listener in part.output:
+                    logging.debug('{} -> {}'.format(part.name, listener.name))
+                    listener.wire_in.put(msg)
+        except Exception as ex:
+            logging.error("Error processing queue: {}".format(ex))
 
 
     logging.debug('Stopped')
