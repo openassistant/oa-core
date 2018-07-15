@@ -29,7 +29,7 @@ def diagnostics():
                 break
 
     # Memory Free.
-    response += 'System memory has %.0f Gigabytes free...\n' %bytes2gb(oa.sys.free_memory)
+    response += 'System memory has %.0f Gigabytes free...\n' %bytes2gb(oa.sys.free_memory())
 
     # Drive Space Free.
     response += 'Internal hard drive has %.0f Gigabytes free...\n' %bytes2gb(psutil.disk_usage('/').free)
@@ -126,7 +126,7 @@ def say_time():
 
 def say_day():
     """ Speak the current day. """
-    day = oa.sys.day_name
+    day = oa.sys.day_name()
     say('- Today is %s.' %day)
 
 def say_last_command(string = ''):
