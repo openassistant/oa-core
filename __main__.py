@@ -56,8 +56,10 @@ def start():
                 if cmd in ['q', 'quit']:
                     a.finished.set()
                     continue
-                p, m = cmd[:cmd.find(' ')], cmd[cmd.find(' ')+1:]
-                put(p, m)
+                if cmd.find(' ') > -1:
+                    p, m = cmd[:cmd.find(' ')], cmd[cmd.find(' ')+1:]
+                    logging.debug("{} <- {}".format(p, m))
+                    put(p, m)
 
         
         while not a.finished.is_set():
