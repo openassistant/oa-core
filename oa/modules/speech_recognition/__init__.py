@@ -144,6 +144,10 @@ def _in():
 
             decoder.end_utt()  # Stop utterance processing.
 
+        except Exception as e:
+            logging.error(e)
+
+        else:
             hypothesis = decoder.hyp()
             if hypothesis is not None: 
                 hyp = hypothesis.hypstr
@@ -158,5 +162,3 @@ def _in():
             else:
                 logging.warn('Speech not recognized')
 
-        except Exception as e:
-            logging.error(e)
