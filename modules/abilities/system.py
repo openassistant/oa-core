@@ -20,9 +20,9 @@ def find_file(fname):
         Able to use a short name if it is unique.
         NEED FIX - Put file names into Cache list ? """
     core_directory = oa.core_directory
-    ret = glob.glob(os.path.join(core_directory,'minds/*/%s' %fname))
+    ret = glob.glob(os.path.join(core_directory,'modules/mind/minds/*/%s' %fname))
     if not ret:
-        ret = glob.glob(os.path.join(core_directory,'minds/*/*/%s' %fname))
+        ret = glob.glob(os.path.join(core_directory,'modules/mind/minds/*/*/%s' %fname))
     if len(ret) != 1:
         raise Exception('%s: found %d results.' %(fname, len(ret)))
     return ret[0]
