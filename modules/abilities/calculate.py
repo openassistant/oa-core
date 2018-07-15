@@ -2,8 +2,8 @@ from itertools import groupby
 
 from core import oa
 
-from abilities.core import info
-from abilities.interact import say
+from modules.abilities.core import info
+from modules.abilities.interact import say
 
 def isNum(s):
     return s.replace('.', '').isdigit()

@@ -1,8 +1,8 @@
 from core import oa
 
-from abilities.core import info, put
-from abilities.interact import say
-from abilities.system import find_file, sys_exec
+from modules.abilities.core import info, put
+from modules.abilities.interact import say
+from modules.abilities.system import find_file, sys_exec
 
 def activate(s):
     """ Activate a specific window. """

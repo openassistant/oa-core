@@ -1,8 +1,8 @@
 import keyboard
 
 from core import oa
-from abilities.core import call_function, put
-from abilities.system import find_file
+from modules.abilities.core import call_function, put
+from modules.abilities.system import find_file
 
 
 def answer(text):

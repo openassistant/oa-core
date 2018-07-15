@@ -8,9 +8,9 @@ import feedparser
 from core import oa
 from core.util import  bytes2gb, switch
 
-from abilities.core import info
-from abilities.interact import say
-from abilities.system import read_file
+from modules.abilities.core import info
+from modules.abilities.interact import say
+from modules.abilities.system import read_file
 
 def diagnostics():
     """ Run system diagnostics. """
