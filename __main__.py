@@ -11,14 +11,6 @@ import core
 import core.agent
 
 
-# Setup connections between parts.
-# XXX: can't ensure load order yet
-# self.parts.ear.output += [self.parts.speech_recognition]
-# self.parts.speech_recognition.output += [self.parts.mind]
-# oa.core.parts.keyboard.output = [oa.mind, oa.display]
-# oa.core.parts.mind.output = [oa.display]
-
-
 class OpenAssistant(core.agent.Agent):
     """Example Implementation: Agent."""
     
@@ -40,10 +32,20 @@ def start():
             home=os.path.dirname(__file__),
             modules=[
                 'voice',
+                'speech_recognition',
+                'ear',
+                'mind',
             ]
           )
         a.run()
+        
+        # Setup connections between parts.
+        a.parts['ear'].output += [a.parts.speech_recognition]
+        a.parts.speech_recognition.output += [a.parts.mind]
+        # oa.core.parts.keyboard.output = [oa.mind, oa.display]
+        # oa.core.parts.mind.output = [oa.display]
 
+        
         # from modules.abilities.core import get, put
         def command_loop():
             while not a.finished.is_set():
