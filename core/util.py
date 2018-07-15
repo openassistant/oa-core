@@ -47,6 +47,7 @@ def load_module(path):
     import os
     import logging
     import importlib
+    import queue
 
     # An OA module is a folder with an __oa__.py file
     if not all([
@@ -63,8 +64,8 @@ def load_module(path):
     # if getattr(M, '_in', None) is not None:
 
     m = Core(**M.__dict__)
-        # m.__dict__.setdefault('wire_in', queue.Queue())
-        # m.__dict__.setdefault('output', [])
+    m.__dict__.setdefault('wire_in', queue.Queue())
+    m.__dict__.setdefault('output', [])
     # m.__dict__.update(M.__dict__)
         
     return m
