@@ -16,7 +16,7 @@ def _parser(args):
             help="Enable debug-level logging")
 
     parser.add_argument("-l", "--log",
-            dest='log_file', action='store', default='/dev/stdout',
+            dest='log_file', action='store', default=None,
             help="Path to log file")
 
     return parser.parse_args(args)
