@@ -37,7 +37,7 @@ def start():
                 'ear',
                 'mind',
             ]
-          )
+        )
         a.run()
         
         # Setup connections between parts.
