@@ -57,7 +57,7 @@ def start():
                     a.finished.set()
                     continue
                 if cmd.find(' ') > -1:
-                    p, m = cmd[:cmd.find(' ')], cmd[cmd.find(' ')+1:]
+                    p, m = cmd.split(' ', 1)
                     logging.debug("{} <- {}".format(p, m))
                     put(p, m)
 
