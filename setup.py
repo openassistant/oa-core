@@ -1,7 +1,7 @@
 # https://pythonhosted.org/an_example_pypi_project/setuptools.html
 
 import os
-from setuptools import setup
+from setuptools import setup, find_packages
 
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
@@ -15,19 +15,8 @@ setup(
     license = "BSD",
     keywords = "assistant agent ai framework",
     url = "https://openasssitant.org",
-    packages = [
-        'oa',
-        'oa.core',
-        'oa.util',
-        'oa.modules',
-        'oa.modules.abilities',
-        'oa.modules.ear',
-        'oa.modules.mind',
-        'oa.modules.mind.minds',
-        'oa.modules.sound',
-        'oa.modules.speech_recognition',
-        'oa.modules.voice',
-    ],
+    packages = find_packages(),
+    include_package_data = True,
     long_description = read('README.rst'),
     classifiers = [
         'Development Status :: 3 - Alpha',
