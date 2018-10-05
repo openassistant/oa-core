@@ -97,7 +97,7 @@ def get_decoder():
         ret = config_stt(mind.cache_dir, mind.kws.keys(), stat_mtime(mind.module))
         
         # Process audio chunk by chunk. On a keyphrase detected perform the action and restart search.
-        config = pocketsphinx.Decoder.default_config()
+        config = Decoder.default_config()
 
         # Set paths for the language model files.
         config.set_string('-hmm', ret.hmm_dir)
@@ -105,7 +105,7 @@ def get_decoder():
         config.set_string("-dict", ret.dic_file)
         config.set_string("-logfn", os.devnull)  # Disable logging.
 
-        ret.decoder = pocketsphinx.Decoder(config)
+        ret.decoder = Decoder(config)
         _decoders[mind.name] = ret
     else:
         return _decoders[mind.name]
