@@ -55,9 +55,8 @@ def start(**kwargs):
         # Setup connections between parts.
         ConfigureAssistant(a)
 
-        
         # from modules.abilities.core import get, put
-        def command_loop():
+        def _command_loop():
             from oa.modules.abilities.core import put
 
             while not a.finished.is_set():
@@ -75,11 +74,9 @@ def start(**kwargs):
         
         while not a.finished.is_set():
             try:
-                command_loop()
+                _command_loop()
             except Exception as ex:
                 logging.error("Command Loop: {}".format(ex))
-                print("Command Loop: {}".format(ex))
-
 
         a.finished.wait()
 
