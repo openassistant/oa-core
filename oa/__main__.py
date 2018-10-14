@@ -56,7 +56,9 @@ def start():
                 if cmd in ['q', 'quit']:
                     a.finished.set()
                     continue
-                if cmd.find(' ') > -1:
+                elif cmd in ['h', 'help', '?']:
+                    print("Help Stuff")
+                elif cmd.find(' ') > -1:
                     p, m = cmd.split(' ', 1)
                     logging.debug("{} <- {}".format(p, m))
                     put(p, m)
