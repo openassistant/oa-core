@@ -5,6 +5,7 @@ import logging
 
 import pocketsphinx
 from pocketsphinx.pocketsphinx import *
+from sphinxbase.sphinxbase import *
 
 import requests
 
