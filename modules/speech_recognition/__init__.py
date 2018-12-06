@@ -3,7 +3,7 @@
 import os, re, time
 import logging
 
-import pocketsphinx
+import pocketsphinx, sphinxbase
 from pocketsphinx.pocketsphinx import *
 from sphinxbase.sphinxbase import *
 
