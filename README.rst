@@ -3,7 +3,7 @@ Open Assistant
 
 Make your own minds! Open source AI OS development.
 
-Open Assistant is a private open source personal assistant system able to engage in conversations and complete an increasing amount of tasks using vocal commands.
+Open Assistant is a private open source personal assistant prototype able to complete tasks using vocal commands.
 
 Our current goals are to simplify and restructure modules to provide easy customization, operating system independence, as well as to implement more sophisticated logic such as machine learning (TensorFlow).
 
