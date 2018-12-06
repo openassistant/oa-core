@@ -29,7 +29,7 @@ def diagnostics():
                 break
 
     # Memory Free.
-    response += 'System memory has %.0f Gigabytes free...\n' %bytes2gb(oa.sys.free_memory)
+    response += 'System memory has %.0f Gigabytes free...\n' %bytes2gb(oa.sys.free_memory())
 
     # Drive Space Free.
     response += 'Internal hard drive has %.0f Gigabytes free...\n' %bytes2gb(psutil.disk_usage('/').free)
