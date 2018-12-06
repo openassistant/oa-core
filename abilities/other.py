@@ -126,7 +126,7 @@ def say_time():
 
 def say_day():
     """ Speak the current day. """
-    day = oa.sys.day_name
+    day = oa.sys.day_name()
     say('- Today is %s.' %day)
 
 def say_last_command(string = ''):
