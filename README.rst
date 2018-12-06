@@ -48,7 +48,7 @@ Download, Install, & Run:
   ``pip install keyboard sounddevice playsound requests pyttsx3 pocketsphinx psutil feedparser python-forecastio numpy``
 
 `Download Open Assistant`:
-  https://github.com/openassistant/oa-core/archive/next.zip
+  https://github.com/openassistant/oa-core/archive/master.zip
 
 `Run Open Assistant`: 
   ``python __main__.py``
