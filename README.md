@@ -32,6 +32,7 @@ Windows Python Install (Python 3.x)
 
 # Using Open Assistant
 
+* [Download Open Assistant](https://github.com/openassistant/oa-core/archive/master.zip)
 * Run Open Assistant from within the unzipped directory: ``python -m oa``
 * Make sure your microphone is working and levels are set properly.
 * Say "Boot Mind!" as a listening test. If you hear R2D2, boot mind is listening.
