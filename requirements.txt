@@ -1,10 +1,10 @@
+feedparser
 keyboard
-sounddevice
+numpy
 playsound
-requests
-pyttsx3
 pocketsphinx
 psutil
-feedparser
 python-forecastio
-numpy
+pyttsx3
+requests
+sounddevice
