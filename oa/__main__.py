@@ -36,6 +36,23 @@ def ConfigureAssistant(a):
     # oa.core.parts.mind.output = [oa.display]
 
 
+# from modules.abilities.core import get, put
+def _command_loop(a):
+    from oa.modules.abilities.core import put
+
+    while not a.finished.is_set():
+        cmd = input("OA> ")
+        if cmd in ['q', 'quit']:
+            a.finished.set()
+            continue
+        elif cmd in ['h', 'help', '?']:
+            print("Help Stuff")
+        elif cmd.find(' ') > -1:
+            p, m = cmd.split(' ', 1)
+            logging.debug("{} <- {}".format(p, m))
+            put(p, m)
+
+
 def start(**kwargs):
     """Initialize and run the OpenAssistant Agent"""
 
@@ -55,26 +72,9 @@ def start(**kwargs):
         # Setup connections between parts.
         ConfigureAssistant(a)
 
-        # from modules.abilities.core import get, put
-        def _command_loop():
-            from oa.modules.abilities.core import put
-
-            while not a.finished.is_set():
-                cmd = input("OA> ")
-                if cmd in ['q', 'quit']:
-                    a.finished.set()
-                    continue
-                elif cmd in ['h', 'help', '?']:
-                    print("Help Stuff")
-                elif cmd.find(' ') > -1:
-                    p, m = cmd.split(' ', 1)
-                    logging.debug("{} <- {}".format(p, m))
-                    put(p, m)
-
-        
         while not a.finished.is_set():
             try:
-                _command_loop()
+                _command_loop(a)
             except Exception as ex:
                 logging.error("Command Loop: {}".format(ex))
 
