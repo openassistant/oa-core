@@ -23,8 +23,21 @@ class OpenAssistant(core.agent.Agent):
         core.oa.core_directory = self.home
 
 
-def ConfigureAssistant(a):
+def LoadAssistant(config):
     """Example Configuration."""
+
+    a = OpenAssistant(
+            home=os.path.dirname(__file__),
+            modules=[
+                'sound',
+                'voice',
+                'speech_recognition',
+                'ear',
+                'mind',
+            ]
+        )
+
+    a.run()
 
     # Link the output of ear to speech_recognition
     a.parts['ear'].output += [a.parts.speech_recognition]
@@ -34,6 +47,8 @@ def ConfigureAssistant(a):
 
     # oa.core.parts.keyboard.output = [oa.mind, oa.display]
     # oa.core.parts.mind.output = [oa.display]
+        
+    return a
 
 
 # from modules.abilities.core import get, put
@@ -57,21 +72,8 @@ def start(**kwargs):
     """Initialize and run the OpenAssistant Agent"""
 
     try:
-        a = OpenAssistant(
-            home=kwargs.get('home', os.path.dirname(__file__)),
-            modules=[
-                'sound',
-                'voice',
-                'speech_recognition',
-                'ear',
-                'mind',
-            ]
-        )
-        a.run()
+        a = LoadAssistant(config=kwargs.get('config'))
         
-        # Setup connections between parts.
-        ConfigureAssistant(a)
-
         while not a.finished.is_set():
             try:
                 _command_loop(a)
