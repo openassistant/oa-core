@@ -16,7 +16,7 @@ setup(
     keywords = "assistant agent ai framework",
     url = "https://openasssitant.org",
     packages = find_packages(),
-    long_description = read('README.rst'),
+    long_description = read('README.md'),
     project_urls = {
         "Bug Tracker": "",
         "Documentation": "",
