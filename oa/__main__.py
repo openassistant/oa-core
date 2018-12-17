@@ -40,10 +40,10 @@ def LoadAssistant(config):
     a.run()
 
     # Link the output of ear to speech_recognition
-    a.parts['ear'].output += [a.parts.speech_recognition]
+    a.parts['ear'].output += [a.parts['speech_recognition']]
 
     # Link the output of speech_recognition to mind
-    a.parts.speech_recognition.output += [a.parts.mind]
+    a.parts['speech_recognition'].output += [a.parts['mind']]
 
     # oa.core.parts.keyboard.output = [oa.mind, oa.display]
     # oa.core.parts.mind.output = [oa.display]
