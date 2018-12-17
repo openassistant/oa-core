@@ -41,7 +41,7 @@ def start(**kwargs):
 
     try:
         a = OpenAssistant(
-            home=os.path.dirname(__file__),
+            home=kwargs.get('home', os.path.dirname(__file__)),
             modules=[
                 'sound',
                 'voice',
@@ -102,5 +102,8 @@ if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO if not args.debug else logging.DEBUG, filename=args.log_file, format=log_template)
     logging.info("Start Open Assistant")
 
-    start()
+    start(
+        home=args.home_dir,
+        config=args.config_file,
+    )
     quit(0)
