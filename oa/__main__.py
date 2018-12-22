@@ -8,15 +8,15 @@ import os
 import threading
 
 from oa import core
-from oa.core import agent
+from oa.core.agent import Agent
 
 
-class OpenAssistant(core.agent.Agent):
+class OpenAssistant(Agent):
     """Example Implementation: Agent."""
     
     def __init__(self, home=None, modules=[]):
         logging.info("Initializing Open Assistant")
-        core.agent.Agent.__init__(self, home=home, modules=modules)
+        Agent.__init__(self, home=home, modules=modules)
 
         # Establish OA core.
         core.oa.core = self
