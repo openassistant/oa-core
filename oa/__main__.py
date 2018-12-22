@@ -14,13 +14,17 @@ from oa.core.agent import Agent
 class OpenAssistant(Agent):
     """Example Implementation: Agent."""
     
-    def __init__(self, home=None, modules=[]):
+    def __init__(self, module_path=None, modules=[]):
         logging.info("Initializing Open Assistant")
-        Agent.__init__(self, home=home, modules=modules)
+        Agent.__init__(self, home=module_path, modules=modules)
 
 
 def LoadAssistant(config):
     """Example Configuration."""
+
+    _module_path = [
+        os.path.dirname(__file__),
+    ][0]
 
     modules = [
         'sound',
@@ -36,7 +40,7 @@ def LoadAssistant(config):
     ]
 
     a = OpenAssistant(
-        home=os.path.dirname(__file__),
+        module_path=_module_path,
         modules=modules,
     )
 
