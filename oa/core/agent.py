@@ -66,7 +66,7 @@ def thread_loop(agent, part, b):
 
     
     if hasattr(part, 'init'):
-       part.init()
+        part.init()
 
     b.wait()
     

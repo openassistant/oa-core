@@ -40,7 +40,7 @@ def config_stt(cache_dir, keywords, kws_last_modification_time_in_sec = None):
     # Save phrases.
     _.phrases = [x.strip().replace('%d', '').upper() for x in sorted(keywords)]
 
-     # Check if commands file was modified.
+    # Check if commands file was modified.
     if kws_last_modification_time_in_sec:
         if os.path.exists(_.dic_file) and (kws_last_modification_time_in_sec < stat_mtime(_.dic_file)):
             return _
