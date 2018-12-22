@@ -18,10 +18,6 @@ class OpenAssistant(Agent):
         logging.info("Initializing Open Assistant")
         Agent.__init__(self, home=home, modules=modules)
 
-        # Establish OA core.
-        core.oa.core = self
-        core.oa.core_directory = self.home
-
 
 def LoadAssistant(config):
     """Example Configuration."""
@@ -38,6 +34,10 @@ def LoadAssistant(config):
         home=os.path.dirname(__file__),
         modules=modules,
     )
+
+    # Establish OA core.
+    core.oa.core = a
+    core.oa.core_directory = a.home
 
     a.run()
 
