@@ -106,7 +106,6 @@ if __name__ == '__main__':
     logging.info("Start Open Assistant")
 
     start(
-        home=args.home_dir,
         config=args.config_file,
     )
     quit(0)

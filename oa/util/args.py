@@ -19,10 +19,6 @@ def _parser(args):
             action='store_true', dest="debug", default=False,
             help="Enable debug-level logging")
 
-    parser.add_argument("-H", "--home", type=str,
-            dest="home_dir", action='store',
-            help="Path to directory to use as home")
-
     parser.add_argument("-l", "--log",
             dest='log_file', action='store', default=None,
             help="Path to log file")
