@@ -26,16 +26,18 @@ class OpenAssistant(Agent):
 def LoadAssistant(config):
     """Example Configuration."""
 
+    modules = [
+        'sound',
+        'voice',
+        'speech_recognition',
+        'ear',
+        'mind',
+    ]
+
     a = OpenAssistant(
-            home=os.path.dirname(__file__),
-            modules=[
-                'sound',
-                'voice',
-                'speech_recognition',
-                'ear',
-                'mind',
-            ]
-        )
+        home=os.path.dirname(__file__),
+        modules=modules,
+    )
 
     a.run()
 
