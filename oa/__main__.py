@@ -30,6 +30,11 @@ def LoadAssistant(config):
         'mind',
     ]
 
+    _map = [
+        ('ear', 'speech_recognition'),
+        ('speech_recognition', 'mind'),
+    ]
+
     a = OpenAssistant(
         home=os.path.dirname(__file__),
         modules=modules,
@@ -41,14 +46,8 @@ def LoadAssistant(config):
 
     a.run()
 
-    # Link the output of ear to speech_recognition
-    a.parts['ear'].output += [a.parts['speech_recognition']]
-
-    # Link the output of speech_recognition to mind
-    a.parts['speech_recognition'].output += [a.parts['mind']]
-
-    # oa.core.parts.keyboard.output = [oa.mind, oa.display]
-    # oa.core.parts.mind.output = [oa.display]
+    for _in, _out in _map:
+        a.parts[_in].output += [a.parts[_out]]
         
     return a
 
