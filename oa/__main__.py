@@ -61,7 +61,7 @@ def start(**kwargs):
         
         # XXX: temporary compatability hack
         core.oa.core = h
-        core.oa.core_directory = '/tmp'
+        core.oa.core_directory = os.path.dirname(__file__)
 
         h.run()
         
