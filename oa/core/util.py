@@ -48,6 +48,8 @@ def load_module(path):
     import logging
     import importlib
     import queue
+    
+    import oa.modules
 
     # An OA module is a folder with an __oa__.py file
     if not all([
