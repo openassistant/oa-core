@@ -67,6 +67,14 @@ def start(**kwargs):
         core.oa.core_directory = os.path.dirname(__file__)
 
         h.run()
+
+        _map = [
+            ('ear', 'speech_recognition'),
+            ('speech_recognition', 'mind'),
+        ]
+        for _in, _out in _map:
+            h.parts[_in].output += [h.parts[_out]]
+
         
         while not h.finished.is_set():
             try:
