@@ -76,7 +76,7 @@ def thread_loop(hub, part, b):
     
     hub.ready.wait()
 
-    while hub.ready.is_set():
+    while not hub.finished.is_set():
         try:
             for msg in part._in():
                 for listener in part.output:
