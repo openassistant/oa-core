@@ -9,6 +9,10 @@ from oa.core.util import Core, isCallable
 from oa.modules.abilities.core import info, call_function, get
 from oa.modules.abilities.system import read_file, sys_exec
 
+# XXX: required before using importlib in Python3.4?
+import oa.modules.mind.minds
+
+
 """ Core mind functions. """
 
 _history = []
