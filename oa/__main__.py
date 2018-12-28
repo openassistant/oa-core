@@ -66,6 +66,9 @@ def start(**kwargs):
         core.oa.core = h
         core.oa.core_directory = os.path.dirname(__file__)
 
+        core.oa.core.mind = None
+        core.oa.core.minds = {}
+
         h.run()
 
         _map = [
