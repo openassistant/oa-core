@@ -17,7 +17,7 @@ def load_mind(path):
     """ Load a mind by its `name`. """
     mind = Core()
     mind.module = path
-    mind.name = os.path.basename(mind.module)[:-3]
+    mind.name = os.path.splitext(os.path.basename(mind.module))[0]
     mind.cache_dir = os.path.join(oa.core_directory, 'cache', mind.name)
 
     # Make directories.
