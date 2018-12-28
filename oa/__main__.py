@@ -118,7 +118,7 @@ def start(**kwargs):
         h.finished.set()
         
         logging.info('Waiting on threads')
-        [thr.join() for thr in a.thread_pool]
+        [thr.join() for thr in h.thread_pool]
         logging.info('Threads closed')
 
 
