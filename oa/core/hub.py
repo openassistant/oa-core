@@ -18,10 +18,10 @@ class Hub:
 
 
     def run(self):
+        self.finished.clear()
         self._load_modules()
         self._start_modules()
         self.ready.set()
-        self.finished.clear()
 
 
     def put(self, part, value):
