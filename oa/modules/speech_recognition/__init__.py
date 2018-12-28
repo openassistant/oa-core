@@ -3,10 +3,7 @@
 import os, re, time
 import logging
 
-import pocketsphinx, sphinxbase
-from pocketsphinx.pocketsphinx import *
-from sphinxbase.sphinxbase import *
-
+import pocketsphinx
 import requests
 
 from oa.core import oa
@@ -14,7 +11,7 @@ from oa.core.util import Core
 from oa.modules.abilities.core import get, empty
 from oa.modules.abilities.system import download_file, write_file, stat_mtime
 
-_decoders = Core()
+_decoders = {}
 
 def config_stt(cache_dir, keywords, kws_last_modification_time_in_sec = None):
     _ = Core()
@@ -100,7 +97,7 @@ def get_decoder():
         ret = config_stt(mind.cache_dir, mind.kws.keys(), stat_mtime(mind.module))
         
         # Process audio chunk by chunk. On a keyphrase detected perform the action and restart search.
-        config = Decoder.default_config()
+        config = pocketsphinx.Decoder.default_config()
 
         # Set paths for the language model files.
         config.set_string('-hmm', ret.hmm_dir)
@@ -108,7 +105,7 @@ def get_decoder():
         config.set_string("-dict", ret.dic_file)
         config.set_string("-logfn", os.devnull)  # Disable logging.
 
-        ret.decoder = Decoder(config)
+        ret.decoder = pocketsphinx.Decoder(config)
         _decoders[mind.name] = ret
     else:
         return _decoders[mind.name]
