@@ -49,6 +49,9 @@ def start(**kwargs):
             'modules': [
                 'voice',
                 'sound',
+                'ear',
+                'speech_recognition',
+                'mind',
             ],
         }
 
