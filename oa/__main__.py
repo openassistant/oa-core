@@ -20,43 +20,6 @@ class OpenAssistant(Agent):
         Agent.__init__(self, home=module_path, modules=modules)
 
 
-def LoadAssistant(config):
-    """Example Configuration."""
-
-    _module_path = [
-        os.path.dirname(__file__),
-    ][0]
-
-    modules = [
-        'sound',
-        'voice',
-        'speech_recognition',
-        'ear',
-        'mind',
-    ]
-
-    _map = [
-        ('ear', 'speech_recognition'),
-        ('speech_recognition', 'mind'),
-    ]
-
-    a = OpenAssistant(
-        module_path=_module_path,
-        modules=modules,
-    )
-
-    # Establish OA core.
-    core.oa.core = a
-    core.oa.core_directory = a.home
-
-    a.run()
-
-    for _in, _out in _map:
-        a.parts[_in].output += [a.parts[_out]]
-        
-    return a
-
-
 def _command_loop(a):
 
     while not a.finished.is_set():
