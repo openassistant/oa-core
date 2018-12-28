@@ -9,6 +9,7 @@ import threading
 
 from oa import core
 from oa.core.agent import Agent
+from oa.core.hub import Hub
 
 
 class OpenAssistant(Agent):
@@ -56,9 +57,7 @@ def LoadAssistant(config):
     return a
 
 
-# from modules.abilities.core import get, put
 def _command_loop(a):
-    from oa.modules.abilities.core import put
 
     while not a.finished.is_set():
         cmd = input("OA> ")
@@ -70,29 +69,52 @@ def _command_loop(a):
         elif cmd.find(' ') > -1:
             p, m = cmd.split(' ', 1)
             logging.debug("{} <- {}".format(p, m))
-            put(p, m)
+            a.put(p, m)
+        else:
+            print("Unrecognized command: {}".format(cmd))
 
 
 def start(**kwargs):
     """Initialize and run the OpenAssistant Agent"""
 
     try:
-        a = LoadAssistant(config=kwargs.get('config'))
+
+        config = {
+            'module_path': [
+                os.path.join(os.path.dirname(__file__), 'modules'),
+            ],
+            'modules': [
+                'voice',
+                'sound',
+            ],
+        }
+
+        import json
+        config_path = kwargs.get('config')
+        if config_path is not None:
+            config.update(json.load(open(config_path)))
+
+        h = Hub(config=config)
         
-        while not a.finished.is_set():
+        oa.core = h
+        # oa.core_directory = a.home
+
+        h.run()
+        
+        while not h.finished.is_set():
             try:
-                _command_loop(a)
+                _command_loop(h)
             except Exception as ex:
                 logging.error("Command Loop: {}".format(ex))
 
-        a.finished.wait()
+        h.ready.wait()
 
 
     except KeyboardInterrupt:
         logging.info("Ctrl-C Pressed")
 
         logging.info("Signaling Shutdown")
-        a.finished.set()
+        h.finished.set()
         
         logging.info('Waiting on threads')
         [thr.join() for thr in a.thread_pool]
