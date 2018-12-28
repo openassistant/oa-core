@@ -96,8 +96,9 @@ def start(**kwargs):
 
         h = Hub(config=config)
         
-        oa.core = h
-        # oa.core_directory = a.home
+        # XXX: temporary compatability hack
+        core.oa.core = h
+        core.oa.core_directory = '/tmp'
 
         h.run()
         
