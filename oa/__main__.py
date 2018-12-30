@@ -8,16 +8,7 @@ import os
 import threading
 
 from oa import core
-from oa.core.agent import Agent
 from oa.core.hub import Hub
-
-
-class OpenAssistant(Agent):
-    """Example Implementation: Agent."""
-    
-    def __init__(self, module_path=None, modules=[]):
-        logging.info("Initializing Open Assistant")
-        Agent.__init__(self, home=module_path, modules=modules)
 
 
 def _command_loop(a):
