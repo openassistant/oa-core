@@ -76,7 +76,8 @@ def _in():
 
                     # Detect whether speaking has started on audio input.
                     energy = audioop.rms(buf, _config.get("sample_width"))  # Energy of the audio signal.
-                    if energy > _config.get("energy_threshold"): break
+                    if energy > _config.get("energy_threshold"):
+                        break
 
                     # Dynamically adjust the energy threshold using asymmetric weighted average.
                     if _config.get("dynamic_energy_threshold"):
