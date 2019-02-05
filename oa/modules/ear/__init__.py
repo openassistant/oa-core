@@ -7,6 +7,7 @@ import audioop
 import numpy
 import sounddevice
 
+from oa.core import oa
 
 DEFAULT_CONFIG = {
     # The `timeout` parameter is the maximum number of seconds that a phrase continues before stopping and returning a result. If the `timeout` is None there will be no phrase time limit.
@@ -36,9 +37,15 @@ DEFAULT_CONFIG = {
     # Minimum seconds of speaking audio before we consider the audio a phrase - values below this are ignored (for filtering out clicks and pops).
     "phrase_threshold": 0.3,
 
+    # Maximum number of seconds that a phrase continues before stopping and returning a result. If the `timeout` is None there will be no phrase time limit.
+    "phrase_time_limit": 5,
+
     # Seconds of non-speaking audio to keep on both sides of the recording.
     "non_speaking_duration": 0.8,
 }
+
+def init():
+    print("hello")
 
 def _in(ctx):
     _config = DEFAULT_CONFIG.copy()
@@ -49,7 +56,6 @@ def _in(ctx):
     # Number of buffers of non-speaking audio during a phrase before the phrase should be considered complete.
     phrase_buffer_count = math.ceil(_config.get("phrase_threshold") / seconds_per_buffer) # Minimum number of buffers of speaking audio before we consider the speaking audio a phrase.
     non_speaking_buffer_count = math.ceil(_config.get("non_speaking_duration") / seconds_per_buffer)  # Maximum number of buffers of non-speaking audio to retain before and after a phrase.
-
     stream = sounddevice.Stream(samplerate=_config.get("sample_rate"), channels=_config.get("channels"), dtype='int16')
     with stream:
         while not ctx.finished.is_set():
@@ -88,7 +94,7 @@ def _in(ctx):
                 while not ctx.finished.is_set():
                     # Handle phrase being too long by cutting off the audio.
                     elapsed_time += seconds_per_buffer
-                    if _config.get("timeout") and (elapsed_time - phrase_start_time > _config.get("timeout")):
+                    if _config.get("phrase_time_limit") and elapsed_time - phrase_start_time > _config.get("phrase_time_limit"):
                         break
 
                     buf = stream.read(_config.get("chunk"))[0]
