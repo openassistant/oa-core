@@ -7,8 +7,6 @@ import audioop
 import numpy
 import sounddevice
 
-from oa.core import oa
-
 DEFAULT_CONFIG = {
     # The `timeout` parameter is the maximum number of seconds that a phrase continues before stopping and returning a result. If the `timeout` is None there will be no phrase time limit.
     "timeout": None,
