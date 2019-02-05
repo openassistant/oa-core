@@ -1,7 +1,11 @@
 # ear.py - Speech recognition input.
 
-import sounddevice, audioop
-import math, collections, numpy
+import collections
+import math
+
+import audioop
+import numpy
+import sounddevice
 
 from oa.core import oa
 
