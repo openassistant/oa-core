@@ -1,8 +1,8 @@
 # Open Assistant
 
-Open source AI OS development. Make your own minds!
+Open source voice assistant development. Make your own minds!
 
-Open Assistant is a private open source personal assistant prototype able to complete tasks using vocal commands.
+Open Assistant is a private open source personal assistant prototype able to complete operating system tasks using vocal commands.
 
 # Installation
 
@@ -38,3 +38,4 @@ Windows Python Install (Python 3.x)
 * Say "Boot Mind!" as a listening test. If you hear R2D2, boot mind is listening.
 * Say "Open Assistant!" to launch root mind. Say "Root Mind!" to see if you can get the reply, "Hello World!"
 * Say "List commands!" to get a list of available voice commands.
+* Add your own!
