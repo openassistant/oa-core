@@ -24,8 +24,7 @@ def load_mind(path):
     if not os.path.exists(mind.cache_dir):
         os.makedirs(mind.cache_dir)
 
-    pkg = "oa.modules.mind.minds"
-    M = importlib.import_module(".{}".format(mind.name), package=pkg)
+    M = importlib.import_module("oa.modules.mind.minds"+".{}".format(mind.name))
     mind.__dict__.update(M.__dict__)
     
     # Add command keywords without spaces.
