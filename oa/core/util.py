@@ -58,7 +58,7 @@ def load_module(path):
     # Import package
     module_name = os.path.basename(path)
     logging.info('{} <- {}'.format(module_name, path))
-    M = importlib.import_module('.{}'.format(module_name), package="oa.modules")
+    M = importlib.import_module("oa.modules"+'.{}'.format(module_name))
 
     # If the module provides an input queue, link it
     # if getattr(M, '_in', None) is not None:
