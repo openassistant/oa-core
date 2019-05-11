@@ -11,6 +11,10 @@ def _parser(args):
             dest="agent", action="store",
             help="Agent to load")
 
+    parser.add_argument("-c", "--config",
+            dest='config_file', action='store', default=None,
+            help="Path to config file")
+
     parser.add_argument("-d", "--debug",
             action='store_true', dest="debug", default=False,
             help="Enable debug-level logging")

@@ -1,5 +1,7 @@
 # voice.py - Audio output: Text To Speech (TTS)
 
+import logging
+
 import pyttsx3
 
 from oa.core import oa
@@ -21,6 +23,8 @@ def _in():
 
     while not oa.core.finished.is_set():
         s = get()
+        logging.debug("Saying: %s", s)
+
         # Pause Ear (listening) while talking. Mute TTS.
         # TODO: move this somewhere else
         put('speech_recognition', 'mute')

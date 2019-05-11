@@ -71,7 +71,7 @@ def _in():
 
     while not oa.core.finished.is_set():
         text = get()
-        logging.info('Input: {}'.format(text))
+        logging.debug('Input: {}'.format(text))
         mind = oa.core.mind
         if (text is None) or (text.strip() == ''):
             # Nothing to do.
