@@ -49,9 +49,6 @@ def load_module(path):
     import importlib
     import queue
     
-    # XXX: required before using importlib in Python3.4?
-    import oa.modules
-
     # An OA module is a folder with an __oa__.py file
     if not all([
         os.path.isdir(path),
