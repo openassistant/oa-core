@@ -25,7 +25,7 @@ DEFAULT_CONFIG = {
     "chunk": 1024,
 
     # Minimum audio energy to consider for recording.
-    "energy_threshold": 4000,
+    "energy_threshold": 300,
 
     "dynamic_energy_threshold": False,
     "dynamic_energy_adjustment_damping": 0.15,
