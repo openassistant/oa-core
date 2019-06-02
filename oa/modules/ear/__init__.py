@@ -10,6 +10,7 @@ import sounddevice
 from oa.core import oa
 
 DEFAULT_CONFIG = {
+    # The `timeout` parameter is the maximum number of seconds that a phrase continues before stopping and returning a result. If the `timeout` is None there will be no phrase time limit.
     "timeout": None,
 
     "channels": 1,
@@ -22,9 +23,6 @@ DEFAULT_CONFIG = {
 
     # Number of frames stored in each buffer.
     "chunk": 1024,
-
-    # The `phrase_time_limit` parameter is the maximum number of seconds that a phrase continues before stopping and returning a result. If the `timeout` is None there will be no phrase time limit.
-    "phrase_time_limit": 5,
 
     # Minimum audio energy to consider for recording.
     "energy_threshold": 4000,
@@ -65,7 +63,7 @@ def _in():
                 while not oa.core.finished.is_set():
                     # Handle waiting too long for phrase by raising an exception
                     elapsed_time += seconds_per_buffer
-                    if _config.get("timeout") and elapsed_time > _config.get("timeout"):
+                    if _config.get("timeout") and (elapsed_time > _config.get("timeout")):
                         raise Exception("Listening timed out while waiting for phrase to start.")
 
                     buf = stream.read(_config.get("chunk"))[0]
@@ -91,7 +89,7 @@ def _in():
                 while not oa.core.finished.is_set():
                     # Handle phrase being too long by cutting off the audio.
                     elapsed_time += seconds_per_buffer
-                    if _config.get("phrase_time_limit") and elapsed_time - phrase_start_time > _config.get("phrase_time_limit"):
+                    if _config.get("timeout") and (elapsed_time - phrase_start_time > _config.get("timeout")):
                         break
 
                     buf = stream.read(_config.get("chunk"))[0]
