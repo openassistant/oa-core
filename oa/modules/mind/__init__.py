@@ -88,11 +88,11 @@ def _in():
             # For stubs, call `perform()`.
             if isCallable(fn):
                 call_function(fn)
-                oa.last_command = t
+                core.oa.last_command = t
             # For strings, call `sys_exec()`.
             elif isinstance(fn, str):
                 sys_exec(fn)
-                oa.last_command = t
+                core.oa.last_command = t
             else:
                 # Any unknown command raises an exception.
                 raise Exception("Unable to process: {}".format(text))
