@@ -50,7 +50,7 @@ def _in():
     # Number of buffers of non-speaking audio during a phrase before the phrase should be considered complete.
     phrase_buffer_count = math.ceil(_config.get("phrase_threshold") / seconds_per_buffer) # Minimum number of buffers of speaking audio before we consider the speaking audio a phrase.
     non_speaking_buffer_count = math.ceil(_config.get("non_speaking_duration") / seconds_per_buffer)  # Maximum number of buffers of non-speaking audio to retain before and after a phrase.
-    
+
     stream = sounddevice.Stream(samplerate=_config.get("sample_rate"), channels=_config.get("channels"), dtype='int16')
     with stream:
         while not oa.core.finished.is_set():
@@ -58,7 +58,7 @@ def _in():
             buf = b""  # An empty buffer means that the stream has ended and there is no data left to read.
             while not oa.core.finished.is_set():
                 frames = collections.deque()
-                
+
                 # Store audio input until the phrase starts
                 while not oa.core.finished.is_set():
                     # Handle waiting too long for phrase by raising an exception
@@ -108,7 +108,7 @@ def _in():
                 # Check how long the detected phrase is and retry listening if the phrase is too short.
                 phrase_count -= pause_count  # Exclude the buffers for the pause before the phrase.
                 if phrase_count >= phrase_buffer_count or len(buf) == 0: break  # Phrase is long enough or we've reached the end of the stream, so stop listening.
-           
+
             # Obtain frame data.
             for _ in range(pause_count - non_speaking_buffer_count): frames.pop()  # Remove extra non-speaking frames at the end.
             frame_data = numpy.concatenate(frames)
