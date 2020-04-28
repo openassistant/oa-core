@@ -18,6 +18,6 @@ def _in():
             playsound.playsound(path)
         except Exception as ex:
             logging.error("Error playing sound: {}".format(ex))
-   
+
         # Audio complete. Begin listening. Unmute STT.
         put('speech_recognition','unmute')

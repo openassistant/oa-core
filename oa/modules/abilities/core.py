@@ -14,7 +14,7 @@ def thread_name():
 def current_part():
     """ Return the part name which is associated with the current thread. """
     name = thread_name()
-    if hasattr(oa.core.parts, name):
+    if name in oa.core.parts:
         return oa.core.parts[name]
     else:
         err = '%s Error: Cannot find a related part' %name
