@@ -27,7 +27,7 @@ def _in():
 
         # Pause Ear (listening) while talking. Mute TTS.
         # TODO: move this somewhere else
-        # put('speech_recognition', 'mute')
+        put('speech_recognition', 'mute')
 
         if flMac:
             _msg = subprocess.Popen(['echo', s], stdout=subprocess.PIPE)
@@ -41,4 +41,4 @@ def _in():
         # Wait until speaking ends.
         # Continue ear (listening). Unmute TTS.
         # TODO: move this somewhere else
-        # put('speech_recognition', 'unmute')
+        put('speech_recognition', 'unmute')
