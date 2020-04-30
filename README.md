@@ -22,8 +22,8 @@ Windows Python Install (Python 3.x)
 
 ## Ubuntu Linux
 
-* Install system requirements ``sudo apt-get install -y python python-dev python-pip build-essential swig git libpulse-dev espeak``
-* Install Python dependencies: `pip install -r requirements.txt`
+* Install system requirements ``sudo apt-get install -y python3 python3-dev python3-pip build-essential swig git libpulse-dev espeak``
+* Install Python dependencies: `pip3 install -r requirements.txt`
 
 ## Arch Linux
 
@@ -33,7 +33,7 @@ Windows Python Install (Python 3.x)
 # Using Open Assistant
 
 * [Download Open Assistant](https://github.com/openassistant/oa-core/archive/master.zip)
-* Run Open Assistant from within the unzipped directory: ``python -m oa``
+* Run Open Assistant from within the unzipped directory: ``python -m oa`` or ``python3 -m oa``
 * Make sure your microphone is working and levels are set properly.
 * Say "Boot Mind!" as a listening test. If you hear R2D2, boot mind is listening.
 * Say "Open Assistant!" to launch root mind. Say "Root Mind!" to see if you can get the reply, "Hello World!"
