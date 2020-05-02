@@ -6,7 +6,7 @@ import logging
 import pocketsphinx
 import requests
 
-from oa.core import oa
+from oa.boop import oa
 from oa.core.util import Core
 from oa.modules.abilities.core import get, empty
 from oa.modules.abilities.system import download_file, write_file, stat_mtime

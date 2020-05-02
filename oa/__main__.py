@@ -7,6 +7,7 @@ import logging
 import os
 
 import oa
+import oa.boop
 from oa.util.repl import command_loop
 
 
@@ -35,11 +36,11 @@ def start(**kwargs):
         h = oa.Hub(config=config)
         
         # XXX: temporary compatability hack
-        oa.core.oa.core = h
-        oa.core.oa.core_directory = os.path.dirname(__file__)
+        oa.boop.core = h
+        oa.boop.core_directory = os.path.dirname(__file__)
 
-        oa.core.oa.core.mind = None
-        oa.core.oa.core.minds = {}
+        oa.boop.core.mind = None
+        oa.boop.core.minds = {}
 
         h.run()
 
