@@ -8,7 +8,7 @@ import os
 import threading
 
 from oa import core
-from oa.core.hub import Hub
+from oa import Hub
 from oa.util.repl import command_loop
 
 
