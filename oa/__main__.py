@@ -16,7 +16,6 @@ def start(**kwargs):
     """Initialize and run the OpenAssistant Agent"""
 
     try:
-
         config = {
             'module_path': [
                 os.path.join(os.path.dirname(__file__), 'modules'),
@@ -53,7 +52,6 @@ def start(**kwargs):
         for _in, _out in _map:
             h.parts[_in].output += [h.parts[_out]]
 
-        
         while not h.finished.is_set():
             try:
                 command_loop(h)
@@ -62,13 +60,12 @@ def start(**kwargs):
 
         h.ready.wait()
 
-
     except KeyboardInterrupt:
         logging.info("Ctrl-C Pressed")
 
         logging.info("Signaling Shutdown")
         h.finished.set()
-        
+
         logging.info('Waiting on threads')
         [thr.join() for thr in h.thread_pool]
         logging.info('Threads closed')
@@ -76,10 +73,10 @@ def start(**kwargs):
 
 if __name__ == '__main__':
     import sys
-    
+
     from oa.util.args import _parser
     args = _parser(sys.argv[1:])
-    
+
     log_template = "[%(asctime)s] %(levelname)s %(threadName)s [%(filename)s:%(funcName)s:%(lineno)d]: %(message)s"
     logging.basicConfig(level=logging.INFO if not args.debug else logging.DEBUG, filename=args.log_file, format=log_template)
     logging.info("Start Open Assistant")
