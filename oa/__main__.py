@@ -9,23 +9,7 @@ import threading
 
 from oa import core
 from oa.core.hub import Hub
-
-
-def _command_loop(a):
-
-    while not a.finished.is_set():
-        cmd = input("OA> ")
-        if cmd in ['q', 'quit']:
-            a.finished.set()
-            continue
-        elif cmd in ['h', 'help', '?']:
-            print("Help Stuff")
-        elif cmd.find(' ') > -1:
-            p, m = cmd.split(' ', 1)
-            logging.debug("{} <- {}".format(p, m))
-            a.put(p, m)
-        else:
-            print("Unrecognized command: {}".format(cmd))
+from oa.util.repl import command_loop
 
 
 def start(**kwargs):
@@ -72,7 +56,7 @@ def start(**kwargs):
         
         while not h.finished.is_set():
             try:
-                _command_loop(h)
+                command_loop(h)
             except Exception as ex:
                 logging.error("Command Loop: {}".format(ex))
 
