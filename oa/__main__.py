@@ -6,8 +6,7 @@
 import logging
 import os
 
-from oa import core
-from oa import Hub
+import oa
 from oa.util.repl import command_loop
 
 
@@ -33,14 +32,14 @@ def start(**kwargs):
         if config_path is not None:
             config.update(json.load(open(config_path)))
 
-        h = Hub(config=config)
+        h = oa.Hub(config=config)
         
         # XXX: temporary compatability hack
-        core.oa.core = h
-        core.oa.core_directory = os.path.dirname(__file__)
+        oa.core.oa.core = h
+        oa.core.oa.core_directory = os.path.dirname(__file__)
 
-        core.oa.core.mind = None
-        core.oa.core.minds = {}
+        oa.core.oa.core.mind = None
+        oa.core.oa.core.minds = {}
 
         h.run()
 
