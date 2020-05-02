@@ -5,7 +5,6 @@
 
 import logging
 import os
-import threading
 
 from oa import core
 from oa import Hub
