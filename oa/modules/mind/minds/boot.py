@@ -1,4 +1,5 @@
-from oa.core import oa
+import oa.boop
+
 from oa.core.util import command_registry
 
 from oa.modules.abilities.interact import say, play, mind

@@ -4,11 +4,12 @@ import logging
 
 import playsound
 
-from oa.core import oa
+import oa.boop
+
 from oa.modules.abilities.core import get, put
 
 def _in():
-    while not oa.core.finished.is_set():
+    while not oa.boop.oa.finished.is_set():
         path = get()
         
         # Pause listening while talking. Mute STT.
