@@ -18,11 +18,11 @@ else:
     import pyttsx3
 
 
-def _in():
+def _in(ctx):
     if not flMac:
         tts = pyttsx3.init()
 
-    while not oa.core.finished.is_set():
+    while not ctx.finished.is_set():
         s = get()
         logging.debug("Saying: %s", s)
 

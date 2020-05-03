@@ -112,9 +112,9 @@ def get_decoder():
 
     return ret
 
-def _in():
+def _in(ctx):
     mute = 0
-    while not oa.boop.oa.finished.is_set():
+    while not ctx.finished.is_set():
         raw_data = get()
         if isinstance(raw_data, str):
             if raw_data == 'mute':

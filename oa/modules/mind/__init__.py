@@ -61,7 +61,7 @@ def load_minds():
             oa.boop.oa.minds[m.name] = m
     logging.info('Minds loaded!')
 
-def _in():
+def _in(ctx):
 
     default_mind = 'boot'
     load_minds()
@@ -70,7 +70,7 @@ def _in():
     logging.debug('"{}" is now listening. Say "Boot Mind!" to see if it can hear you.'.format(default_mind))
 
 
-    while not oa.boop.oa.finished.is_set():
+    while not ctx.finished.is_set():
         text = get()
         logging.debug('Input: {}'.format(text))
         mind = oa.boop.oa.mind
