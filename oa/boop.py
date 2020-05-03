@@ -128,7 +128,7 @@ oa.sys = Core()
 oa.sys.os = switch(platform.system(),'Windows','win','Linux','linux','Darwin','mac','unknown')
 oa.sys.user = getpass.getuser()
 oa.sys.host = socket.gethostname()
-oa.sys.ip = socket.gethostbyname(oa.sys.host)
+#oa.sys.ip = socket.gethostbyname(oa.sys.host)
 oa.sys.free_memory = lambda : psutil.virtual_memory()[4]
 
 # Date functions.
