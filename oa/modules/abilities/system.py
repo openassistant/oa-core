@@ -4,7 +4,8 @@ import subprocess
 
 import requests
 
-from oa.core import oa
+import oa.boop
+
 from oa.modules.abilities.core import info
 
 def download_file(url, path):
