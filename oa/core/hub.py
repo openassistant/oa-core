@@ -16,6 +16,9 @@ class Hub:
         self.thread_pool = []
         self.parts = {}
 
+        self.mind = None
+        self.minds = {}
+
 
     def run(self):
         self.finished.clear()
