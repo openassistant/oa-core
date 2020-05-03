@@ -17,7 +17,9 @@ def load_module(path):
     import logging
     import importlib
     import queue
-    
+
+    from oa.boop import Core
+
     # An OA module is a folder with an __oa__.py file
     if not all([
         os.path.isdir(path),
@@ -36,5 +38,5 @@ def load_module(path):
     m.__dict__.setdefault('wire_in', queue.Queue())
     m.__dict__.setdefault('output', [])
     # m.__dict__.update(M.__dict__)
-        
+
     return m

@@ -36,11 +36,11 @@ def start(**kwargs):
         h = oa.Hub(config=config)
         
         # XXX: temporary compatability hack
-        oa.boop.core = h
+        oa.boop.oa = h
         oa.boop.core_directory = os.path.dirname(__file__)
 
-        oa.boop.core.mind = None
-        oa.boop.core.minds = {}
+        oa.boop.oa.mind = None
+        oa.boop.oa.minds = {}
 
         h.run()
 
