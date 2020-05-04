@@ -91,7 +91,7 @@ def update_language(_):
 
 def get_decoder():
     # XXX: race condition when mind isn't set yet
-    mind = oa.boop.oa.mind
+    mind = oa.boop.mind
     if not hasattr(_decoders, mind.name):
         # Configure Speech to text dictionaries.
         ret = config_stt(mind.cache_dir, mind.kws.keys(), stat_mtime(mind.module))

@@ -137,14 +137,14 @@ sys.free_memory = lambda : psutil.virtual_memory()[4]
 
 # Date functions.
 sys.now = lambda : datetime.datetime.now()
-sys.second = lambda : oa.sys.now().second
-sys.minute = lambda : oa.sys.now().minute
-sys.hour = lambda : oa.sys.now().hour
-sys.day = lambda : oa.sys.now().day
-sys.day_name = lambda : oa.sys.now().strftime("%A")
-sys.month = lambda : oa.sys.now().month
-sys.month_name = lambda : oa.sys.now().strftime("%B")
-sys.year = lambda : oa.sys.now().year
-sys.date_text = lambda : '%d %s %d' %(oa.sys.day(), oa.sys.month_name(), oa.sys.year())
-sys.time_text = lambda : '%d:%d' %(oa.sys.hour(), oa.sys.minute())
-sys.date_time_text = lambda : oa.sys.date_text() + ' ' + oa.sys.time_text()
+sys.second = lambda : sys.now().second
+sys.minute = lambda : sys.now().minute
+sys.hour = lambda : sys.now().hour
+sys.day = lambda : sys.now().day
+sys.day_name = lambda : sys.now().strftime("%A")
+sys.month = lambda : sys.now().month
+sys.month_name = lambda : sys.now().strftime("%B")
+sys.year = lambda : sys.now().year
+sys.date_text = lambda : '%d %s %d' %(sys.day(), sys.month_name(), sys.year())
+sys.time_text = lambda : '%d:%d' %(sys.hour(), sys.minute())
+sys.date_time_text = lambda : sys.date_text() + ' ' + sys.time_text()

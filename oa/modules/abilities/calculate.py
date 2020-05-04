@@ -11,8 +11,8 @@ def isNum(s):
 def expr2str():
     """ Convert a numerical expression into a string. """
     ret = ''
-    info(oa.boop.oa.sys.calc_opers.values())
-    for k, g in groupby(oa.boop.oa.sys.expr, lambda x: ((x in oa.boop.oa.sys.calc_opers.values()) and 1) or 2):
+    info(oa.boop.sys.calc_opers.values())
+    for k, g in groupby(oa.boop.sys.expr, lambda x: ((x in oa.boop.sys.calc_opers.values()) and 1) or 2):
         l=list(g)
         if len(l) > 1:
             if k == 1:
@@ -33,7 +33,7 @@ def expr2str():
 def add2expr(s):
     # Check for calculator. Move to a numbers definition file.
     # For numbers, add sum operator.
-    oa.boop.oa.sys.expr.append(s)
+    oa.boop.sys.expr.append(s)
 
 def calculate():
     ret = expr2str()
@@ -44,4 +44,4 @@ def calculate():
     except:
         say('Error. Wrong expression. ' + ret)
     # Clear the expression.
-    oa.boop.oa.sys.expr = []
+    oa.boop.sys.expr = []

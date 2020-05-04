@@ -129,7 +129,7 @@ def say_day():
     say('- Today is %s.' %day)
 
 def say_last_command(string = ''):
-    say(string + ' ' + oa.boop.last_command)
+    say(string + ' ' + oa.boop.oa.last_command)
 
 def get_sys(s):
     """ Return system information from `oa.sys`. """
