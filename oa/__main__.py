@@ -9,11 +9,10 @@ import os
 import oa
 
 import oa.boop
-from oa.util.repl import command_loop
-
 
 def start(**kwargs):
     """Initialize and run the OpenAssistant Agent"""
+    from oa.util.repl import command_loop
 
     try:
         config = {
