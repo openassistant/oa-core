@@ -30,7 +30,7 @@ def start(**kwargs):
         }
 
         import json
-        config_path = kwargs.get('config')
+        config_path = kwargs.get('config_path')
         if config_path is not None:
             config.update(json.load(open(config_path)))
 
@@ -79,6 +79,6 @@ if __name__ == '__main__':
     logging.info("Start Open Assistant")
 
     start(
-        config=args.config_file,
+        config_path=args.config_file,
     )
     quit(0)
