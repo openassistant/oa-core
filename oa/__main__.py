@@ -10,61 +10,26 @@ import oa
 
 import oa.boop
 
-def start(**kwargs):
+def start(hub, **kwargs):
     """Initialize and run the OpenAssistant Agent"""
     from oa.util.repl import command_loop
 
-    try:
-        config = {
-            'module_path': [
-                os.path.join(os.path.dirname(__file__), 'modules'),
-            ],
-            'modules': [
-                'voice',
-                'sound',
-                'ear',
-                'speech_recognition',
-                'mind',
-            ],
-        }
+    hub.run()
 
-        import json
-        config_path = kwargs.get('config_path')
-        if config_path is not None:
-            config.update(json.load(open(config_path)))
+    _map = [
+        ('ear', 'speech_recognition'),
+        ('speech_recognition', 'mind'),
+    ]
+    for _in, _out in _map:
+        hub.parts[_in].output += [hub.parts[_out]]
 
-        h = oa.Hub(config=config)
-        
-        # XXX: temporary compatability hack
-        oa.boop.hub = h
-        oa.boop.core_directory = os.path.dirname(__file__)
+    while not hub.finished.is_set():
+        try:
+            command_loop(hub)
+        except Exception as ex:
+            logging.error("Command Loop: {}".format(ex))
 
-        h.run()
-
-        _map = [
-            ('ear', 'speech_recognition'),
-            ('speech_recognition', 'mind'),
-        ]
-        for _in, _out in _map:
-            h.parts[_in].output += [h.parts[_out]]
-
-        while not h.finished.is_set():
-            try:
-                command_loop(h)
-            except Exception as ex:
-                logging.error("Command Loop: {}".format(ex))
-
-        h.ready.wait()
-
-    except KeyboardInterrupt:
-        logging.info("Ctrl-C Pressed")
-
-        logging.info("Signaling Shutdown")
-        h.finished.set()
-
-        logging.info('Waiting on threads')
-        [thr.join() for thr in h.thread_pool]
-        logging.info('Threads closed')
+    hub.ready.wait()
 
 
 if __name__ == '__main__':
@@ -77,7 +42,42 @@ if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO if not args.debug else logging.DEBUG, filename=args.log_file, format=log_template)
     logging.info("Start Open Assistant")
 
-    start(
-        config_path=args.config_file,
-    )
-    quit(0)
+    config = {
+        'module_path': [
+            os.path.join(os.path.dirname(__file__), 'modules'),
+        ],
+        'modules': [
+            'voice',
+            'sound',
+            'ear',
+            'speech_recognition',
+            'mind',
+        ],
+    }
+
+    import json
+    config_path = args.config_file
+    if config_path is not None:
+        config.update(json.load(open(config_path)))
+
+    hub = oa.Hub(config=config)
+
+    # XXX: temporary compatability hack
+    oa.boop.hub = hub
+    oa.boop.core_directory = os.path.dirname(__file__)
+
+    try:
+        start(
+            hub,
+            config_path=args.config_file,
+        )
+
+    except KeyboardInterrupt:
+        logging.info("Ctrl-C Pressed")
+
+        logging.info("Signaling Shutdown")
+        hub.finished.set()
+
+        logging.info('Waiting on threads')
+        [thr.join() for thr in hub.thread_pool]
+        logging.info('Threads closed')
