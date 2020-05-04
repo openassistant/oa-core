@@ -132,7 +132,7 @@ sys = Core()
 sys.os = switch(platform.system(),'Windows','win','Linux','linux','Darwin','mac','unknown')
 sys.user = getpass.getuser()
 sys.host = socket.gethostname()
-#sys.ip = socket.gethostbyname(oa.sys.host)
+sys.ip = socket.gethostbyname(sys.host)
 sys.free_memory = lambda : psutil.virtual_memory()[4]
 
 # Date functions.
