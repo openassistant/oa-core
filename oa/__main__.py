@@ -36,7 +36,7 @@ def start(**kwargs):
         h = oa.Hub(config=config)
         
         # XXX: temporary compatability hack
-        oa.boop.oa = h
+        oa.boop.hub = h
         oa.boop.core_directory = os.path.dirname(__file__)
 
         oa.boop.oa.mind = None
