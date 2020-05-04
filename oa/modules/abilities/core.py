@@ -13,8 +13,8 @@ def thread_name():
 def current_part():
     """ Return the part name which is associated with the current thread. """
     name = thread_name()
-    if name in oa.boop.oa.parts:
-        return oa.boop.oa.parts[name]
+    if name in oa.boop.hub.parts:
+        return oa.boop.hub.parts[name]
     else:
         err = '%s Error: Cannot find a related part' %name
         logging.error(err)
@@ -38,8 +38,8 @@ def info(*args, **kwargs):
         string += ' '.join([str(v) for v in args]) + '\n'
     if kwargs:
         string += '\n'.join([' %s: %s' %(str(k), str(v)) for k, v in kwargs.items()])
-    if hasattr(oa.boop.oa.parts, 'console') and not oa.boop.oa.finished.is_set():
-        oa.boop.oa.parts.console.wire_in.put(string)
+    if hasattr(oa.boop.hub.parts, 'console') and not oa.boop.hub.finished.is_set():
+        oa.boop.hub.parts.console.wire_in.put(string)
     else:
         print(string)
 
@@ -47,7 +47,7 @@ def get(part = None, timeout = .1):
     """ Get a message from the wire. If there is no part found, take a message from the current wire input thread. (No parameters. Thread safe) """
     if part is None:
         part = current_part()
-    while not oa.boop.oa.finished.is_set():
+    while not oa.boop.hub.finished.is_set():
         try:
             return part.wire_in.get(timeout = timeout)
         except oa.boop.queue.Empty:
@@ -56,7 +56,7 @@ def get(part = None, timeout = .1):
 
 def put(part, value):
     """ Put a message on the wire. """
-    oa.boop.oa.parts[part].wire_in.put(value)
+    oa.boop.hub.parts[part].wire_in.put(value)
 
 def empty(part = None):
     """ Remove all messages from `part.wire_in` input queue.

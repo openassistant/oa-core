@@ -39,9 +39,6 @@ def start(**kwargs):
         oa.boop.hub = h
         oa.boop.core_directory = os.path.dirname(__file__)
 
-        oa.boop.oa.mind = None
-        oa.boop.oa.minds = {}
-
         h.run()
 
         _map = [

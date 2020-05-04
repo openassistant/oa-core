@@ -28,7 +28,7 @@ def diagnostics():
                 break
 
     # Memory Free.
-    response += 'System memory has %.0f Gigabytes free...\n' % oa.boop.bytes2gb(oa.boop.oa.sys.free_memory())
+    response += 'System memory has %.0f Gigabytes free...\n' % oa.boop.bytes2gb(oa.boop.sys.free_memory())
 
     # Drive Space Free.
     response += 'Internal hard drive has %.0f Gigabytes free...\n' % oa.boop.bytes2gb(psutil.disk_usage('/').free)
@@ -110,7 +110,7 @@ def lines_to_dict(sLines, func = lambda s : s, params = {}):
        You there?: yes... i am here...
        You think: i think sometimes...
     """
-    params.update(oa.boop.oa.sys.__dict__)
+    params.update(oa.boop.sys.__dict__)
     sLines = sLines %params
     ret = dict([[k, func(v)] for k, v in [[x.strip() for x in ph.split(':')] for ph in sLines.split('\n') if ph.strip() != '']])
     return ret
@@ -120,17 +120,17 @@ def say_random(slist):
 
 def say_time():
     """ Speak the current time. """
-    time = oa.boop.oa.sys.time_text()
+    time = oa.boop.sys.time_text()
     say('- The time is %s.' %time)
 
 def say_day():
     """ Speak the current day. """
-    day = oa.boop.oa.sys.day_name()
+    day = oa.boop.sys.day_name()
     say('- Today is %s.' %day)
 
 def say_last_command(string = ''):
-    say(string + ' ' + oa.boop.oa.last_command)
+    say(string + ' ' + oa.boop.last_command)
 
 def get_sys(s):
     """ Return system information from `oa.sys`. """
-    return getattr(oa.boop.oa.sys, s)
+    return getattr(oa.boop.sys, s)
