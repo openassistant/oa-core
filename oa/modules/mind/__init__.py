@@ -42,8 +42,8 @@ def set_mind(name, history=True):
     if history:
         _history.append(name)
         
-    oa.boop.oa.mind = oa.boop.oa.minds[name]
-    return oa.boop.oa.mind
+    oa.boop.mind = oa.boop.minds[name]
+    return oa.boop.mind
 
 def switch_back():
     """ Switch back to the previous mind. (from `switch_hist`). """
@@ -58,7 +58,7 @@ def load_minds():
         if mind.lower().endswith('.py'):
             logging.info("<- {}".format(mind))
             m = load_mind(os.path.join(mind_path, mind))
-            oa.boop.oa.minds[m.name] = m
+            oa.boop.minds[m.name] = m
     logging.info('Minds loaded!')
 
 def _in(ctx):
@@ -73,7 +73,7 @@ def _in(ctx):
     while not ctx.finished.is_set():
         text = get()
         logging.debug('Input: {}'.format(text))
-        mind = oa.boop.oa.mind
+        mind = oa.boop.mind
         if (text is None) or (text.strip() == ''):
             # Nothing to do.
             continue

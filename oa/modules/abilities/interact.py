@@ -9,10 +9,10 @@ from oa.modules.abilities.system import find_file
 def answer(text):
     """ Save the return function parameter and switch to previous mind. """
     text = text.lower()
-    func = oa.boop.oa.mind.user_choices.get(text, None)
+    func = oa.boop.mind.user_choices.get(text, None)
     if func:
         call_function(func)
-    oa.boop.oa.mind.switch_back()
+    oa.boop.mind.switch_back()
 
 def yes_no(msg, func):
     """ Receive a yes or no answer from the user. """
@@ -22,12 +22,12 @@ def yes_no(msg, func):
 def user_answer(mind_for_answer, choices):
     """ Within any `mind` we will receive a one word answer command (voice, file path, etc, any) from the user. """
     mind(mind_for_answer, 0) # No history.
-    oa.boop.oa.mind.user_choices = choices
+    oa.boop.mind.user_choices = choices
 
 def say(text):
     """ Text to speech using the `oa.audio.say` defined function. """
     text = call_function(text)
-    oa.boop.oa.sys.last_say = text
+    oa.boop.sys.last_say = text
 
     # Put message into voice.
     put('voice', text)
@@ -45,4 +45,4 @@ def play(fname):
 
 def mind(name, history = 1):
     """ Switch the current mind to `name`. """
-    oa.boop.oa.parts['mind'].set_mind(name, history)
+    oa.boop.hub.parts['mind'].set_mind(name, history)

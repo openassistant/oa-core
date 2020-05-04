@@ -24,4 +24,4 @@ def list_commands():
 
 @command("stop listening")
 def do_exit():
-    oa.boop.oa.finished.set()
+    oa.boop.hub.finished.set()
