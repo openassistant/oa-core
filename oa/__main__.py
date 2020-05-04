@@ -14,11 +14,6 @@ def start(hub, **kwargs):
     """Initialize and run the OpenAssistant Agent"""
     from oa.util.repl import command_loop
 
-    import json
-    config_path = kwargs.get('config_path')
-    if config_path is not None:
-        config.update(json.load(open(config_path)))
-
     # XXX: temporary compatability hack
     oa.boop.hub = hub
     oa.boop.core_directory = os.path.dirname(__file__)
@@ -63,6 +58,11 @@ if __name__ == '__main__':
             'mind',
         ],
     }
+
+    import json
+    config_path = args.config_file
+    if config_path is not None:
+        config.update(json.load(open(config_path)))
 
     h = oa.Hub(config=config)
 
