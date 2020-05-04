@@ -1,0 +1,146 @@
+# core.py - Essential OA classes and functions.
+
+import datetime
+import getpass
+import importlib
+import inspect
+import logging
+import os
+import platform
+import psutil
+import queue
+import socket
+
+
+def bytes2gb(size):
+    """ Convert size from bytes to gigabytes.
+        Precision: 2 digits after point. """
+    return size / float(1 << 30)
+
+
+def isCallable(obj):
+    """ Return True if an object is callable, or False if not. """
+    return hasattr(obj, "__call__")
+
+
+def switch(*args):
+    """ Switch function for counting variable arguments.
+        Example: switch(var, 'aa', 1, 'bb', 2, 4)
+        Similar to:
+        if var == 'aa' return 1
+        elif var == 'bb' return 2
+        else return 4
+    """
+    lA = len(args)
+    if lA <= 2:
+        raise Exception('Switch: Wrong argument number.\n Arguments = %s' %str(args))
+
+    # If not found, return None.
+    ret = None
+    if lA % 2 == 0:
+        # With else statement.
+        ret = args[-1]
+        args = args[:-1]
+    # Check key:value via dictionary.
+    return dict(zip(args[1::2], args[2::2])).get(args[0], ret)
+
+
+class Core(object):
+    """ General template to store all properties. If attributes do not exist, assign them and return Core(). """
+    def __init__(self, *args, **kwargs):
+        if args:
+            self.args = args
+        # Get keyword arguments.
+        self.__dict__.update(kwargs)
+
+    def __nonzero__(self):
+        return len(self.__dict__)
+
+    def __bool__(self):
+        return len(self.__dict__) > 0
+
+    def __getitem__(self, key):
+        return getattr(self, key)
+
+    def __setitem__(self, key, value):
+        setattr(self, key, value)
+
+    def __iter__(self):
+        yield from self.__dict__
+
+    def __len__(self):
+        return len(self.__dict__)
+
+
+class Stub():
+    """ Stubs for delayed command calls. """
+    def __init__(self, o, *args, **kwargs):
+        self.commands = [[o,args,kwargs]]
+
+    def __and__(self, o):
+        self.commands.append(o.commands[0])
+        return self
+
+    def __add__(self, o):
+        """ Redirect to `__and__` operator. """
+        return self & o
+
+    def __call__(self, *args,**kwargs):
+        """ Fill function parameters all at once for real calls and use `perform()`. """
+        ret = Stub(self.commands[0][0])
+        ret.commands[0][1] = args
+        ret.commands[0][2] = kwargs
+        return ret
+
+    def perform(self):
+        """ Call all functions one by one. """
+        ret = []
+        for func, args, kwargs in self.commands:
+            # Check arguments for Stubs and perform them.
+            ret.append(func(*args, **kwargs))
+        if len(ret) == 1:
+            return ret[0]
+        else:
+            return ret
+
+    @classmethod
+    def prepare_stubs(self, module):
+        """ Return dictionary with Stubs of all functions in related `module`. """
+        # Nowait - to call a function without delays.
+        ret = {}
+        for name, body in module.__dict__.items():
+
+            # oa.sys and other Core instances.
+            if isinstance(body, Core):
+                ret[name] = body
+            else:
+                if hasattr(body, '__call__'):
+                    # Calling a function with an underscore `_` prefix will execute it immediately without a Stub.
+                    ret['_' + name] = body
+                    ret[name] = Stub(body)
+
+        return ret
+
+""" CORE VARIABLE ASSIGNMENTS """
+oa = Core()
+
+oa.sys = Core()
+oa.sys.os = switch(platform.system(),'Windows','win','Linux','linux','Darwin','mac','unknown')
+oa.sys.user = getpass.getuser()
+oa.sys.host = socket.gethostname()
+#oa.sys.ip = socket.gethostbyname(oa.sys.host)
+oa.sys.free_memory = lambda : psutil.virtual_memory()[4]
+
+# Date functions.
+oa.sys.now = lambda : datetime.datetime.now()
+oa.sys.second = lambda : oa.sys.now().second
+oa.sys.minute = lambda : oa.sys.now().minute
+oa.sys.hour = lambda : oa.sys.now().hour
+oa.sys.day = lambda : oa.sys.now().day
+oa.sys.day_name = lambda : oa.sys.now().strftime("%A")
+oa.sys.month = lambda : oa.sys.now().month
+oa.sys.month_name = lambda : oa.sys.now().strftime("%B")
+oa.sys.year = lambda : oa.sys.now().year
+oa.sys.date_text = lambda : '%d %s %d' %(oa.sys.day(), oa.sys.month_name(), oa.sys.year())
+oa.sys.time_text = lambda : '%d:%d' %(oa.sys.hour(), oa.sys.minute())
+oa.sys.date_time_text = lambda : oa.sys.date_text() + ' ' + oa.sys.time_text()

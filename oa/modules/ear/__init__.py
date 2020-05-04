@@ -7,7 +7,7 @@ import audioop
 import numpy
 import sounddevice
 
-from oa.core import oa
+import oa.boop
 
 DEFAULT_CONFIG = {
     # The `timeout` parameter is the maximum number of seconds that a phrase continues before stopping and returning a result. If the `timeout` is None there will be no phrase time limit.
@@ -41,7 +41,7 @@ DEFAULT_CONFIG = {
     "non_speaking_duration": 0.8,
 }
 
-def _in():
+def _in(ctx):
     _config = DEFAULT_CONFIG.copy()
 
     seconds_per_buffer = _config.get("chunk") / _config.get("sample_rate")
@@ -53,14 +53,14 @@ def _in():
 
     stream = sounddevice.Stream(samplerate=_config.get("sample_rate"), channels=_config.get("channels"), dtype='int16')
     with stream:
-        while not oa.core.finished.is_set():
+        while not ctx.finished.is_set():
             elapsed_time = 0  # Number of seconds of audio read
             buf = b""  # An empty buffer means that the stream has ended and there is no data left to read.
-            while not oa.core.finished.is_set():
+            while not ctx.finished.is_set():
                 frames = collections.deque()
 
                 # Store audio input until the phrase starts
-                while not oa.core.finished.is_set():
+                while not ctx.finished.is_set():
                     # Handle waiting too long for phrase by raising an exception
                     elapsed_time += seconds_per_buffer
                     if _config.get("timeout") and (elapsed_time > _config.get("timeout")):
@@ -86,7 +86,7 @@ def _in():
                 # Read audio input until the phrase ends.
                 pause_count, phrase_count = 0, 0
                 phrase_start_time = elapsed_time
-                while not oa.core.finished.is_set():
+                while not ctx.finished.is_set():
                     # Handle phrase being too long by cutting off the audio.
                     elapsed_time += seconds_per_buffer
                     if _config.get("timeout") and (elapsed_time - phrase_start_time > _config.get("timeout")):

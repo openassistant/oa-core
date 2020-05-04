@@ -1,4 +1,5 @@
-from oa.core import oa
+import oa.boop
+
 from oa.core.util import command_registry
 
 from oa.modules.abilities.interact import say, play, mind
@@ -23,4 +24,4 @@ def list_commands():
 
 @command("stop listening")
 def do_exit():
-    oa.core.finished.set()
+    oa.boop.oa.finished.set()

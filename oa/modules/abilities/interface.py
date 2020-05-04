@@ -1,4 +1,4 @@
-from oa.core import oa
+import oa.boop
 
 from oa.modules.abilities.core import info, put
 from oa.modules.abilities.interact import say

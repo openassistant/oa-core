@@ -16,6 +16,9 @@ class Hub:
         self.thread_pool = []
         self.parts = {}
 
+        self.mind = None
+        self.minds = {}
+
 
     def run(self):
         self.finished.clear()
@@ -78,7 +81,7 @@ def thread_loop(hub, part, b):
 
     while not hub.finished.is_set():
         try:
-            for msg in part._in():
+            for msg in part._in(hub):
                 for listener in part.output:
                     logging.debug('{} -> {}'.format(part.name, listener.name))
                     listener.wire_in.put(msg)
