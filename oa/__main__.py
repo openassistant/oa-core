@@ -14,10 +14,6 @@ def start(hub, **kwargs):
     """Initialize and run the OpenAssistant Agent"""
     from oa.util.repl import command_loop
 
-    # XXX: temporary compatability hack
-    oa.boop.hub = hub
-    oa.boop.core_directory = os.path.dirname(__file__)
-
     hub.run()
 
     _map = [
@@ -64,11 +60,15 @@ if __name__ == '__main__':
     if config_path is not None:
         config.update(json.load(open(config_path)))
 
-    h = oa.Hub(config=config)
+    hub = oa.Hub(config=config)
+
+    # XXX: temporary compatability hack
+    oa.boop.hub = hub
+    oa.boop.core_directory = os.path.dirname(__file__)
 
     try:
         start(
-            h,
+            hub,
             config_path=args.config_file,
         )
 
@@ -76,8 +76,8 @@ if __name__ == '__main__':
         logging.info("Ctrl-C Pressed")
 
         logging.info("Signaling Shutdown")
-        h.finished.set()
+        hub.finished.set()
 
         logging.info('Waiting on threads')
-        [thr.join() for thr in h.thread_pool]
+        [thr.join() for thr in hub.thread_pool]
         logging.info('Threads closed')
