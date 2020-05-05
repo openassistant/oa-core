@@ -10,7 +10,7 @@ command = command_registry(kws)
 
 @command("root mind")
 def hello_world():
-     say('- Hello world!')
+    say('- Hello world!')
 
 @command("close assistant")
 def close_assistant():

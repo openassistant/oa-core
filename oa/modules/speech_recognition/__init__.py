@@ -6,15 +6,15 @@ import logging
 import pocketsphinx
 import requests
 
-from oa.core import oa
-from oa.core.util import Core
-from oa.modules.abilities.core import get, empty
+import oa.legacy
+
+from oa.modules.abilities.core import get, empty, info
 from oa.modules.abilities.system import download_file, write_file, stat_mtime
 
 _decoders = {}
 
 def config_stt(cache_dir, keywords, kws_last_modification_time_in_sec = None):
-    _ = Core()
+    _ = oa.legacy.Core()
     cache_path = lambda x: os.path.join(cache_dir, x)
     _.lang_file = cache_path('lm')
     _.fsg_file = None
@@ -91,7 +91,7 @@ def update_language(_):
 
 def get_decoder():
     # XXX: race condition when mind isn't set yet
-    mind = oa.core.mind
+    mind = oa.legacy.mind
     if not hasattr(_decoders, mind.name):
         # Configure Speech to text dictionaries.
         ret = config_stt(mind.cache_dir, mind.kws.keys(), stat_mtime(mind.module))
@@ -112,9 +112,9 @@ def get_decoder():
 
     return ret
 
-def _in():
+def _in(ctx):
     mute = 0
-    while not oa.core.finished.is_set():
+    while not ctx.finished.is_set():
         raw_data = get()
         if isinstance(raw_data, str):
             if raw_data == 'mute':
