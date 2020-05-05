@@ -8,7 +8,7 @@ import os
 
 import oa
 
-import oa.boop
+import oa.legacy
 
 def start(hub, **kwargs):
     """Initialize and run the OpenAssistant Agent"""
@@ -63,8 +63,8 @@ if __name__ == '__main__':
     hub = oa.Hub(config=config)
 
     # XXX: temporary compatability hack
-    oa.boop.hub = hub
-    oa.boop.core_directory = os.path.dirname(__file__)
+    oa.legacy.hub = hub
+    oa.legacy.core_directory = os.path.dirname(__file__)
 
     try:
         start(

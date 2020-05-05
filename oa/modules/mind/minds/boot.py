@@ -1,4 +1,4 @@
-import oa.boop
+import oa.legacy
 
 from oa.core.util import command_registry
 
@@ -24,4 +24,4 @@ def list_commands():
 
 @command("stop listening")
 def do_exit():
-    oa.boop.hub.finished.set()
+    oa.legacy.hub.finished.set()

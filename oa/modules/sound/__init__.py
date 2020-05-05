@@ -4,8 +4,6 @@ import logging
 
 import playsound
 
-import oa.boop
-
 from oa.modules.abilities.core import get, put
 
 def _in(ctx):

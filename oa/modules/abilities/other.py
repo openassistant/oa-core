@@ -5,7 +5,7 @@ import string
 
 import feedparser
 
-import oa.boop
+import oa.legacy
 
 from oa.modules.abilities.core import info
 from oa.modules.abilities.interact import say
@@ -28,13 +28,13 @@ def diagnostics():
                 break
 
     # Memory Free.
-    response += 'System memory has %.0f Gigabytes free...\n' % oa.boop.bytes2gb(oa.boop.sys.free_memory())
+    response += 'System memory has %.0f Gigabytes free...\n' % oa.legacy.bytes2gb(oa.legacy.sys.free_memory())
 
     # Drive Space Free.
-    response += 'Internal hard drive has %.0f Gigabytes free...\n' % oa.boop.bytes2gb(psutil.disk_usage('/').free)
+    response += 'Internal hard drive has %.0f Gigabytes free...\n' % oa.legacy.bytes2gb(psutil.disk_usage('/').free)
 
     # Network Status.
-    response += oa.boop.switch(is_online(), True, 'Internet access is currently available.', 'We are offline.')
+    response += oa.legacy.switch(is_online(), True, 'Internet access is currently available.', 'We are offline.')
 
     say(response)
 
@@ -110,7 +110,7 @@ def lines_to_dict(sLines, func = lambda s : s, params = {}):
        You there?: yes... i am here...
        You think: i think sometimes...
     """
-    params.update(oa.boop.sys.__dict__)
+    params.update(oa.legacy.sys.__dict__)
     sLines = sLines %params
     ret = dict([[k, func(v)] for k, v in [[x.strip() for x in ph.split(':')] for ph in sLines.split('\n') if ph.strip() != '']])
     return ret
@@ -120,17 +120,17 @@ def say_random(slist):
 
 def say_time():
     """ Speak the current time. """
-    time = oa.boop.sys.time_text()
+    time = oa.legacy.sys.time_text()
     say('- The time is %s.' %time)
 
 def say_day():
     """ Speak the current day. """
-    day = oa.boop.sys.day_name()
+    day = oa.legacy.sys.day_name()
     say('- Today is %s.' %day)
 
 def say_last_command(string = ''):
-    say(string + ' ' + oa.boop.oa.last_command)
+    say(string + ' ' + oa.legacy.oa.last_command)
 
 def get_sys(s):
     """ Return system information from `oa.sys`. """
-    return getattr(oa.boop.sys, s)
+    return getattr(oa.legacy.sys, s)

@@ -4,8 +4,6 @@ import logging
 
 import pyttsx3
 
-import oa.boop
-
 from oa.modules.abilities.core import get, put
 
 
