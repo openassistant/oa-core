@@ -4,7 +4,7 @@ import importlib
 import logging
 import os
 
-import oa.boop
+import oa.legacy
 
 from oa.modules.abilities.core import info, call_function, get
 from oa.modules.abilities.system import read_file, sys_exec
@@ -16,10 +16,10 @@ _history = []
 
 def load_mind(path):
     """ Load a mind by its `name`. """
-    mind = oa.boop.Core()
+    mind = oa.legacy.Core()
     mind.module = path
     mind.name = os.path.splitext(os.path.basename(mind.module))[0]
-    mind.cache_dir = os.path.join(oa.boop.core_directory, 'cache', mind.name)
+    mind.cache_dir = os.path.join(oa.legacy.core_directory, 'cache', mind.name)
 
     # Make directories.
     if not os.path.exists(mind.cache_dir):
@@ -42,8 +42,8 @@ def set_mind(name, history=True):
     if history:
         _history.append(name)
         
-    oa.boop.mind = oa.boop.minds[name]
-    return oa.boop.mind
+    oa.legacy.mind = oa.legacy.minds[name]
+    return oa.legacy.mind
 
 def switch_back():
     """ Switch back to the previous mind. (from `switch_hist`). """
@@ -58,7 +58,7 @@ def load_minds():
         if mind.lower().endswith('.py'):
             logging.info("<- {}".format(mind))
             m = load_mind(os.path.join(mind_path, mind))
-            oa.boop.minds[m.name] = m
+            oa.legacy.minds[m.name] = m
     logging.info('Minds loaded!')
 
 def _in(ctx):
@@ -73,7 +73,7 @@ def _in(ctx):
     while not ctx.finished.is_set():
         text = get()
         logging.debug('Input: {}'.format(text))
-        mind = oa.boop.mind
+        mind = oa.legacy.mind
         if (text is None) or (text.strip() == ''):
             # Nothing to do.
             continue
@@ -85,13 +85,13 @@ def _in(ctx):
         if fn is not None:
             # There are two types of commands, stubs and command line text.
             # For stubs, call `perform()`.
-            if oa.boop.isCallable(fn):
+            if oa.legacy.isCallable(fn):
                 call_function(fn)
-                oa.boop.oa.last_command = t
+                oa.legacy.oa.last_command = t
             # For strings, call `sys_exec()`.
             elif isinstance(fn, str):
                 sys_exec(fn)
-                oa.boop.oa.last_command = t
+                oa.legacy.oa.last_command = t
             else:
                 # Any unknown command raises an exception.
                 raise Exception("Unable to process: {}".format(text))

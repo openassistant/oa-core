@@ -4,7 +4,7 @@ import subprocess
 
 import requests
 
-import oa.boop
+import oa.legacy
 
 from oa.modules.abilities.core import info
 
@@ -20,7 +20,7 @@ def find_file(fname):
     """ Search for a file with `fname` in all OA sub-directories.
         Able to use a short name if it is unique.
         NEED FIX - Put file names into Cache list ? """
-    core_directory = oa.boop.core_directory
+    core_directory = oa.legacy.core_directory
     ret = glob.glob(os.path.join(core_directory,'modules/mind/minds/*/%s' %fname))
     if not ret:
         ret = glob.glob(os.path.join(core_directory,'modules/mind/minds/*/*/%s' %fname))

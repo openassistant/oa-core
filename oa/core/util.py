@@ -18,7 +18,7 @@ def load_module(path):
     import importlib
     import queue
 
-    from oa.boop import Core
+    from oa.legacy import Core
 
     # An OA module is a folder with an __oa__.py file
     if not all([
