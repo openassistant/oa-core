@@ -8,13 +8,13 @@ Open Assistant is a private open source personal assistant prototype able to com
 
 ### Windows
 
-#### Click & Run
+#### _Click & Run_
 
 * Download [http://openassistant.org/download/oa_0.21_windows.zip](http://openassistant.org/download/oa_0.21_windows.zip)
 * Unzip package
 * Launch `oa.exe` in "Open Assistant" folder
 
-#### Python 3
+#### _Python 3_
 
 * Install [common list of Python packages](https://www.python.org/downloads/windows/)
 * Install Windows-specific dependencies: ``pip install pywin32``
