@@ -64,8 +64,3 @@ wheels/
 ehthumbs.db
 Thumbs.db
 **/.vscode
-
-# Operational files for module. #
-#################################
-oa/cache/boot/lm
-oa/cache/root/lm
