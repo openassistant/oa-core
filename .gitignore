@@ -1,5 +1,5 @@
 # Byte-compiled / optimized / DLL files
-__pycache__/
+**/__pycache__/
 *.py[cod]
 *$py.class
 
@@ -52,14 +52,20 @@ wheels/
 *.log
 *.sql
 *.sqlite
-__pycache__
+**/__pycache__
 
 # OS generated files #
 ######################
-.DS_Store
-.DS_Store?
+**/.DS_Store
+**/.DS_Store?
 ._*
 .Spotlight-V100
 .Trashes
 ehthumbs.db
 Thumbs.db
+**/.vscode
+
+# Operational files for module. #
+#################################
+oa/cache/boot/lm
+oa/cache/root/lm

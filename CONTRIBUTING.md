@@ -11,7 +11,7 @@
 
 * ``boot.py`` - First mind booted. Listens for "open assistant" vocal command to launch ``root.py``.
 * ``root.py`` - Core system mind (will be configured specifically for various operating systems).
- 
+
 ## Parts
 
 * ``console.py`` - Display messages in the console.
@@ -23,66 +23,51 @@
 * ``stt.py`` - Internal speech to text.
 * ``voice.py`` - Text to speech via speakers.
 * ``mind.py``  - Load and control all minds.
-  
-  About parts:
-    ``_in()`` - function which `yields` processed data. Each part works in a separate thread.
-    
-    Each part reads messages (signals) from devices and/or from an input message wire (``wire_in``).
-    
-    To send messages to a part ('voice' for example) use: ``put('voice','any sentence')``
-    To read messages (for current part) use: ``data = get()`` (get waits until any messages appear on the wire).
-    
-    In sophisticated cases you may use ``wire_in`` directly (with or without locks).
-    
-    Newly added parts will start automatically.
 
-	  
-# To-Do List
+### About parts
+
+``_in()`` - function which `yields` processed data. Each part works in a separate thread.
+
+Each part reads messages (signals) from devices and/or from an input message wire (``wire_in``).
+
+To send messages to a part ('voice' for example) use: ``put('voice','any sentence')``
+To read messages (for current part) use: ``data = get()`` (get waits until any messages appear on the wire).
+
+In sophisticated cases you may use ``wire_in`` directly (with or without locks).
+
+Newly added parts will start automatically.
+
+---
+
+## To-Do List
 
 Our current goals are to simplify and restructure modules to provide easy customization, operating system independence, as well as to implement more sophisticated logic such as machine learning (TensorFlow).
 
 We would like to establish an OA.Agents blockchain network, add the ability for customization on fly (adding or changing commands via voice), provide a graphical interface, and build auto installer scripts.
 
-Develop further abilities and minds.
+1. Develop further abilities and minds.
+1. Improve speech recogition and voice synthesis.
+1. Make OA work transparently in Windows, Mac, Linux, and all other operating systems.
+1. Display.py (use embedded browser as a display).
+    * Messages / windows / dialogs / video / input / search / database browser.
+    * Using embedded chromium: [https://github.com/cztomczak/cefpython](https://github.com/cztomczak/cefpython)
+1. Keyboard command input.
+1. Add new commands via voice (extend mind functionality on fly).
+1. Eye tracking system (mouse control via eyes and video camera):
+    * [https://github.com/esdalmaijer/webcam-eyetracker](https://github.com/esdalmaijer/webcam-eyetracker)
+    * [https://github.com/esdalmaijer/PyGaze](https://github.com/esdalmaijer/PyGaze)
+    * [https://github.com/pupil-labs/pupil](https://github.com/pupil-labs/pupil)
+1. Emotional interaction / lip reading (advanced functionality):
+    * [https://github.com/deepconvolution/LipNet](https://github.com/deepconvolution/LipNet)
+    * [https://github.com/rizkiarm/LipNet](https://github.com/rizkiarm/LipNet)
+1. 3D object creation via voice using programmable Openscad:
+    * [https://github.com/SolidCode/SolidPython](https://github.com/SolidCode/SolidPython)
+1. Build a simple installer for all operating systems via PyInstaller:
+    * [http://www.pyinstaller.org](http://www.pyinstaller.org)
 
-Improve speech recogition and voice synthesis.
+---
 
-Make OA work transparently in Windows, Mac, Linux, and all other operating systems.
-
-Display.py (use embedded browser as a display).
-
- Messages / windows / dialogs / video / input / search / database browser.
-  
- Using embedded chromium: https://github.com/cztomczak/cefpython
-	
-Keyboard command input.
-
-Add new commands via voice (extend mind functionality on fly).
-
-Eye tracking system (mouse control via eyes and video camera):
-
- https://github.com/esdalmaijer/webcam-eyetracker
- 
- https://github.com/esdalmaijer/PyGaze
- 
- https://github.com/pupil-labs/pupil
-
-Emotional interaction / lip reading (advanced functionality):
-
- https://github.com/deepconvolution/LipNet
- 
- https://github.com/rizkiarm/LipNet
-
-3D object creation via voice using programmable Openscad:
-
- https://github.com/SolidCode/SolidPython
-
-Build a simple installer for all operating systems via PyInstaller:
-
- http://www.pyinstaller.org
-
-
-# Join the Team
+## Join the Team
 
 Feel free to fork and enhance this code!
 
