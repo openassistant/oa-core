@@ -2,17 +2,41 @@
 
 [General Open Assistant overview](http://openassistant.org/wp/)
 
-## Core
+## Bootstrap Process
 
-* ``oa.py`` - Main Open Assistant loading module.
-* ``core.py`` - Essential functions and utilities. This also contains additional functions to play sounds, run diagnostics, report the weather, and read the news. (These functions will eventually be split into individual 'ability files'). Look within 'minds/root.py' for various voice command examples.
+`oa.__main__.py` bootstraps the system. Responsible for loading config, setting up logging, and starting up the hub and legacy stacks...
 
-## Minds
+A call to a start() function within `oa.__main__.py` imports a command_loop function, then `oa.core.hub::run()` is kicked off.
+
+`oa.core.hub::run()` clears the thread finished flag, loads the modules listed in the "modules" passed over from the config using `oa.util::_load_modules()` and passing the module path. Instantiated module
+object is then stored in the `hub.parts` dictionary with the module name as the key.
+
+After the modules are instantiated and stored, `oa.core.hub::_start_modules()` iterates through the list of modules to instantiate thread barriers and module threads, then starts them using the oa.core.hub::thread_loop() function, passing itself, the module, and the thread barrier.
+
+`oa.core.hub::thread_loop()` calls the module initialization method, if it exists, and then each thread loops waiting to hear for messages from it's upstream resource.
+
+## System Parts
+
+### Core
+
+#### Hub
+
+TODO
+
+#### Agent
+
+TODO
+
+#### Util
+
+TODO
+
+### Minds
 
 * ``boot.py`` - First mind booted. Listens for "open assistant" vocal command to launch ``root.py``.
 * ``root.py`` - Core system mind (will be configured specifically for various operating systems).
 
-## Parts
+### Modules
 
 * ``console.py`` - Display messages in the console.
 * ``display.py`` - Show messages/windows/dialogs/video in Python web browser (under development).
@@ -24,7 +48,7 @@
 * ``voice.py`` - Text to speech via speakers.
 * ``mind.py``  - Load and control all minds.
 
-### About parts
+#### About parts
 
 ``_in()`` - function which `yields` processed data. Each part works in a separate thread.
 
