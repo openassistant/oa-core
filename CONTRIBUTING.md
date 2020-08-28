@@ -4,16 +4,26 @@
 
 ## Bootstrap Process
 
-`oa.__main__.py` bootstraps the system. Responsible for loading config, setting up logging, and starting up the hub and legacy stacks...
+`oa.__main__.py` bootstraps the system. Responsible for loading config, setting up logging,
+and starting up the hub and legacy stacks...
 
-A call to a start() function within `oa.__main__.py` imports a command_loop function, then `oa.core.hub::run()` is kicked off.
+A call to a start() function within `oa.__main__.py` imports a command_loop function, then
+`oa.core.hub::run()` is kicked off.
 
-`oa.core.hub::run()` clears the thread finished flag, loads the modules listed in the "modules" passed over from the config using `oa.util::_load_modules()` and passing the module path. Instantiated module
-object is then stored in the `hub.parts` dictionary with the module name as the key.
+`oa.core.hub::run()` clears the thread finished flag, loads the modules listed in the "modules"
+configuration item passed over from the config by calling `oa.core.hub::_load_modules()`, which
+is a wrapper for `oa.core.util::load_module()`, passing the module path. Instantiated module
+objects are then stored in the `hub.parts` dictionary with the module name as the key.
 
-After the modules are instantiated and stored, `oa.core.hub::_start_modules()` iterates through the list of modules to instantiate thread barriers and module threads, then starts them using the oa.core.hub::thread_loop() function, passing itself, the module, and the thread barrier.
+After the modules are instantiated and stored, `oa.core.hub::_start_modules()` iterates through
+the list of modules to instantiate thread barriers and module threads, then starts them using
+the `oa.core.hub::thread_loop()` function, passing itself, the module, and the thread barrier.
 
-`oa.core.hub::thread_loop()` calls the module initialization method, if it exists, and then each thread loops waiting to hear for messages from it's upstream resource.
+`oa.core.hub::thread_loop()` calls the module initialization method, if it exists, and then
+each thread loops waiting to hear for messages from it's upstream resource.
+
+From there, the `oa.modules.mind` module is the last to load if the system is respecting config
+order. boot and root minds are loaded sequentially, and the system is readied.
 
 ## System Parts
 
@@ -75,7 +85,7 @@ We would like to establish an OA.Agents blockchain network, add the ability for 
 1. Display.py (use embedded browser as a display).
     * Messages / windows / dialogs / video / input / search / database browser.
     * Using embedded chromium: [https://github.com/cztomczak/cefpython](https://github.com/cztomczak/cefpython)
-1. Keyboard command input.
+1. ~~Keyboard command input.~~
 1. Add new commands via voice (extend mind functionality on fly).
 1. Eye tracking system (mouse control via eyes and video camera):
     * [https://github.com/esdalmaijer/webcam-eyetracker](https://github.com/esdalmaijer/webcam-eyetracker)
@@ -88,6 +98,12 @@ We would like to establish an OA.Agents blockchain network, add the ability for 
     * [https://github.com/SolidCode/SolidPython](https://github.com/SolidCode/SolidPython)
 1. Build a simple installer for all operating systems via PyInstaller:
     * [http://www.pyinstaller.org](http://www.pyinstaller.org)
+1. Standardize language for module/part throughout the codebase.
+1. Simplify Core.Hub and Core.Util functionality to move module loading into the hub so that it can handle it's own stuff.
+1. Consider making the command registry a singleton or some sort of OOP pattern so that it can be more modular.
+1. Consider a dependency injection model for module/part loading.
+1. Verify that keyboard command input is working.
+1. Begin writing unit testing.
 
 ---
 
