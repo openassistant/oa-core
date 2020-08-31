@@ -29,19 +29,12 @@ order. boot and root minds are loaded sequentially, and the system is readied.
 
 ### Core
 
-#### Hub
+| Part | Description |
+| ---- | ----------- |
+| Hub | Currently the backbone of the system. Runs in the main thread and manages the child threads containing the loaded modules. Responsible for bootstrapping each module and wiring up each for input and output. |
+| Agent | Does not appear to be currently used. Looks to be an early version of Hub. |
+| Util | Holds the code for the command registry and module loading. |
 
-Currently the backbone of the system. Runs in the main thread and manages the child threads
-containing the loaded modules. Responsible for bootstrapping each module and wiring up each
-for input and output.
-
-#### Agent
-
-Does not appear to be currently used. Looks to be an early version of Hub.
-
-#### Util
-
-Holds the code for the command registry and module loading.
 
 ### Modules
 
@@ -56,45 +49,15 @@ In sophisticated cases you may use ``wire_in`` directly (with or without locks).
 
 Newly added parts will start automatically.
 
-#### abilities
-
-The abilities module contains functional code that is called by other modules to complete
-tasks requested of it via voice or text command with the exception of the `core.py` file.
-
-`core.py` appears responsible for handling some of the communications between modules and
-thread management.
-
-#### ear
-
-Responsible for taking audio from the local sound device and converting it to frame data to
-be passed downstream.
-
-All functionality is fired through `__init__.py::in()`.
-
-#### mind
-
-Contains the boot and root minds, which define commands to add to the command registry.
-
-Each mind has it's own set of commands. Root mind used to come online after voice command,
-but now comes up automatically as part of boot strapping.
-
-Boot mind commands are focused on low level system functions such as listing commands and
-shutting the system down, where root mind is responsible for all the other commands.
-
-#### sound
-
-Plays sound files.
-
-#### speech_recognition
-
-Takes frame data from ear and works to decode what was said.
-
-#### voice
-
-Text to speech via speakers. Contains an incoming channel that listens to the bus, using
-pyttsx3 to output.
-
-All functionality is fired through `__init__.py`.
+| Part | Description | 
+| ---- | ----------- |
+| abilities | The abilities module contains functional code that is called by other modules to complete tasks requested of it via voice or text command with the exception of the `core.py` file. `core.py` appears responsible for handling some of the communications between modules and thread management. |
+| ear | Responsible for taking audio from the local sound device and converting it to frame data to be passed downstream. All functionality is fired through `__init__.py::in()`. |
+| mind | Contains the boot and root minds, which define commands to add to the command registry. Each mind has it's own set of commands. Root mind used to come online after voice command, but now comes up automatically as part of boot strapping. Boot mind commands are focused on low level system functions such as listing commands and shutting the system down, where root mind is responsible for all the other commands. |
+| sound | Plays sounds files to the audio output bus via the playsound library. |
+| speech_recognition | Takes frame data from ear and works to decode what was said. |
+| voice | Text to speech via speakers. Contains an incoming channel that listens to the bus, using
+pyttsx3 to output. |
 
 ---
 
