@@ -56,8 +56,7 @@ Newly added parts will start automatically.
 | mind | Contains the boot and root minds, which define commands to add to the command registry. Each mind has it's own set of commands. Root mind used to come online after voice command, but now comes up automatically as part of boot strapping. Boot mind commands are focused on low level system functions such as listing commands and shutting the system down, where root mind is responsible for all the other commands. |
 | sound | Plays sounds files to the audio output bus via the playsound library. |
 | speech_recognition | Takes frame data from ear and works to decode what was said. |
-| voice | Text to speech via speakers. Contains an incoming channel that listens to the bus, using
-pyttsx3 to output. |
+| voice | Text to speech via speakers. Contains an incoming channel that listens to the bus, using pyttsx3 to output. |
 
 ---
 
