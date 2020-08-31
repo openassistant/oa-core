@@ -1,6 +1,6 @@
 # Design Information
 
-[General Open Assistant overview](http://openassistant.org/wp/)
+[General Open Assistant overview](http://openassistant.org/)
 
 ## Bootstrap Process
 
@@ -31,34 +31,19 @@ order. boot and root minds are loaded sequentially, and the system is readied.
 
 #### Hub
 
-TODO
+Currently the backbone of the system. Runs in the main thread and manages the child threads
+containing the loaded modules. Responsible for bootstrapping each module and wiring up each
+for input and output.
 
 #### Agent
 
-TODO
+Does not appear to be currently used. Looks to be an early version of Hub.
 
 #### Util
 
-TODO
-
-### Minds
-
-* ``boot.py`` - First mind booted. Listens for "open assistant" vocal command to launch ``root.py``.
-* ``root.py`` - Core system mind (will be configured specifically for various operating systems).
+Holds the code for the command registry and module loading.
 
 ### Modules
-
-* ``console.py`` - Display messages in the console.
-* ``display.py`` - Show messages/windows/dialogs/video in Python web browser (under development).
-* ``ear.py`` - Listening to audio via microphone.
-* ``eye.py`` - Camera and computer vision (planned).
-* ``keyboard.py`` - Recieve keyboard keys/emulate keyboard keys from input queue (`wire_in`).
-* ``sound.py`` - Play audio file via speakers.
-* ``stt.py`` - Internal speech to text.
-* ``voice.py`` - Text to speech via speakers.
-* ``mind.py``  - Load and control all minds.
-
-#### About parts
 
 ``_in()`` - function which `yields` processed data. Each part works in a separate thread.
 
@@ -70,6 +55,46 @@ To read messages (for current part) use: ``data = get()`` (get waits until any m
 In sophisticated cases you may use ``wire_in`` directly (with or without locks).
 
 Newly added parts will start automatically.
+
+#### abilities
+
+The abilities module contains functional code that is called by other modules to complete
+tasks requested of it via voice or text command with the exception of the `core.py` file.
+
+`core.py` appears responsible for handling some of the communications between modules and
+thread management.
+
+#### ear
+
+Responsible for taking audio from the local sound device and converting it to frame data to
+be passed downstream.
+
+All functionality is fired through `__init__.py::in()`.
+
+#### mind
+
+Contains the boot and root minds, which define commands to add to the command registry.
+
+Each mind has it's own set of commands. Root mind used to come online after voice command,
+but now comes up automatically as part of boot strapping.
+
+Boot mind commands are focused on low level system functions such as listing commands and
+shutting the system down, where root mind is responsible for all the other commands.
+
+#### sound
+
+Plays sound files.
+
+#### speech_recognition
+
+Takes frame data from ear and works to decode what was said.
+
+#### voice
+
+Text to speech via speakers. Contains an incoming channel that listens to the bus, using
+pyttsx3 to output.
+
+All functionality is fired through `__init__.py`.
 
 ---
 
