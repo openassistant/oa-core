@@ -1,30 +1,42 @@
 # Design Information
 
-[General Open Assistant overview](http://openassistant.org/wp/)
+[General Open Assistant overview](http://openassistant.org/)
 
-## Core
+## Bootstrap Process
 
-* ``oa.py`` - Main Open Assistant loading module.
-* ``core.py`` - Essential functions and utilities. This also contains additional functions to play sounds, run diagnostics, report the weather, and read the news. (These functions will eventually be split into individual 'ability files'). Look within 'minds/root.py' for various voice command examples.
+`oa.__main__.py` bootstraps the system. Responsible for loading config, setting up logging,
+and starting up the hub and legacy stacks...
 
-## Minds
+A call to a start() function within `oa.__main__.py` imports a command_loop function, then
+`oa.core.hub::run()` is kicked off.
 
-* ``boot.py`` - First mind booted. Listens for "open assistant" vocal command to launch ``root.py``.
-* ``root.py`` - Core system mind (will be configured specifically for various operating systems).
+`oa.core.hub::run()` clears the thread finished flag, loads the modules listed in the "modules"
+configuration item passed over from the config by calling `oa.core.hub::_load_modules()`, which
+is a wrapper for `oa.core.util::load_module()`, passing the module path. Instantiated module
+objects are then stored in the `hub.parts` dictionary with the module name as the key.
 
-## Parts
+After the modules are instantiated and stored, `oa.core.hub::_start_modules()` iterates through
+the list of modules to instantiate thread barriers and module threads, then starts them using
+the `oa.core.hub::thread_loop()` function, passing itself, the module, and the thread barrier.
 
-* ``console.py`` - Display messages in the console.
-* ``display.py`` - Show messages/windows/dialogs/video in Python web browser (under development).
-* ``ear.py`` - Listening to audio via microphone.
-* ``eye.py`` - Camera and computer vision (planned).
-* ``keyboard.py`` - Recieve keyboard keys/emulate keyboard keys from input queue (`wire_in`).
-* ``sound.py`` - Play audio file via speakers.
-* ``stt.py`` - Internal speech to text.
-* ``voice.py`` - Text to speech via speakers.
-* ``mind.py``  - Load and control all minds.
+`oa.core.hub::thread_loop()` calls the module initialization method, if it exists, and then
+each thread loops waiting to hear for messages from it's upstream resource.
 
-### About parts
+From there, the `oa.modules.mind` module is the last to load if the system is respecting config
+order. boot and root minds are loaded sequentially, and the system is readied.
+
+## System Parts
+
+### Core
+
+| Part | Description |
+| ---- | ----------- |
+| Hub | Currently the backbone of the system. Runs in the main thread and manages the child threads containing the loaded modules. Responsible for bootstrapping each module and wiring up each for input and output. |
+| Agent | Does not appear to be currently used. Looks to be an early version of Hub. |
+| Util | Holds the code for the command registry and module loading. |
+
+
+### Modules
 
 ``_in()`` - function which `yields` processed data. Each part works in a separate thread.
 
@@ -36,6 +48,15 @@ To read messages (for current part) use: ``data = get()`` (get waits until any m
 In sophisticated cases you may use ``wire_in`` directly (with or without locks).
 
 Newly added parts will start automatically.
+
+| Part | Description | 
+| ---- | ----------- |
+| abilities | The abilities module contains functional code that is called by other modules to complete tasks requested of it via voice or text command with the exception of the `core.py` file. `core.py` appears responsible for handling some of the communications between modules and thread management. |
+| ear | Responsible for taking audio from the local sound device and converting it to frame data to be passed downstream. All functionality is fired through `__init__.py::in()`. |
+| mind | Contains the boot and root minds, which define commands to add to the command registry. Each mind has it's own set of commands. Root mind used to come online after voice command, but now comes up automatically as part of boot strapping. Boot mind commands are focused on low level system functions such as listing commands and shutting the system down, where root mind is responsible for all the other commands. |
+| sound | Plays sounds files to the audio output bus via the playsound library. |
+| speech_recognition | Takes frame data from ear and works to decode what was said. |
+| voice | Text to speech via speakers. Contains an incoming channel that listens to the bus, using pyttsx3 to output. |
 
 ---
 
@@ -51,7 +72,7 @@ We would like to establish an OA.Agents blockchain network, add the ability for 
 1. Display.py (use embedded browser as a display).
     * Messages / windows / dialogs / video / input / search / database browser.
     * Using embedded chromium: [https://github.com/cztomczak/cefpython](https://github.com/cztomczak/cefpython)
-1. Keyboard command input.
+1. ~~Keyboard command input.~~
 1. Add new commands via voice (extend mind functionality on fly).
 1. Eye tracking system (mouse control via eyes and video camera):
     * [https://github.com/esdalmaijer/webcam-eyetracker](https://github.com/esdalmaijer/webcam-eyetracker)
@@ -64,6 +85,12 @@ We would like to establish an OA.Agents blockchain network, add the ability for 
     * [https://github.com/SolidCode/SolidPython](https://github.com/SolidCode/SolidPython)
 1. Build a simple installer for all operating systems via PyInstaller:
     * [http://www.pyinstaller.org](http://www.pyinstaller.org)
+1. Standardize language for module/part throughout the codebase.
+1. Simplify Core.Hub and Core.Util functionality to move module loading into the hub so that it can handle it's own stuff.
+1. Consider making the command registry a singleton or some sort of OOP pattern so that it can be more modular.
+1. Consider a dependency injection model for module/part loading.
+1. Verify that keyboard command input is working.
+1. Begin writing unit testing.
 
 ---
 
