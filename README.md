@@ -20,7 +20,7 @@ Open Assistant is a private open source personal assistant prototype able to com
 * Install Windows-specific dependencies: ``pip install pywin32``
 * Install Python dependencies: `pip install -r requirements.txt`
 
-### Mac OS X
+### macOS
 
 * Install [brew](https://brew.sh/) if you have not already.
 * Install pocketsphinx dependencies: `brew install swig`, `brew install espeak`, and `brew install openal-soft`
