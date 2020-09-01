@@ -23,7 +23,7 @@ Open Assistant is a private open source personal assistant prototype able to com
 ### macOS
 
 * Install [brew](https://brew.sh/) if you have not already.
-* Install pocketsphinx dependencies: `brew install swig`, `brew install espeak`, and `brew install openal-soft`
+* Install pocketsphinx dependencies: `brew install swig openal-soft`
 * Link the openal-soft libraries to the include path: `ln -s /usr/local/Cellar/openal-soft/1.20.1/include/AL/* /usr/local/include`
 * Install Python dependencies: `pip3 install -r requirements.txt`
 
