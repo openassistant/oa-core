@@ -1,8 +1,7 @@
+import json
+import os
 import logging
 logger = logging.getLogger(__name__)
-
-import os
-import json
 
 
 class Config:
@@ -33,7 +32,6 @@ class Config:
         self.commands = self._read_commands_file()
         logger.info("Command Count: {}".format(len(self.commands)))
 
-
     def __str__(self):
         return repr(self)
 
@@ -48,7 +46,6 @@ class Config:
         if not os.path.exists(directory):
             os.makedirs(directory)
 
-
     def _read_options_file(self):
         try:
             logger.debug("Reading options from {}".format(self.opt_file))
@@ -57,9 +54,9 @@ class Config:
                 return _options
         except FileNotFoundError:
             # MAKE AN EMPTY OPTIONS NAMESPACE
-            logger.warn("Error reading options file: {path}".format(path=self.opt_file))
+            logger.warn("Error reading options file: {path}".format(
+                path=self.opt_file))
             return {}
-
 
     def _read_commands_file(self):
         try:
@@ -69,5 +66,6 @@ class Config:
                 return _cmds
         except FileNotFoundError:
             # MAKE AN EMPTY COMMANDS NAMESPACE
-            logger.warn("Error reading commands file: {path}".format(path=self.cmd_file))
+            logger.warn("Error reading commands file: {path}".format(
+                path=self.cmd_file))
             return {}
