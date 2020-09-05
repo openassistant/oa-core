@@ -4,6 +4,8 @@
 """Open Assistant reference implementation."""
 
 import logging
+_logger = logging.getLogger(__name__)
+
 import os
 
 import oa
@@ -27,7 +29,7 @@ def start(hub, **kwargs):
         try:
             command_loop(hub)
         except Exception as ex:
-            logging.error("Command Loop: {}".format(ex))
+            _logger.error("Command Loop: {}".format(ex))
 
     hub.ready.wait()
 
@@ -38,9 +40,10 @@ if __name__ == '__main__':
     from oa.util.args import _parser
     args = _parser(sys.argv[1:])
 
-    log_template = "[%(asctime)s] %(levelname)s %(threadName)s [%(filename)s:%(funcName)s:%(lineno)d]: %(message)s"
+    log_template = "[%(asctime)s] %(levelname)s %(threadName)s %(name)s: %(message)s"
     logging.basicConfig(level=logging.INFO if not args.debug else logging.DEBUG, filename=args.log_file, format=log_template)
-    logging.info("Start Open Assistant")
+
+    _logger.info("Start Open Assistant")
 
     config = {
         'module_path': [
@@ -73,11 +76,11 @@ if __name__ == '__main__':
         )
 
     except KeyboardInterrupt:
-        logging.info("Ctrl-C Pressed")
+        _logger.info("Ctrl-C Pressed")
 
-        logging.info("Signaling Shutdown")
+        _logger.info("Signaling Shutdown")
         hub.finished.set()
 
-        logging.info('Waiting on threads')
+        _logger.info('Waiting on threads')
         [thr.join() for thr in hub.thread_pool]
-        logging.info('Threads closed')
+        _logger.info('Threads closed')

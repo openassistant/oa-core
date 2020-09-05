@@ -1,5 +1,5 @@
 import logging
-logger = logging.getLogger(__name__)
+_logger = logging.getLogger(__name__)
 
 import gi
 gi.require_version('Gst', '1.0')
@@ -8,7 +8,7 @@ GObject.threads_init()
 Gst.init(None)
 
 
-logger.debug("Loading")
+_logger.debug("Loading")
 class Recognizer(GObject.GObject):
     __gsignals__ = {
         'finished' : (GObject.SIGNAL_RUN_LAST, GObject.TYPE_NONE,
@@ -18,9 +18,9 @@ class Recognizer(GObject.GObject):
     # def __init__(self, mic=None, dic_file=None, lm_file=None, fsg_file=None):
     def __init__(self, **config):
         GObject.GObject.__init__(self)
-        logger.debug("Initializing Recognizer")
+        _logger.debug("Initializing Recognizer")
         self.commands = {}
-        logger.debug(config)
+        _logger.debug(config)
 
         # Configure Audio Source
         src = config.get('microphone', None)
@@ -45,7 +45,7 @@ class Recognizer(GObject.GObject):
                 ])) +
             ' ! appsink sync=false'
         )
-        logger.debug(cmd)
+        _logger.debug(cmd)
 
         try:
             self.pipeline = Gst.parse_launch(cmd)
@@ -60,11 +60,11 @@ class Recognizer(GObject.GObject):
         bus.connect('message::element', self.result)
 
     def listen(self):
-        logger.debug("\x1b[32mListening\x1b[0m")
+        _logger.debug("\x1b[32mListening\x1b[0m")
         self.pipeline.set_state(Gst.State.PLAYING)
 
     def pause(self):
-        logger.debug("\x1b[31mPaused\x1b[0m")
+        _logger.debug("\x1b[31mPaused\x1b[0m")
         self.pipeline.set_state(Gst.State.PAUSED)
 
     def result(self, bus, msg):
@@ -77,5 +77,5 @@ class Recognizer(GObject.GObject):
         # If We Have A Final Command, Send It For Processing
         command = msg_struct.get_string('hypothesis')
         if command != '' and msg_struct.get_boolean('final')[1]:
-            logger.debug("Heard: {}".format(command))
+            _logger.debug("Heard: {}".format(command))
             self.emit("finished", command)

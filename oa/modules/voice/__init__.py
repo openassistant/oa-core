@@ -1,6 +1,7 @@
 # voice.py - Audio output: Text To Speech (TTS)
 
 import logging
+_logger = logging.getLogger(__name__)
 
 import pyttsx3
 
@@ -22,7 +23,7 @@ def _in(ctx):
 
     while not ctx.finished.is_set():
         s = get()
-        logging.debug("Saying: %s", s)
+        _logger.debug("Saying: %s", s)
 
         # Pause Ear (listening) while talking. Mute TTS.
         # TODO: move this somewhere else
