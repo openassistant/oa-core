@@ -1,10 +1,12 @@
 import logging
 import re
-_logger = logging.getLogger(__name__)
 
+
+_logger = logging.getLogger(__name__)
 regex_mind_command = re.compile(r'^(\S+):')
 
-def command_loop(hub:object) -> None:
+
+def command_loop(hub: object) -> None:
     """Responsible for maintaining command line interface for OA. Interfaces
     textual commands with the hub. Commands are directed to the OA bus addressed
     to the minds by default. Commands can be directed at modules specifically
