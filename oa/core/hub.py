@@ -1,6 +1,8 @@
 # Need something to act as 'core'
 
 import logging
+_logger = logging.getLogger(__name__)
+
 import os
 import threading
 
@@ -34,7 +36,7 @@ class Hub:
         """ Setup all parts. """
 
         for module_repo in self.config.get('module_path', []):
-            logging.info("Loading Modules <- {}".format(module_repo))
+            _logger.info("Loading Modules <- {}".format(module_repo))
 
             for module_name in os.listdir(module_repo):
                 if module_name in self.config.get('modules'):
@@ -43,7 +45,7 @@ class Hub:
                         m.name = module_name
                         self.parts[module_name] = m
                     except Exception as ex:
-                        logging.error("Error loading {}: {}".format(module_name, ex))
+                        _logger.error("Error loading {}: {}".format(module_name, ex))
 
 
     def _start_modules(self):
@@ -65,7 +67,7 @@ def thread_loop(hub, part, b):
     # if not isinstance(part.output, list):
         # raise Exception('No output list defined: ' + part.name)
 
-    logging.debug('Starting')
+    _logger.debug('Starting')
     # ready = threading.Event()
 
     
@@ -80,10 +82,10 @@ def thread_loop(hub, part, b):
         try:
             for msg in part._in(hub):
                 for listener in part.output:
-                    logging.debug('{} -> {}'.format(part.name, listener.name))
+                    _logger.debug('{} -> {}'.format(part.name, listener.name))
                     listener.wire_in.put(msg)
         except Exception as ex:
-            logging.error("Error processing queue: {}".format(ex))
+            _logger.error("Error processing queue: {}".format(ex))
 
 
-    logging.debug('Stopped')
+    _logger.debug('Stopped')

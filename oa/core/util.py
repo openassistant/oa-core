@@ -1,3 +1,7 @@
+import logging
+_logger = logging.getLogger(__name__)
+
+
 def command_registry(kws):
     def command(cmd):
         def _command(fn):
@@ -28,7 +32,7 @@ def load_module(path):
 
     # Import package
     module_name = os.path.basename(path)
-    logging.info('{} <- {}'.format(module_name, path))
+    _logger.info('{} <- {}'.format(module_name, path))
     M = importlib.import_module("oa.modules"+'.{}'.format(module_name))
 
     # If the module provides an input queue, link it

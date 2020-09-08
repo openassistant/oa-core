@@ -1,6 +1,9 @@
 # Open Assistant
 
 import logging
+_logger = logging.getLogger(__name__)
+
+import logging
 import os
 import threading
 
@@ -8,7 +11,7 @@ import threading
 class Agent:
 
     def __init__(self, home=None, **opts):
-        logging.debug(self)
+        _logger.debug(self)
         self.finished = threading.Event()
 
         self.home = home if home is not None else os.getcwd()
