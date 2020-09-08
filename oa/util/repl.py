@@ -1,4 +1,6 @@
 import logging
+_logger = logging.getLogger(__name__)
+
 
 def command_loop(hub:object) -> None:
     """Responsible for maintaining command line interface for OA. Interfaces
@@ -22,7 +24,7 @@ def command_loop(hub:object) -> None:
             print("Help Stuff")
         elif cmd.find(' ') > -1:
             p, m = cmd.split(' ', 1)
-            logging.debug("{} <- {}".format(p, m))
+            _logger.debug("{} <- {}".format(p, m))
             hub.put(p, m)
         else:
             print("Unrecognized command: {}".format(cmd))

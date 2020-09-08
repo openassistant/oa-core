@@ -1,4 +1,6 @@
 import logging
+_logger = logging.getLogger(__name__)
+
 import threading
 
 import oa.legacy
@@ -17,7 +19,7 @@ def current_part():
         return oa.legacy.hub.parts[name]
     else:
         err = '%s Error: Cannot find a related part' %name
-        logging.error(err)
+        _logger.error(err)
         raise Exception(err)
 
 def call_function(func_or_value):

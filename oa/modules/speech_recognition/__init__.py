@@ -1,5 +1,8 @@
 # stt.py - Speech to text.
 
+import logging
+_logger = logging.getLogger(__name__)
+
 import os, re, time
 import logging
 
@@ -118,10 +121,10 @@ def _in(ctx):
         raw_data = get()
         if isinstance(raw_data, str):
             if raw_data == 'mute':
-                logging.debug('Muted')
+                _logger.debug('Muted')
                 mute = 1
             elif raw_data == 'unmute':
-                logging.debug('Unmuted')
+                _logger.debug('Unmuted')
                 mute = 0
                 time.sleep(.9)
                 empty()
@@ -143,7 +146,7 @@ def _in(ctx):
             decoder.end_utt()  # Stop utterance processing.
 
         except Exception as e:
-            logging.error(e)
+            _logger.error(e)
 
         else:
             hypothesis = decoder.hyp()
@@ -151,12 +154,12 @@ def _in(ctx):
                 hyp = hypothesis.hypstr
                 if (hyp is None) or (hyp.strip() == ''):
                     continue
-                logging.info("Heard: {}".format(hyp))
+                _logger.info("Heard: {}".format(hyp))
                 if hyp.upper() in dinf.phrases:
                     yield hyp
                 else:
                     continue
 
             else:
-                logging.warn('Speech not recognized')
+                _logger.warn('Speech not recognized')
 
