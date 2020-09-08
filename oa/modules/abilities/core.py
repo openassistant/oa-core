@@ -58,6 +58,7 @@ def get(part = None, timeout = .1):
 
 def put(part, value):
     """ Put a message on the wire. """
+    _logger.debug(f"PUT Called... {part} <- {value}")
     oa.legacy.hub.parts[part].wire_in.put(value)
 
 def empty(part = None):

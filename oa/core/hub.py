@@ -28,7 +28,9 @@ class Hub:
 
     def put(self, part, value):
         """ Put a message on the wire. """
+        _logger.debug(f"PUT Called... {part} <- {value}")
         if part in self.parts:
+            _logger.debug("Part specified... putting on the wire.")
             self.parts[part].wire_in.put(value)
 
 
