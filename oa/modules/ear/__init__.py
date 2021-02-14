@@ -17,20 +17,20 @@ DEFAULT_CONFIG = {
     "sample_rate": 16000,
 
     # size of each sample
-    "sample_width": 2,
+    "sample_width": 4,
 
     # Number of frames stored in each buffer.
-    "chunk": 1024,
+    "chunk": 4096,
 
     # Minimum audio energy to consider for recording.
-    "energy_threshold": 300,
+    "energy_threshold": 2500,
 
-    "dynamic_energy_threshold": False,
+    "dynamic_energy_threshold": True,
     "dynamic_energy_adjustment_damping": 0.15,
     "dynamic_energy_ratio": 1.5,
 
     # Seconds of non-speaking audio before a phrase is considered complete.
-    "pause_threshold": 0.8,
+    "pause_threshold": 0.3,
 
     # Minimum seconds of speaking audio before we consider the audio a phrase - values below this are ignored (for filtering out clicks and pops).
     "phrase_threshold": 0.3,
@@ -39,7 +39,7 @@ DEFAULT_CONFIG = {
     "phrase_time_limit": 5,
 
     # Seconds of non-speaking audio to keep on both sides of the recording.
-    "non_speaking_duration": 0.8,
+    "non_speaking_duration": 0.2,
 }
 
 def init():
@@ -77,6 +77,7 @@ def _in(ctx):
 
                     # Detect whether speaking has started on audio input.
                     energy = audioop.rms(buf, _config.get("sample_width"))  # Energy of the audio signal.
+                    print("Silence: {} {} {}".format(elapsed_time, energy, _config.get("energy_threshold")))
                     if energy > _config.get("energy_threshold"):
                         break
 
@@ -101,6 +102,7 @@ def _in(ctx):
 
                     # Check if speaking has stopped for longer than the pause threshold on the audio input.
                     energy = audioop.rms(buf, _config.get("sample_width"))  # unit energy of the audio signal within the buffer.
+                    print("Phrase {} {} {}".format(elapsed_time, energy, _config.get("energy_threshold")))
                     if energy > _config.get("energy_threshold"):
                         pause_count = 0
                     else:
