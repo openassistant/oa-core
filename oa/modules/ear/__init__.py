@@ -1,11 +1,14 @@
 # ear.py - Speech recognition input.
 
 import collections
+import logging
 import math
 
 import audioop
 import numpy
 import sounddevice
+
+_logger = logging.getLogger(__name__)
 
 DEFAULT_CONFIG = {
     # The `timeout` parameter is the maximum number of seconds that a phrase continues before stopping and returning a result. If the `timeout` is None there will be no phrase time limit.
@@ -43,7 +46,7 @@ DEFAULT_CONFIG = {
 }
 
 def init():
-    print("hello")
+    _logger.info("hello")
 
 def _in(ctx):
     _config = DEFAULT_CONFIG.copy()
@@ -77,7 +80,7 @@ def _in(ctx):
 
                     # Detect whether speaking has started on audio input.
                     energy = audioop.rms(buf, _config.get("sample_width"))  # Energy of the audio signal.
-                    print("Silence: {} {} {}".format(elapsed_time, energy, _config.get("energy_threshold")))
+                    _logger.debug("Silence: {} {} {}".format(elapsed_time, energy, _config.get("energy_threshold")))
                     if energy > _config.get("energy_threshold"):
                         break
 
@@ -102,7 +105,7 @@ def _in(ctx):
 
                     # Check if speaking has stopped for longer than the pause threshold on the audio input.
                     energy = audioop.rms(buf, _config.get("sample_width"))  # unit energy of the audio signal within the buffer.
-                    print("Phrase {} {} {}".format(elapsed_time, energy, _config.get("energy_threshold")))
+                    _logger.debug("Phrase {} {} {}".format(elapsed_time, energy, _config.get("energy_threshold")))
                     if energy > _config.get("energy_threshold"):
                         pause_count = 0
                     else:
