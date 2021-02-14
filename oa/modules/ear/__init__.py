@@ -12,7 +12,7 @@ _logger = logging.getLogger(__name__)
 
 DEFAULT_CONFIG = {
     # The `timeout` parameter is the maximum number of seconds that a phrase continues before stopping and returning a result. If the `timeout` is None there will be no phrase time limit.
-    "timeout": None,
+    "timeout": 1,
 
     "channels": 1,
 
@@ -20,20 +20,20 @@ DEFAULT_CONFIG = {
     "sample_rate": 16000,
 
     # size of each sample
-    "sample_width": 4,
+    "sample_width": 2,
 
     # Number of frames stored in each buffer.
-    "chunk": 4096,
+    "chunk": 1024,
 
     # Minimum audio energy to consider for recording.
-    "energy_threshold": 2500,
+    "energy_threshold": 8000,
 
-    "dynamic_energy_threshold": True,
+    "dynamic_energy_threshold": False,
     "dynamic_energy_adjustment_damping": 0.15,
     "dynamic_energy_ratio": 1.5,
 
     # Seconds of non-speaking audio before a phrase is considered complete.
-    "pause_threshold": 0.3,
+    "pause_threshold": 0.8,
 
     # Minimum seconds of speaking audio before we consider the audio a phrase - values below this are ignored (for filtering out clicks and pops).
     "phrase_threshold": 0.3,
@@ -42,7 +42,7 @@ DEFAULT_CONFIG = {
     "phrase_time_limit": 5,
 
     # Seconds of non-speaking audio to keep on both sides of the recording.
-    "non_speaking_duration": 0.2,
+    "non_speaking_duration": 0.8,
 }
 
 def init():
