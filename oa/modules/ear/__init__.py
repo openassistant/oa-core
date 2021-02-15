@@ -12,7 +12,7 @@ _logger = logging.getLogger(__name__)
 
 DEFAULT_CONFIG = {
     # The `timeout` parameter is the maximum number of seconds that a phrase continues before stopping and returning a result. If the `timeout` is None there will be no phrase time limit.
-    "timeout": 1,
+    "timeout": None,
 
     "channels": 1,
 
@@ -26,7 +26,7 @@ DEFAULT_CONFIG = {
     "chunk": 1024,
 
     # Minimum audio energy to consider for recording.
-    "energy_threshold": 8000,
+    "energy_threshold": 300,
 
     "dynamic_energy_threshold": False,
     "dynamic_energy_adjustment_damping": 0.15,
@@ -45,9 +45,6 @@ DEFAULT_CONFIG = {
     "non_speaking_duration": 0.8,
 }
 
-def init():
-    _logger.info("hello")
-
 def _in(ctx):
     _config = DEFAULT_CONFIG.copy()
 
@@ -57,6 +54,7 @@ def _in(ctx):
     # Number of buffers of non-speaking audio during a phrase before the phrase should be considered complete.
     phrase_buffer_count = math.ceil(_config.get("phrase_threshold") / seconds_per_buffer) # Minimum number of buffers of speaking audio before we consider the speaking audio a phrase.
     non_speaking_buffer_count = math.ceil(_config.get("non_speaking_duration") / seconds_per_buffer)  # Maximum number of buffers of non-speaking audio to retain before and after a phrase.
+
     stream = sounddevice.Stream(samplerate=_config.get("sample_rate"), channels=_config.get("channels"), dtype='int16')
     with stream:
         while not ctx.finished.is_set():
