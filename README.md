@@ -29,7 +29,7 @@ Open Assistant is a private open source personal assistant prototype able to com
 
 ### Ubuntu Linux
 
-* Install system requirements ``sudo apt-get install -y python3 python3-dev python3-pip build-essential swig git libpulse-dev espeak``
+* Install system requirements ``sudo apt-get install -y python3 python3-dev python3-pip build-essential swig git libpulse-dev espeak libasound2-dev``
 * Install Python dependencies: `pip3 install -r requirements.txt`
 
 ### Arch Linux
