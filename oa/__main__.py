@@ -18,13 +18,6 @@ def start(hub, **kwargs):
 
     hub.run()
 
-    _map = [
-        ('ear', 'speech_recognition'),
-        ('speech_recognition', 'mind'),
-    ]
-    for _in, _out in _map:
-        hub.parts[_in].output += [hub.parts[_out]]
-
     while not hub.finished.is_set():
         try:
             command_loop(hub)
@@ -50,17 +43,16 @@ if __name__ == '__main__':
             os.path.join(os.path.dirname(__file__), 'modules'),
         ],
         'modules': [
-            'voice',
-            'sound',
-            'ear',
-            'speech_recognition',
-            'mind',
         ],
     }
 
     import json
-    config_path = args.config_file
-    if config_path is not None:
+    config_path = args.config_file 
+
+    if config_path is None:
+        config_path = os.path.join(os.path.dirname(__file__), 'oa.conf')
+    
+    if os.path.exists(config_path):
         config.update(json.load(open(config_path)))
 
     hub = oa.Hub(config=config)
@@ -70,10 +62,7 @@ if __name__ == '__main__':
     oa.legacy.core_directory = os.path.dirname(__file__)
 
     try:
-        start(
-            hub,
-            config_path=args.config_file,
-        )
+        start(hub)
 
     except KeyboardInterrupt:
         _logger.info("Ctrl-C Pressed")

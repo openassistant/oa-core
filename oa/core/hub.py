@@ -22,6 +22,7 @@ class Hub:
     def run(self):
         self.finished.clear()
         self._load_modules()
+        self._link_modules()
         self._start_modules()
         self.ready.set()
 
@@ -46,6 +47,11 @@ class Hub:
                         self.parts[module_name] = m
                     except Exception as ex:
                         _logger.error("Error loading {}: {}".format(module_name, ex))
+
+
+    def _link_modules(self):
+        for _in, _out in self.config.get('module_map', []):
+            self.parts[_in].output += [self.parts[_out]]
 
 
     def _start_modules(self):
