@@ -30,8 +30,24 @@ def start(hub, **kwargs):
 if __name__ == '__main__':
     import sys
 
-    from oa.util.args import _parser
-    args = _parser(sys.argv[1:])
+    from argparse import ArgumentParser, Namespace
+
+    # Parse arguments
+    parser = ArgumentParser()
+
+    parser.add_argument("-c", "--config",
+                        dest='config_file', action='store', default=None,
+                        help="Path to config file")
+
+    parser.add_argument("-d", "--debug",
+                        action='store_true', dest="debug", default=False,
+                        help="Enable debug-level logging")
+
+    parser.add_argument("-l", "--log",
+                        dest='log_file', action='store', default=None,
+                        help="Path to log file")
+
+    args = parser.parse_args(sys.argv[1:])
 
     log_template = "[%(asctime)s] %(levelname)s %(threadName)s %(name)s: %(message)s"
     logging.basicConfig(level=logging.INFO if not args.debug else logging.DEBUG, filename=args.log_file, format=log_template)
