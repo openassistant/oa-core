@@ -1,6 +1,6 @@
 import oa.legacy
 
-from oa.core.util import command_registry
+from oa.core.hub import command_registry
 
 from oa.modules.abilities.interact import say, play, mind
 

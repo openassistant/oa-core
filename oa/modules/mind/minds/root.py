@@ -1,4 +1,4 @@
-from oa.core.util import command_registry
+from oa.core.hub import command_registry
 
 from oa.modules.abilities.interact import say, play, mind
 from oa.modules.abilities.other import read_news_feed, diagnostics, read_forecast

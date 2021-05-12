@@ -6,8 +6,6 @@ _logger = logging.getLogger(__name__)
 import os
 import threading
 
-from . import util
-
 class Hub:
     def __init__(self, config=None):
         self.config = config
@@ -42,7 +40,7 @@ class Hub:
             for module_name in os.listdir(module_repo):
                 if module_name in self.config.get('modules'):
                     try:
-                        m = util.load_module(os.path.join(module_repo, module_name))
+                        m = load_module(os.path.join(module_repo, module_name))
                         m.name = module_name
                         self.parts[module_name] = m
                     except Exception as ex:
@@ -66,6 +64,50 @@ class Hub:
         # Start all threads.
         [thr.start() for thr in self.thread_pool]
         b.wait()
+
+
+def command_registry(kws):
+    def command(cmd):
+        def _command(fn):
+            if type(cmd) == str:
+                kws[cmd.upper()] = fn
+            elif type(cmd) == list:
+                for kw in cmd:
+                    kws[kw.upper()] = fn
+            return fn
+        return _command
+    return command
+
+
+def load_module(path):
+    """Load an OA module from path."""
+    import os
+    import logging
+    import importlib
+    import queue
+
+    from oa.legacy import Core
+
+    # An OA module is a folder with an __oa__.py file
+    if not all([
+        os.path.isdir(path),
+        os.path.exists(os.path.join(path, '__oa__.py')),
+    ]): raise Exception("Invalid module: {}".format(path))
+
+    # Import package
+    module_name = os.path.basename(path)
+    _logger.info('{} <- {}'.format(module_name, path))
+    M = importlib.import_module("oa.modules"+'.{}'.format(module_name))
+
+    # If the module provides an input queue, link it
+    # if getattr(M, '_in', None) is not None:
+
+    m = Core(**M.__dict__)
+    m.__dict__.setdefault('wire_in', queue.Queue())
+    m.__dict__.setdefault('output', [])
+    # m.__dict__.update(M.__dict__)
+
+    return m
 
 
 def thread_loop(hub, part, b):
@@ -92,6 +134,5 @@ def thread_loop(hub, part, b):
                     listener.wire_in.put(msg)
         except Exception as ex:
             _logger.error("Error processing queue: {}".format(ex))
-
 
     _logger.debug('Stopped')
