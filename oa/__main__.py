@@ -16,14 +16,13 @@ def start(hub, **kwargs):
     from oa.util.repl import command_loop
 
     hub.run()
+    hub.ready.wait()
 
     while not hub.finished.is_set():
         try:
             command_loop(hub)
         except Exception as ex:
             _logger.error("Command Loop: {}".format(ex))
-
-    hub.ready.wait()
 
 
 if __name__ == '__main__':
