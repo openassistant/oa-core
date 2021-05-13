@@ -72,9 +72,9 @@ if __name__ == '__main__':
     hub = oa.Hub(config=config)
 
     # XXX: temporary compatability hack
-    import oa.legacy
-    oa.legacy.hub = hub
-    oa.legacy.core_directory = os.path.dirname(__file__)
+    #import oa.legacy
+    #oa.legacy.hub = hub
+    #oa.legacy.core_directory = os.path.dirname(__file__)
 
     try:
         start(hub)
