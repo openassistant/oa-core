@@ -1,8 +1,8 @@
 from oa.core.hub import command_registry
 
-from oa.modules.abilities.interact import say, play, mind
-from oa.modules.abilities.other import read_news_feed, diagnostics, read_forecast
-from oa.modules.abilities.other import say_day, say_last_command, say_time
+from oa.util.abilities.interact import say, play, mind
+from oa.util.abilities.other import read_news_feed, diagnostics, read_forecast
+from oa.util.abilities.other import say_day, say_last_command, say_time
 
 kws = {}
 

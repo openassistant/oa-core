@@ -8,8 +8,8 @@ import os
 
 from oa.util.legacy import Core as LegacyCore
 
-from oa.modules.abilities.core import info, call_function, get
-from oa.modules.abilities.system import read_file, sys_exec
+from oa.util.abilities.core import info, call_function, get
+from oa.util.abilities.system import read_file, sys_exec
 
 
 """ Core mind functions. """

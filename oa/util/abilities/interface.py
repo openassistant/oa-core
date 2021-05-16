@@ -1,12 +1,12 @@
-import oa.legacy
+import oa.util.legacy
 
-from oa.modules.abilities.core import info, put
-from oa.modules.abilities.interact import say
-from oa.modules.abilities.system import find_file, sys_exec
+from oa.util.abilities.core import info, put
+from oa.util.abilities.interact import say
+from oa.util.abilities.system import find_file, sys_exec
 
 def activate(s):
     """ Activate a specific window. """
-    if oa.legacy.sys.os == 'win':
+    if oa.util.legacy.sys.os == 'win':
         w = WindowMgr()
         w.find_window_wildcard('.*' + s + '.*')
         w.set_foreground()
@@ -47,9 +47,9 @@ def volume(move = 2):
 
 def mute(mute = True):
     """ Mute or unmute speakers. """
-    if oa.legacy.sys.os == 'win':
+    if oa.util.legacy.sys.os == 'win':
         wshell.SendKeys(chr(173))
-    elif oa.legacy.sys.os in ('linux', 'mac'):
+    elif oa.util.legacy.sys.os in ('linux', 'mac'):
         sys_exec('amixer set Master %smute' % (((not mute) and 'un') or ''))
     else:
         info('Unknown operating system.')

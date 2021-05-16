@@ -11,8 +11,9 @@ import requests
 
 from oa.util.legacy import Core as LegacyCore
 
-from oa.modules.abilities.core import get, empty, info
-from oa.modules.abilities.system import download_file, write_file, stat_mtime
+from oa.util.abilities.core import get, empty, info
+from oa.util.abilities.system import download_file, write_file, stat_mtime
+
 
 _decoders = {}
 
