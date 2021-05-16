@@ -4,11 +4,18 @@ import logging
 _logger = logging.getLogger(__name__)
 
 import os
+import queue
 import threading
 
 class Hub:
     def __init__(self, config=None):
         self.config = config
+
+        # XXX: shimmy for mind
+        self.mind = None
+        self.minds = {}
+        self.last_command = None
+        self.core_directory = os.path.dirname(os.path.dirname(__file__))
 
         self.ready = threading.Event()
         self.finished = threading.Event()
@@ -23,6 +30,16 @@ class Hub:
         self._link_modules()
         self._start_modules()
         self.ready.set()
+
+
+    def get(self, part, timeout = .1):
+        """ Get a message from the wire. If there is no part found, take a message from the current wire input thread. (No parameters. Thread safe) """
+        while not self.finished.is_set():
+            try:
+                return self.parts[part].wire_in.get(timeout = timeout)
+            except queue.Empty:
+                pass
+        raise Exception('Open Assistant closed.')
 
 
     def put(self, part, value):
@@ -86,7 +103,7 @@ def load_module(path):
     import importlib
     import queue
 
-    from oa.legacy import Core
+    from oa.util.legacy import Core as LegacyCore
 
     # An OA module is a folder with an __oa__.py file
     if not all([
@@ -102,7 +119,7 @@ def load_module(path):
     # If the module provides an input queue, link it
     # if getattr(M, '_in', None) is not None:
 
-    m = Core(**M.__dict__)
+    m = LegacyCore(**M.__dict__)
     m.__dict__.setdefault('wire_in', queue.Queue())
     m.__dict__.setdefault('output', [])
     # m.__dict__.update(M.__dict__)
