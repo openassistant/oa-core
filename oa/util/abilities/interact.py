@@ -6,13 +6,13 @@ from oa.modules.abilities.core import call_function, put
 from oa.modules.abilities.system import find_file
 
 
-def answer(text):
+def answer(ctx, text):
     """ Save the return function parameter and switch to previous mind. """
     text = text.lower()
     func = oa.legacy.mind.user_choices.get(text, None)
     if func:
         call_function(func)
-    oa.legacy.mind.switch_back()
+    ctx.mind.switch_back(ctx)
 
 def yes_no(msg, func):
     """ Receive a yes or no answer from the user. """
