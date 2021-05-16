@@ -93,9 +93,8 @@ def update_language(_):
         download_file(lm_url, _.lang_file)
     download_file(dic_url, _.dic_file) 
 
-def get_decoder():
-    # XXX: race condition when mind isn't set yet
-    mind = oa.legacy.mind
+# XXX: not quite the right place, but a step
+def get_decoder(mind):
     if not hasattr(_decoders, mind.name):
         # Configure Speech to text dictionaries.
         ret = config_stt(mind.cache_dir, mind.kws.keys(), stat_mtime(mind.module))
@@ -137,7 +136,8 @@ def _in(ctx):
         
         # Obtain audio data.
         try:
-            dinf = get_decoder()
+            # XXX: transitional mind thing
+            dinf = get_decoder(ctx.mind)
             decoder = dinf.decoder
             decoder.start_utt()  # Begin utterance processing.
 

@@ -39,44 +39,46 @@ def load_mind(path):
 
     return mind
 
-def set_mind(name, history=True):
+def set_mind(ctx, name, history=True):
     """ Activate new mind. """
     _logger.info('Opening Mind: {}'.format(name))
     if history:
         _history.append(name)
         
-    oa.legacy.mind = oa.legacy.minds[name]
-    return oa.legacy.mind
+    ctx.mind = ctx.minds[name]
+    return ctx.mind
 
-def switch_back():
+def switch_back(ctx):
     """ Switch back to the previous mind. (from `switch_hist`). """
-    set_mind(_history.pop(), history=False)
+    set_mind(ctx, _history.pop(), history=False)
 
-def load_minds():
+def load_minds(ctx):
     """ Load and check dictionaries for all minds. Handles updating language models using the online `lmtool`.
     """
     _logger.info('Loading minds...')
+    # XXX: repo-centric path
     mind_path = os.path.join(os.path.dirname(__file__), 'minds')
     for mind in os.listdir(mind_path):
         if mind.lower().endswith('.py'):
             _logger.info("<- {}".format(mind))
             m = load_mind(os.path.join(mind_path, mind))
-            oa.legacy.minds[m.name] = m
+            ctx.minds[m.name] = m
     _logger.info('Minds loaded!')
 
 def _in(ctx):
 
     default_mind = 'boot'
-    load_minds()
-    set_mind(default_mind)
+    load_minds(ctx)
+    set_mind(ctx, default_mind)
 
     _logger.debug('"{}" is now listening. Say "Boot Mind!" to see if it can hear you.'.format(default_mind))
 
 
     while not ctx.finished.is_set():
-        text = get()
+        text = ctx.get('mind')
         _logger.debug('Input: {}'.format(text))
-        mind = oa.legacy.mind
+        # XXX: not a great way to mind
+        mind = ctx.mind
         if (text is None) or (text.strip() == ''):
             # Nothing to do.
             continue
@@ -88,13 +90,14 @@ def _in(ctx):
         if fn is not None:
             # There are two types of commands, stubs and command line text.
             # For stubs, call `perform()`.
-            if oa.legacy.isCallable(fn):
-                call_function(fn)
-                oa.legacy.oa.last_command = t
+            if hasattr(fn, "__call__"):
+                # call_function(fn)
+                fn()
+                ctx.last_command = t
             # For strings, call `sys_exec()`.
             elif isinstance(fn, str):
                 sys_exec(fn)
-                oa.legacy.oa.last_command = t
+                ctx.last_command = t
             else:
                 # Any unknown command raises an exception.
                 raise Exception("Unable to process: {}".format(text))
