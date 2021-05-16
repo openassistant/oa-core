@@ -6,7 +6,7 @@ import importlib
 import logging
 import os
 
-import oa.legacy
+from oa.util.legacy import Core as LegacyCore
 
 from oa.modules.abilities.core import info, call_function, get
 from oa.modules.abilities.system import read_file, sys_exec
@@ -18,7 +18,7 @@ _history = []
 
 def load_mind(path):
     """ Load a mind by its `name`. """
-    mind = oa.legacy.Core()
+    mind = LegacyCore()
     mind.module = path
     mind.name = os.path.splitext(os.path.basename(mind.module))[0]
     # XXX: repo-centric path
