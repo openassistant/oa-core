@@ -5,11 +5,11 @@ import string
 
 import feedparser
 
-import oa.legacy
+import oa.util.legacy
 
-from oa.modules.abilities.core import info
-from oa.modules.abilities.interact import say
-from oa.modules.abilities.system import read_file
+from oa.util.abilities.core import info
+from oa.util.abilities.interact import say
+from oa.util.abilities.system import read_file
 
 def diagnostics():
     """ Run system diagnostics. """
@@ -28,13 +28,13 @@ def diagnostics():
                 break
 
     # Memory Free.
-    response += 'System memory has %.0f Gigabytes free...\n' % oa.legacy.bytes2gb(oa.legacy.sys.free_memory())
+    response += 'System memory has %.0f Gigabytes free...\n' % oa.util.legacy.bytes2gb(oa.util.legacy.sys.free_memory())
 
     # Drive Space Free.
-    response += 'Internal hard drive has %.0f Gigabytes free...\n' % oa.legacy.bytes2gb(psutil.disk_usage('/').free)
+    response += 'Internal hard drive has %.0f Gigabytes free...\n' % oa.util.legacy.bytes2gb(psutil.disk_usage('/').free)
 
     # Network Status.
-    response += oa.legacy.switch(is_online(), True, 'Internet access is currently available.', 'We are offline.')
+    response += oa.util.legacy.switch(is_online(), True, 'Internet access is currently available.', 'We are offline.')
 
     say(response)
 
@@ -110,7 +110,7 @@ def lines_to_dict(sLines, func = lambda s : s, params = {}):
        You there?: yes... i am here...
        You think: i think sometimes...
     """
-    params.update(oa.legacy.sys.__dict__)
+    params.update(oa.util.legacy.sys.__dict__)
     sLines = sLines %params
     ret = dict([[k, func(v)] for k, v in [[x.strip() for x in ph.split(':')] for ph in sLines.split('\n') if ph.strip() != '']])
     return ret
@@ -120,17 +120,17 @@ def say_random(slist):
 
 def say_time():
     """ Speak the current time. """
-    time = oa.legacy.sys.time_text()
+    time = oa.util.legacy.sys.time_text()
     say('- The time is %s.' %time)
 
 def say_day():
     """ Speak the current day. """
-    day = oa.legacy.sys.day_name()
+    day = oa.util.legacy.sys.day_name()
     say('- Today is %s.' %day)
 
 def say_last_command(string = ''):
-    say(string + ' ' + oa.legacy.oa.last_command)
+    say(string + ' ' + oa.util.legacy.oa.last_command)
 
 def get_sys(s):
     """ Return system information from `oa.sys`. """
-    return getattr(oa.legacy.sys, s)
+    return getattr(oa.util.legacy.sys, s)

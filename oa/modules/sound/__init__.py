@@ -5,14 +5,13 @@ _logger = logging.getLogger(__name__)
 
 import playsound
 
-from oa.modules.abilities.core import get, put
 
 def _in(ctx):
     while not ctx.finished.is_set():
-        path = get()
+        path = ctx.get('sound')
         
         # Pause listening while talking. Mute STT.
-        put('speech_recognition','mute')
+        ctx.put('speech_recognition','mute')
 
         try:
             playsound.playsound(path)
@@ -20,4 +19,4 @@ def _in(ctx):
             _logger.error("Error playing sound: {}".format(ex))
 
         # Audio complete. Begin listening. Unmute STT.
-        put('speech_recognition','unmute')
+        ctx.put('speech_recognition','unmute')

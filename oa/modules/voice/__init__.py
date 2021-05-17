@@ -5,8 +5,6 @@ _logger = logging.getLogger(__name__)
 
 import pyttsx3
 
-from oa.modules.abilities.core import get, put
-
 
 import platform
 sys_os = platform.system()
@@ -22,12 +20,12 @@ def _in(ctx):
         tts = pyttsx3.init()
 
     while not ctx.finished.is_set():
-        s = get()
+        s = ctx.get('voice')
         _logger.debug("Saying: %s", s)
 
         # Pause Ear (listening) while talking. Mute TTS.
         # TODO: move this somewhere else
-        put('speech_recognition', 'mute')
+        ctx.put('speech_recognition', 'mute')
 
         if flMac:
             _msg = subprocess.Popen(['echo', s], stdout=subprocess.PIPE)
@@ -41,4 +39,4 @@ def _in(ctx):
         # Wait until speaking ends.
         # Continue ear (listening). Unmute TTS.
         # TODO: move this somewhere else
-        put('speech_recognition', 'unmute')
+        ctx.put('speech_recognition', 'unmute')

@@ -9,15 +9,16 @@ import logging
 import pocketsphinx
 import requests
 
-import oa.legacy
+from oa.util.legacy import Core as LegacyCore
 
-from oa.modules.abilities.core import get, empty, info
-from oa.modules.abilities.system import download_file, write_file, stat_mtime
+from oa.util.abilities.core import get, empty, info
+from oa.util.abilities.system import download_file, write_file, stat_mtime
+
 
 _decoders = {}
 
 def config_stt(cache_dir, keywords, kws_last_modification_time_in_sec = None):
-    _ = oa.legacy.Core()
+    _ = LegacyCore()
     cache_path = lambda x: os.path.join(cache_dir, x)
     _.lang_file = cache_path('lm')
     _.fsg_file = None
@@ -92,9 +93,8 @@ def update_language(_):
         download_file(lm_url, _.lang_file)
     download_file(dic_url, _.dic_file) 
 
-def get_decoder():
-    # XXX: race condition when mind isn't set yet
-    mind = oa.legacy.mind
+# XXX: not quite the right place, but a step
+def get_decoder(mind):
     if not hasattr(_decoders, mind.name):
         # Configure Speech to text dictionaries.
         ret = config_stt(mind.cache_dir, mind.kws.keys(), stat_mtime(mind.module))
@@ -118,7 +118,7 @@ def get_decoder():
 def _in(ctx):
     mute = 0
     while not ctx.finished.is_set():
-        raw_data = get()
+        raw_data = ctx.get("speech_recognition")
         if isinstance(raw_data, str):
             if raw_data == 'mute':
                 _logger.debug('Muted')
@@ -136,7 +136,8 @@ def _in(ctx):
         
         # Obtain audio data.
         try:
-            dinf = get_decoder()
+            # XXX: transitional mind thing
+            dinf = get_decoder(ctx.mind)
             decoder = dinf.decoder
             decoder.start_utt()  # Begin utterance processing.
 
