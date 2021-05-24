@@ -10,7 +10,7 @@ Open Assistant is a private open source personal assistant prototype able to com
 
 #### _Click & Run_
 
-* Download [http://openassistant.org/download/oa_0.21_windows.zip](http://openassistant.org/download/oa_0.21_windows.zip)
+* Download [https://openassistant.org/download/install/oa-win-0.22.zip](https://openassistant.org/download/install/oa-win-0.22.zip)
 * Unzip package
 * Launch `oa.exe` in "Open Assistant" folder
 
