@@ -1,12 +1,14 @@
 # ear.py - Speech recognition input.
 
 import collections
+import logging
 import math
 
 import audioop
 import numpy
 import sounddevice
 
+_logger = logging.getLogger(__name__)
 
 DEFAULT_CONFIG = {
     # The `timeout` parameter is the maximum number of seconds that a phrase continues before stopping and returning a result. If the `timeout` is None there will be no phrase time limit.
@@ -35,6 +37,9 @@ DEFAULT_CONFIG = {
 
     # Minimum seconds of speaking audio before we consider the audio a phrase - values below this are ignored (for filtering out clicks and pops).
     "phrase_threshold": 0.3,
+
+    # Maximum number of seconds that a phrase continues before stopping and returning a result. If the `timeout` is None there will be no phrase time limit.
+    "phrase_time_limit": 5,
 
     # Seconds of non-speaking audio to keep on both sides of the recording.
     "non_speaking_duration": 0.8,
@@ -73,6 +78,7 @@ def _in(ctx):
 
                     # Detect whether speaking has started on audio input.
                     energy = audioop.rms(buf, _config.get("sample_width"))  # Energy of the audio signal.
+                    _logger.debug("Silence: {} {} {}".format(elapsed_time, energy, _config.get("energy_threshold")))
                     if energy > _config.get("energy_threshold"):
                         break
 
@@ -88,7 +94,7 @@ def _in(ctx):
                 while not ctx.finished.is_set():
                     # Handle phrase being too long by cutting off the audio.
                     elapsed_time += seconds_per_buffer
-                    if _config.get("timeout") and (elapsed_time - phrase_start_time > _config.get("timeout")):
+                    if _config.get("phrase_time_limit") and elapsed_time - phrase_start_time > _config.get("phrase_time_limit"):
                         break
 
                     buf = stream.read(_config.get("chunk"))[0]
@@ -97,6 +103,7 @@ def _in(ctx):
 
                     # Check if speaking has stopped for longer than the pause threshold on the audio input.
                     energy = audioop.rms(buf, _config.get("sample_width"))  # unit energy of the audio signal within the buffer.
+                    _logger.debug("Phrase {} {} {}".format(elapsed_time, energy, _config.get("energy_threshold")))
                     if energy > _config.get("energy_threshold"):
                         pause_count = 0
                     else:
