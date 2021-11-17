@@ -11,20 +11,6 @@ import os
 import oa
 
 
-def start(hub, **kwargs):
-    """Initialize and run the OpenAssistant Agent"""
-    from oa.util.repl import command_loop
-
-    hub.start()
-    hub.ready.wait()
-
-    while not hub.finished.is_set():
-        try:
-            command_loop(hub)
-        except Exception as ex:
-            _logger.error("Command Loop: {}".format(ex))
-
-
 if __name__ == '__main__':
     import sys
 
@@ -77,7 +63,16 @@ if __name__ == '__main__':
     oa.util.legacy.core_directory = os.path.dirname(__file__)
 
     try:
-        start(hub)
+        from oa.util.repl import command_loop
+
+        hub.start()
+        hub.ready.wait()
+
+        while not hub.finished.is_set():
+            try:
+                command_loop(hub)
+            except Exception as ex:
+                _logger.error("Command Loop: {}".format(ex))
 
     except KeyboardInterrupt:
         _logger.info("Ctrl-C Pressed")
