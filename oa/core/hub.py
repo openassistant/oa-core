@@ -4,7 +4,6 @@ import logging
 _logger = logging.getLogger(__name__)
 
 import os
-import queue
 import threading
 
 class Hub:
@@ -80,7 +79,6 @@ def load_module(path):
     import os
     import logging
     import importlib
-    import queue
 
     # An OA module is a folder with an __oa__.py file
     if not all([
@@ -95,7 +93,6 @@ def load_module(path):
 
     # XXX: differently hacky (these don't seem quite right or the same)
     M.__dict__.setdefault('outputs', [])
-    M.__dict__.setdefault('input_queue', queue.Queue())
 
     return M
 
@@ -103,7 +100,6 @@ def load_module(path):
 def thread_loop(hub, part, b):
     """ Setup part inputs to the message wire. """
     _logger.debug('Starting')
-    # ready = threading.Event()
 
     if hasattr(part, 'init'):
         part.init()
