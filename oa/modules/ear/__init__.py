@@ -45,7 +45,7 @@ DEFAULT_CONFIG = {
     "non_speaking_duration": 0.8,
 }
 
-def _in(ctx):
+def __call__(ctx):
     _config = DEFAULT_CONFIG.copy()
 
     seconds_per_buffer = _config.get("chunk") / _config.get("sample_rate")
@@ -78,7 +78,7 @@ def _in(ctx):
 
                     # Detect whether speaking has started on audio input.
                     energy = audioop.rms(buf, _config.get("sample_width"))  # Energy of the audio signal.
-                    _logger.debug("Silence: {} {} {}".format(elapsed_time, energy, _config.get("energy_threshold")))
+                    # _logger.debug("Silence: {} {} {}".format(elapsed_time, energy, _config.get("energy_threshold")))
                     if energy > _config.get("energy_threshold"):
                         break
 
@@ -103,7 +103,7 @@ def _in(ctx):
 
                     # Check if speaking has stopped for longer than the pause threshold on the audio input.
                     energy = audioop.rms(buf, _config.get("sample_width"))  # unit energy of the audio signal within the buffer.
-                    _logger.debug("Phrase {} {} {}".format(elapsed_time, energy, _config.get("energy_threshold")))
+                    # _logger.debug("Phrase {} {} {}".format(elapsed_time, energy, _config.get("energy_threshold")))
                     if energy > _config.get("energy_threshold"):
                         pause_count = 0
                     else:

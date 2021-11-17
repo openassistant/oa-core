@@ -14,6 +14,9 @@ from oa.util.abilities.system import read_file, sys_exec
 
 """ Core mind functions. """
 
+import queue
+input_queue = queue.Queue()
+
 _history = []
 
 def load_mind(path):
@@ -65,7 +68,7 @@ def load_minds(ctx):
             ctx.minds[m.name] = m
     _logger.info('Minds loaded!')
 
-def _in(ctx):
+def __call__(ctx):
 
     default_mind = 'boot'
     load_minds(ctx)
@@ -75,7 +78,7 @@ def _in(ctx):
 
 
     while not ctx.finished.is_set():
-        text = ctx.get('mind')
+        text = input_queue.get()
         _logger.debug('Input: {}'.format(text))
         # XXX: not a great way to mind
         mind = ctx.mind
