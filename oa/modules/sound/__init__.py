@@ -5,13 +5,17 @@ _logger = logging.getLogger(__name__)
 
 import playsound
 
+import queue
+input_queue = queue.Queue()
 
-def _in(ctx):
+
+def __call__(ctx):
     while not ctx.finished.is_set():
-        path = ctx.get('sound')
+        path = input_queue.get()
         
         # Pause listening while talking. Mute STT.
-        ctx.put('speech_recognition','mute')
+        # ctx.put('speech_recognition','mute')
+        yield "start"
 
         try:
             playsound.playsound(path)
@@ -19,4 +23,5 @@ def _in(ctx):
             _logger.error("Error playing sound: {}".format(ex))
 
         # Audio complete. Begin listening. Unmute STT.
-        ctx.put('speech_recognition','unmute')
+        # ctx.put('speech_recognition','unmute')
+        yield "stop"
