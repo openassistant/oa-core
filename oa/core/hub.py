@@ -24,7 +24,8 @@ class Hub:
         self.parts = {}
 
 
-    def run(self):
+    def start(self):
+        self.ready.clear()
         self.finished.clear()
         self._load_modules()
         self._link_modules()

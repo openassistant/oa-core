@@ -15,7 +15,7 @@ def start(hub, **kwargs):
     """Initialize and run the OpenAssistant Agent"""
     from oa.util.repl import command_loop
 
-    hub.run()
+    hub.start()
     hub.ready.wait()
 
     while not hub.finished.is_set():
