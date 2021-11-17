@@ -11,41 +11,20 @@ class Hub:
     def __init__(self, config=None):
         self.config = config
 
-        # XXX: shimmy for mind
-        self.mind = None
-        self.minds = {}
-        self.last_command = None
-        self.core_directory = os.path.dirname(os.path.dirname(__file__))
-
         self.ready = threading.Event()
         self.finished = threading.Event()
-        
+
         self.thread_pool = []
         self.parts = {}
 
 
-    def run(self):
+    def start(self):
+        self.ready.clear()
         self.finished.clear()
         self._load_modules()
         self._link_modules()
         self._start_modules()
         self.ready.set()
-
-
-    def get(self, part, timeout = .1):
-        """ Get a message from the wire. If there is no part found, take a message from the current wire input thread. (No parameters. Thread safe) """
-        while not self.finished.is_set():
-            try:
-                return self.parts[part].wire_in.get(timeout = timeout)
-            except queue.Empty:
-                pass
-        raise Exception('Open Assistant closed.')
-
-
-    def put(self, part, value):
-        """ Put a message on the wire. """
-        if part in self.parts:
-            self.parts[part].wire_in.put(value)
 
 
     def _load_modules(self):
@@ -66,7 +45,7 @@ class Hub:
 
     def _link_modules(self):
         for _in, _out in self.config.get('module_map', []):
-            self.parts[_in].output += [self.parts[_out]]
+            self.parts[_in].outputs += [self.parts[_out]]
 
 
     def _start_modules(self):
@@ -103,8 +82,6 @@ def load_module(path):
     import importlib
     import queue
 
-    from oa.util.legacy import Core as LegacyCore
-
     # An OA module is a folder with an __oa__.py file
     if not all([
         os.path.isdir(path),
@@ -116,39 +93,31 @@ def load_module(path):
     _logger.info('{} <- {}'.format(module_name, path))
     M = importlib.import_module("oa.modules"+'.{}'.format(module_name))
 
-    # If the module provides an input queue, link it
-    # if getattr(M, '_in', None) is not None:
+    # XXX: differently hacky (these don't seem quite right or the same)
+    M.__dict__.setdefault('outputs', [])
+    M.__dict__.setdefault('input_queue', queue.Queue())
 
-    m = LegacyCore(**M.__dict__)
-    m.__dict__.setdefault('wire_in', queue.Queue())
-    m.__dict__.setdefault('output', [])
-    # m.__dict__.update(M.__dict__)
-
-    return m
+    return M
 
 
 def thread_loop(hub, part, b):
     """ Setup part inputs to the message wire. """
-    # if not isinstance(part.output, list):
-        # raise Exception('No output list defined: ' + part.name)
-
     _logger.debug('Starting')
     # ready = threading.Event()
 
-    
     if hasattr(part, 'init'):
         part.init()
 
     b.wait()
-    
+
     hub.ready.wait()
 
     while not hub.finished.is_set():
         try:
-            for msg in part._in(hub):
-                for listener in part.output:
+            for msg in part.__call__(hub):
+                for listener in part.outputs:
                     _logger.debug('{} -> {}'.format(part.name, listener.name))
-                    listener.wire_in.put(msg)
+                    listener.input_queue.put(msg)
         except Exception as ex:
             _logger.error("Error processing queue: {}".format(ex))
 

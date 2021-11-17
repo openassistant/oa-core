@@ -22,9 +22,11 @@ def command_loop(hub:object) -> None:
             hub.finished.set()
         elif cmd in ['h', 'help', '?']:
             print("Help Stuff")
+            print(hub)
+            print(hub.parts)
         elif cmd.find(' ') > -1:
             p, m = cmd.split(' ', 1)
             _logger.debug("{} <- {}".format(p, m))
-            hub.put(p, m)
+            hub.parts[p].input_queue.put(m)
         else:
             print("Unrecognized command: {}".format(cmd))

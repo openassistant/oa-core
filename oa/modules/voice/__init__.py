@@ -14,18 +14,22 @@ if flMac:
 else:
     import pyttsx3
 
+import queue
+input_queue = queue.Queue()
 
-def _in(ctx):
+
+def __call__(ctx):
     if not flMac:
         tts = pyttsx3.init()
 
     while not ctx.finished.is_set():
-        s = ctx.get('voice')
+        s = input_queue.get()
         _logger.debug("Saying: %s", s)
+        yield "start"
 
         # Pause Ear (listening) while talking. Mute TTS.
         # TODO: move this somewhere else
-        ctx.put('speech_recognition', 'mute')
+        # ctx.put('speech_recognition', 'mute')
 
         if flMac:
             _msg = subprocess.Popen(['echo', s], stdout=subprocess.PIPE)
@@ -39,4 +43,5 @@ def _in(ctx):
         # Wait until speaking ends.
         # Continue ear (listening). Unmute TTS.
         # TODO: move this somewhere else
-        ctx.put('speech_recognition', 'unmute')
+        # ctx.put('speech_recognition', 'unmute')
+        yield "stop"
