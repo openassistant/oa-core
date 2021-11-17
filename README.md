@@ -25,6 +25,7 @@ Open Assistant is a private open source personal assistant prototype able to com
 * Install [brew](https://brew.sh/) if you have not already.
 * Install pocketsphinx dependencies: `brew install swig openal-soft`
 * Link the openal-soft libraries to the include path: `ln -s /usr/local/Cellar/openal-soft/1.20.1/include/AL/* /usr/local/include`
+* pip3 install git+https://github.com/Im-Fran/pocketsphinx-python
 * Install Python dependencies: `pip3 install -r requirements.txt`
 
 ### Ubuntu Linux
