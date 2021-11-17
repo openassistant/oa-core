@@ -1,0 +1,68 @@
+Language model created by QuickLM on Wed Nov 17 07:14:24 EST 2021
+Copyright (c) 1996-2010 Carnegie Mellon University and Alexander I. Rudnicky
+
+The model is in standard ARPA format, designed by Doug Paul while he was at MITRE.
+
+The code that was used to produce this language model is available in Open Source.
+Please visit http://www.speech.cs.cmu.edu/tools/ for more information
+
+The (fixed) discount mass is 0.5. The backoffs are computed using the ratio method.
+This model based on a corpus of 2 sentences and 15 words
+
+\data\
+ngram 1=15
+ngram 2=16
+ngram 3=14
+
+\1-grams:
+-1.2553 </s> -0.3010
+-1.2553 <s> -0.2632
+-1.5563 A -0.2888
+-1.5563 ASSISTANT -0.2762
+-1.5563 BOOT -0.2888
+-1.5563 GREAT -0.2888
+-1.5563 IS -0.2888
+-1.5563 JUMPED -0.2888
+-1.5563 MIND -0.2888
+-1.5563 OPEN -0.2888
+-1.5563 OVER -0.2762
+-1.5563 QUICK -0.2888
+-1.5563 TEST -0.2762
+-1.2553 THE -0.2762
+-1.5563 THIS -0.2888
+
+\2-grams:
+-0.6021 <s> THE -0.1761
+-0.6021 <s> THIS 0.0000
+-0.3010 A TEST 0.0000
+-0.3010 ASSISTANT </s> -0.3010
+-0.3010 BOOT MIND 0.0000
+-0.3010 GREAT OPEN 0.0000
+-0.3010 IS A 0.0000
+-0.3010 JUMPED OVER 0.0000
+-0.3010 MIND JUMPED 0.0000
+-0.3010 OPEN ASSISTANT 0.0000
+-0.3010 OVER THE -0.1761
+-0.3010 QUICK BOOT 0.0000
+-0.3010 TEST </s> -0.3010
+-0.6021 THE GREAT 0.0000
+-0.6021 THE QUICK 0.0000
+-0.3010 THIS IS 0.0000
+
+\3-grams:
+-0.3010 <s> THE QUICK
+-0.3010 <s> THIS IS
+-0.3010 A TEST </s>
+-0.3010 BOOT MIND JUMPED
+-0.3010 GREAT OPEN ASSISTANT
+-0.3010 IS A TEST
+-0.3010 JUMPED OVER THE
+-0.3010 MIND JUMPED OVER
+-0.3010 OPEN ASSISTANT </s>
+-0.3010 OVER THE GREAT
+-0.3010 QUICK BOOT MIND
+-0.3010 THE GREAT OPEN
+-0.3010 THE QUICK BOOT
+-0.3010 THIS IS A
+
+\end\
