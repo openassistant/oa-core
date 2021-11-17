@@ -114,7 +114,7 @@ def thread_loop(hub, part, b):
 
     while not hub.finished.is_set():
         try:
-            for msg in part._in(hub):
+            for msg in part.__call__(hub):
                 for listener in part.outputs:
                     _logger.debug('{} -> {}'.format(part.name, listener.name))
                     listener.input_queue.put(msg)
