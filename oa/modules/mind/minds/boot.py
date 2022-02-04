@@ -1,8 +1,8 @@
-import oa.legacy
+import oa.util.legacy
 
-from oa.core.util import command_registry
+from oa.core.hub import command_registry
 
-from oa.modules.abilities.interact import say, play, mind
+from oa.util.abilities.interact import say, play, mind
 
 
 kws = {}
@@ -24,4 +24,4 @@ def list_commands():
 
 @command("stop listening")
 def do_exit():
-    oa.legacy.hub.finished.set()
+    oa.util.legacy.hub.finished.set()

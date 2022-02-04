@@ -9,57 +9,61 @@ import logging
 import pocketsphinx
 import requests
 
-import oa.legacy
+from oa.util.abilities.core import get, empty, info
+from oa.util.abilities.system import download_file, write_file, stat_mtime
 
-from oa.modules.abilities.core import get, empty, info
-from oa.modules.abilities.system import download_file, write_file, stat_mtime
+import queue
+input_queue = queue.Queue()
+
 
 _decoders = {}
 
 def config_stt(cache_dir, keywords, kws_last_modification_time_in_sec = None):
-    _ = oa.legacy.Core()
     cache_path = lambda x: os.path.join(cache_dir, x)
-    _.lang_file = cache_path('lm')
-    _.fsg_file = None
-    _.dic_file = cache_path('dic')
-    _.hmm_dir = cache_path('hmm')
+
+    _config = {
+        'lang_file': cache_path('lm'),
+        'fsg_file': None,
+        'dic_file': cache_path('dic'),
+        'kwords': {},
+        'max_w_cnt': 3,
+        'phrases': [],
+        'strings_file': cache_path("sentences.corpus"),
+    }
 
     # Save keywords for further pattern matching. Call `config_stt()` when switching minds to check for command file changes.
-    _.kwords = {}
-    _.max_w_cnt = 3
     for phrase in keywords:
         spl_ph = phrase.strip().split(' ')
         w_cnt = len(spl_ph)
-        if w_cnt > _.max_w_cnt:
-            _.max_w_cnt = w_cnt
+        if w_cnt > _config['max_w_cnt']:
+            _config['max_w_cnt'] = w_cnt
         for kword in spl_ph:
             # Combine all phrases which use keywords.
-            r_phrases = _.kwords.setdefault(kword,{})
+            r_phrases = _config['kwords'].setdefault(kword,{})
             r_phrases[phrase] = w_cnt
 
     # Save phrases.
-    _.phrases = [x.strip().replace('%d', '').upper() for x in sorted(keywords)]
+    _config['phrases'] += [x.strip().replace('%d', '').upper() for x in sorted(keywords)]
 
-    # Check if commands file was modified.
-    if kws_last_modification_time_in_sec:
-        if os.path.exists(_.dic_file) and (kws_last_modification_time_in_sec < stat_mtime(_.dic_file)):
-            return _
-    _.strings_file = cache_path("sentences.corpus")
-    data = '\n'.join(_.phrases)
-    write_file(_.strings_file, data)
+    # XXX: Check if commands file was modified.
+    # if kws_last_modification_time_in_sec:
+        # if os.path.exists(_.dic_file) and (kws_last_modification_time_in_sec < stat_mtime(_.dic_file)):
+            # return _
+    data = '\n'.join(_config['phrases'])
+    write_file(_config['strings_file'], data)
 
     # Download language model data from `speech.cs.cmu.edu`.
-    update_language(_) 
-    return _
+    update_language(_config)
+    return _config
 
-def update_language(_):
+def update_language(config):
     # Update the language model using the online `lmtool`.
     host = 'http://www.speech.cs.cmu.edu'
     url = host + '/cgi-bin/tools/lmtool/run'
 
     # Submit the corpus to the `lmtool`.
     response_text = ""
-    with open(_.strings_file, 'r') as f:
+    with open(config['strings_file'], 'r') as f:
         files = {'corpus': f}
         values = {'formtype': 'simple'}
 
@@ -73,7 +77,7 @@ def update_language(_):
     for line in response_text.split('\n'):
         # Error response.
         if "[_ERRO_]" in line:
-            return 1
+            break
         # If we find the directory, keep it and don't break.
         if re.search(path_re, line):
             path = host + re.sub(path_re, r'\1', line)
@@ -83,42 +87,45 @@ def update_language(_):
             break
 
     if path is None:
-        info('_.cache_dir',_.cache_dir)
-        raise Exception('Not found: update_language: ' + response_text)
+        raise Exception(response_text)
+
     lm_url = path + '/' + number + '.lm'
     dic_url = path + '/' + number + '.dic'
 
-    if _.lang_file is not None:
-        download_file(lm_url, _.lang_file)
-    download_file(dic_url, _.dic_file) 
+    if config['lang_file'] is not None:
+        download_file(lm_url, config['lang_file'])
+    download_file(dic_url, config['dic_file']) 
 
-def get_decoder():
-    # XXX: race condition when mind isn't set yet
-    mind = oa.legacy.mind
-    if not hasattr(_decoders, mind.name):
-        # Configure Speech to text dictionaries.
-        ret = config_stt(mind.cache_dir, mind.kws.keys(), stat_mtime(mind.module))
-        
-        # Process audio chunk by chunk. On a keyphrase detected perform the action and restart search.
-        config = pocketsphinx.Decoder.default_config()
+# XXX: not quite the right place, but a step
+def get_decoder(ctx):
+    # Configure Speech to text dictionaries.
+    # XXX: just a hack to get things going
+    # ret = config_stt(ctx.cache_dir, ctx.kws.keys(), time.now())
+    _dir = os.path.dirname(__file__)
+    ret = config_stt(os.path.join(_dir, ""), ["the quick boot mind jumped over the great open assistant", "this is a test"])
 
-        # Set paths for the language model files.
-        config.set_string('-hmm', ret.hmm_dir)
-        config.set_string("-lm", ret.lang_file)
-        config.set_string("-dict", ret.dic_file)
-        config.set_string("-logfn", os.devnull)  # Disable logging.
+    # Process audio chunk by chunk. On a keyphrase detected perform the action and restart search.
+    config = pocketsphinx.Decoder.default_config()
 
-        ret.decoder = pocketsphinx.Decoder(config)
-        _decoders[mind.name] = ret
-    else:
-        return _decoders[mind.name]
+    # Set paths for the language model files.
+    config.set_string('-hmm', os.path.join(_dir, "hmm-en_US")) # XXX: should come from user's config/system
+    config.set_string("-lm", ret['lang_file'])
+    config.set_string("-dict", ret['dic_file'])
+    config.set_string("-logfn", os.devnull)  # Disable logging.
 
-    return ret
+    _decoder = pocketsphinx.Decoder(config)
 
-def _in(ctx):
+    return _decoder
+
+
+def __call__(ctx):
     mute = 0
+
+    decoder = get_decoder(ctx)
+
     while not ctx.finished.is_set():
-        raw_data = get()
+        raw_data = input_queue.get()
+
         if isinstance(raw_data, str):
             if raw_data == 'mute':
                 _logger.debug('Muted')
@@ -136,8 +143,6 @@ def _in(ctx):
         
         # Obtain audio data.
         try:
-            dinf = get_decoder()
-            decoder = dinf.decoder
             decoder.start_utt()  # Begin utterance processing.
 
             # Process audio data with recognition enabled (no_search = False), as a full utterance (full_utt = True)
@@ -154,12 +159,8 @@ def _in(ctx):
                 hyp = hypothesis.hypstr
                 if (hyp is None) or (hyp.strip() == ''):
                     continue
-                _logger.info("Heard: {}".format(hyp))
-                if hyp.upper() in dinf.phrases:
-                    yield hyp
-                else:
-                    continue
+                _logger.info("Recognized: {}".format(hyp))
+                yield hyp
 
             else:
                 _logger.warn('Speech not recognized')
-

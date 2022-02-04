@@ -6,30 +6,24 @@ _logger = logging.getLogger(__name__)
 import os
 import threading
 
-from . import util
-
 class Hub:
     def __init__(self, config=None):
         self.config = config
 
         self.ready = threading.Event()
         self.finished = threading.Event()
-        
+
         self.thread_pool = []
         self.parts = {}
 
 
-    def run(self):
+    def start(self):
+        self.ready.clear()
         self.finished.clear()
         self._load_modules()
+        self._link_modules()
         self._start_modules()
         self.ready.set()
-
-
-    def put(self, part, value):
-        """ Put a message on the wire. """
-        if part in self.parts:
-            self.parts[part].wire_in.put(value)
 
 
     def _load_modules(self):
@@ -41,11 +35,16 @@ class Hub:
             for module_name in os.listdir(module_repo):
                 if module_name in self.config.get('modules'):
                     try:
-                        m = util.load_module(os.path.join(module_repo, module_name))
+                        m = load_module(os.path.join(module_repo, module_name))
                         m.name = module_name
                         self.parts[module_name] = m
                     except Exception as ex:
                         _logger.error("Error loading {}: {}".format(module_name, ex))
+
+
+    def _link_modules(self):
+        for _in, _out in self.config.get('module_map', []):
+            self.parts[_in].outputs += [self.parts[_out]]
 
 
     def _start_modules(self):
@@ -62,30 +61,60 @@ class Hub:
         b.wait()
 
 
+def command_registry(kws):
+    def command(cmd):
+        def _command(fn):
+            if type(cmd) == str:
+                kws[cmd.upper()] = fn
+            elif type(cmd) == list:
+                for kw in cmd:
+                    kws[kw.upper()] = fn
+            return fn
+        return _command
+    return command
+
+
+def load_module(path):
+    """Load an OA module from path."""
+    import os
+    import logging
+    import importlib
+
+    # An OA module is a folder with an __oa__.py file
+    if not all([
+        os.path.isdir(path),
+        os.path.exists(os.path.join(path, '__oa__.py')),
+    ]): raise Exception("Invalid module: {}".format(path))
+
+    # Import package
+    module_name = os.path.basename(path)
+    _logger.info('{} <- {}'.format(module_name, path))
+    M = importlib.import_module("oa.modules"+'.{}'.format(module_name))
+
+    # XXX: differently hacky (these don't seem quite right or the same)
+    M.__dict__.setdefault('outputs', [])
+
+    return M
+
+
 def thread_loop(hub, part, b):
     """ Setup part inputs to the message wire. """
-    # if not isinstance(part.output, list):
-        # raise Exception('No output list defined: ' + part.name)
-
     _logger.debug('Starting')
-    # ready = threading.Event()
 
-    
     if hasattr(part, 'init'):
         part.init()
 
     b.wait()
-    
+
     hub.ready.wait()
 
     while not hub.finished.is_set():
         try:
-            for msg in part._in(hub):
-                for listener in part.output:
+            for msg in part.__call__(hub):
+                for listener in part.outputs:
                     _logger.debug('{} -> {}'.format(part.name, listener.name))
-                    listener.wire_in.put(msg)
+                    listener.input_queue.put(msg)
         except Exception as ex:
             _logger.error("Error processing queue: {}".format(ex))
-
 
     _logger.debug('Stopped')
