@@ -1,24 +1,10 @@
 # Open Assistant
 
-Open source voice assistant development. Make your own minds!
+Open Source Voice Assistant: Make your own minds!
 
-Open Assistant is a private open source personal assistant prototype able to complete operating system tasks using vocal commands.
+Open Assistant is an offline open source voice assistant prototype able to complete operating system tasks using vocal commands.
 
 ## Installation
-
-### Windows
-
-#### _Click & Run_
-
-* Download [https://openassistant.org/download/install/oa-win-0.22.zip](https://openassistant.org/download/install/oa-win-0.22.zip)
-* Unzip package
-* Launch `oa.exe` in "Open Assistant" folder
-
-#### _Source_
-
-* Install [common list of Python packages](https://www.python.org/downloads/windows/)
-* Install Windows-specific dependencies: ``pip install pywin32``
-* Install Python dependencies: `pip install -r requirements.txt`
 
 ### macOS
 
