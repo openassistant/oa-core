@@ -1,5 +1,7 @@
 # Open Assistant
 
+Current development has moved to Gitlab: https://gitlab.com/open-assistant/oa-arch
+
 Open Source Voice Assistant: Make your own minds!
 
 Open Assistant is an offline open source voice assistant prototype able to complete operating system tasks using vocal commands.
